@@ -54,7 +54,7 @@ class PlotCurtains:
             # Separation info
             self.ax[0, i].text(0.99, 0.99, f's = {abs(int(round(row.Dist_In_Track)))} km', 
                             transform=self.ax[0, i].transAxes, va='top', ha='right', fontsize=15)
-            self.ax[1, i].text(0.99, 0.99, f'dt = {abs(int(round(row.Lag_In_Track)))} s',
+            self.ax[1, i].text(0.99, 0.99, f'shifted by dt = {abs(int(round(row.Lag_In_Track)))} s',
                             transform=self.ax[1, i].transAxes, va='top', ha='right', fontsize=15)
             
         plt.show()
