@@ -1,13 +1,18 @@
 import os
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.dates import date2num
 import pandas as pd
 from datetime import date, datetime
-import plot_curtains
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib.dates import date2num, num2date
 from matplotlib.widgets import Button, TextBox
 
+import plot_curtains
+
 catalog_save_dir = plot_curtains.CATALOG_DIR
+
+plot_save_dir = '/home/mike/research/ac6_curtains/plots/'
+matplotlib.rcParams["savefig.directory"] = plot_save_dir
 
 class Browser(plot_curtains.PlotCurtains):
     def __init__(self, catalog_version, plot_width=5, 
@@ -141,6 +146,12 @@ class Browser(plot_curtains.PlotCurtains):
         self.ax[1].set_xlabel('UTC')
         
         self._print_aux_info(current_row)
+
+        t = num2date(self.ax[0].get_xlim()[0]).replace(tzinfo=None).replace(microsecond=0)
+        save_datetime = t.strftime('%Y%m%d_%H%M')
+        self.fig.canvas.get_default_filename = lambda: (f'{save_datetime}_'
+                f'{int(current_row.Lag_In_Track)}s_curtain.png')
+
         plt.draw()
         return
 
@@ -172,7 +183,7 @@ class Browser(plot_curtains.PlotCurtains):
         """
         Initialize subplot objects and text box.
         """
-        fig, self.ax = plt.subplots(2, figsize=(8, 7))
+        self.fig, self.ax = plt.subplots(2, figsize=(8, 7))
         plt.subplots_adjust(bottom=0.2)
 
         # Define button axes.
@@ -197,7 +208,7 @@ class Browser(plot_curtains.PlotCurtains):
         self.index_box.on_submit(self.change_index)
 
         # Initialise button press
-        fig.canvas.mpl_connect('key_press_event', self.key_press)
+        self.fig.canvas.mpl_connect('key_press_event', self.key_press)
         return
 
     def save_filtered_catalog(self):
@@ -219,7 +230,7 @@ class Browser(plot_curtains.PlotCurtains):
         df.drop_duplicates(subset='dateTime', inplace=True)
 
         # Now look for duplicate spatial times. 
-        
+
 
         # Save to csv file.
         df.to_csv(save_path, index=False)
