@@ -197,7 +197,12 @@ class PlotCurtains:
             ax[0].text(0, 1, s, transform=ax[0].transAxes, va='top')
             
         # Print the time shift seconds
-        ax[1].text(0, 0.98, f'shifted by = {round(row.Lag_In_Track, 1)} s', transform=ax[1].transAxes, va='top')
+        if row.Lag_In_Track > 0:
+            ax[1].text(0, 0.98, f'AC6B ahead by = {round(row.Lag_In_Track, 1)} s', 
+                        transform=ax[1].transAxes, va='top')
+        else:
+            ax[1].text(0, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} s', 
+                        transform=ax[1].transAxes, va='top')
 
         if savefig:
             save_name = '{0:%Y%m%d_%H%M%S}_ac6_curtain_validation.png'.format(

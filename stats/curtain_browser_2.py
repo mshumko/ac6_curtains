@@ -132,7 +132,7 @@ class Browser(plot_curtains.PlotCurtains):
         else:
             self.bmicroburst.color = '0.85'
            
-        self.make_plot(current_row, savefig=False)
+        self.make_plot(current_row, savefig=False, plot_dos2_and_dos3=False)
         self.ax[0].set_title('AC6 Curtain Browser\n {} {}'.format(
                         current_row['dateTime'].date(), 
                         current_row['dateTime'].time()))
