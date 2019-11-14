@@ -12,13 +12,13 @@ AC6_DATA_PATH = lambda sc_id: ('/home/mike/research/ac6/ac6{}/'
                                 'ascii/level2'.format(sc_id))
 PLOT_SAVE_DIR = os.path.join(BASE_DIR, 'plots', 'curtain_validation')
 
-class PlotMicrobursts:
+class PlotCurtains:
     def __init__(self, catalog_version, plot_width=5, catalog_name=None,
                 plot_save_dir=None, plot_width_flag=False, 
                 make_plt_dir_flag=True, load_sorted_catalog=False):
         """
         This class plots the detections from the coincident
-        microburst catalog with a set of default filters.
+        curtain catalog with a set of default filters.
         The user can supply other filter values in the 
         filterDict.
         """
@@ -148,7 +148,7 @@ class PlotMicrobursts:
         This method takes in a dataframe row from the catalog and makes a 
         space/time plot.
         """
-        mean_subtracted = kwargs.get('mean_subtracted', True)
+        mean_subtracted = kwargs.get('mean_subtracted', False)
         savefig = kwargs.get('savefig', True)
         log_scale = kwargs.get('log_scale', False)
         plot_dos2_and_dos3 = kwargs.get('plot_dos2_and_dos3', True)
@@ -181,7 +181,8 @@ class PlotMicrobursts:
         if time_guide_flag:
             ax[0].axvline(row.at['dateTime'])
         if plot_legend:
-            ax[0].legend(loc=1)
+            ax[0].legend(loc=1, fontsize=7
+            )
         ax[1].plot(df_space_a['dateTime'], df_space_a['dos1rate'], 'r', label='AC6-A')
         ax[1].plot(df_space_b['dateTime'], df_space_b['dos1rate'], 'b', label='AC6-B')
 
@@ -196,7 +197,7 @@ class PlotMicrobursts:
             ax[0].text(0, 1, s, transform=ax[0].transAxes, va='top')
             
         # Print the time shift seconds
-        ax[0].text(0, 1, f'shifted by = {row.Lag_In_Track} s', transform=ax[0].transAxes, va='top')
+        ax[1].text(0, 0.98, f'shifted by = {round(row.Lag_In_Track, 1)} s', transform=ax[1].transAxes, va='top')
 
         if savefig:
             save_name = '{0:%Y%m%d_%H%M%S}_ac6_curtain_validation.png'.format(
@@ -233,6 +234,6 @@ class PlotMicrobursts:
 
 if __name__ == '__main__':
     version = 8
-    p = PlotMicrobursts(version, catalog_name=f'AC6_coincident_microbursts_v{version}.txt')
+    p = PlotCurtains(version, catalog_name=f'AC6_coincident_microbursts_v{version}.txt')
     p.filter_catalog(filterDict={})
     p.loop(mean_subtracted=False)

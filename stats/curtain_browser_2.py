@@ -4,23 +4,23 @@ import matplotlib.pyplot as plt
 from matplotlib.dates import date2num
 import pandas as pd
 from datetime import date, datetime
-from ac6_microburst_scale_sizes.validation.plot_microbursts import PlotMicrobursts
+import plot_curtains
 from matplotlib.widgets import Button, TextBox
 
-catalog_save_dir = ('/home/mike/research/ac6_microburst_scale_sizes/data/'
-                    'coincident_microbursts_catalogues')
+catalog_save_dir = plot_curtains.CATALOG_DIR
 
-class Browser(PlotMicrobursts):
+class Browser(plot_curtains.PlotCurtains):
     def __init__(self, catalog_version, plot_width=5, 
-                catalog_save_name=None, width_tol=0.1, filterDict={}, 
+                catalog_save_name=None, width_tol=None, filterDict={}, 
                 jump_to_latest=True):
         """
         This class plots the AC6 microbursts and allows the user to browse
         detections in the future and past with buttons. Also there is a button
         to mark the event as a microburst.
         """
-        PlotMicrobursts.__init__(self, catalog_version, plot_width=plot_width, 
-                                plot_width_flag=False, make_plt_dir_flag=False)
+        plot_curtains.PlotCurtains.__init__(self, catalog_version, 
+                                plot_width=plot_width, plot_width_flag=False, 
+                                make_plt_dir_flag=False)
         self.filter_catalog(filterDict=filterDict)
         # Filter out events with widths whithin a width_tol.
         if width_tol is not None:
@@ -29,8 +29,7 @@ class Browser(PlotMicrobursts):
                             self.catalog['peak_width_B'], rtol=width_tol)]
 
         if catalog_save_name is None:
-            self.catalog_save_name = ('AC6_coincident_microbursts_sorted_'
-                                'v{}.txt'.format(catalog_version))
+            self.catalog_save_name = f'AC6_curtains_sorted_v{catalog_version}.txt'
         else:
             self.catalog_save_name = catalog_save_name
         self.catalog_save_path = os.path.join(catalog_save_dir, 
@@ -41,12 +40,12 @@ class Browser(PlotMicrobursts):
         if os.path.exists(self.catalog_save_path):
             self.load_filtered_catalog()
         else:
-            self.microburst_idx = np.array([])
+            self.curtain_idx = np.array([])
 
         self.current_date = date.min
         self._init_plot()
-        if jump_to_latest and len(self.microburst_idx):
-            self.index = self.microburst_idx[-1]
+        if jump_to_latest and len(self.curtain_idx):
+            self.index = self.curtain_idx[-1]
         else:
             # Start at row 0 in the dataframe.
             self.index = 0 
@@ -71,21 +70,21 @@ class Browser(PlotMicrobursts):
         self.plot()
         return
 
-    def append_remove_microburst(self, event):
+    def append_remove_curtain(self, event):
         """ 
         Appends or removes the current catalog row to 
         self.filtered_catalog which will then
         be saved to a file for later processing.
         """
-        if self.index not in self.microburst_idx:
-            self.microburst_idx = np.append(self.microburst_idx, self.index)
+        if self.index not in self.curtain_idx:
+            self.curtain_idx = np.append(self.curtain_idx, self.index)
             self.bmicroburst.color = 'g'
-            print('Micorburst saved at', self.catalog.iloc[self.index].dateTime)
+            print('Curtain saved at', self.catalog.iloc[self.index].dateTime)
         else:
-            self.microburst_idx = np.delete(self.microburst_idx, 
-                np.where(self.microburst_idx == self.index)[0])
+            self.curtain_idx = np.delete(self.curtain_idx, 
+                np.where(self.curtain_idx == self.index)[0])
             self.bmicroburst.color = '0.85'
-            print('Micorburst removed at', self.catalog.iloc[self.index].dateTime)
+            print('Curtain removed at', self.catalog.iloc[self.index].dateTime)
         return
 
     def key_press(self, event):
@@ -93,8 +92,9 @@ class Browser(PlotMicrobursts):
         Calls an appropriate method depending on what key was pressed.
         """
         if event.key == 'm':
-            # Mark as a microburst
-            self.append_remove_microburst(event)
+            # Mark as a curtain (can't use the "c" key since it is 
+            # the clear command)
+            self.append_remove_curtain(event)
         elif event.key == 'a':
             # Move self.index back and replot.
             self.prev(event)
@@ -127,17 +127,17 @@ class Browser(PlotMicrobursts):
             print('done.')
 
         # Turn microburst button green if this index has been marked as a microburst.
-        if self.index in self.microburst_idx:
+        if self.index in self.curtain_idx:
             self.bmicroburst.color = 'g'
         else:
             self.bmicroburst.color = '0.85'
            
         self.make_plot(current_row, savefig=False)
-        self.ax[0].set_title('AC6 Microburst Browser\n {} {}'.format(
+        self.ax[0].set_title('AC6 Curtain Browser\n {} {}'.format(
                         current_row['dateTime'].date(), 
                         current_row['dateTime'].time()))
-        self.ax[0].set_ylabel('mean-subtracted dos1rate\n[counts/s]')
-        self.ax[1].set_ylabel('mean-subtracted dos1rate\n[counts/s]')
+        self.ax[0].set_ylabel('dos1rate\n[counts/s]')
+        self.ax[1].set_ylabel('dos1rate\n[counts/s]')
         self.ax[1].set_xlabel('UTC')
         
         self._print_aux_info(current_row)
@@ -185,8 +185,8 @@ class Browser(PlotMicrobursts):
         self.bnext.on_clicked(self.next)
         self.bprev = Button(self.axprev, 'Previous (a)', hovercolor='g')
         self.bprev.on_clicked(self.prev)
-        self.bmicroburst = Button(self.axburst, 'Microburst (m)', hovercolor='g')
-        self.bmicroburst.on_clicked(self.append_remove_microburst)
+        self.bmicroburst = Button(self.axburst, 'Curtain (m)', hovercolor='g')
+        self.bmicroburst.on_clicked(self.append_remove_curtain)
 
         # Define the textbox axes.
         self.textbox = plt.axes([0.1, 0.05, 0.2, 0.075])
@@ -207,13 +207,13 @@ class Browser(PlotMicrobursts):
         name of self.catalog_save_name.
         """
         # Return if there are no micriobursts to save.
-        if not hasattr(self, 'microburst_idx'):
+        if not hasattr(self, 'curtain_idx'):
             return
         # Remove duplicates indicies
-        self.microburst_idx = np.unique(self.microburst_idx)
+        self.curtain_idx = np.unique(self.curtain_idx)
         save_path = os.path.join(catalog_save_dir, self.catalog_save_name)
         print('Saving filtered catalog to {}'.format(save_path))
-        df = self.catalog.iloc[self.microburst_idx]
+        df = self.catalog.iloc[self.curtain_idx]
         # Remove duplicate times (different than indicies since the same time
         # from the other sc may be assigned to a different index. 
         df.drop_duplicates(subset='dateTime')
@@ -233,7 +233,7 @@ class Browser(PlotMicrobursts):
         # Convert times to numeric for easier comparison
         flt_times_numeric = date2num(filtered_catalog.dateTime)
         times_numeric = date2num(self.catalog.dateTime)
-        self.microburst_idx = np.where(np.in1d(times_numeric, flt_times_numeric, 
+        self.curtain_idx = np.where(np.in1d(times_numeric, flt_times_numeric, 
                                     assume_unique=True))[0]
         return
 
