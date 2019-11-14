@@ -216,7 +216,12 @@ class Browser(plot_curtains.PlotCurtains):
         df = self.catalog.iloc[self.curtain_idx]
         # Remove duplicate times (different than indicies since the same time
         # from the other sc may be assigned to a different index. 
-        df.drop_duplicates(subset='dateTime')
+        df.drop_duplicates(subset='dateTime', inplace=True)
+
+        # Now look for duplicate spatial times. 
+        
+
+        # Save to csv file.
         df.to_csv(save_path, index=False)
         return
 
