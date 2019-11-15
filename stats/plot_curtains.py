@@ -198,10 +198,10 @@ class PlotCurtains:
             
         # Print the time shift seconds
         if row.Lag_In_Track > 0:
-            ax[1].text(0, 0.98, f'AC6B ahead by = {round(row.Lag_In_Track, 1)} s', 
+            ax[1].text(0, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} s', 
                         transform=ax[1].transAxes, va='top')
         else:
-            ax[1].text(0, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} s', 
+            ax[1].text(0, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} s', 
                         transform=ax[1].transAxes, va='top')
 
         if savefig:
