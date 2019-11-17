@@ -34,7 +34,7 @@ class Hist1D:
         self.flag = flag
         return
 
-    def loop_data(self, simultaneous=False):
+    def loop_data(self, simultaneous=False, verbose=True):
         """
         Loop over every day and for each day try to open the 10 Hz data
         from both units. If data exists, filter it by time, and hisogram it. 
@@ -43,7 +43,7 @@ class Hist1D:
             self.load_day_data(day)
             if (self.ac6dataA is None) or (self.ac6dataB is None):
                 continue # If one (or both) of the data files is empty
-            ind = self.filterData(simultaneous=simultaneous)
+            ind = self.filterData(simultaneous=simultaneous, verbose=verbose)
             # If using Hist2D, the Hist1D's method will be overwritten.
             self.hist_data(ind) 
 
@@ -68,13 +68,15 @@ class Hist1D:
                 return self.ac6dataA, self.ac6dataB
             else:
                 raise
-#        finally:
-#            return self.ac6dataA, self.ac6dataB
 
     def filterData(self, verbose=False, simultaneous=True):
         """
         This function filters the AC-6 data by common times, data flag value,
         and filterDict dictionary.
+
+        The simultaneous boolean kwarg changes modes from identifying
+        times at the same time (default; True) or at the same position 
+        by using the in-track lag (False).
         """
         if verbose:
             start_time = datetime.now()
@@ -132,58 +134,48 @@ class Hist1D:
         return ind
 
     def _filter_positions(self):
-        """ Filter the day data taken at the same spatial location. """
-        ### Find common times of the two data sets ###
-        # Round the AC6A time stamps to a tenth of a second
-        tA_rounded = self._round_time_stamps(self.ac6dataA['dateTime'])
-        tA = date2num(tA_rounded)
-        # Find the times when AC6B had time stamps shifted by 
-        # the in-track-lag. 
-        tB = date2num(self._shift_ac6b_times())
-        
+        """ 
+        Find how many indicies of the AC6B data were taken at the same position as AC6A. 
+        """
+        # Shift the AC6A time stamps by the in-track lag. If these shifted time stamps
+        # are found in the AC6B data, then both units were taking data over the same 
+        # spatial location.
+        tA_shifted = self._get_shifted_ac6a_times()
+        tB = date2num(self.ac6dataB['dateTime']) 
+
         # np.in1d returns a boolean array that correspond to indicies in tB
         # that are also in tA. np.where will convert this mask array into
         # an index array
-        ind = np.where(np.in1d(tB, tA, assume_unique=True))[0]
+        indB = np.where(np.in1d(tB, tA_shifted, assume_unique=True))[0]
 
-        ### TEST CODE ###
-        indA = np.where(np.in1d(tA, tB, assume_unique=True))[0]
+        # ### TEST CODE ###
+        # indA = np.where(np.in1d(tA_shifted, tB, assume_unique=True))[0]
 
-        for iA, iB in zip(indA, ind):
-            print(self.ac6dataA.loc[iA, 'dateTime'], 
-                  self.ac6dataB.loc[iB, 'dateTime'],
-                  self.ac6dataA.loc[iA, 'Lag_In_Track'],
-                  self.ac6dataB.loc[iB, 'dateTime'] + timedelta(seconds=self.ac6dataA.loc[iA, 'Lag_In_Track']))
+        # for iA, iB in zip(indA, indB):
+        #     print(self.ac6dataA.loc[iA, 'dateTime'], 
+        #           self.ac6dataB.loc[iB, 'dateTime'],
+        #           self.ac6dataA.loc[iA, 'Lag_In_Track'])#,
+        #           #self.ac6dataB.loc[iB, 'dateTime'] + timedelta(seconds=self.ac6dataB.loc[iB, 'Lag_In_Track']))
 
-        return ind
+        return indB
 
-    def _shift_ac6b_times(self):
+    def _get_shifted_ac6a_times(self):
         """
-        Shift the AC6B times by the in-track lag and check if those times 
-        exist in the AC6B dataset (if AC6B was taking data at that time).
+        Adds the in-track lag to the AC6A times and round the time stamps
+        to the tenths of a second. Return the shifted time stamps in the 
+        numerical format.
         """
-        # Convert the AC6B time stamps to numerical format
-        tB = date2num(self.ac6dataB['dateTime'])
-        # Add the in-track lag to AC6B (to get the time stamps at the 
-        # same spatial location)
-        tB_shifted_numerical = tB + self._lags_to_epoch()
-        # Now convert the shifted numerical AC6B times to datetimes, and 
-        # round to tenths of a second.
-        tB_shifted_rounded = self._round_time_stamps(num2date(tB_shifted_numerical))
-        tB_shifted_rounded_numerical = date2num(tB_shifted_rounded)
-        # Round the raw AC6B time stamps and see if the shifted time stamps exist.
-        tB_rounded = self._round_time_stamps(self.ac6dataB['dateTime'])
-        tb_rounded_numerical = date2num(tB_rounded)
-        ind = np.where(np.in1d(tb_rounded_numerical, tB_shifted_rounded_numerical, 
-                                assume_unique=True))[0]
-        return self.ac6dataB['dateTime'][ind]
-
-    def _lags_to_epoch(self):
-        """ 
-        Convert the self.ac6dataB.Lag_In_Track values to fraction
-        of a day decimal value
-        """
-        return self.ac6dataB.Lag_In_Track/86400
+        # Convert the AC6A time stamps to numerical format
+        tA = date2num(self.ac6dataA['dateTime'])
+        # Add the in-track lag in decimal day format to the AC6A.
+        # If the shifted time stamp is found in the AC6B data, 
+        # then they taking data in the same spatial location.
+        tA_shifted_numerical = tA + self.ac6dataA.Lag_In_Track/86400
+        # Now convert the shifted numerical AC6B times to datetimes, 
+        # round to tenths of a second, and convert back to numerical 
+        # times and return.
+        tA_shifted_rounded = self._round_time_stamps(num2date(tA_shifted_numerical))
+        return date2num(tA_shifted_rounded)
 
     def _round_time_stamps(self, time_array):
         """ Round the time stamps to the nearest tenth of a second """
@@ -362,7 +354,7 @@ class Equatorial_Hist(Hist1D):
             return Re*np.linalg.norm(X1_equator-X2_equator)
 
 if __name__ == '__main__':
-    sDir = '/home/mike/research/ac6_curtains/data/norm'
+    SAVE_DIR = '/home/mike/research/ac6_curtains/data/norm'
 
     ### SCRIPT TO MAKE "Dst_Total" NORMALIZATION ###
     #import time
@@ -371,7 +363,7 @@ if __name__ == '__main__':
     #             filterDict={'dos1rate':[0, 1E6], 
     #                         'Lm_OPQ':[4, 8]})
     # s.loop_data()
-    # s.save_data(os.path.join(sDir, 'ac6_norm_all_1km_bins.csv'))
+    # s.save_data(os.path.join(SAVE_DIR, 'ac6_norm_all_1km_bins.csv'))
     
     # bin_width = 5
     # bin_offset = 0
@@ -381,8 +373,8 @@ if __name__ == '__main__':
     #                 filterDict={'dos1rate':[0, 1E6], 
     #                             'Lm_OPQ':[L_lower, L_upper]})
     #     ss2.loop_data()
-    #     sDir = '/home/mike/research/ac6_microburst_scale_sizes/data/norm'
-    #     ss2.save_data(os.path.join(sDir, 
+    #     SAVE_DIR = '/home/mike/research/ac6_microburst_scale_sizes/data/norm'
+    #     ss2.save_data(os.path.join(SAVE_DIR, 
     #             f'ac6_norm_{L_lower}_L_{L_upper}'
     #             f'_{bin_width}km_bins_offset.csv'))
     #     print('Run time =', time.time()-start_time, 's')
@@ -394,8 +386,8 @@ if __name__ == '__main__':
     # for (lL, uL) in zip(L[:-1], L[1:]):
     #     ss=Hist1D(filterDict={'Lm_OPQ':[lL, uL]})
     #     ss.loop_data()
-    #     sDir = '/home/mike/research/ac6-microburst-scale-sizes/data/norm/'
-    #     ss.save_data(os.path.join(sDir, 'ac6_norm_{}_L_{}.csv'.format(lL, uL)))
+    #     SAVE_DIR = '/home/mike/research/ac6-microburst-scale-sizes/data/norm/'
+    #     ss.save_data(os.path.join(SAVE_DIR, 'ac6_norm_{}_L_{}.csv'.format(lL, uL)))
     # print('Norm.py ran in :{} s'.format((datetime.now()-st).total_seconds()))
 
     ### SCRIPT TO MAKE L-MLT NORMALIATION ###
@@ -403,14 +395,14 @@ if __name__ == '__main__':
                     bins=[np.arange(2, 10), np.arange(0, 25)],
                     filterDict={'dos1rate':[0, 1E6]})
     ss2.loop_data(simultaneous=False)
-    # ss2.save_data(os.path.join(sDir, 'ac6_L_MLT_bins.csv'), 
-    #               os.path.join(sDir, 'ac6_L_MLT_norm.csv'))
+    ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
+                  os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
 
     ### SCRIPT TO MAKE MLT-LON NORMALIZATION ####
 #    ss = Hist2D('MLT_OPQ', 'lon', bins=[np.arange(0, 24.5, 0.5), np.arange(-180, 181, 5)])
 #    ss.loop_data()
-#    ss.save_data(os.path.join(sDir, 'ac6_MLT_lon_bins_2.csv'), 
-#                 os.path.join(sDir, 'ac6_MLT_lon_norm_2.csv'))
+#    ss.save_data(os.path.join(SAVE_DIR, 'ac6_MLT_lon_bins_2.csv'), 
+#                 os.path.join(SAVE_DIR, 'ac6_MLT_lon_norm_2.csv'))
 
     ### SCRIPT TO FIND THE EQUATORIAL NORMALIZATION ###
 #    eq = Equatorial_Hist(np.arange(0, 2000, 25), 'Lm_OPQ', np.arange(4, 8.1),
