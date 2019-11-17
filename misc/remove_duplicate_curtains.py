@@ -20,15 +20,9 @@ for timeKey in ['dateTime', 'time_spatial_A', 'time_spatial_B']:
 # of the same spatial time (or similar time, within dt)
 for i, row_i in cat.iterrows():
     for j, row_j in cat.iterrows():
-        # If two times in time_spatial_A are similar
-        # if np.abs(row_i.time_spatial_A - row_j.time_spatial_A) <= dt and i != j:
-        #     print(i, j)
-        # # If two times in time_spatial_B are similar
-        # if np.abs(row_i.time_spatial_B - row_j.time_spatial_B) <= dt and i != j:
-        #     print(i, j)
         # If the two times in time_spatial_A and time_spatial_B are similar
         if (np.abs(row_i.time_spatial_A - row_j.time_spatial_B) <= dt) and (i != j):
             print('A,B:', i, j, row_i.time_spatial_A)
             cat = cat.drop(index=j)
 
-cat.to_csv('test.txt', index=False)
+cat.to_csv(CATALOG_PATH, index=False)
