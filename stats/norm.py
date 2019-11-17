@@ -139,7 +139,7 @@ class Hist1D:
         tA = date2num(tA_rounded)
         # Find the times when AC6B had time stamps shifted by 
         # the in-track-lag. 
-        tB = date2num(self.shift_ac6b_times())
+        tB = date2num(self._shift_ac6b_times())
         
         # np.in1d returns a boolean array that correspond to indicies in tB
         # that are also in tA. np.where will convert this mask array into
@@ -152,11 +152,12 @@ class Hist1D:
         for iA, iB in zip(indA, ind):
             print(self.ac6dataA.loc[iA, 'dateTime'], 
                   self.ac6dataB.loc[iB, 'dateTime'],
-                  self.ac6dataA.loc[iA, 'Lag_In_Track'])
+                  self.ac6dataA.loc[iA, 'Lag_In_Track'],
+                  self.ac6dataB.loc[iB, 'dateTime'] + timedelta(seconds=self.ac6dataA.loc[iA, 'Lag_In_Track']))
 
         return ind
 
-    def shift_ac6b_times(self):
+    def _shift_ac6b_times(self):
         """
         Shift the AC6B times by the in-track lag and check if those times 
         exist in the AC6B dataset (if AC6B was taking data at that time).
