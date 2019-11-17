@@ -79,8 +79,10 @@ class Hist1D:
         if verbose:
             start_time = datetime.now()
             print('Filtering data at {}'.format(datetime.now()))
-        
-        ind = self._filter_times()
+        if simultaneous:
+            ind = self._filter_times()
+        else:
+            ind = self._filter_positions()
 
         ### Data quality flag filter ###
         if self.flag: # First filter by common times and flag
@@ -143,6 +145,15 @@ class Hist1D:
         # that are also in tA. np.where will convert this mask array into
         # an index array
         ind = np.where(np.in1d(tB, tA, assume_unique=True))[0]
+
+        ### TEST CODE ###
+        indA = np.where(np.in1d(tA, tB, assume_unique=True))[0]
+
+        for iA, iB in zip(indA, ind):
+            print(self.ac6dataA.loc[iA, 'dateTime'], 
+                  self.ac6dataB.loc[iB, 'dateTime'],
+                  self.ac6dataA.loc[iA, 'Lag_In_Track'])
+
         return ind
 
     def shift_ac6b_times(self):
@@ -162,7 +173,8 @@ class Hist1D:
         # Round the raw AC6B time stamps and see if the shifted time stamps exist.
         tB_rounded = self._round_time_stamps(self.ac6dataB['dateTime'])
         tb_rounded_numerical = date2num(tB_rounded)
-        ind = np.where(np.in1d(tb_rounded_numerical, tB_shifted_rounded_numerical, assume_unique=True))[0]
+        ind = np.where(np.in1d(tb_rounded_numerical, tB_shifted_rounded_numerical, 
+                                assume_unique=True))[0]
         return self.ac6dataB['dateTime'][ind]
 
     def _lags_to_epoch(self):
@@ -174,8 +186,17 @@ class Hist1D:
 
     def _round_time_stamps(self, time_array):
         """ Round the time stamps to the nearest tenth of a second """
-        time_rounded = [t.replace(microsecond=round(t.microsecond, -5)) 
-                        for t in time_array]
+        time_rounded = len(time_array)*[None]
+
+        for i, t in enumerate(time_array):
+            try:
+                time_rounded[i] = t.replace(microsecond=round(t.microsecond, -5)) 
+            except ValueError as err:
+                if 'microsecond must be in 0..999999' in str(err):
+                    time_rounded[i] = t.replace(microsecond=0) + timedelta(seconds=1)
+
+        # time_rounded = [t.replace(microsecond=round(t.microsecond, -5)) 
+        #                 for t in time_array]
         return time_rounded
 
 class Hist2D(Hist1D):
@@ -340,15 +361,16 @@ class Equatorial_Hist(Hist1D):
             return Re*np.linalg.norm(X1_equator-X2_equator)
 
 if __name__ == '__main__':
+    sDir = '/home/mike/research/ac6_curtains/data/norm'
+
     ### SCRIPT TO MAKE "Dst_Total" NORMALIZATION ###
     #import time
     #start_time = time.time()
-    s=Hist1D(d=np.arange(0, 501, 1), 
-                filterDict={'dos1rate':[0, 1E6], 
-                            'Lm_OPQ':[4, 8]})
-    s.loop_data()
-    sDir = '/home/mike/research/ac6_curtains/data/norm'
-    s.save_data(os.path.join(sDir, 'ac6_norm_all_1km_bins.csv'))
+    # s=Hist1D(d=np.arange(0, 501, 1), 
+    #             filterDict={'dos1rate':[0, 1E6], 
+    #                         'Lm_OPQ':[4, 8]})
+    # s.loop_data()
+    # s.save_data(os.path.join(sDir, 'ac6_norm_all_1km_bins.csv'))
     
     # bin_width = 5
     # bin_offset = 0
@@ -376,22 +398,16 @@ if __name__ == '__main__':
     # print('Norm.py ran in :{} s'.format((datetime.now()-st).total_seconds()))
 
     ### SCRIPT TO MAKE L-MLT NORMALIATION ###
-    # ss = Hist2D('Lm_OPQ', 'lon', 
-    #             bins=[np.arange(2, 10), np.arange(-180, 181, 5)], 
-    #             filterDict={'dos1rate':[0, 1E6]})
-    # ss.loop_data()
-    # sDir = '/home/mike/research/ac6_microburst_scale_sizes/data/norm/'
-    # ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
-    #                 bins=[np.arange(2, 10), np.arange(0, 25)],
-    #                 filterDict={'dos1rate':[0, 1E6]})
-    # ss2.loop_data()
+    ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
+                    bins=[np.arange(2, 10), np.arange(0, 25)],
+                    filterDict={'dos1rate':[0, 1E6]})
+    ss2.loop_data(simultaneous=False)
     # ss2.save_data(os.path.join(sDir, 'ac6_L_MLT_bins.csv'), 
     #               os.path.join(sDir, 'ac6_L_MLT_norm.csv'))
 
     ### SCRIPT TO MAKE MLT-LON NORMALIZATION ####
 #    ss = Hist2D('MLT_OPQ', 'lon', bins=[np.arange(0, 24.5, 0.5), np.arange(-180, 181, 5)])
 #    ss.loop_data()
-#    sDir = '/home/mike/research/ac6-microburst-scale-sizes/data/norm/'
 #    ss.save_data(os.path.join(sDir, 'ac6_MLT_lon_bins_2.csv'), 
 #                 os.path.join(sDir, 'ac6_MLT_lon_norm_2.csv'))
 
