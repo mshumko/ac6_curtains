@@ -57,26 +57,6 @@ class PlotCurtains:
         if defaultFilter:
             # High CC filter
             self.catalog = self.catalog[self.catalog['space_cc'] >= 0.8]
-            # Rad belt filter
-            # self.catalog = self.catalog[
-            #                             (np.abs(self.catalog['Lm_OPQ']) > 4) &
-            #                             (np.abs(self.catalog['Lm_OPQ']) < 8)
-            #                             ]
-            # Curtain filter
-            # self.catalog = self.catalog[self.catalog['time_cc'] > 
-            #                             self.catalog['space_cc']+0.3]
-            # USA filter
-            # self.catalog = self.catalog[
-            #         ((self.catalog['lon'] > -60) | (self.catalog['lon'] < -140))|
-            #         ((self.catalog['lat'] > 70) | (self.catalog['lat'] < 15))
-            #                             ]
-            # SAA filter
-            # self.catalog = self.catalog[
-            #         ((self.catalog['lon'] > 30)  | (self.catalog['lon'] < -116)) |
-            #         ((self.catalog['lat'] < -90) | (self.catalog['lat'] > 0))
-            #                     ]
-            # Significane above baseline filter
-            #self.catalog = self.catalog[self.catalog['peak_std'] > 3]
 
             for key, vals in filterDict.items():
                 self.catalog = self.catalog[

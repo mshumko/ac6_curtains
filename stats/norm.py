@@ -2,7 +2,7 @@
 # micorburst scale size distributions.
 
 from datetime import datetime, timedelta
-from matplotlib.dates import date2num 
+from matplotlib.dates import date2num, num2date
 import csv
 import numpy as np
 import sys
@@ -34,15 +34,16 @@ class Hist1D:
         self.flag = flag
         return
 
-    def loop_data(self):
+    def loop_data(self, simultaneous=False):
         """
-
+        Loop over every day and for each day try to open the 10 Hz data
+        from both units. If data exists, filter it by time, and hisogram it. 
         """
         for day in self.dates:
             self.load_day_data(day)
             if (self.ac6dataA is None) or (self.ac6dataB is None):
                 continue # If one (or both) of the data files is empty
-            ind = self.filterData()
+            ind = self.filterData(simultaneous=simultaneous)
             # If using Hist2D, the Hist1D's method will be overwritten.
             self.hist_data(ind) 
 
@@ -70,7 +71,7 @@ class Hist1D:
 #        finally:
 #            return self.ac6dataA, self.ac6dataB
 
-    def filterData(self, verbose=False):
+    def filterData(self, verbose=False, simultaneous=True):
         """
         This function filters the AC-6 data by common times, data flag value,
         and filterDict dictionary.
@@ -78,13 +79,8 @@ class Hist1D:
         if verbose:
             start_time = datetime.now()
             print('Filtering data at {}'.format(datetime.now()))
-        ### Find common times of the two data sets ###
-        tA = date2num(self.ac6dataA['dateTime'])
-        tB = date2num(self.ac6dataB['dateTime'])
-        # np.in1d returns a boolean array that correspond to indicies in tB
-        # that are also in tA. np.where will convert this mask array into
-        # an index array
-        ind = np.where(np.in1d(tB, tA, assume_unique=True))[0]
+        
+        ind = self._filter_times()
 
         ### Data quality flag filter ###
         if self.flag: # First filter by common times and flag
@@ -121,6 +117,66 @@ class Hist1D:
                 w.writerow([d, s])
         print('Saved data to {}'.format(os.path.basename(fPath)))
         return
+
+    def _filter_times(self):
+        """ Filter the day data for data taken simultaneously """
+        ### Find common times of the two data sets ###
+        tA = date2num(self.ac6dataA['dateTime'])
+        tB = date2num(self.ac6dataB['dateTime'])
+        # np.in1d returns a boolean array that correspond to indicies in tB
+        # that are also in tA. np.where will convert this mask array into
+        # an index array
+        ind = np.where(np.in1d(tB, tA, assume_unique=True))[0]
+        return ind
+
+    def _filter_positions(self):
+        """ Filter the day data taken at the same spatial location. """
+        ### Find common times of the two data sets ###
+        # Round the AC6A time stamps to a tenth of a second
+        tA_rounded = self._round_time_stamps(self.ac6dataA['dateTime'])
+        tA = date2num(tA_rounded)
+        # Find the times when AC6B had time stamps shifted by 
+        # the in-track-lag. 
+        tB = date2num(self.shift_ac6b_times())
+        
+        # np.in1d returns a boolean array that correspond to indicies in tB
+        # that are also in tA. np.where will convert this mask array into
+        # an index array
+        ind = np.where(np.in1d(tB, tA, assume_unique=True))[0]
+        return ind
+
+    def shift_ac6b_times(self):
+        """
+        Shift the AC6B times by the in-track lag and check if those times 
+        exist in the AC6B dataset (if AC6B was taking data at that time).
+        """
+        # Convert the AC6B time stamps to numerical format
+        tB = date2num(self.ac6dataB['dateTime'])
+        # Add the in-track lag to AC6B (to get the time stamps at the 
+        # same spatial location)
+        tB_shifted_numerical = tB + self._lags_to_epoch()
+        # Now convert the shifted numerical AC6B times to datetimes, and 
+        # round to tenths of a second.
+        tB_shifted_rounded = self._round_time_stamps(num2date(tB_shifted_numerical))
+        tB_shifted_rounded_numerical = date2num(tB_shifted_rounded)
+        # Round the raw AC6B time stamps and see if the shifted time stamps exist.
+        tB_rounded = self._round_time_stamps(self.ac6dataB['dateTime'])
+        tb_rounded_numerical = date2num(tB_rounded)
+        ind = np.where(np.in1d(tb_rounded_numerical, tB_shifted_rounded_numerical, assume_unique=True))[0]
+        return self.ac6dataB['dateTime'][ind]
+
+    def _lags_to_epoch(self):
+        """ 
+        Convert the self.ac6dataB.Lag_In_Track values to fraction
+        of a day decimal value
+        """
+        return self.ac6dataB.Lag_In_Track/86400
+
+    def _round_time_stamps(self, time_array):
+        """ Round the time stamps to the nearest tenth of a second """
+        time_rounded = [t.replace(microsecond=round(t.microsecond, -5)) 
+                        for t in time_array]
+        return time_rounded
 
 class Hist2D(Hist1D):
     def __init__(self, histKeyX, histKeyY, bins=None, startDate=datetime(2014, 1, 1),

@@ -11,7 +11,7 @@ BASE_DIR = '/home/mike/research/ac6_curtains/'
 CATALOG_NAME = 'AC6_curtains_sorted_v8.txt'
 CATALOG_PATH = os.path.join(BASE_DIR, 'data/catalogs', CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
-NORM_FLAG = False
+NORM_FLAG = True
 
 # Load the L-MLT normalization files.
 with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_bins.csv') as f:
@@ -54,11 +54,14 @@ ax[1] = plt.subplot(122, projection='polar')
 cat_dist, mlt_bins, lm_bins = np.histogram2d(cat.MLT_OPQ, cat.Lm_OPQ,
                      bins=[bins['MLT_OPQ'], bins['Lm_OPQ']])
 if NORM_FLAG:
-    raise NotImplemetedError
+    scaling_factors = (np.max(norm)/norm).T
+    # Set the sectors with no observations to NaN.
+    scaling_factors[np.isinf(scaling_factors)] = np.nan
+    cat_dist *= scaling_factors
 
 mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 p1 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap='Reds')
-plt.colorbar(p1, ax=ax[0], label=r'Number of curtains')
+plt.colorbar(p1, ax=ax[0], label=r'Number of curtains', pad=0.1)
 
 # L shell filter for the L-MLT plot
 L_lower = 0
@@ -66,7 +69,7 @@ idL = np.where(np.array(bins['Lm_OPQ']) >= L_lower)[0][0]
 p2 = ax[1].pcolormesh(np.array(bins['MLT_OPQ'])*np.pi/12, 
                     bins['Lm_OPQ'], norm/1E5, 
                     cmap='Reds', vmax=4)
-plt.colorbar(p2, ax=ax[1], label=r'10 Hz Samples x $10^5$')
+plt.colorbar(p2, ax=ax[1], label=r'10 Hz Samples x $10^5$', pad=0.1)
 
 # Draw Earth and shadow
 draw_earth(ax[0])
@@ -78,10 +81,9 @@ L_labels, L_labels_names = draw_L_contours(ax[1])
 
 ### PLOT TWEEKS ###
 ax[0].set_xlabel('MLT')
-ax[0].set_title(f'(a) AC6 curtain distribution| Normalized = {NORM_FLAG}', y=1.08)
+ax[0].set_title(f'(a) AC6 curtain distribution\nNormalized = {NORM_FLAG}', y=1.08)
 ax[1].set_xlabel('MLT')
 ax[1].set_title('(b) AC6 simultaneous data avaliability', y=1.08)
-#ax[1].set_ylabel('L')
 ax[0].set_theta_zero_location("S") # Midnight at bottom
 ax[1].set_theta_zero_location("S") # Midnight at bottom
 mlt_labels = (ax[1].get_xticks()*12/np.pi).astype(int)
@@ -92,10 +94,5 @@ ax[0].set_yticklabels(L_labels_names)
 ax[1].set_yticks(L_labels)
 ax[1].set_yticklabels(L_labels_names)
 
-
-# # A and B labels
-# ax[0].text(-0.15, 1.03, '(a)', transform=ax[0].transAxes, fontsize=20)
-# ax[1].text(-0.2, 1.07, '(b)', transform=ax[1].transAxes, fontsize=20)
-
-plt.tight_layout(rect=(0.02, 0, 1, 0.9))
+plt.tight_layout(rect=(0.02, 0.05, 1, 0.9))
 plt.show()
