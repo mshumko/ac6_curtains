@@ -11,7 +11,7 @@ BASE_DIR = '/home/mike/research/ac6_curtains/'
 CATALOG_NAME = 'AC6_curtains_sorted_v8.txt'
 CATALOG_PATH = os.path.join(BASE_DIR, 'data/catalogs', CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
-NORM_FLAG = False
+NORM_FLAG = True
 
 # Load the L-MLT normalization files.
 with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_bins_same_loc.csv') as f:
@@ -36,7 +36,7 @@ def draw_earth(ax, earth_resolution=50):
     ax.fill_between(*earth_shadow, color='k')
     return
 
-def draw_L_contours(ax, L_labels=[2, 4, 6, 8, 10], earth_resolution=50):
+def draw_L_contours(ax, L_labels=[2, 4, 6, 8], earth_resolution=50):
     """ Plots a subset of the L shell contours. """
     # Draw azimuthal lines for a subset of L shells.
     L_labels_names = [str(i) for i in L_labels[:-1]] + [f'L = {L_labels[-1]}']
@@ -83,19 +83,17 @@ draw_L_contours(ax[0])
 L_labels, L_labels_names = draw_L_contours(ax[1])
 
 ### PLOT TWEEKS ###
-ax[0].set_xlabel('MLT')
 ax[0].set_title(f'(a) AC6 curtain distribution\nNormalized = {NORM_FLAG}', y=1.08)
-ax[1].set_xlabel('MLT')
 ax[1].set_title('(b) AC6 distribution of 10 Hz data\nsame location', y=1.08)
-ax[0].set_theta_zero_location("S") # Midnight at bottom
-ax[1].set_theta_zero_location("S") # Midnight at bottom
 mlt_labels = (ax[1].get_xticks()*12/np.pi).astype(int)
-ax[0].set_xticklabels(mlt_labels) # Transform back from 0->2pi to 0->24.
-ax[1].set_xticklabels(mlt_labels) # Transform back from 0->2pi to 0->24.
-ax[0].set_yticks(L_labels)
-ax[0].set_yticklabels(L_labels_names)
-ax[1].set_yticks(L_labels)
-ax[1].set_yticklabels(L_labels_names)
 
+for a in ax:
+    a.set_xlabel('MLT')
+    a.set_theta_zero_location("S") # Midnight at bottom
+    a.set_xticklabels(mlt_labels) # Transform back from 0->2pi to 0->24.
+    a.set_yticks(L_labels)
+    a.set_yticklabels(L_labels_names)
+    a.set_ylim(top=10)
+    
 plt.tight_layout(rect=(0.02, 0.05, 1, 0.9))
 plt.show()

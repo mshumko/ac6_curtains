@@ -407,7 +407,7 @@ if __name__ == '__main__':
 
     ### SCRIPT TO MAKE L-MLT NORMALIATION ###
     ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
-                    bins=[np.arange(2, 10), np.arange(0, 25)],
+                    bins=[np.arange(2, 15), np.arange(0, 25)],
                     filterDict={'dos1rate':[0, 1E6]})
     ss2.loop_data(simultaneous=False)
     ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
