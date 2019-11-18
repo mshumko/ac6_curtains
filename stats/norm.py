@@ -406,18 +406,28 @@ if __name__ == '__main__':
     # print('Norm.py ran in :{} s'.format((datetime.now()-st).total_seconds()))
 
     ### SCRIPT TO MAKE L-MLT NORMALIATION ###
-    ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
-                    bins=[np.arange(2, 15), np.arange(0, 25)],
-                    filterDict={'dos1rate':[0, 1E6]})
-    ss2.loop_data(simultaneous=False)
-    ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
-                  os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
+    # ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
+    #                 bins=[np.arange(2, 15), np.arange(0, 25)],
+    #                 filterDict={'dos1rate':[0, 1E6]})
+    # ss2.loop_data(simultaneous=False)
+    # ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
+    #               os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
+
+    ### SCRIPT TO MAKE MLT-UT NORMALIATION ###
+    # ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
+    #                 bins=[np.arange(2, 15), np.arange(0, 25)],
+    #                 filterDict={'dos1rate':[0, 1E6]})
+    # ss2.loop_data(simultaneous=False)
+    # ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
+    #               os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
 
     ### SCRIPT TO MAKE MLT-LON NORMALIZATION ####
-#    ss = Hist2D('MLT_OPQ', 'lon', bins=[np.arange(0, 24.5, 0.5), np.arange(-180, 181, 5)])
-#    ss.loop_data()
-#    ss.save_data(os.path.join(SAVE_DIR, 'ac6_MLT_lon_bins_2.csv'), 
-#                 os.path.join(SAVE_DIR, 'ac6_MLT_lon_norm_2.csv'))
+   ss = Hist2D('MLT_OPQ', 'lon', 
+                        bins=[np.arange(0, 25, 1), np.arange(-180, 181, 10)],
+                        filterDict={'dos1rate':[0, 1E6]})
+   ss.loop_data(simultaneous=False)
+   ss.save_data(os.path.join(SAVE_DIR, 'ac6_MLT_lon_bins_same_loc.csv'), 
+                os.path.join(SAVE_DIR, 'ac6_MLT_lon_norm_same_loc.csv'))
 
     ### SCRIPT TO FIND THE EQUATORIAL NORMALIZATION ###
 #    eq = Equatorial_Hist(np.arange(0, 2000, 25), 'Lm_OPQ', np.arange(4, 8.1),
