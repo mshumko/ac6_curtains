@@ -34,12 +34,13 @@ class Hist1D:
         self.flag = flag
         return
 
-    def loop_data(self, simultaneous=False, verbose=True):
+    def loop_data(self, simultaneous=False, verbose=False):
         """
         Loop over every day and for each day try to open the 10 Hz data
         from both units. If data exists, filter it by time, and hisogram it. 
         """
         for day in self.dates:
+            #if day != datetime(2016, 10, 31): continue
             self.load_day_data(day)
             if (self.ac6dataA is None) or (self.ac6dataB is None):
                 continue # If one (or both) of the data files is empty
@@ -135,11 +136,12 @@ class Hist1D:
 
     def _filter_positions(self):
         """ 
-        Find how many indicies of the AC6B data were taken at the same position as AC6A. 
+        Find how many indicies of the AC6B data were taken at the same position 
+        as AC6A. 
         """
-        # Shift the AC6A time stamps by the in-track lag. If these shifted time stamps
-        # are found in the AC6B data, then both units were taking data over the same 
-        # spatial location.
+        # Shift the AC6A time stamps by the in-track lag. If these shifted 
+        # time stamps are found in the AC6B data, then both units were taking 
+        # data over the same spatial location.
         tA_shifted = self._get_shifted_ac6a_times()
         tB = date2num(self.ac6dataB['dateTime']) 
 
@@ -167,14 +169,27 @@ class Hist1D:
         """
         # Convert the AC6A time stamps to numerical format
         tA = date2num(self.ac6dataA['dateTime'])
+        
+        # Now look for error in-track lags (-1E31 ish values) and make them 
+        # realistic. Add a day so there is no way they will be matched on the
+        # same day for loop iteration.
+        error_ind = np.isnan(self.ac6dataA.Lag_In_Track)
+        self.ac6dataA.loc[error_ind, 'Lag_In_Track'] = 86400
+        
         # Add the in-track lag in decimal day format to the AC6A.
         # If the shifted time stamp is found in the AC6B data, 
         # then they taking data in the same spatial location.
         tA_shifted_numerical = tA + self.ac6dataA.Lag_In_Track/86400
+        
         # Now convert the shifted numerical AC6B times to datetimes, 
         # round to tenths of a second, and convert back to numerical 
         # times and return.
-        tA_shifted_rounded = self._round_time_stamps(num2date(tA_shifted_numerical))
+        try:
+            tA_shifted_rounded = self._round_time_stamps(num2date(tA_shifted_numerical))
+        except ValueError as err:
+            print(min(tA_shifted_numerical), max(tA_shifted_numerical),
+                 any(np.isnan(tA_shifted_numerical)))
+            raise
         return date2num(tA_shifted_rounded)
 
     def _round_time_stamps(self, time_array):

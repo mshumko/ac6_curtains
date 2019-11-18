@@ -14,13 +14,13 @@ cat = pd.read_csv(CATALOG_PATH)
 NORM_FLAG = True
 
 # Load the L-MLT normalization files.
-with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_bins.csv') as f:
+with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_bins_same_loc.csv') as f:
     keys = next(f).rstrip().split(',')
     bins = {}
     for key in keys:
         bins[key] = next(f).rstrip().split(',')
         bins[key] = list(map(float, bins[key]))
-with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_norm.csv') as f:
+with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_norm_same_loc.csv') as f:
     reader = csv.reader(f)
     next(reader) # skip header
     norm = 10*np.array(list(reader)).astype(float) # Convert to number of samples.
