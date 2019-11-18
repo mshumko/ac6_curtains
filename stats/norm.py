@@ -422,11 +422,11 @@ if __name__ == '__main__':
     #               os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
 
     ### SCRIPT TO MAKE MLT-LON NORMALIZATION ####
-   ss = Hist2D('MLT_OPQ', 'lon', 
-                        bins=[np.arange(0, 25, 1), np.arange(-180, 181, 10)],
-                        filterDict={'dos1rate':[0, 1E6]})
-   ss.loop_data(simultaneous=False)
-   ss.save_data(os.path.join(SAVE_DIR, 'ac6_MLT_lon_bins_same_loc.csv'), 
+    ss = Hist2D('MLT_OPQ', 'lon', 
+                bins=[np.arange(0, 25, 1), np.arange(-180, 181, 10)],
+                filterDict={'dos1rate':[0, 1E6]})
+    ss.loop_data(simultaneous=False)
+    ss.save_data(os.path.join(SAVE_DIR, 'ac6_MLT_lon_bins_same_loc.csv'), 
                 os.path.join(SAVE_DIR, 'ac6_MLT_lon_norm_same_loc.csv'))
 
     ### SCRIPT TO FIND THE EQUATORIAL NORMALIZATION ###
