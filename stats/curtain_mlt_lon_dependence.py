@@ -34,10 +34,17 @@ with open('/home/mike/research/ac6_curtains/data/norm/ac6_MLT_lon_norm_same_loc.
     next(reader) # skip header
     norm = 10*np.array(list(reader)).astype(float) # Convert to number of samples.
 
+norm = pd.DataFrame(norm, index=bins['MLT_OPQ'][:-1], columns=bins['lon'][:-1])
+if True:
+    # Resample to every n MLT
+    n=2
+    norm = norm.groupby(norm.index//n).sum()
+    norm = norm.set_index(np.arange(0, 24, n))
+
 # Rebin the normalization. Norm shape is nMLT, nLon
-idx = np.where(bins['MLT_OPQ'] >= START_MLT)[0][0]
+idx = np.where(norm.index >= START_MLT)[0][0]
 # Sum over the MLTs
-norm_mlt = np.sum(norm[:idx, :], axis=0)
+norm_mlt = np.sum(norm.loc[idx:, :], axis=0)
 scaling_factors = np.max(norm_mlt)/norm_mlt
 binned_curtains, _ = np.histogram(cat.lon, bins=bins['lon'])
 
