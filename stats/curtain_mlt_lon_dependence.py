@@ -18,7 +18,7 @@ CATALOG_PATH = os.path.join(BASE_DIR, 'data/catalogs', CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
 
 # Filter dusk events
-START_MLT = 21
+START_MLT = 20
 cat = cat[(cat.MLT_OPQ > START_MLT)]
 print(f"Number of duskside events {cat.shape[0]}")
 
@@ -34,29 +34,43 @@ with open('/home/mike/research/ac6_curtains/data/norm/ac6_MLT_lon_norm_same_loc.
     next(reader) # skip header
     norm = 10*np.array(list(reader)).astype(float) # Convert to number of samples.
 
+# Downsample the MLT into the correct MLT and lon bins. Norm shape is nMLT, nLon
 norm = pd.DataFrame(norm, index=bins['MLT_OPQ'][:-1], columns=bins['lon'][:-1])
-if True:
-    # Resample to every n MLT
-    n=2
-    norm = norm.groupby(norm.index//n).sum()
-    norm = norm.set_index(np.arange(0, 24, n))
 
-# Rebin the normalization. Norm shape is nMLT, nLon
-idx = np.where(norm.index >= START_MLT)[0][0]
-# Sum over the MLTs
-norm_mlt = np.sum(norm.loc[idx:, :], axis=0)
-scaling_factors = np.max(norm_mlt)/norm_mlt
-binned_curtains, _ = np.histogram(cat.lon, bins=bins['lon'])
+# Resample to every n longitude samples (nominal lon bin width is 10 degrees)
+n = 4
+if n > 1:
+    norm = norm.groupby(np.arange(len(norm.columns))//n, axis=1).sum()
+    # Rename the columns with a column mapper dict
+    column_mapper = {i:j for i, j in zip(
+                                    np.arange(len(norm.columns)), 
+                                    -180+10*n*np.arange(len(norm.columns)) 
+                                    ) }
+    norm.rename(columns=column_mapper, inplace=True)
+
+# Now sum over the MLT ranges.
+curtain_bins = np.append(norm.columns, 
+                norm.columns[-1] + (norm.columns[1]-norm.columns[0]))
+norm_mlt_sum = norm.loc[START_MLT:].sum(axis=0)
+scaling_factors = np.max(norm_mlt_sum)/norm_mlt_sum
+binned_curtains, _ = np.histogram(cat.lon, bins=curtain_bins)
+binned_curtains[binned_curtains <= 1] = 0
+scaled_curtains = binned_curtains*scaling_factors
+
 
 _, ax = plt.subplots(3, sharex=True, figsize=(8, 8))
-ax[0].hist(cat.lon, bins=bins['lon'])
-ax[0].set_title(f'Curtain distribution in longitude | {START_MLT} < MLT < 24')
+ax[0].step(norm.columns, binned_curtains, where='post')
+ax[0].set_title(f'Curtain distribution in longitude\n{START_MLT} < MLT < 24')
 ax[0].set_ylabel('Unnormalized\nnumber of curtains')
 
-ax[1].step(bins['lon'][:-1], binned_curtains*scaling_factors, where='post')
+ax[1].step(norm.columns, scaled_curtains, where='post')
 ax[1].set_ylabel('Normalized\nnumber of curtains')
 
-ax[-1].step(bins['lon'][:-1], norm_mlt/1E5, where='post')
-ax[-1].set_ylabel(r'Normalization x $10^5$')
+ax[-1].step(norm.columns, norm_mlt_sum/1E5, where='post')
+ax[-1].set_ylabel(r'Number of 10 Hz samples x $10^5$')
 ax[-1].set_xlabel('Longitude [degrees]')
+
+for a in ax:
+    a.axvline(-60, c='k')
+    a.axvline(30, c='k')
 plt.show()
