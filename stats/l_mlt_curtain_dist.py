@@ -11,7 +11,9 @@ BASE_DIR = '/home/mike/research/ac6_curtains/'
 CATALOG_NAME = 'AC6_curtains_sorted_v8.txt'
 CATALOG_PATH = os.path.join(BASE_DIR, 'data/catalogs', CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
-NORM_FLAG = True
+NORM_FLAG = False
+
+COLOR_MAP = 'jet' # Try Reds, plasma, 
 
 # Load the L-MLT normalization files.
 with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_bins_same_loc.csv') as f:
@@ -55,15 +57,18 @@ cat_dist, mlt_bins, lm_bins = np.histogram2d(cat.MLT_OPQ, cat.Lm_OPQ,
                      bins=[bins['MLT_OPQ'], bins['Lm_OPQ']])
 if NORM_FLAG:
     scaling_factors = (np.max(norm)/norm).T
-    # Set the sectors with no observations to NaN.
+    # Set the sectors with no observations or little observations to NaN.
     scaling_factors[np.isinf(scaling_factors)] = np.nan
+    scaling_factors[norm.T < 20000] = np.nan
     cat_dist *= scaling_factors
+
+#cat_dist = np.ma.masked_invalid(scaling_factors)
 
 mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 if NORM_FLAG:
-    p1 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap='Reds', vmax=300)
+    p1 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap=COLOR_MAP, vmax=250)
 else:
-    p1 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap='Reds')
+    p1 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap=COLOR_MAP)
 plt.colorbar(p1, ax=ax[0], label=r'Number of curtains', pad=0.1)
 
 # L shell filter for the L-MLT plot
@@ -71,7 +76,7 @@ L_lower = 0
 idL = np.where(np.array(bins['Lm_OPQ']) >= L_lower)[0][0]
 p2 = ax[1].pcolormesh(np.array(bins['MLT_OPQ'])*np.pi/12, 
                     bins['Lm_OPQ'], norm/1E5, 
-                    cmap='Reds', vmax=4)
+                    cmap=COLOR_MAP, vmax=3)
 plt.colorbar(p2, ax=ax[1], label=r'10 Hz Samples x $10^5$', pad=0.1)
 
 # Draw Earth and shadow
