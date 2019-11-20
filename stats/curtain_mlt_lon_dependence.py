@@ -19,7 +19,9 @@ cat = pd.read_csv(CATALOG_PATH)
 
 # Filter dusk events
 START_MLT = 20
-cat = cat[(cat.MLT_OPQ > START_MLT)]
+END_MLT = 2
+MLT_COLS = np.concatenate((np.arange(START_MLT, 24), np.arange(END_MLT)))
+cat = cat[(cat.MLT_OPQ > START_MLT) | (cat.MLT_OPQ < END_MLT)]
 print(f"Number of duskside events {cat.shape[0]}")
 
 ### Load the MLT-lon normalization files.
@@ -49,10 +51,12 @@ if n > 1:
     norm.rename(columns=column_mapper, inplace=True)
 
 # Now sum over the MLT ranges.
+norm_mlt_sum = norm.loc[MLT_COLS].sum(axis=0)
+scaling_factors = np.max(norm_mlt_sum)/norm_mlt_sum
+
+# Bin the curtain detections.
 curtain_bins = np.append(norm.columns, 
                 norm.columns[-1] + (norm.columns[1]-norm.columns[0]))
-norm_mlt_sum = norm.loc[START_MLT:].sum(axis=0)
-scaling_factors = np.max(norm_mlt_sum)/norm_mlt_sum
 binned_curtains, _ = np.histogram(cat.lon, bins=curtain_bins)
 binned_curtains[binned_curtains <= 1] = 0
 scaled_curtains = binned_curtains*scaling_factors
