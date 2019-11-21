@@ -169,18 +169,39 @@ class CurtainAmplitude:
         plot_keys = [f'leader_counts_{n:02d}', 
                      f'follower_counts_{n:02d}']
         line = np.linspace(0, 1E5, 1000)
-        self.fig, self.ax = plt.subplots(1)
-        s = self.ax.scatter(self.cat_integrated[plot_keys[0]], 
+        self.fig, self.ax = plt.subplots(1, 3, figsize=(15,6))
+        s = self.ax[0].scatter(self.cat_integrated[plot_keys[0]], 
                         self.cat_integrated[plot_keys[1]], 
                         c=np.abs(self.cat_integrated.Lag_In_Track),
                         s=3, vmax=20, cmap='jet')
-        plt.colorbar(s, label='|In-track-lag| [seconds]')
-        self.ax.plot(line, line, 'k--')
-        self.ax.set_title(f'AC6 follower v. leader curtain counts\n'
+        self.ax[0].plot(line, line, 'k--')
+        plt.colorbar(s, label='|In-track-lag| [seconds]', orientation='vertical')
+
+        # Plot the ratio of the leader to follower counts.
+        self.ax[1].scatter(self.cat_integrated[plot_keys[0]], 
+            self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]], 
+            c=np.abs(self.cat_integrated.Lag_In_Track), s=3, vmax=20, cmap='jet')
+        self.ax[1].plot(line, np.ones_like(line), 'k--')
+
+        self.ax[-1].hist(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]], 
+                        bins=np.arange(0, 3, 0.1), orientation='horizontal')
+        self.ax[-1].plot(line, np.ones_like(line), 'k--', label='ratio = 1')
+        median = np.median(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
+        std = np.std(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
+        self.ax[-1].plot(line, median*np.ones_like(line), 'r', label=f'median={round(median, 2)}')
+        self.ax[-1].text(0.6, 0.85, f'std = {round(std, 2)}', transform=self.ax[-1].transAxes)
+
+        # Plot settings
+        self.ax[1].set_title(f'AC6 follower v. leader curtain counts\n'
                           f'integration_time = {plot_integration_width_s} s')
-        self.ax.set_xlabel('Leader [counts]')
-        self.ax.set_ylabel('Follower [counts]')
-        self.ax.set(xlim=(0, 3E4), ylim=(0, 3E4))
+        self.ax[0].set_xlabel('Leader [counts]')
+        self.ax[0].set_ylabel('Follower [counts]')
+        self.ax[0].set(xlim=(0, 3E4), ylim=(0, 3E4))
+
+        self.ax[1].set(xlim=(0, 3E4), ylim=(0, 3), ylabel='Leader/Follower', xlabel='Leader')
+        self.ax[-1].set(ylim=(0, 3), xlim=(0, 200), xlabel='number of curtains', ylabel='Leader/Follower')
+
+        self.ax[-1].legend()
 
         # Calculate and print the number of events where the leader or follower had higher counts.
         f = np.greater(self.cat_integrated[plot_keys[0]], 
