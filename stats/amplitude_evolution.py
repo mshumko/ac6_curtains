@@ -54,7 +54,7 @@ class CurtainAmplitude:
         the integration by detrending or using the O'Brien baseline.
         """
         current_date = datetime.min
-        self.integration_width_s = timedelta(seconds=integration_width_s/2)
+        self.integration_width_td = timedelta(seconds=integration_width_s/2)
         self.integrated_counts = np.nan*np.ones((self.cat.shape[0], 2), 
                                                 dtype=int)
 
@@ -69,33 +69,82 @@ class CurtainAmplitude:
             if date != current_date: 
                 self.load_ten_hz_data(date)
                 current_date = date
-            self.integrated_counts[row_index, :] = self.get_integrated_counts(curtain, 
-                                                                        self.integration_width_s,
-                                                                        baseline_subtract)                    
+
+            # Get the integrated counts (baseline subtraction in there)
+            self.integrated_counts[row_index, :] = \
+                            self.get_integrated_counts(curtain, 
+                                                        self.integration_width_td,
+                                                        baseline_subtract)                    
         self.sort_leader_follower()
         self.save_catalog()
         return
 
-    def get_integrated_counts(self, row, integration_width_s, baseline_subtract):
+    def get_integrated_counts(self, row, integration_width_td, baseline_subtract=False):
         """ 
         This method sums the 10 Hz counts from AC6A and AC6B data with a time width 
         integration_width_s, centered on time_spatial_A and time_spatial_B.
+
+        baseline_subtract kwarg specifies which baseline subtraction to use. If
         """
+        time_range_A = [row.time_spatial_A - integration_width_td, 
+                        row.time_spatial_A + integration_width_td]
+        time_range_B = [row.time_spatial_B - integration_width_td, 
+                        row.time_spatial_B + integration_width_td]
+        # baseline subtract if args provided
         if baseline_subtract:
-            raise NotImplementedError
-        time_range_A = [row.time_spatial_A - integration_width_s, 
-                        row.time_spatial_A + integration_width_s]
-        time_range_B = [row.time_spatial_B - integration_width_s, 
-                        row.time_spatial_B + integration_width_s]
-        df_a = self.ac6a_data[(self.ac6a_data.dateTime > time_range_A[0]) & 
-                              (self.ac6a_data.dateTime < time_range_A[1]) ]
-        df_b = self.ac6b_data[(self.ac6b_data.dateTime > time_range_B[0]) & 
-                              (self.ac6b_data.dateTime < time_range_B[1]) ]
+            df_a, df_b = self._baseline_subtract(row, baseline_subtract)
+        else:
+            df_a = self.ac6a_data[(self.ac6a_data.dateTime > time_range_A[0]) & 
+                                (self.ac6a_data.dateTime < time_range_A[1]) ]
+            df_b = self.ac6b_data[(self.ac6b_data.dateTime > time_range_B[0]) & 
+                                (self.ac6b_data.dateTime < time_range_B[1]) ]
         counts_A = df_a.dos1rate.sum()
         counts_B = df_b.dos1rate.sum()
         if self.debug:
             print(row.dateTime, time_range_A, time_range_B, counts_A, counts_B)
         return counts_A, counts_B
+
+    def _baseline_subtract(self, row, mode):
+        """ Method that handles the baseline subtraction """
+        # Paul's pecentile method described in O'Brien et al. 2004, GRL.
+        if 'percent' in mode: 
+            _, width, percentile = mode # Unpack tuple
+            baseline_width = self.integration_width_td + timedelta(seconds=width/2)
+            time_range_A = [row.time_spatial_A - baseline_width,
+                            row.time_spatial_A + baseline_width]
+            time_range_B = [row.time_spatial_B - baseline_width,
+                            row.time_spatial_B + baseline_width]
+            baseline_A = np.nan*np.ones()
+        else:
+            raise NotImplementedError
+
+        return
+
+
+    def obrienBaseline(data, timeWidth = 1.0, cadence = 18.75E-3, PERCENTILE_THRESH = 10):
+        """
+        NAME:    obrienBaseline(data, timeWidth = 1.0, cadence = 18.75E-3, PERCENTILE_THRESH = 10)
+        USE:     Implements the baseline algorithm described by O'Brien et al. 2004, GRL. 
+                 The timeWidth parameter is the half of the range from which to calcualte the 
+                 baseline from, units are seconds. Along the same lines, cadence is used
+                 to determine the number of data points which will make the timeWidth
+        RETURNS: A bseline array that represents the bottom 10th precentile of the data. 
+        MOD:     2016-08-02
+        """
+        start_time = time.time()
+        dataWidth = int(np.floor(timeWidth/cadence))
+
+        assert 2*dataWidth < len(data), 'Data too short for timeWidth specified.'
+        #if 2*dataWidth > len(data):
+        #   raise IndexError('Data too short for timeWidth specified.')
+        baseline= np.zeros_like(data, dtype = float)
+        
+        for i in range(int(len(baseline)-dataWidth)):
+            i = int(i)
+            dataSlice = data[i:2*dataWidth+i]
+            baseline[dataWidth+i] = np.percentile(dataSlice, PERCENTILE_THRESH)
+        print("O'Brien Baseline time: {}".format(time.time() - start_time))
+        return baseline
 
     def sort_leader_follower(self):
         """ 
