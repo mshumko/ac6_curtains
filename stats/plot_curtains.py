@@ -219,6 +219,6 @@ class PlotCurtains:
 
 if __name__ == '__main__':
     version = 8
-    p = PlotCurtains(version, catalog_name=f'AC6_coincident_microbursts_v{version}.txt')
+    p = PlotCurtains(version, catalog_name=f'AC6_curtains_sorted_v{version}.txt')
     p.filter_catalog(filterDict={})
-    p.loop(mean_subtracted=False)
+    p.loop(mean_subtracted=False, savefig=True)
