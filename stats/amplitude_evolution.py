@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 
-import mission_tools.ac6.read_ac_data as read_ac_data
+#import mission_tools.ac6.read_ac_data as read_ac_data
 
 class CurtainAmplitude:
     """ 
@@ -17,7 +17,7 @@ class CurtainAmplitude:
     """
     def __init__(self, catalog_name, debug=True):
         self.catalog_name = catalog_name
-        self.save_name = f'{catalog_name.split(".")[0]}_integrated.txt' 
+        self.save_name = catalog_name #f'{catalog_name.split(".")[0]}_integrated.txt' 
         self.debug = debug
         
         self.base_dir = '/home/mike/research/ac6_curtains/'
@@ -54,6 +54,7 @@ class CurtainAmplitude:
         the integration by detrending or using the O'Brien baseline.
         """
         current_date = datetime.min
+        self.integration_width_s = integration_width_s
         self.integration_width_td = timedelta(seconds=integration_width_s/2)
         self.integrated_counts = np.nan*np.ones((self.cat.shape[0], 2), 
                                                 dtype=int)
@@ -158,9 +159,34 @@ class CurtainAmplitude:
                 self.leader_follower_counts[i, :] = self.leader_follower_counts[i, ::-1]
         return
 
-    def plot_leader_follower(self):
+    def plot_leader_follower(self, plot_integration_width_s):
         """ Makes a scatterplot of the leader and follower counts """
-        raise NotImplementedError
+        save_catalog_path = os.path.join(self.base_dir, 
+                    'data/catalogs', self.save_name)
+        self.cat_integrated = pd.read_csv(save_catalog_path, na_values='-1e+31')
+
+        n = int(10*plot_integration_width_s)
+        plot_keys = [f'leader_counts_{n:02d}', 
+                     f'follower_counts_{n:02d}']
+        line = np.linspace(0, 1E5, 1000)
+        self.fig, self.ax = plt.subplots(1)
+        s = self.ax.scatter(self.cat_integrated[plot_keys[0]], 
+                        self.cat_integrated[plot_keys[1]], 
+                        c=np.abs(self.cat_integrated.Lag_In_Track),
+                        s=3, vmax=20, cmap='jet')
+        plt.colorbar(s, label='|In-track-lag| [seconds]')
+        self.ax.plot(line, line, 'k--')
+        self.ax.set_title(f'AC6 follower v. leader curtain counts\n'
+                          f'integration_time = {plot_integration_width_s} s')
+        self.ax.set_xlabel('Leader [counts]')
+        self.ax.set_ylabel('Follower [counts]')
+        self.ax.set(xlim=(0, 3E4), ylim=(0, 3E4))
+
+        # Calculate and print the number of events where the leader or follower had higher counts.
+        f = np.greater(self.cat_integrated[plot_keys[0]], 
+                       self.cat_integrated[plot_keys[1]])
+        print(f'Number of curtains with more leader counts {sum(f)}. '
+              f'Number of curtains with less leader counts {sum(~f)}')
         return
 
     def save_catalog(self):
@@ -168,8 +194,9 @@ class CurtainAmplitude:
         save_catalog_path = os.path.join(self.base_dir, 
                     'data/catalogs', self.save_name)
         df = self.cat.copy()
-        df['leader_counts'] = self.leader_follower_counts[:, 0]
-        df['follower_counts'] = self.leader_follower_counts[:, 1]
+        # Set the new keys with the 10 x integration time in the key string.
+        df[f'leader_counts_{int(10*self.integration_width_s):02d}'] = self.leader_follower_counts[:, 0]
+        df[f'follower_counts_{int(10*self.integration_width_s):02d}'] = self.leader_follower_counts[:, 1]
         df.to_csv(save_catalog_path, index=False)
         return
 
@@ -190,5 +217,7 @@ class CurtainAmplitude:
         return
 
 if __name__ == '__main__':
-    a = CurtainAmplitude('AC6_curtains_sorted_v8.txt', debug=False)
-    a.loop(0.5)
+    a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=False)
+    #a.loop(0.5)
+    a.plot_leader_follower(0.5)
+    plt.show()
