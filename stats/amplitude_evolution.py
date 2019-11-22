@@ -55,7 +55,7 @@ class CurtainAmplitude:
         """
         current_date = datetime.min
         self.integration_width_s = integration_width_s/2
-        self.integration_width_td = timedelta(seconds=integration_width_s)
+        self.integration_width_td = timedelta(seconds=integration_width_s/2)
         self.baseline_subtract = baseline_subtract
         self.integrated_counts = np.nan*np.ones((self.cat.shape[0], 2), 
                                                 dtype=int)
@@ -202,8 +202,8 @@ class CurtainAmplitude:
         self.ax[-1].hist(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]], 
                         bins=np.arange(0, 3, 0.1), orientation='horizontal')
         self.ax[-1].plot(line, np.ones_like(line), 'k--', label='ratio = 1')
-        median = np.median(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
-        std = np.std(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
+        median = np.nanmedian(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
+        std = np.nanstd(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
         self.ax[-1].plot(line, median*np.ones_like(line), 'r', label=f'median={round(median, 2)}')
         self.ax[-1].text(0.6, 0.85, f'std = {round(std, 2)}', transform=self.ax[-1].transAxes)
 
@@ -267,7 +267,10 @@ class CurtainAmplitude:
         return
 
 if __name__ == '__main__':
+    import time
+    start_time = time.time()
     a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=False)
-    a.loop(0.5, baseline_subtract=('percentile', 30, 10))
-    #a.plot_leader_follower(0.5, baseline=True)
-    #plt.show()
+    a.loop(1, baseline_subtract=('percentile', 30, 10))
+    #print(f'Loop time {round(time.time()-start_time)} s')
+    a.plot_leader_follower(0.5, baseline=True)
+    plt.show()
