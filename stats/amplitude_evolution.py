@@ -54,7 +54,7 @@ class CurtainAmplitude:
         the integration by detrending or using the O'Brien baseline.
         """
         current_date = datetime.min
-        self.integration_width_s = integration_width_s
+        self.integration_width_s = integration_width_s/2
         self.integration_width_td = timedelta(seconds=integration_width_s/2)
         self.baseline_subtract = baseline_subtract
         self.integrated_counts = np.nan*np.ones((self.cat.shape[0], 2), 
@@ -72,7 +72,7 @@ class CurtainAmplitude:
                 self.load_ten_hz_data(date)
                 # baseline subtract if args provided
                 if baseline_subtract:
-                    self._baseline_subtract(baseline_subtract)
+                    self._baseline_subtract(row, baseline_subtract)
                 current_date = date
 
             # Get the integrated counts (baseline subtraction in there)
@@ -96,8 +96,6 @@ class CurtainAmplitude:
         time_range_B = [row.time_spatial_B - integration_width_td, 
                         row.time_spatial_B + integration_width_td]
 
-        # df_a = self.ac6a_data.copy()
-        # df_b = self.ac6b_data.copy()
         df_a = self.ac6a_cdata[(self.ac6a_data.dateTime > time_range_A[0]) & 
                               (self.ac6a_data.dateTime < time_range_A[1]) ]
         df_b = self.ac6b_data[(self.ac6b_data.dateTime > time_range_B[0]) & 
@@ -108,20 +106,31 @@ class CurtainAmplitude:
             print(row.dateTime, time_range_A, time_range_B, counts_A, counts_B)
         return counts_A, counts_B
 
-    def _baseline_subtract(self, baseline_subtract):
+    def _baseline_subtract(self, row, baseline_subtract):
         """ Method that handles the baseline subtraction """
         mode, width, percentile = baseline_subtract # Unpack tuple
 
         # Paul's pecentile method described in O'Brien et al. 2004, GRL.
         if 'percent' in mode: 
-            baseline_A = self.obrienBaseline(self.ac6a_data.dos1rate, timeWidth=width, PERCENTILE_THRESH=percentile)
-            baseline_B = self.obrienBaseline(self.ac6b_data.dos1rate, timeWidth=width, PERCENTILE_THRESH=percentile)
+            # Start and end times for the baseline
+            full_width = self.integration_width_td+timedelta(seconds=width/2)
+            time_range_A = [row.time_spatial_A-full_width, 
+                            row.time_spatial_A+full_width]
+            time_range_B = [row.time_spatial_B-full_width, 
+                            row.time_spatial_B+full_width]
+
+
+            baseline_A = self.obrienBaseline(self.ac6a_data.dos1rate, 
+                                            time_width_s=width, percentile=percentile)
+            baseline_B = self.obrienBaseline(self.ac6b_data.dos1rate, 
+                                            time_width_s=width, percentile=percentile)
+            self.ac6a_data.dos1rate = self.ac6a_data.dos1rate[]-baseline_A 
+            self.ac6b_data.dos1rate = self.ac6b_data.dos1rate[]-baseline_B 
 
             # df_A = self.ac6a_data.copy()
             # df_B = self.ac6b_data.copy()
 
-            self.ac6a_data.dos1rate = self.ac6a_data.dos1rate-baseline_A 
-            self.ac6b_data.dos1rate = self.ac6b_data.dos1rate-baseline_B 
+            
             # baseline_width = self.integration_width_td + timedelta(seconds=width/2)
             # time_range_A = [row.time_spatial_A - baseline_width,
             #                 row.time_spatial_A + baseline_width]
@@ -150,25 +159,17 @@ class CurtainAmplitude:
 
         return 
 
-    def obrienBaseline(self, data, timeWidth=1.0, cadence=0.1, PERCENTILE_THRESH=10):
+    def obrienBaseline(self, data, time_width_s=30.0, cadence_s=0.1, percentile=10):
         """
-        NAME:    obrienBaseline(data, timeWidth = 1.0, cadence = 18.75E-3, PERCENTILE_THRESH = 10)
-        USE:     Implements the baseline algorithm described by O'Brien et al. 2004, GRL. 
-                 The timeWidth parameter is the half of the range from which to calcualte the 
-                 baseline from, units are seconds. Along the same lines, cadence is used
-                 to determine the number of data points which will make the timeWidth
+        NAME:    obrienBaseline(data, timeWidth=1.0, cadence=0.1, PERCENTILE_THRESH=10)
+        USE:     Implements the baseline algorithm described by O'Brien et al. 2004, GRL.
+                 For each data point the baseline is defined as the percentile count level
+                 over all counts observed within the time_width_s window.
         RETURNS: A baseline array that represents the bottom 10th precentile of the data. 
-        MOD:     2016-08-02
+        MODIFIED:2019-11-22
         """
-        dataWidth = int(np.floor(timeWidth/cadence))
 
-        assert 2*dataWidth < len(data), 'Data too short for timeWidth specified.'
-        baseline= np.zeros_like(data, dtype=float)
-        
-        for i in range(int(len(baseline)-dataWidth)):
-            dataSlice = data[i:2*dataWidth+i]
-            baseline[dataWidth+i] = np.percentile(dataSlice, PERCENTILE_THRESH)        
-        return baseline
+        return baseline        
 
     def sort_leader_follower(self):
         """ 
@@ -277,6 +278,6 @@ class CurtainAmplitude:
 
 if __name__ == '__main__':
     a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=True)
-    a.loop(0.5, baseline_subtract=('percentile', 10, 10))
+    a.loop(0.5, baseline_subtract=('percentile', 30, 10))
     a.plot_leader_follower(0.5)
     plt.show()
