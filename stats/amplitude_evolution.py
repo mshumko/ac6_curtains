@@ -56,6 +56,7 @@ class CurtainAmplitude:
         current_date = datetime.min
         self.integration_width_s = integration_width_s
         self.integration_width_td = timedelta(seconds=integration_width_s/2)
+        self.baseline_subtract = baseline_subtract
         self.integrated_counts = np.nan*np.ones((self.cat.shape[0], 2), 
                                                 dtype=int)
 
@@ -69,6 +70,9 @@ class CurtainAmplitude:
             # If current date is not the same as last, load the 10 Hz data.
             if date != current_date: 
                 self.load_ten_hz_data(date)
+                # baseline subtract if args provided
+                if baseline_subtract:
+                    self._baseline_subtract(baseline_subtract)
                 current_date = date
 
             # Get the integrated counts (baseline subtraction in there)
@@ -91,60 +95,79 @@ class CurtainAmplitude:
                         row.time_spatial_A + integration_width_td]
         time_range_B = [row.time_spatial_B - integration_width_td, 
                         row.time_spatial_B + integration_width_td]
-        # baseline subtract if args provided
-        if baseline_subtract:
-            df_a, df_b = self._baseline_subtract(row, baseline_subtract)
-        else:
-            df_a = self.ac6a_data[(self.ac6a_data.dateTime > time_range_A[0]) & 
-                                (self.ac6a_data.dateTime < time_range_A[1]) ]
-            df_b = self.ac6b_data[(self.ac6b_data.dateTime > time_range_B[0]) & 
-                                (self.ac6b_data.dateTime < time_range_B[1]) ]
+
+        # df_a = self.ac6a_data.copy()
+        # df_b = self.ac6b_data.copy()
+        df_a = self.ac6a_cdata[(self.ac6a_data.dateTime > time_range_A[0]) & 
+                              (self.ac6a_data.dateTime < time_range_A[1]) ]
+        df_b = self.ac6b_data[(self.ac6b_data.dateTime > time_range_B[0]) & 
+                              (self.ac6b_data.dateTime < time_range_B[1]) ]
         counts_A = df_a.dos1rate.sum()
         counts_B = df_b.dos1rate.sum()
         if self.debug:
             print(row.dateTime, time_range_A, time_range_B, counts_A, counts_B)
         return counts_A, counts_B
 
-    def _baseline_subtract(self, row, mode):
+    def _baseline_subtract(self, baseline_subtract):
         """ Method that handles the baseline subtraction """
+        mode, width, percentile = baseline_subtract # Unpack tuple
+
         # Paul's pecentile method described in O'Brien et al. 2004, GRL.
         if 'percent' in mode: 
-            _, width, percentile = mode # Unpack tuple
-            baseline_width = self.integration_width_td + timedelta(seconds=width/2)
-            time_range_A = [row.time_spatial_A - baseline_width,
-                            row.time_spatial_A + baseline_width]
-            time_range_B = [row.time_spatial_B - baseline_width,
-                            row.time_spatial_B + baseline_width]
-            baseline_A = np.nan*np.ones()
+            baseline_A = self.obrienBaseline(self.ac6a_data.dos1rate, timeWidth=width, PERCENTILE_THRESH=percentile)
+            baseline_B = self.obrienBaseline(self.ac6b_data.dos1rate, timeWidth=width, PERCENTILE_THRESH=percentile)
+
+            # df_A = self.ac6a_data.copy()
+            # df_B = self.ac6b_data.copy()
+
+            self.ac6a_data.dos1rate = self.ac6a_data.dos1rate-baseline_A 
+            self.ac6b_data.dos1rate = self.ac6b_data.dos1rate-baseline_B 
+            # baseline_width = self.integration_width_td + timedelta(seconds=width/2)
+            # time_range_A = [row.time_spatial_A - baseline_width,
+            #                 row.time_spatial_A + baseline_width]
+            # time_range_B = [row.time_spatial_B - baseline_width,
+            #                 row.time_spatial_B + baseline_width]
+            # baseline_A = np.nan*np.ones(10*self.integration_width_s)
+            # baseline_B = np.nan*np.ones(10*self.integration_width_s)
+            # curtain_A = np.nan*np.ones(10*self.integration_width_s)
+            # curtain_B = np.nan*np.ones(10*self.integration_width_s)
+
+            # df_A = self.ac6a_data.set_index('dateTime')
+            # df_B = self.ac6b_data.set_index('dateTime')
+
+            # for i in range(10*self.integration_width_s):
+            #     start_time_A = time_range_A[0] + timedelta(seconds=i/10)
+            #     end_time_A = time_range_A[1] + timedelta(seconds=i/10)
+            #     baseline_A[i] = np.percentile(df_A.loc[start_time_A:end_time_A, 'dos1rate'], percentile)
+            #     curtain_A[i] = df_A.at[row.time_spatial_A-self.integration_width_td+timedelta(seconds=i/10), 'dos1rate'] - baseline_A[i]
+            #     curtain_B[i] = df_B.at[row.time_spatial_B-self.integration_width_td+timedelta(seconds=i/10), 'dos1rate'] - baseline_B[i]
+
+            #     start_time_B = time_range_B[0] + timedelta(seconds=i/10)
+            #     end_time_B = time_range_B[1] + timedelta(seconds=i/10)
+            #     baseline_B[i] = np.percentile(df_B.loc[start_time_B:end_time_B, 'dos1rate'], percentile)
         else:
             raise NotImplementedError
 
-        return
+        return 
 
-
-    def obrienBaseline(data, timeWidth = 1.0, cadence = 18.75E-3, PERCENTILE_THRESH = 10):
+    def obrienBaseline(self, data, timeWidth=1.0, cadence=0.1, PERCENTILE_THRESH=10):
         """
         NAME:    obrienBaseline(data, timeWidth = 1.0, cadence = 18.75E-3, PERCENTILE_THRESH = 10)
         USE:     Implements the baseline algorithm described by O'Brien et al. 2004, GRL. 
                  The timeWidth parameter is the half of the range from which to calcualte the 
                  baseline from, units are seconds. Along the same lines, cadence is used
                  to determine the number of data points which will make the timeWidth
-        RETURNS: A bseline array that represents the bottom 10th precentile of the data. 
+        RETURNS: A baseline array that represents the bottom 10th precentile of the data. 
         MOD:     2016-08-02
         """
-        start_time = time.time()
         dataWidth = int(np.floor(timeWidth/cadence))
 
         assert 2*dataWidth < len(data), 'Data too short for timeWidth specified.'
-        #if 2*dataWidth > len(data):
-        #   raise IndexError('Data too short for timeWidth specified.')
-        baseline= np.zeros_like(data, dtype = float)
+        baseline= np.zeros_like(data, dtype=float)
         
         for i in range(int(len(baseline)-dataWidth)):
-            i = int(i)
             dataSlice = data[i:2*dataWidth+i]
-            baseline[dataWidth+i] = np.percentile(dataSlice, PERCENTILE_THRESH)
-        print("O'Brien Baseline time: {}".format(time.time() - start_time))
+            baseline[dataWidth+i] = np.percentile(dataSlice, PERCENTILE_THRESH)        
         return baseline
 
     def sort_leader_follower(self):
@@ -159,15 +182,19 @@ class CurtainAmplitude:
                 self.leader_follower_counts[i, :] = self.leader_follower_counts[i, ::-1]
         return
 
-    def plot_leader_follower(self, plot_integration_width_s):
+    def plot_leader_follower(self, plot_integration_width_s, baseline=False):
         """ Makes a scatterplot of the leader and follower counts """
         save_catalog_path = os.path.join(self.base_dir, 
                     'data/catalogs', self.save_name)
         self.cat_integrated = pd.read_csv(save_catalog_path, na_values='-1e+31')
 
         n = int(10*plot_integration_width_s)
-        plot_keys = [f'leader_counts_{n:02d}', 
-                     f'follower_counts_{n:02d}']
+        if baseline:
+            plot_keys = [f'leader_counts_{n:02d}_baseline', 
+                        f'follower_counts_{n:02d}_baseline']
+        else:
+            plot_keys = [f'leader_counts_{n:02d}', 
+                        f'follower_counts_{n:02d}']
         line = np.linspace(0, 1E5, 1000)
         self.fig, self.ax = plt.subplots(1, 3, figsize=(15,6))
         s = self.ax[0].scatter(self.cat_integrated[plot_keys[0]], 
@@ -215,9 +242,10 @@ class CurtainAmplitude:
         save_catalog_path = os.path.join(self.base_dir, 
                     'data/catalogs', self.save_name)
         df = self.cat.copy()
+        self._get_keys()
         # Set the new keys with the 10 x integration time in the key string.
-        df[f'leader_counts_{int(10*self.integration_width_s):02d}'] = self.leader_follower_counts[:, 0]
-        df[f'follower_counts_{int(10*self.integration_width_s):02d}'] = self.leader_follower_counts[:, 1]
+        df[self.leader_key] = self.leader_follower_counts[:, 0]
+        df[self.follower_key] = self.leader_follower_counts[:, 1]
         df.to_csv(save_catalog_path, index=False)
         return
 
@@ -237,8 +265,18 @@ class CurtainAmplitude:
         self.ac6b_data['dateTime'] = pd.to_datetime(self.ac6b_data[time_keys])
         return
 
+    def _get_keys(self):
+        """ Get the keys for the integrated counts columns """
+        if hasattr(self, 'baseline_subtract') and self.baseline_subtract:
+            self.leader_key = self.leader_key + '_baseline'
+            self.follower_key = self.follower_key + '_baseline'
+        else:
+            self.leader_key = f'leader_counts_{int(10*self.integration_width_s):02d}'
+            self.follower_key = f'follower_counts_{int(10*self.integration_width_s):02d}'
+        return
+
 if __name__ == '__main__':
-    a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=False)
-    #a.loop(0.5)
+    a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=True)
+    a.loop(0.5, baseline_subtract=('percentile', 10, 10))
     a.plot_leader_follower(0.5)
     plt.show()
