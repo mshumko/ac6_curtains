@@ -55,29 +55,30 @@ class CurtainAmplitude:
         """
         current_date = datetime.min
         self.integration_width_s = integration_width_s/2
-        self.integration_width_td = timedelta(seconds=integration_width_s/2)
+        self.integration_width_td = timedelta(seconds=integration_width_s)
         self.baseline_subtract = baseline_subtract
         self.integrated_counts = np.nan*np.ones((self.cat.shape[0], 2), 
                                                 dtype=int)
 
-        for row_index, curtain in self.cat.iterrows():
+        for row_index, current_row in self.cat.iterrows():
             # Get current date
-            date = curtain.dateTime.date()
+            date = current_row.dateTime.date()
 
             if self.debug: print(f'Index {row_index}/{self.cat.shape[0]}', 
-                                curtain.dateTime, current_date)
+                                current_row.dateTime, current_date)
 
             # If current date is not the same as last, load the 10 Hz data.
             if date != current_date: 
                 self.load_ten_hz_data(date)
-                # baseline subtract if args provided
-                if baseline_subtract:
-                    self._baseline_subtract(row, baseline_subtract)
                 current_date = date
+
+            # baseline subtract if args provided
+            if baseline_subtract:
+                    self._baseline_subtract(current_row, baseline_subtract)
 
             # Get the integrated counts (baseline subtraction in there)
             self.integrated_counts[row_index, :] = \
-                            self.get_integrated_counts(curtain, 
+                            self.get_integrated_counts(current_row, 
                                                         self.integration_width_td,
                                                         baseline_subtract)                    
         self.sort_leader_follower()
@@ -96,10 +97,10 @@ class CurtainAmplitude:
         time_range_B = [row.time_spatial_B - integration_width_td, 
                         row.time_spatial_B + integration_width_td]
 
-        df_a = self.ac6a_cdata[(self.ac6a_data.dateTime > time_range_A[0]) & 
-                              (self.ac6a_data.dateTime < time_range_A[1]) ]
-        df_b = self.ac6b_data[(self.ac6b_data.dateTime > time_range_B[0]) & 
-                              (self.ac6b_data.dateTime < time_range_B[1]) ]
+        df_a = self.ac6a_data[(self.ac6a_data.index > time_range_A[0]) & 
+                              (self.ac6a_data.index < time_range_A[1]) ]
+        df_b = self.ac6b_data[(self.ac6b_data.index > time_range_B[0]) & 
+                              (self.ac6b_data.index < time_range_B[1]) ]
         counts_A = df_a.dos1rate.sum()
         counts_B = df_b.dos1rate.sum()
         if self.debug:
@@ -112,54 +113,16 @@ class CurtainAmplitude:
 
         # Paul's pecentile method described in O'Brien et al. 2004, GRL.
         if 'percent' in mode: 
-            # Start and end times for the baseline
-            full_width = self.integration_width_td+timedelta(seconds=width/2)
-            time_range_A = [row.time_spatial_A-full_width, 
-                            row.time_spatial_A+full_width]
-            time_range_B = [row.time_spatial_B-full_width, 
-                            row.time_spatial_B+full_width]
-
-
-            baseline_A = self.obrienBaseline(self.ac6a_data.dos1rate, 
-                                            time_width_s=width, percentile=percentile)
-            baseline_B = self.obrienBaseline(self.ac6b_data.dos1rate, 
-                                            time_width_s=width, percentile=percentile)
-            self.ac6a_data.dos1rate = self.ac6a_data.dos1rate[]-baseline_A 
-            self.ac6b_data.dos1rate = self.ac6b_data.dos1rate[]-baseline_B 
-
-            # df_A = self.ac6a_data.copy()
-            # df_B = self.ac6b_data.copy()
-
-            
-            # baseline_width = self.integration_width_td + timedelta(seconds=width/2)
-            # time_range_A = [row.time_spatial_A - baseline_width,
-            #                 row.time_spatial_A + baseline_width]
-            # time_range_B = [row.time_spatial_B - baseline_width,
-            #                 row.time_spatial_B + baseline_width]
-            # baseline_A = np.nan*np.ones(10*self.integration_width_s)
-            # baseline_B = np.nan*np.ones(10*self.integration_width_s)
-            # curtain_A = np.nan*np.ones(10*self.integration_width_s)
-            # curtain_B = np.nan*np.ones(10*self.integration_width_s)
-
-            # df_A = self.ac6a_data.set_index('dateTime')
-            # df_B = self.ac6b_data.set_index('dateTime')
-
-            # for i in range(10*self.integration_width_s):
-            #     start_time_A = time_range_A[0] + timedelta(seconds=i/10)
-            #     end_time_A = time_range_A[1] + timedelta(seconds=i/10)
-            #     baseline_A[i] = np.percentile(df_A.loc[start_time_A:end_time_A, 'dos1rate'], percentile)
-            #     curtain_A[i] = df_A.at[row.time_spatial_A-self.integration_width_td+timedelta(seconds=i/10), 'dos1rate'] - baseline_A[i]
-            #     curtain_B[i] = df_B.at[row.time_spatial_B-self.integration_width_td+timedelta(seconds=i/10), 'dos1rate'] - baseline_B[i]
-
-            #     start_time_B = time_range_B[0] + timedelta(seconds=i/10)
-            #     end_time_B = time_range_B[1] + timedelta(seconds=i/10)
-            #     baseline_B[i] = np.percentile(df_B.loc[start_time_B:end_time_B, 'dos1rate'], percentile)
+            self.obrienBaseline(row, 'A',
+                                time_width_s=width, percentile=percentile)
+            self.obrienBaseline(row, 'B',
+                                time_width_s=width, percentile=percentile)
         else:
             raise NotImplementedError
 
         return 
 
-    def obrienBaseline(self, data, time_width_s=30.0, cadence_s=0.1, percentile=10):
+    def obrienBaseline(self, row, sc_id, time_width_s=30.0, cadence_s=0.1, percentile=10):
         """
         NAME:    obrienBaseline(data, timeWidth=1.0, cadence=0.1, PERCENTILE_THRESH=10)
         USE:     Implements the baseline algorithm described by O'Brien et al. 2004, GRL.
@@ -168,8 +131,33 @@ class CurtainAmplitude:
         RETURNS: A baseline array that represents the bottom 10th precentile of the data. 
         MODIFIED:2019-11-22
         """
+        # Start and end times for the baseline
+        time_width_td = timedelta(seconds=time_width_s/2)
+        if sc_id.upper() == 'A':
+            df = self.ac6a_data
+        else:
+            df = self.ac6b_data
 
-        return baseline        
+        t_key = f'time_spatial_{sc_id.upper()}'
+
+        #baseline = np.nan*np.ones(10*2*self.integration_width_s)
+        for i in range(int(10*2*self.integration_width_s)):
+            # baseline_time is the time of the current point you want 
+            # to estimate the baseline for. 
+            baseline_time = (row[t_key] - 
+                          self.integration_width_td + 
+                          timedelta(seconds=i*cadence_s))
+            idt_baseline = ((df.index >= baseline_time) & 
+                            (df.index < baseline_time+timedelta(seconds=0.1)))
+            # Start and end times are almost identical, except that
+            # they are shifted by the baseline integration time, 
+            # time_width_td (time_width_timedelta).
+            start_time = (baseline_time - time_width_td)
+            end_time = (baseline_time + time_width_td)
+            idt_range = (df.index >= start_time) & (df.index <= end_time)
+            baseline = np.percentile(df.loc[idt_range, 'dos1rate'], percentile)
+            df.loc[idt_baseline, 'dos1rate'] -= baseline
+        return        
 
     def sort_leader_follower(self):
         """ 
@@ -264,20 +252,22 @@ class CurtainAmplitude:
         self.ac6a_data['dateTime'] = pd.to_datetime(self.ac6a_data[time_keys])
         self.ac6b_data = pd.read_csv(pathB, na_values='-1e+31')
         self.ac6b_data['dateTime'] = pd.to_datetime(self.ac6b_data[time_keys])
+        self.ac6a_data = self.ac6a_data.set_index('dateTime')
+        self.ac6b_data = self.ac6b_data.set_index('dateTime')
         return
 
     def _get_keys(self):
         """ Get the keys for the integrated counts columns """
+        self.leader_key = f'leader_counts_{int(20*self.integration_width_s):02d}'
+        self.follower_key = f'follower_counts_{int(20*self.integration_width_s):02d}'
+
         if hasattr(self, 'baseline_subtract') and self.baseline_subtract:
             self.leader_key = self.leader_key + '_baseline'
-            self.follower_key = self.follower_key + '_baseline'
-        else:
-            self.leader_key = f'leader_counts_{int(10*self.integration_width_s):02d}'
-            self.follower_key = f'follower_counts_{int(10*self.integration_width_s):02d}'
+            self.follower_key = self.follower_key + '_baseline'           
         return
 
 if __name__ == '__main__':
-    a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=True)
+    a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=False)
     a.loop(0.5, baseline_subtract=('percentile', 30, 10))
-    a.plot_leader_follower(0.5)
-    plt.show()
+    #a.plot_leader_follower(0.5, baseline=True)
+    #plt.show()
