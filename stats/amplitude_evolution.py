@@ -7,8 +7,7 @@ import os
 import pandas as pd
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
-
-#import mission_tools.ac6.read_ac_data as read_ac_data
+import time
 
 class CurtainAmplitude:
     """ 
@@ -171,11 +170,17 @@ class CurtainAmplitude:
                 self.leader_follower_counts[i, :] = self.leader_follower_counts[i, ::-1]
         return
 
-    def plot_leader_follower(self, plot_integration_width_s, baseline=False):
+    def plot_leader_follower(self, plot_integration_width_s, baseline=False, pa_thresh=0.1):
         """ Makes a scatterplot of the leader and follower counts """
         save_catalog_path = os.path.join(self.base_dir, 
                     'data/catalogs', self.save_name)
         self.cat_integrated = pd.read_csv(save_catalog_path, na_values='-1e+31')
+
+        if pa_thresh:
+            self.cat_integrated = self.cat_integrated[
+                                        (self.cat_integrated.alpha_a/self.cat_integrated.alpha_b < 1+pa_thresh) & 
+                                        (self.cat_integrated.alpha_a/self.cat_integrated.alpha_b > 1-pa_thresh)
+                                        ]
 
         n = int(10*plot_integration_width_s)
         if baseline:
@@ -265,12 +270,69 @@ class CurtainAmplitude:
             self.leader_key = self.leader_key + '_baseline'
             self.follower_key = self.follower_key + '_baseline'           
         return
+        
+class CurtainPitchAngle(CurtainAmplitude):
+    def __init__(self, catalog_name, debug=False):
+        """ 
+        Child class of CurtainAmplitude to look up the 
+        pitch angle of the instrument when each curtain
+        was observed.
+        """
+        super().__init__(catalog_name, debug=debug)
+        return
+
+    def loop(self):
+        """
+        Loops over the curtain detections and find the pitch angle
+        of the instruments for each curtain
+        """
+        current_date = datetime.min
+        self.pa = np.nan*np.ones((self.cat.shape[0], 2), 
+                                                dtype=int)
+
+        for row_index, current_row in self.cat.iterrows():
+            # Get current date
+            date = current_row.dateTime.date()
+
+            if self.debug: print(f'Index {row_index}/{self.cat.shape[0]}')
+
+            # If current date is not the same as last, load the 10 Hz data.
+            if date != current_date: 
+                self.load_ten_hz_data(date)
+                current_date = date
+
+            self.pa[row_index, :] = self.get_pa(current_row)
+        return
+
+    def get_pa(self, current_row):
+        """ 
+        Given the catalog row, find the pitch angle that both AC6 units
+        were scanning at the time when the curtain was observed.
+        """
+        idt_A = self.ac6a_data.index[np.where((self.ac6a_data.index >= current_row.time_spatial_A) & 
+                (self.ac6a_data.index < current_row.time_spatial_A + 
+                    timedelta(seconds=0.1)))[0][0]]
+        idt_B = self.ac6b_data.index[np.where((self.ac6b_data.index >= current_row.time_spatial_B) & 
+                (self.ac6b_data.index < current_row.time_spatial_B + 
+                    timedelta(seconds=0.1)))[0][0]]
+        return self.ac6a_data.loc[idt_A, 'Alpha'], self.ac6b_data.loc[idt_B, 'Alpha']
+
 
 if __name__ == '__main__':
-    import time
-    start_time = time.time()
-    a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=False)
-    a.loop(1, baseline_subtract=('percentile', 30, 10))
-    #print(f'Loop time {round(time.time()-start_time)} s')
-    a.plot_leader_follower(0.5, baseline=True)
-    plt.show()
+    if False:
+        start_time = time.time()
+        a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=False)
+        a.loop(1, baseline_subtract=('percentile', 30, 10))
+        print(f'Loop time {round(time.time()-start_time)} s')
+        a.plot_leader_follower(0.5, baseline=True)
+        plt.show()
+    
+    if True:
+        c = CurtainPitchAngle('AC6_curtains_sorted_v8_integrated.txt')
+        c.plot_leader_follower(0.5, baseline=False, pa_thresh=0.1)
+        plt.show()
+        # c.loop()
+
+        # plt.scatter(c.pa[:, 0], c.pa[:, 1], c='k', s=3)
+        # plt.plot(np.linspace(0, 180), np.linspace(0, 180), 'k--')
+        # plt.show()
