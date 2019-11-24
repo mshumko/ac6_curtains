@@ -45,7 +45,7 @@ class CrossCalibrate:
                     for each pass.
         MOD:     2018-10-23
         """
-        self.percentiles = percentiles
+        self.percentiles = np.array(percentiles)
         self.debug = debug
         return
 
@@ -111,18 +111,19 @@ class CrossCalibrate:
 
         for i in id_nan:
             df_A = self.ac6a_data[
-                (self.ac6a_data > self.passes[i, 0]) &
-                (self.ac6a_data < self.passes[i, 1])
+                (self.ac6a_data.index > self.passes[i, 0]) &
+                (self.ac6a_data.index < self.passes[i, 1])
             ]
             df_B = self.ac6b_data[
-                (self.ac6b_data > self.passes[i, 2]) &
-                (self.ac6b_data < self.passes[i, 3])
+                (self.ac6b_data.index > self.passes[i, 2]) &
+                (self.ac6b_data.index < self.passes[i, 3])
             ]
             percentiles_A = df_A.dos1rate.quantile(self.percentiles/100)
             percentiles_B = df_B.dos1rate.quantile(self.percentiles/100)
-            in_track_lag = df_A.In_Track_Lag.mean()
+            Lag_In_Track = df_A.Lag_In_Track.mean()
+            print(percentiles_A.values, percentiles_B.values, Lag_In_Track)
             self.passes[i, 4:] = np.concatenate(
-                (percentiles_A, percentiles_B, in_track_lag)
+                (percentiles_A.values, percentiles_B.values, [Lag_In_Track])
                                                 ) 
         return
 
@@ -231,6 +232,9 @@ def sec2day(s):
     return s/86400
 
 if __name__ == '__main__':
+    import time
+    start_time = time.time()
     c = CrossCalibrate(debug=True)
     c.loop()
     c.save_pass_catalog('cross_calibrate_pass.csv')
+    print(f'Run time = {round(time.time()-start_time)}')
