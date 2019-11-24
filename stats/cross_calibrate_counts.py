@@ -130,6 +130,7 @@ class CrossCalibrate:
     def save_pass_catalog(self, save_name):
         """ Saves the passes statistics catalog to a csv file. """
         df = pd.DataFrame(data=self.passes, columns=self.passes_columns)
+        df.dropna() # Drop error values
         save_path = os.path.join(dirs.CATALOG_DIR, save_name)
         df.to_csv(save_path, index=False)
         return
@@ -234,7 +235,7 @@ def sec2day(s):
 if __name__ == '__main__':
     import time
     start_time = time.time()
-    c = CrossCalibrate(debug=True)
+    c = CrossCalibrate(debug=False)
     c.loop()
     c.save_pass_catalog('cross_calibrate_pass.csv')
     print(f'Run time = {round(time.time()-start_time)}')
