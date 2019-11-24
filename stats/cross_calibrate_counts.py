@@ -76,8 +76,8 @@ class CrossCalibrate:
                 i+=1
             if self.debug and i > 10:
                 return
-
-            self.get_belt_passes(lbound, ubound)
+            self.get_belt_passes(lbound, ubound) 
+            self.get_belt_pass_stats()
         return
 
     def get_belt_passes(self, lbound, ubound):
@@ -100,6 +100,31 @@ class CrossCalibrate:
         self._match_passes(start_time_A, end_time_A, start_time_B, end_time_B)
         
         return 
+
+    def get_belt_pass_stats(self):
+        """ 
+        Get the radiation belt statistics for the rows in 
+        self.passes still left as NaN 
+        """
+        # Check which rows in the last column are NaN
+        id_nan = np.where(pd.isnull(self.passes[:,-1]))[0]
+
+        for i in id_nan:
+            df_A = self.ac6a_data[
+                (self.ac6a_data > self.passes[i, 0]) &
+                (self.ac6a_data < self.passes[i, 1])
+            ]
+            df_B = self.ac6b_data[
+                (self.ac6b_data > self.passes[i, 2]) &
+                (self.ac6b_data < self.passes[i, 3])
+            ]
+            percentiles_A = df_A.dos1rate.quantile(self.percentiles/100)
+            percentiles_B = df_B.dos1rate.quantile(self.percentiles/100)
+            in_track_lag = df_A.In_Track_Lag.mean()
+            self.passes[i, 4:] = np.concatenate(
+                (percentiles_A, percentiles_B, in_track_lag)
+                                                ) 
+        return
 
     def save_pass_catalog(self, save_name):
         """ Saves the passes statistics catalog to a csv file. """
