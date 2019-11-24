@@ -93,20 +93,20 @@ class CrossCalibrate:
         df_B = self.ac6b_data[(L_B > lbound) & (L_B < ubound)]
 
         if df_A.shape[0] == 0 or df_B.shape[0] == 0: 
-            print('No passes found.')
             return
 
-        self._get_pass_bounds(df_A)
-        self._get_pass_bounds(df_B)
-        # self.passes = np.vstack((self.passes, np.zeros(11)))
+        start_time_A, end_time_A = self._get_pass_bounds(df_A)
+        start_time_B, end_time_B = self._get_pass_bounds(df_B)
+        self._match_passes(start_time_A, end_time_A, start_time_B, end_time_B)
+        
         return 
 
     def save_pass_catalog(self, save_name):
         """ Saves the passes statistics catalog to a csv file. """
         df = pd.DataFrame(data=self.passes, columns=self.passes_columns)
-        df.to_csv(save_name, index=False)
+        save_path = os.path.join(dirs.CATALOG_DIR, save_name)
+        df.to_csv(save_path, index=False)
         return
-
 
     def _get_pass_bounds(self, df, thresh_sec=60):
         """ 
@@ -123,27 +123,47 @@ class CrossCalibrate:
         start_ind = np.zeros(len(breaks)+1, dtype=int)
         end_ind = np.zeros(len(breaks)+1, dtype=int)
         end_ind[-1] = df.index.shape[0]-1
-        #print(len(breaks))
 
         for i, break_i in enumerate(breaks):
-            #print(i, break_i, len(start_ind))
             end_ind[i] = break_i
             start_ind[i+1] = break_i+1
         
-        if self.debug:
+        ### TEST CODE ###
+        if self.debug == 2: # higher level of debugging.
             plt.scatter(df.index, df.Lm_OPQ)
             plt.xlim(df.index[0]-timedelta(minutes=1), df.index[-1]+timedelta(minutes=1))
 
             for i, (s_i, e_i) in enumerate(zip(start_ind, end_ind)):
                 plt.axvline(df.index[s_i], c='g')
                 plt.axvline(df.index[e_i], c='r')
-
             plt.show()
+        return df.index[start_ind], df.index[end_ind]
 
-            # for i, (s_i, e_i) in enumerate(zip(start_ind, end_ind)):
-            #     print(s_i, e_i)
-            #     print(f'Pass {i} start_time: {df.index[s_i]}, end_time: {df.index[e_i]}')
-        return start_ind, end_ind
+    def _match_passes(self, start_time_A, end_time_A, start_time_B, end_time_B, thresh_sec=70):
+        """ 
+        Use the start and end time arrays from the two AC6 units and find when they were 
+        taking data for the same pass.
+
+        thresh_sec=70 kwarg specifies the acceptable delay between the start and end times. 
+        70 second is chosen since the furtherst distance AC6 were from one another and 
+        taking 10 Hz data was about 65 seconds.
+        """
+        #shared_passes = np.zeros((0, 4), dtype=object)
+
+        for start_A, end_A in zip(start_time_A, end_time_A):
+            for start_B, end_B in zip(start_time_B, end_time_B):
+                # Loop over all start and end times and check which ones are within thresh
+                if ( (np.abs((start_A-start_B).total_seconds()) < thresh_sec) and
+                     (np.abs((end_A-end_B).total_seconds()) < thresh_sec) ):
+                    
+                    append_row = np.concatenate(
+                        (
+                            [start_A, end_A, start_B, end_B], 
+                            np.nan*np.zeros(self.passes.shape[1]-4)
+                        ))
+                    self.passes = np.vstack((self.passes, append_row))
+        return #shared_passes
+
 
     def _load_ten_hz_data(self, day):
         """
@@ -188,3 +208,4 @@ def sec2day(s):
 if __name__ == '__main__':
     c = CrossCalibrate(debug=True)
     c.loop()
+    c.save_pass_catalog('cross_calibrate_pass.csv')
