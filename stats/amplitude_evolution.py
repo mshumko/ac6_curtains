@@ -9,6 +9,8 @@ from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 import time
 
+import dirs
+
 class CurtainAmplitude:
     """ 
     This class loops through the curtain dataset and 
@@ -19,9 +21,8 @@ class CurtainAmplitude:
         self.save_name = catalog_name #f'{catalog_name.split(".")[0]}_integrated.txt' 
         self.debug = debug
         
-        self.base_dir = '/home/mike/research/ac6_curtains/'
-        self.ac6_data_dir = lambda sc_id: ('/home/mike/research/ac6/ac6{}/'
-                                        'ascii/level2'.format(sc_id))
+        self.base_dir = dirs.BASE_DIR
+        self.ac6_data_dir = dirs.AC6_DATA_PATH
         self.load_catalog()
         return
 

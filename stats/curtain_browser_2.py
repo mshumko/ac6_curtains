@@ -8,8 +8,9 @@ from matplotlib.dates import date2num, num2date
 from matplotlib.widgets import Button, TextBox
 
 import plot_curtains
+import dirs
 
-catalog_save_dir = plot_curtains.CATALOG_DIR
+catalog_save_dir = dirs.CATALOG_DIR
 
 plot_save_dir = '/home/mike/research/ac6_curtains/plots/'
 matplotlib.rcParams["savefig.directory"] = plot_save_dir

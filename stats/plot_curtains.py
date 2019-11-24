@@ -6,11 +6,7 @@ from datetime import datetime, date, timedelta
 import matplotlib.pyplot as plt
 
 # Paths that are used everywhere in the class
-BASE_DIR = '/home/mike/research/ac6_curtains/'
-CATALOG_DIR = os.path.join(BASE_DIR, 'data/catalogs')
-AC6_DATA_PATH = lambda sc_id: ('/home/mike/research/ac6/ac6{}/'
-                                'ascii/level2'.format(sc_id))
-PLOT_SAVE_DIR = os.path.join(BASE_DIR, 'plots', 'curtain_validation')
+import dirs
 
 class PlotCurtains:
     def __init__(self, catalog_version, plot_width=5, catalog_name=None,
@@ -25,7 +21,7 @@ class PlotCurtains:
         self.plot_width = timedelta(seconds=plot_width)
         self.catalog_name = catalog_name
         if plot_save_dir is None:
-            self.plot_save_dir = PLOT_SAVE_DIR
+            self.plot_save_dir = dirs.PLOT_SAVE_DIR
         else:
             self.plot_save_dir = plot_save_dir
 
@@ -80,7 +76,7 @@ class PlotCurtains:
         else:
             catalog_name = self.catalog_name
 
-        catalog_path = os.path.join(CATALOG_DIR, catalog_name)
+        catalog_path = os.path.join(dirs.CATALOG_DIR, catalog_name)
         self.catalog = pd.read_csv(catalog_path)
         # Convert the catalog times to datetime objects
         for timeKey in ['dateTime', 'time_spatial_A', 'time_spatial_B']:
@@ -113,9 +109,9 @@ class PlotCurtains:
         """
         time_keys = ['year', 'month', 'day', 'hour', 'minute', 'second']
         dayStr = '{0:%Y%m%d}'.format(day)
-        pathA = os.path.join(AC6_DATA_PATH('a'), 
+        pathA = os.path.join(dirs.AC6_DATA_PATH('a'), 
                 'AC6-A_{}_L2_10Hz_V03.csv'.format(dayStr))
-        pathB = os.path.join(AC6_DATA_PATH('b'), 
+        pathB = os.path.join(dirs.AC6_DATA_PATH('b'), 
                 'AC6-B_{}_L2_10Hz_V03.csv'.format(dayStr))
         self.ac6a_data = pd.read_csv(pathA, na_values='-1e+31')
         self.ac6a_data['dateTime'] = pd.to_datetime(self.ac6a_data[time_keys])
