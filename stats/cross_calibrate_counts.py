@@ -108,34 +108,34 @@ class CrossCalibrate:
         return
 
 
-    def _get_pass_bounds(self, df, thresh_min=10):
+    def _get_pass_bounds(self, df, thresh_sec=60):
         """ 
         Find the breaks in the df dataframe time stamps to 
         identify the start/end of a radiation belt pass. A
         break is defined as time gaps larger than 
-        thresh_min=10 minutes.
+        thresh_sec=60 seconds.
         """
         t = date2num(df.index)
         dt = t[1:] - t[:-1] # Change in time stamp
         # Find the breaks in the time series.
-        breaks = np.where(dt > sec2day(60*thresh_min))[0]
+        breaks = np.where(dt > sec2day(thresh_sec))[0]
 
         start_ind = np.zeros(len(breaks)+1, dtype=int)
         end_ind = np.zeros(len(breaks)+1, dtype=int)
         end_ind[-1] = df.index.shape[0]-1
-        print(len(breaks))
+        #print(len(breaks))
 
         for i, break_i in enumerate(breaks):
-            print(i, break_i)
+            #print(i, break_i, len(start_ind))
             end_ind[i] = break_i
-            start_ind[i+i] = break_i+1
+            start_ind[i+1] = break_i+1
         
         if self.debug:
-            plt.scatter(df.index, np.zeros(df.index.shape[0]))
+            plt.scatter(df.index, df.Lm_OPQ)
             plt.xlim(df.index[0]-timedelta(minutes=1), df.index[-1]+timedelta(minutes=1))
 
             for i, (s_i, e_i) in enumerate(zip(start_ind, end_ind)):
-                plt.axvline(df.index[s_i], lw=5, c='g')
+                plt.axvline(df.index[s_i], c='g')
                 plt.axvline(df.index[e_i], c='r')
 
             plt.show()
