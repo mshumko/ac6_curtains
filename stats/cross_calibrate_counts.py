@@ -57,10 +57,10 @@ class CrossCalibrate:
         """
         # Get dates to loop over
         self._get_loop_dates()
-        passes_columns = ('start_A', 'end_A', 'start_B', 'end_B', '25p_A', 
+        self.passes_columns = ('start_A', 'end_A', 'start_B', 'end_B', '25p_A', 
                           '50p_A', '75p_A', '25p_B', '50p_B', '75p_B', 
                           'Lag_In_Track')
-        self.passes = np.zeros((0, len(passes_columns)), dtype=object)
+        self.passes = np.zeros((0, len(self.passes_columns)), dtype=object)
 
         if self.debug: i = 0 # Counter to halt exection after processing a few days
 
@@ -70,9 +70,6 @@ class CrossCalibrate:
             # If the 10 Hz data does not exist, or is empty on that day.
             if (self.ac6a_data is None) or (self.ac6b_data is None):
                 continue
-            else:
-                print(self.ac6a_data.head(), self.ac6b_data.head())
-
 
             if self.debug: 
                 print(f"Processing data from {date}")
@@ -80,7 +77,7 @@ class CrossCalibrate:
             if self.debug and i > 10:
                 return
 
-            #self.get_belt_passes(lbound, ubound)
+            self.get_belt_passes(lbound, ubound)
         return
 
     def get_belt_passes(self, lbound, ubound):
@@ -95,18 +92,21 @@ class CrossCalibrate:
         df_A = self.ac6a_data[(L_A > lbound) & (L_A < ubound)]
         df_B = self.ac6b_data[(L_B > lbound) & (L_B < ubound)]
 
-        #print(idL_A.head(), idL_B.head())
-            
         if df_A.shape[0] == 0 or df_B.shape[0] == 0: 
-            # If no passes were found.
+            print('No passes found.')
             return
+
         self._get_pass_bounds(df_A)
         self._get_pass_bounds(df_B)
         # self.passes = np.vstack((self.passes, np.zeros(11)))
         return 
 
     def save_pass_catalog(self, save_name):
-        raise NotImplementedError
+        """ Saves the passes statistics catalog to a csv file. """
+        df = pd.DataFrame(data=self.passes, columns=self.passes_columns)
+        df.to_csv(save_name, index=False)
+        return
+
 
     def _get_pass_bounds(self, df, thresh_min=10):
         """ 
@@ -122,15 +122,27 @@ class CrossCalibrate:
 
         start_ind = np.zeros(len(breaks)+1, dtype=int)
         end_ind = np.zeros(len(breaks)+1, dtype=int)
+        end_ind[-1] = df.index.shape[0]-1
+        print(len(breaks))
 
         for i, break_i in enumerate(breaks):
+            print(i, break_i)
             end_ind[i] = break_i
             start_ind[i+i] = break_i+1
         
         if self.debug:
+            plt.scatter(df.index, np.zeros(df.index.shape[0]))
+            plt.xlim(df.index[0]-timedelta(minutes=1), df.index[-1]+timedelta(minutes=1))
+
             for i, (s_i, e_i) in enumerate(zip(start_ind, end_ind)):
-                print(s_i, e_i)
-                print(f'Pass {i} start_time: {df.index[s_i]}, end_time: {df.index[e_i]}')
+                plt.axvline(df.index[s_i], lw=5, c='g')
+                plt.axvline(df.index[e_i], c='r')
+
+            plt.show()
+
+            # for i, (s_i, e_i) in enumerate(zip(start_ind, end_ind)):
+            #     print(s_i, e_i)
+            #     print(f'Pass {i} start_time: {df.index[s_i]}, end_time: {df.index[e_i]}')
         return start_ind, end_ind
 
     def _load_ten_hz_data(self, day):
