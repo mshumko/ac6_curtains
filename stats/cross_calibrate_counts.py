@@ -112,11 +112,13 @@ class CrossCalibrate:
         for i in id_nan:
             df_A = self.ac6a_data[
                 (self.ac6a_data.index > self.passes[i, 0]) &
-                (self.ac6a_data.index < self.passes[i, 1])
+                (self.ac6a_data.index < self.passes[i, 1]) &
+                (self.ac6a_data.flag == 0)
             ]
             df_B = self.ac6b_data[
                 (self.ac6b_data.index > self.passes[i, 2]) &
-                (self.ac6b_data.index < self.passes[i, 3])
+                (self.ac6b_data.index < self.passes[i, 3]) &
+                (self.ac6b_data.flag == 0)
             ]
             percentiles_A = df_A.dos1rate.quantile(self.percentiles/100)
             percentiles_B = df_B.dos1rate.quantile(self.percentiles/100)
