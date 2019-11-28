@@ -1,8 +1,6 @@
 # Code to make a dial plot with the sun facing up.
-
 import numpy as np
 import matplotlib.pyplot as plt
-
 
 class Dial:
     def __init__(self, ax, angular_bins, radial_bins, H):
@@ -36,10 +34,10 @@ class Dial:
         # Try-except block deals with the dimensions of the mesh and taransposes it
         # if necessary.
         try:
-            p = self.ax.pcolormesh(angular_grid*np.pi/12, radial_grid, H.T, **mesh_kwargs)
+            p = self.ax.pcolormesh(angular_grid*np.pi/12, radial_grid, self.H.T, **mesh_kwargs)
         except TypeError as err:
             if 'Dimensions of C' in str(err):
-                p = self.ax.pcolormesh(angular_grid*np.pi/12, radial_grid, H, **mesh_kwargs)
+                p = self.ax.pcolormesh(angular_grid*np.pi/12, radial_grid, self.H, **mesh_kwargs)
             else:
                 raise
 
