@@ -7,22 +7,23 @@ import os
 import dateutil.parser
 plt.rcParams.update({'font.size':13})
 
-BASE_DIR = '/home/mike/research/ac6_curtains/'
+import dirs
+
 CATALOG_NAME = 'AC6_curtains_sorted_v8.txt'
-CATALOG_PATH = os.path.join(BASE_DIR, 'data/catalogs', CATALOG_NAME)
+CATALOG_PATH = os.path.join(dirs.CATALOG_DIR, CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
 NORM_FLAG = False
 
 COLOR_MAP = 'jet' # Try Reds, plasma, 
 
 # Load the L-MLT normalization files.
-with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_bins_same_loc.csv') as f:
+with open(os.path.join(dirs.NORM_DIR, 'ac6_L_MLT_bins_same_loc.csv')) as f:
     keys = next(f).rstrip().split(',')
     bins = {}
     for key in keys:
         bins[key] = next(f).rstrip().split(',')
         bins[key] = list(map(float, bins[key]))
-with open('/home/mike/research/ac6_curtains/data/norm/ac6_L_MLT_norm_same_loc.csv') as f:
+with open(os.path.join(dirs.NORM_DIR, 'ac6_L_MLT_norm_same_loc.csv')) as f:
     reader = csv.reader(f)
     next(reader) # skip header
     norm = 10*np.array(list(reader)).astype(float) # Convert to number of samples.
