@@ -178,10 +178,11 @@ class CurtainAmplitude:
         self.cat_integrated = pd.read_csv(save_catalog_path, na_values='-1e+31')
 
         if pa_thresh:
+            n_0 = self.cat_integrated.shape[0]
             self.cat_integrated = self.cat_integrated[
-                                        (self.cat_integrated.alpha_a/self.cat_integrated.alpha_b < 1+pa_thresh) & 
-                                        (self.cat_integrated.alpha_a/self.cat_integrated.alpha_b > 1-pa_thresh)
+                                        np.abs(self.cat_integrated.alpha_a - self.cat_integrated.alpha_b) < pa_thresh
                                         ]
+            print(n_0, self.cat_integrated.shape[0])
 
         n = int(10*plot_integration_width_s)
         if baseline:
@@ -190,6 +191,17 @@ class CurtainAmplitude:
         else:
             plot_keys = [f'leader_counts_{n:02d}', 
                         f'follower_counts_{n:02d}']
+
+        # Drop 0 count values
+        # self.cat_integrated.loc[:, plot_keys][
+        #     (self.cat_integrated.loc[:, plot_keys[0]] == 0) |
+        #     (self.cat_integrated.loc[:, plot_keys[1]] == 0)
+        #     ] = np.nan
+        self.cat_integrated.loc[:, plot_keys[1]][
+            (self.cat_integrated.loc[:, plot_keys[1]] == 0)
+            ] = np.nan
+        #self.cat_integrated[plot_keys][self.cat_integrated[plot_keys[1]] == 0] = np.nan
+        
         line = np.linspace(0, 1E5, 1000)
         self.fig, self.ax = plt.subplots(1, 3, figsize=(15,6))
         s = self.ax[0].scatter(self.cat_integrated[plot_keys[0]], 
@@ -200,22 +212,32 @@ class CurtainAmplitude:
         plt.colorbar(s, label='|In-track-lag| [seconds]', orientation='vertical')
 
         # Plot the ratio of the leader to follower counts.
-        self.ax[1].scatter(self.cat_integrated[plot_keys[0]], 
-            self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]], 
+        r = self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]]
+        r[np.isinf(r)] = np.nan
+
+        median = np.nanmedian(r)
+        std = np.nanstd(r)
+        percentiles = [25, 50, 75]
+        quartiles = np.nanpercentile(r, percentiles)
+
+        self.ax[1].scatter(self.cat_integrated[plot_keys[0]], r, 
             c=np.abs(self.cat_integrated.Lag_In_Track), s=3, vmax=20, cmap='jet')
         self.ax[1].plot(line, np.ones_like(line), 'k--')
 
-        self.ax[-1].hist(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]], 
-                        bins=np.arange(0, 3, 0.1), orientation='horizontal')
-        self.ax[-1].plot(line, np.ones_like(line), 'k--', label='ratio = 1')
-        median = np.nanmedian(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
-        std = np.nanstd(self.cat_integrated[plot_keys[0]]/self.cat_integrated[plot_keys[1]])
-        self.ax[-1].plot(line, median*np.ones_like(line), 'r', label=f'median={round(median, 2)}')
-        self.ax[-1].text(0.6, 0.85, f'std = {round(std, 2)}', transform=self.ax[-1].transAxes)
+        self.ax[-1].hist(r, bins=np.arange(0, 3, 0.1), orientation='horizontal')
+        #self.ax[-1].plot(line, np.ones_like(line), 'k--', label='ratio = 1')
+        self.ax[-1].axhline(1, c='k', ls='--', label='ratio = 1')
+
+        colors = ['r', 'g', 'c']
+        for q, p, c in zip(quartiles, percentiles, colors):
+            self.ax[-1].axhline(q, c=c, label=f'{p} quartile')
+        #self.ax[-1].axhline(median, c='r', label=f'median={round(median, 2)}')
+        #self.ax[-1].text(0.6, 0.85, f'std = {round(std, 2)}', transform=self.ax[-1].transAxes)
 
         # Plot settings
         self.ax[1].set_title(f'AC6 follower v. leader curtain counts\n'
-                          f'integration_time = {plot_integration_width_s} s')
+                          f'integration_time = {plot_integration_width_s} s | '
+                          f'baseline_subtract={baseline} | PA_thresh={pa_thresh} [deg]')
         self.ax[0].set_xlabel('Leader [counts]')
         self.ax[0].set_ylabel('Follower [counts]')
         self.ax[0].set(xlim=(0, 3E4), ylim=(0, 3E4))
@@ -320,17 +342,17 @@ class CurtainPitchAngle(CurtainAmplitude):
 
 
 if __name__ == '__main__':
-    if False:
+    if True:
         start_time = time.time()
         a = CurtainAmplitude('AC6_curtains_sorted_v8_integrated.txt', debug=False)
-        a.loop(1, baseline_subtract=('percentile', 30, 10))
+        #a.loop(1, baseline_subtract=('percentile', 30, 10))
         print(f'Loop time {round(time.time()-start_time)} s')
-        a.plot_leader_follower(0.5, baseline=True)
+        a.plot_leader_follower(0.5, baseline=False, pa_thresh=10)
         plt.show()
     
-    if True:
+    if False:
         c = CurtainPitchAngle('AC6_curtains_sorted_v8_integrated.txt')
-        c.plot_leader_follower(0.5, baseline=False, pa_thresh=0.1)
+        c.plot_leader_follower(1, baseline=False, pa_thresh=10)
         plt.show()
         # c.loop()
 
