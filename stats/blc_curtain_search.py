@@ -8,7 +8,7 @@ CATALOG_NAME = 'AC6_curtains_sorted_v8.txt'
 CATALOG_PATH = os.path.join(BASE_DIR, 'data/catalogs', CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
 
-def filter_blc(cat, lat_edges=[30, 75], lon_edges=[30, -45]):
+def filter_blc(cat, lat_edges=[30, 75], lon_edges=[-45, 30]):
     """ 
     Takes in a catalog and filters out events outside of 
     the lat_edges and lon_edges. 

@@ -59,6 +59,7 @@ class PlotCurtains:
                     ((self.catalog[key] > min(vals)) & 
                     (self.catalog[key] < max(vals)))
                                 ]
+        print(f'Plotting {self.catalog.shape[0]} curtains')
         return
 
     def load_catalog(self, catalog_version):
@@ -127,7 +128,7 @@ class PlotCurtains:
         mean_subtracted = kwargs.get('mean_subtracted', False)
         savefig = kwargs.get('savefig', True)
         log_scale = kwargs.get('log_scale', False)
-        plot_dos2_and_dos3 = kwargs.get('plot_dos2_and_dos3', True)
+        plot_dos2_and_dos3 = kwargs.get('plot_dos2_and_dos3', False)
         plot_legend = kwargs.get('plot_legend', True)
         ax = kwargs.get('ax', self.ax)
         time_guide_flag = kwargs.get('time_guide_flag', False)
@@ -146,7 +147,7 @@ class PlotCurtains:
                 df_time_a.loc[:, 'dos3rate'] -= df_time_a.loc[:, 'dos3rate'].mean()
                 #df_space_a.loc[:, 'dos3rate'] -= df_space_a.loc[:, 'dos3rate'].mean()
                 
-        ax[0].plot(df_time_a['dateTime'], df_time_a['dos1rate'], 'r', label='AC6-A dos1')
+        ax[0].plot(df_time_a['dateTime'], df_time_a['dos1rate'], 'r', label='AC6-A')
         if plot_dos2_and_dos3:
             ax[0].plot(df_time_a['dateTime'], df_time_a['dos2rate'], 'r:', label='AC6-A dos2')
             ax[0].plot(df_time_a['dateTime'], df_time_a['dos3rate'], 'r--', label='AC6-A dos3')
@@ -165,20 +166,27 @@ class PlotCurtains:
         if log_scale:
             ax[0].set_yscale('log')
             ax[1].set_yscale('log')
+        ax[0].set_ylabel('dos1rate [counts/s]')
+        ax[1].set_ylabel('dos1rate [counts/s]')
+        ax[1].set_xlabel('UTC')
+        ax[0].set_title(f'AC6 Curtain Validation | {row.dateTime.date()}')
 
         # Print peak width if it exists in the catalog.
         if set(['peak_width_A', 'peak_width_B']).issubset(row.index) and self.plot_width_flag:
             s = 'peak_width_A = {} s\npeak_width_B = {} s'.format(
                     round(row['peak_width_A'], 2), round(row['peak_width_B'], 2))
-            ax[0].text(0, 1, s, transform=ax[0].transAxes, va='top')
+            ax[0].text(0.02, 1, s, transform=ax[0].transAxes, va='top')
             
         # Print the time shift seconds
         if row.Lag_In_Track > 0:
-            ax[1].text(0, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} s', 
+            ax[1].text(0.02, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} s', 
                         transform=ax[1].transAxes, va='top')
         else:
-            ax[1].text(0, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} s', 
+            ax[1].text(0.02, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} s', 
                         transform=ax[1].transAxes, va='top')
+
+        pos_str = f'lat={round(row.lat)}, lon={round(row.lon)}, alt={round(row.alt)} [km]'
+        ax[1].text(0.02, 0.9, pos_str, transform=ax[1].transAxes, va='top')
 
         if savefig:
             save_name = '{0:%Y%m%d_%H%M%S}_ac6_curtain_validation.png'.format(
@@ -216,5 +224,5 @@ class PlotCurtains:
 if __name__ == '__main__':
     version = 8
     p = PlotCurtains(version, catalog_name=f'AC6_curtains_sorted_v{version}.txt')
-    p.filter_catalog(filterDict={})
+    p.filter_catalog(filterDict={'lat':[-63, -53], 'lon':[-54, -34]})
     p.loop(mean_subtracted=False, savefig=True)
