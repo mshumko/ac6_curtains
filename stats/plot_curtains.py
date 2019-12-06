@@ -224,5 +224,5 @@ class PlotCurtains:
 if __name__ == '__main__':
     version = 8
     p = PlotCurtains(version, catalog_name=f'AC6_curtains_sorted_v{version}.txt')
-    p.filter_catalog(filterDict={'lat':[-63, -53], 'lon':[-54, -34]})
-    p.loop(mean_subtracted=False, savefig=True)
+    p.filter_catalog(filterDict={'lat':[56, 76], 'lon':[-30, 10]})
+    p.loop(mean_subtracted=True, savefig=True)
