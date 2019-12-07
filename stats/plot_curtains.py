@@ -55,10 +55,16 @@ class PlotCurtains:
             self.catalog = self.catalog[self.catalog['space_cc'] >= 0.8]
 
             for key, vals in filterDict.items():
-                self.catalog = self.catalog[
-                    ((self.catalog[key] > min(vals)) & 
-                    (self.catalog[key] < max(vals)))
-                                ]
+
+                # If supplied bounds
+                if hasattr(vals, '__len__'):
+                    self.catalog = self.catalog[
+                        ((self.catalog[key] > min(vals)) & 
+                        (self.catalog[key] < max(vals)))
+                                    ]
+                # If one value - check for equality
+                else:
+                    self.catalog = self.catalog[self.catalog[key] ==vals]
         print(f'Plotting {self.catalog.shape[0]} curtains')
         return
 
@@ -185,7 +191,8 @@ class PlotCurtains:
             ax[1].text(0.02, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} s', 
                         transform=ax[1].transAxes, va='top')
 
-        pos_str = f'lat={round(row.lat)}, lon={round(row.lon)}, alt={round(row.alt)} [km]'
+        pos_str = (f'lat={round(row.lat)}, lon={round(row.lon)}, alt={round(row.alt)} [km]\n'
+                    f'Loss_Cone_Type={row.Loss_Cone_Type}')
         ax[1].text(0.02, 0.9, pos_str, transform=ax[1].transAxes, va='top')
 
         if savefig:
@@ -224,5 +231,5 @@ class PlotCurtains:
 if __name__ == '__main__':
     version = 8
     p = PlotCurtains(version, catalog_name=f'AC6_curtains_sorted_v{version}.txt')
-    p.filter_catalog(filterDict={'lat':[56, 76], 'lon':[-30, 10]})
+    p.filter_catalog(filterDict={'Loss_Cone_Type':2})
     p.loop(mean_subtracted=True, savefig=True)
