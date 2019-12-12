@@ -55,9 +55,9 @@ if __name__ == '__main__':
 
     # Save to file
     df = pd.DataFrame(data=grid, columns=lat_bins, index=lon_bins)
-    df.to_csv('lat_lon_blc_flag.csv')
+    df.to_csv(os.path.join(dirs.BASE_DIR, 'data', 'lat_lon_blc_flag.csv'))
 
-    df2 = pd.read_csv('lat_lon_blc_flag.csv')
+    df2 = pd.read_csv(os.path.join(dirs.BASE_DIR, 'data', 'lat_lon_blc_flag.csv'))
     print(df2.head())
 
     
