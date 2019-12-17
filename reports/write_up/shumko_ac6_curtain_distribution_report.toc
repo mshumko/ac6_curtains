@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}{Introduction}}{1}{section.1}% 
+\contentsline {section}{\numberline {2}{Curtain Selection}}{2}{section.2}% 
+\contentsline {section}{\numberline {3}{Global Statistics of Curtains}}{2}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}{L-MLT distributions}}{2}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}{Curtains in the Bounce Loss Cone (BLC)}}{2}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}{Integrated curtain count comparison between the leading and following AC6 unit}}{2}{subsection.3.3}% 
+\contentsline {section}{\numberline {4}{Path Forward}}{3}{section.4}% 
