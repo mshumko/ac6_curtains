@@ -13,8 +13,8 @@ df_night = df[(df.MLT_OPQ > 18) & (df.MLT_OPQ < 24)]
 
 bins = np.arange(2, 14)
 plt.hist(df.Lm_OPQ, bins=bins, color='g', alpha=0.4, label='all')
-plt.hist(df_morning.Lm_OPQ, bins=bins, color='r', alpha=0.4, label='morning')
-plt.hist(df_night.Lm_OPQ, bins=bins, color='b', alpha=0.4, label='night')
+plt.hist(df_morning.Lm_OPQ, bins=bins, color='r', alpha=0.4, label='7-13 MLT')
+plt.hist(df_night.Lm_OPQ, bins=bins, color='b', alpha=0.4, label='18-24 MLT')
 plt.legend()
 
 plt.xlabel('Lm_OPQ')
