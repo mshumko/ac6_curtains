@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib
-import matplotlib.dates 
 import matplotlib.pyplot as plt
 from datetime import datetime
 import typing
@@ -29,12 +28,32 @@ class SpatialAlign:
         """
 
         """
-        seconds_in_a_day = 60*60*24
-        numeric_time_b = matplotlib.dates.date2num(self.df_b.dateTime)
-
         # Add the time lag
-        numeric_time_b += self.df_b.Lag_In_Track/seconds_in_a_day
-        self.df_b['dateTime_shifted'] = matplotlib.dates.num2date(numeric_time_b)
+        self.df_b['dateTime_shifted'] = (self.df_b['dateTime'] - 
+                                        pd.to_timedelta(self.df_b.Lag_In_Track, unit='s'))
+        # Round to nearest tenths second and strip timezone info.
+        self.df_b['dateTime_shifted'] = self.df_b['dateTime_shifted'].dt.round('0.1S')
+        self.df_b['dateTime_shifted'] = self.df_b['dateTime_shifted'].dt.tz_localize(None)
+        return
+
+    def align_space_time_stamps(self) -> None:
+        """
+
+        """
+        idxa = np.in1d(self.df_a['dateTime'], self.df_b['dateTime_shifted'], 
+                        assume_unique=True)
+        idxb = np.in1d(self.df_b['dateTime_shifted'], self.df_a['dateTime'], 
+                        assume_unique=True)
+
+        self.df_a = self.df_a.iloc[idxa, :]
+        self.df_b = self.df_b.iloc[idxb, :]
+        return
+
+    def rolling_correlation(self, window:int = 5) -> None:
+        """
+        Use pandas.rolling_corr to cross correlate the spatially aligned time series.
+        """
+        self.corr = self.df_a['dos1rate'].rolling(window).corr(self.df_b['dos1rate'])
         return
 
     def plot_time_and_space_aligned(self, ax=None) -> None:
@@ -50,13 +69,16 @@ class SpatialAlign:
         ax[1].plot(self.df_a.dateTime, self.df_a.dos1rate, 'r')
         ax[1].plot(self.df_b.dateTime_shifted, self.df_b.dos1rate, 'b')
 
-        ax[2].plot(self.df_b.dateTime, self.df_b.Lag_In_Track, 'k')
+        ax[2].plot(self.df_b.dateTime, self.corr, 'k')
         
         ax[0].legend(loc=1)
         plt.show()
         return
 
 if __name__ == '__main__':
-    s = SpatialAlign(datetime(2016, 10, 14))
+    #s = SpatialAlign(datetime(2016, 10, 14))
+    s = SpatialAlign(datetime(2015, 7, 27))
     s.shift_time()
+    s.align_space_time_stamps()
+    s.rolling_correlation(5)
     s.plot_time_and_space_aligned()
