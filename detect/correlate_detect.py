@@ -29,31 +29,44 @@ class SpatialAlign:
 
         """
         # Add the time lag
-        self.df_b['dateTime_shifted'] = (self.df_b['dateTime'] - 
-                                        pd.to_timedelta(self.df_b.Lag_In_Track, unit='s'))
+        dt = np.round(self.df_b.Lag_In_Track, 1)
+        self.df_b['dateTime_shifted'] = (self.df_b['dateTime'] - pd.to_timedelta(dt, unit='s'))
         # Round to nearest tenths second and strip timezone info.
-        self.df_b['dateTime_shifted'] = self.df_b['dateTime_shifted'].dt.round('0.1S')
+        #self.df_b['dateTime_shifted'] = self.df_b['dateTime_shifted'].dt.round('0.1S')
         self.df_b['dateTime_shifted'] = self.df_b['dateTime_shifted'].dt.tz_localize(None)
+        # Drop duplicate times
+        self.df_b = self.df_b.drop_duplicates(subset='dateTime_shifted')
         return
 
     def align_space_time_stamps(self) -> None:
         """
 
         """
-        idxa = np.in1d(self.df_a['dateTime'], self.df_b['dateTime_shifted'], 
-                        assume_unique=True)
-        idxb = np.in1d(self.df_b['dateTime_shifted'], self.df_a['dateTime'], 
-                        assume_unique=True)
+        idxa = np.where(np.in1d(self.df_a['dateTime'], self.df_b['dateTime_shifted'], 
+                        assume_unique=True))[0]
+        idxb = np.where(np.in1d(self.df_b['dateTime_shifted'], self.df_a['dateTime'], 
+                        assume_unique=True))[0]
 
         self.df_a = self.df_a.iloc[idxa, :]
         self.df_b = self.df_b.iloc[idxb, :]
+
+        self.df_a.index = np.arange(self.df_a.shape[0])
+        self.df_b.index = np.arange(self.df_b.shape[0])
         return
 
-    def rolling_correlation(self, window:int = 5) -> None:
+    def rolling_correlation(self, window:int=5) -> None:
         """
-        Use pandas.rolling_corr to cross correlate the spatially aligned time series.
+        Use df.rolling.corr to cross correlate the spatially aligned time series.
         """
-        self.corr = self.df_a['dos1rate'].rolling(window).corr(self.df_b['dos1rate'])
+        self.corr = self.df_b['dos1rate'].rolling(window).corr(self.df_a['dos1rate'])
+
+        # self.corr_2 = np.nan*np.zeros_like(self.df_b['dos1rate'])
+
+        # for i in np.arange(window, len(self.df_b['dos1rate'])):
+        #     #print(self.df_a.loc[i:i+window, 'dos1rate'])
+        #     self.corr_2[i] = np.corrcoef(self.df_a.loc[i-window:i, 'dos1rate'],
+        #                             self.df_b.loc[i-window:i, 'dos1rate'])[0,1]
+
         return
 
     def plot_time_and_space_aligned(self, ax=None) -> None:
@@ -69,7 +82,7 @@ class SpatialAlign:
         ax[1].plot(self.df_a.dateTime, self.df_a.dos1rate, 'r')
         ax[1].plot(self.df_b.dateTime_shifted, self.df_b.dos1rate, 'b')
 
-        ax[2].plot(self.df_b.dateTime, self.corr, 'k')
+        ax[2].plot(self.df_a.dateTime, self.corr, 'k')
         
         ax[0].legend(loc=1)
         plt.show()
@@ -80,5 +93,5 @@ if __name__ == '__main__':
     s = SpatialAlign(datetime(2015, 7, 27))
     s.shift_time()
     s.align_space_time_stamps()
-    s.rolling_correlation(5)
+    s.rolling_correlation(7)
     s.plot_time_and_space_aligned()
