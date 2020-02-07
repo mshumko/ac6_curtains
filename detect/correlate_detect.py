@@ -103,5 +103,5 @@ if __name__ == '__main__':
     s.shift_time()
     s.align_space_time_stamps()
     # s.rolling_correlation(10)
-    s.baseline_significance(100)
+    s.baseline_significance(10)
     s.plot_time_and_space_aligned()
