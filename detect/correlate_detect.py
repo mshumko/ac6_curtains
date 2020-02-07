@@ -59,14 +59,18 @@ class SpatialAlign:
         Use df.rolling.corr to cross correlate the spatially aligned time series.
         """
         self.corr = self.df_b['dos1rate'].rolling(window).corr(self.df_a['dos1rate'])
+        return
 
-        # self.corr_2 = np.nan*np.zeros_like(self.df_b['dos1rate'])
+    def baseline_significance(self, widnow:int=5, significance:float=2) -> None:
+        """
+        Finds the data points that are significance number of standard deviations above
+        a top hat rolling average window of width window.
+        """
+        rolling_average_a = self.df_a['dos1rate'].rolling(window=widnow).mean()
+        rolling_average_b = self.df_b['dos1rate'].rolling(window=widnow).mean()
 
-        # for i in np.arange(window, len(self.df_b['dos1rate'])):
-        #     #print(self.df_a.loc[i:i+window, 'dos1rate'])
-        #     self.corr_2[i] = np.corrcoef(self.df_a.loc[i-window:i, 'dos1rate'],
-        #                             self.df_b.loc[i-window:i, 'dos1rate'])[0,1]
-
+        self.n_std_a = (self.df_a['dos1rate']-rolling_average_a)/np.sqrt(rolling_average_a)
+        self.n_std_b = (self.df_b['dos1rate']-rolling_average_b)/np.sqrt(rolling_average_b)
         return
 
     def plot_time_and_space_aligned(self, ax=None) -> None:
@@ -77,12 +81,17 @@ class SpatialAlign:
             _, ax = plt.subplots(3, sharex=True)
 
         ax[0].plot(self.df_a.dateTime, self.df_a.dos1rate, 'r', label='AC6A')
-        ax[0].plot(self.df_b.dateTime, self.df_b.dos1rate, 'b', label='AC6B')
+        #ax[0].plot(self.df_b.dateTime, self.df_b.dos1rate, 'b', label='AC6B')
 
         ax[1].plot(self.df_a.dateTime, self.df_a.dos1rate, 'r')
-        ax[1].plot(self.df_b.dateTime_shifted, self.df_b.dos1rate, 'b')
+        #ax[1].plot(self.df_b.dateTime_shifted, self.df_b.dos1rate, 'b')
 
-        ax[2].plot(self.df_a.dateTime, self.corr, 'k')
+        #ax[2].plot(self.df_a.dateTime, self.corr, 'k')
+        ax[2].plot(self.df_a.dateTime, self.n_std_a, 'r')
+        #ax[2].plot(self.df_b.dateTime, self.n_std_b, 'b')
+
+        idx_signif = np.where(self.n_std_a > 5)[0]
+        ax[0].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], c='k', s=3)
         
         ax[0].legend(loc=1)
         plt.show()
@@ -93,5 +102,6 @@ if __name__ == '__main__':
     s = SpatialAlign(datetime(2015, 7, 27))
     s.shift_time()
     s.align_space_time_stamps()
-    s.rolling_correlation(7)
+    # s.rolling_correlation(10)
+    s.baseline_significance(100)
     s.plot_time_and_space_aligned()
