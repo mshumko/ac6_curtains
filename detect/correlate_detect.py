@@ -91,7 +91,7 @@ class SpatialAlign:
         #ax[2].plot(self.df_b.dateTime, self.n_std_b, 'b')
 
         idx_signif = np.where(self.n_std_a > 5)[0]
-        ax[0].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], c='k', s=3)
+        ax[0].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], c='g', s=10)
         
         ax[0].legend(loc=1)
         plt.show()
@@ -103,5 +103,5 @@ if __name__ == '__main__':
     s.shift_time()
     s.align_space_time_stamps()
     # s.rolling_correlation(10)
-    s.baseline_significance(20)
+    s.baseline_significance(50)
     s.plot_time_and_space_aligned()
