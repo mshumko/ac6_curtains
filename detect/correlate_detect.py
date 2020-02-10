@@ -2,8 +2,10 @@ import pandas as pd
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib.dates
 from datetime import datetime
 import typing
+from matplotlib.ticker import FuncFormatter
 
 import mission_tools.ac6.read_ac_data as read_ac_data
 
@@ -84,7 +86,7 @@ class SpatialAlign:
         
         #self.corr = self.df_b['dos1rate'].rolling(self.corr_window).corr(self.df_a['dos1rate'])
         # Now roll the self.corr to center the non-NaN values
-        #self.corr = np.roll(self.corr, -window//2)
+        self.corr = np.roll(self.corr, -window//2)
         return
 
     def baseline_significance(self, baseline_window:int=5, significance:float=2) -> None:
@@ -104,6 +106,8 @@ class SpatialAlign:
         """
 
         """
+        self._plotLabels()
+        
         if ax is None:
             _, ax = plt.subplots(4, sharex=True, figsize=(8, 8))
 
@@ -149,13 +153,52 @@ class SpatialAlign:
 
         ax[1].legend(loc=1)
         ax[0].legend(loc=1)
+        ax[-1].xaxis.set_major_formatter(FuncFormatter(self.format_fn))
+        ax[-1].set_xlabel('time\nL\nMLT\nlat\nlon\nflag\nin-track lag')
+        ax[-1].xaxis.set_label_coords(-0.1,-0.03)
         plt.tight_layout()
+        plt.subplots_adjust(bottom=0.17)
+        # plt.tight_layout()
+        for a in ax:
+            a.format_coord = lambda x, y: f'{matplotlib.dates.num2date(x).replace(tzinfo=None).isoformat()}'        
         plt.show()
         return
 
+    def _plotLabels(self, skip_n:int=5):
+        ### FORMAT X-AXIS to show more information ###
+        self.df_a['Lm_OPQ'] = np.round(self.df_a['Lm_OPQ'], decimals=1)
+        L = pd.DataFrame(self.df_a['Lm_OPQ'])#.astype(object))
+        L = L.replace(np.nan, '', regex=True)
+        time = self.df_a['dateTime']
+        # This code is a nifty way to format the x-ticks to my liking.
+        self.labels = [f'{t.replace(microsecond=0).time()}\n'
+                       f'{L}\n{round(MLT,1)}\n{round(lat,1)}\n'
+                       f'{round(lon,1)}\n{flag}\n{round(lag, 1)}' for 
+                        (t, L, MLT, lat, lon, flag, lag) in zip(
+                        time[::skip_n], L.loc[::skip_n, 'Lm_OPQ'], self.df_a['MLT_OPQ'][::skip_n], 
+                        self.df_a['lat'][::skip_n], self.df_a['lon'][::skip_n], 
+                        self.df_a['flag'][::skip_n], self.df_a['Lag_In_Track'][::skip_n])]  
+        self.numeric_time = matplotlib.dates.date2num(time[::skip_n])
+        return time, self.numeric_time, self.labels 
+
+    def format_fn(self, tick_val, tick_pos):
+        """
+        The tick magic happens here. pyplot gives it a tick time, and this function 
+        returns the closest label to that time. Read docs for FuncFormatter().
+        """
+        dt = self.numeric_time-tick_val
+        # If time difference between matplotlib's tick and HiRes time stamp 
+        # is larger than 30 minutes, skip that tick label.
+        if np.min(np.abs(dt)) > 30/1440:
+            return ''
+        else:
+            idx = np.argmin(np.abs(dt))
+            return self.labels[idx]
+
 if __name__ == '__main__':
-    # s = SpatialAlign(datetime(2016, 10, 14))
-    s = SpatialAlign(datetime(2015, 7, 27))
+    s = SpatialAlign(datetime(2016, 10, 14))
+    # s = SpatialAlign(datetime(2015, 7, 27))
+    s = SpatialAlign(datetime(2015, 4, 9))
     s.shift_time()
     s.align_space_time_stamps()
     s.rolling_correlation(window=10)
