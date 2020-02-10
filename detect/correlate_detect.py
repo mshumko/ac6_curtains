@@ -55,12 +55,36 @@ class SpatialAlign:
         self.df_b.index = np.arange(self.df_b.shape[0])
         return
 
-    def rolling_correlation(self, window:int=5) -> None:
+    def rolling_correlation(self, window:int=5, thresh:int=1) -> None:
         """
         Use df.rolling.corr to cross correlate the spatially aligned time series.
         """
         self.corr_window = window
-        self.corr = self.df_b['dos1rate'].rolling(self.corr_window).corr(self.df_a['dos1rate'])
+        if thresh != 0:
+            lags = np.arange(-thresh, thresh+1)
+        else:
+            lags = [0]
+        # Correlation matrix of size n_samples x n_lags. At the end a 
+        # max correlation at each sample will be taken.
+        self.corr_matrix = np.zeros((len(self.df_b['dos1rate']), len(lags)))
+
+        for i, lag in enumerate(lags):
+            if lag < 0:
+                r = self.df_a['dos1rate'][abs(lag):].rolling(self.corr_window)
+                self.corr_matrix[:, i] = r.corr(self.df_b['dos1rate'][:lag])
+            elif lag > 0:
+                r = self.df_b['dos1rate'][abs(lag):].rolling(self.corr_window)
+                self.corr_matrix[:, i] = r.corr(self.df_a['dos1rate'][:lag])
+            else:
+                r = self.df_b['dos1rate'].rolling(self.corr_window)
+                self.corr_matrix[:, i] = r.corr(self.df_a['dos1rate'])
+        self.corr = np.nanmax(self.corr_matrix, axis=1)
+
+                
+        
+        #self.corr = self.df_b['dos1rate'].rolling(self.corr_window).corr(self.df_a['dos1rate'])
+        # Now roll the self.corr to center the non-NaN values
+        #self.corr = np.roll(self.corr, -window//2)
         return
 
     def baseline_significance(self, baseline_window:int=5, significance:float=2) -> None:
@@ -76,7 +100,7 @@ class SpatialAlign:
         self.n_std_b = (self.df_b['dos1rate']-rolling_average_b)/np.sqrt(rolling_average_b)
         return
 
-    def plot_time_and_space_aligned(self, ax=None, std_thresh:float=5, corr_thresh:float=0.8) -> None:
+    def plot_time_and_space_aligned(self, ax=None, std_thresh:float=5, corr_thresh:float=0.7) -> None:
         """
 
         """
@@ -96,8 +120,23 @@ class SpatialAlign:
         ax[3].plot(self.df_b.dateTime_shifted, self.n_std_b, 'b')
         ax[3].axhline(std_thresh, c='k', ls='--')
 
-        idx_signif = np.where(self.n_std_a > std_thresh)[0]
-        ax[1].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], c='g', s=10)
+        # Find indicies in the AC6A and B data that are significant 
+        # above the background
+        idx_signif = np.where((self.n_std_a > std_thresh) | 
+                            (self.n_std_b > std_thresh))[0]
+        # Find indicies where the temporal time series was 
+        # highly correlated
+        idx_corr = np.where(self.corr > corr_thresh)[0]
+        # Find where the two above conditions are true
+        idx_detect = np.where((self.n_std_a > std_thresh) & (self.corr > corr_thresh))[0]
+
+        # Plot where the above conditions are true.
+        ax[1].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], 
+                    c='g', s=40, label='std signif')
+        ax[1].scatter(self.df_a.dateTime[idx_corr], self.df_a.dos1rate[idx_corr], 
+                    c='g', s=20, marker='s', label='correlation signif')
+        ax[1].scatter(self.df_a.dateTime[idx_detect], self.df_a.dos1rate[idx_detect],
+                    c='k', s=50, marker='X', label='detection')
 
         ax[0].set(ylabel='dos1rate\ntime-aligned', 
                 title=f'AC6 peak detection and curtain correlation\n{self.date.date()}')
@@ -106,17 +145,17 @@ class SpatialAlign:
         ax[3].set(ylabel=f'std above {self.baseline_window/10} s\nmean baseline')
         ax[3].set_ylim(bottom=0, top=3*std_thresh)
 
-        
+        ax[1].legend(loc=1)
         ax[0].legend(loc=1)
         plt.tight_layout()
         plt.show()
         return
 
 if __name__ == '__main__':
-    #s = SpatialAlign(datetime(2016, 10, 14))
+    # s = SpatialAlign(datetime(2016, 10, 14))
     s = SpatialAlign(datetime(2015, 7, 27))
     s.shift_time()
     s.align_space_time_stamps()
-    s.rolling_correlation(10)
+    s.rolling_correlation(window=10)
     s.baseline_significance(baseline_window=50)
     s.plot_time_and_space_aligned()
