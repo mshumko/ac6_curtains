@@ -127,8 +127,10 @@ class SpatialAlign:
         # Find indicies where the temporal time series was 
         # highly correlated
         idx_corr = np.where(self.corr > corr_thresh)[0]
-        # Find where the two above conditions are true
-        idx_detect = np.where((self.n_std_a > std_thresh) & (self.corr > corr_thresh))[0]
+        # Find where the two above conditions are true and good data
+        idx_detect = np.where((self.n_std_a > std_thresh) & 
+                              (self.corr > corr_thresh) &
+                              (self.df_a.flag == 0))[0]
 
         # Plot where the above conditions are true.
         ax[1].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], 
