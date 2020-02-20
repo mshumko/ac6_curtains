@@ -59,32 +59,12 @@ class SpatialAlign:
 
     def rolling_correlation(self, window:int=5, thresh:int=1) -> None:
         """
-        Use df.rolling.corr to cross correlate the spatially aligned time series.
+        Use df.rolling.corr to cross correlate the spatially-aligned time series.
         """
         self.corr_window = window
-        if thresh != 0:
-            lags = np.arange(-thresh, thresh+1)
-        else:
-            lags = [0]
-        # Correlation matrix of size n_samples x n_lags. At the end a 
-        # max correlation at each sample will be taken.
-        self.corr_matrix = np.zeros((len(self.df_b['dos1rate']), len(lags)))
-
-        for i, lag in enumerate(lags):
-            if lag < 0:
-                r = self.df_a['dos1rate'][abs(lag):].rolling(self.corr_window)
-                self.corr_matrix[:, i] = r.corr(self.df_b['dos1rate'][:lag])
-            elif lag > 0:
-                r = self.df_b['dos1rate'][abs(lag):].rolling(self.corr_window)
-                self.corr_matrix[:, i] = r.corr(self.df_a['dos1rate'][:lag])
-            else:
-                r = self.df_b['dos1rate'].rolling(self.corr_window)
-                self.corr_matrix[:, i] = r.corr(self.df_a['dos1rate'])
-        self.corr = np.nanmax(self.corr_matrix, axis=1)
-
-                
-        
-        #self.corr = self.df_b['dos1rate'].rolling(self.corr_window).corr(self.df_a['dos1rate'])
+        self.corr = self.df_b['dos1rate'].rolling(self.corr_window).corr(self.df_a['dos1rate'])
+        # Mark bad correlations with np.nan
+        self.corr[self.corr > 1] = np.nan
         # Now roll the self.corr to center the non-NaN values
         self.corr = np.roll(self.corr, -window//2)
         return
@@ -150,7 +130,8 @@ class SpatialAlign:
         idx_corr = np.where(self.corr > corr_thresh)[0]
         # Find where the two above conditions are true and good data
         idx_detect = np.where((self.n_std_a > std_thresh) & 
-                              (self.corr > corr_thresh))[0]
+                              (self.corr > corr_thresh) & 
+                              (self.df_a.dos1rate > 100))[0]
         valid_flag_set = self.valid_flag_data()
         idx_detect_valid_flag = list(set(idx_detect).intersection(valid_flag_set))
 
@@ -219,6 +200,6 @@ if __name__ == '__main__':
     s = SpatialAlign(datetime(2015, 4, 9))
     s.shift_time()
     s.align_space_time_stamps()
-    s.rolling_correlation(window=10)
+    s.rolling_correlation(window=20)
     s.baseline_significance(baseline_window=50)
     s.plot_time_and_space_aligned()
