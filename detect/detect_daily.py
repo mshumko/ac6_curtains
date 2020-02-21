@@ -60,27 +60,6 @@ class DetectDailyCurtains:
         self.df_b.index = np.arange(self.df_b.shape[0])
         return
 
-    def detect(self, std_thresh:float=2, corr_thresh:float=None) -> typing.List[int]:
-        """
-
-        """
-        self.std_thresh = std_thresh
-        self.corr_thresh = corr_thresh
-
-        # Find indicies in the AC6A and B data that are significant 
-        # above the background
-        idx_signif = np.where((self.n_std_a > std_thresh) & 
-                            (self.n_std_b > std_thresh))[0]
-        if corr_thresh is not None:
-            # Find indicies where the temporal time series was 
-            # highly correlated
-            idx_corr = np.where(self.corr > corr_thresh)[0]
-            idx_signif = list(set(idx_signif).intersection(idx_corr))
-        # Now find good quality data.
-        valid_data = self.valid_data_flag()
-        self.detections = np.array(list(set(idx_signif).intersection(valid_data)))
-        return self.detections
-
     def rolling_correlation(self, window:int=20) -> None:
         """
         Use df.rolling.corr to cross correlate the spatially-aligned time series.
@@ -122,6 +101,47 @@ class DetectDailyCurtains:
             idx.intersection_update(idx_i)
         return idx
 
+    def detect(self, std_thresh:float=2, corr_thresh:float=None) -> typing.List[int]:
+        """
+        After running the baseline_significance() and/or rolling_correlation() methods,
+        use this method to organize the detections. 
+        """
+        self.std_thresh = std_thresh
+        self.corr_thresh = corr_thresh
+
+        # Find indicies in the AC6A and B data that are significant 
+        # above the background
+        idx_signif = np.where((self.n_std_a > std_thresh) & 
+                            (self.n_std_b > std_thresh))[0]
+        if corr_thresh is not None:
+            # Find indicies where the temporal time series was 
+            # highly correlated
+            idx_corr = np.where(self.corr > corr_thresh)[0]
+            idx_signif = list(set(idx_signif).intersection(idx_corr))
+        # Now find good quality data.
+        valid_data = self.valid_data_flag()
+        self.detections = np.array(list(set(idx_signif).intersection(valid_data)))
+        return self.detections
+
+    def organize_detections(self, columns='default'):
+        """
+        This method creates a pandas DataFrame that has the curtain time from the 
+        unshifted AC6A, and shifted AC6B data, and other information such as
+        L, MLT, lat, lon, alt, In_Track_Lag, etc. If columns='default', a default
+        set of AC6 data keys will be used, otherwise provide a list of columns that
+        exist in the AC6 10 Hz data.
+        """
+        if columns=='default':
+            columns = [
+                'dateTime_A','dateTime_B','Lm_OPQ','MLT_OPQ','lat',
+                'lon','alt','Dist_In_Track','Lag_In_Track','Dist_Total',
+                'Loss_Cone_Type','flag']
+        df = pd.DataFrame(data=np.nan*np.zeros((len(self.detections), len(columns))), columns=columns)
+
+
+        # df.to_csv('my_csv.csv', mode='a', header=False)
+        return
+
 class Validate_Detections(DetectDailyCurtains):
     def __init__(self, date:datetime, bad_flags:typing.List[int]=[1,2], 
                 std_thresh:float=2, corr_thresh:float=None) -> None:
@@ -148,7 +168,9 @@ class Validate_Detections(DetectDailyCurtains):
 
     def plot_validation(self, ax=None) -> None:
         """
-
+        Makes a validation plot of the detections. By default it plots:
+        the time-aligned data, space-aligned data, the rolling correlation,
+        and the std significance.
         """
         self._plotLabels()
         
@@ -172,7 +194,7 @@ class Validate_Detections(DetectDailyCurtains):
 
         # Plot where the above conditions are true.
         ax[1].scatter(self.df_a.dateTime[self.detections], self.df_a.dos1rate[self.detections], 
-                    c='g', s=40, label='std signif')
+                    c='g', s=40, label='Significant std A&B')
         # ax[1].scatter(self.df_a.dateTime[idx_corr], 1.1*self.df_a.dos1rate[idx_corr], 
         #             c='g', s=20, marker='s', label='correlation signif')
         # ax[1].scatter(self.df_a.dateTime[idx_detect_valid_flag], 1.2*self.df_a.dos1rate[idx_detect_valid_flag],
@@ -237,8 +259,6 @@ class Validate_Detections(DetectDailyCurtains):
 
 if __name__ == '__main__':
     # A few possible dates to play around with:
-    # -datetime(2016, 10, 14)
-    # -datetime(2015, 7, 27)
-    # -datetime(2015, 4, 9)
+    # datetime(2016, 10, 14), datetime(2015, 7, 27), datetime(2015, 4, 9)
     v = Validate_Detections(datetime(2015, 7, 27))
     v.validate()
