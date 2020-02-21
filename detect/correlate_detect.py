@@ -123,24 +123,22 @@ class SpatialAlign:
 
         # Find indicies in the AC6A and B data that are significant 
         # above the background
-        idx_signif = np.where((self.n_std_a > std_thresh) | 
+        idx_signif = np.where((self.n_std_a > std_thresh) & 
                             (self.n_std_b > std_thresh))[0]
         # Find indicies where the temporal time series was 
         # highly correlated
-        idx_corr = np.where(self.corr > corr_thresh)[0]
-        # Find where the two above conditions are true and good data
-        idx_detect = np.where((self.n_std_a > std_thresh) & 
-                              (self.n_std_b > std_thresh))[0]
-        valid_flags = self.valid_data_flag()
-        idx_detect_valid_flag = list(set(idx_detect).intersection(valid_flags))
+        #idx_corr = np.where(self.corr > corr_thresh)[0]
+        # Find where the two above conditions are true and good quality data
+        valid_data = self.valid_data_flag()
+        idx_detect_valid = list(set(idx_signif).intersection(valid_data))
 
         # Plot where the above conditions are true.
-        ax[1].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], 
+        ax[1].scatter(self.df_a.dateTime[idx_detect_valid], self.df_a.dos1rate[idx_detect_valid], 
                     c='g', s=40, label='std signif')
-        ax[1].scatter(self.df_a.dateTime[idx_corr], 1.1*self.df_a.dos1rate[idx_corr], 
-                    c='g', s=20, marker='s', label='correlation signif')
-        ax[1].scatter(self.df_a.dateTime[idx_detect_valid_flag], 1.2*self.df_a.dos1rate[idx_detect_valid_flag],
-                    c='k', s=50, marker='X', label='detection')
+        # ax[1].scatter(self.df_a.dateTime[idx_corr], 1.1*self.df_a.dos1rate[idx_corr], 
+        #             c='g', s=20, marker='s', label='correlation signif')
+        # ax[1].scatter(self.df_a.dateTime[idx_detect_valid_flag], 1.2*self.df_a.dos1rate[idx_detect_valid_flag],
+        #             c='k', s=50, marker='X', label='detection')
 
         ax[0].set(ylabel='dos1rate\ntime-aligned', 
                 title=f'AC6 peak detection and curtain correlation\n{self.date.date()}')
