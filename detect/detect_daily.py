@@ -10,10 +10,12 @@ from matplotlib.ticker import FuncFormatter
 import mission_tools.ac6.read_ac_data as read_ac_data
 
 
-class DetectCurtains:
-    def __init__(self, date : datetime, bad_flags:typing.List[int]=[1,2]) -> None:
+class DetectDailyCurtains:
+    def __init__(self, date : datetime, bad_flags:typing.List[int]=[1,2], 
+                detect=False) -> None:
         """
-        This class
+        This class detects curtains for one day. Put this in a loop over days 
+        to find all curtains in the AC6 data.
         """
         self.date = date
         self.bad_flags = bad_flags
@@ -22,7 +24,7 @@ class DetectCurtains:
 
     def load_data(self, date : datetime) -> typing.Tuple[pd.DataFrame, pd.DataFrame]:
         """
-        
+        Attempts to load the AC6 data into two DataFrames.
         """
         self.df_a = read_ac_data.read_ac_data_wrapper('A', date)
         self.df_b = read_ac_data.read_ac_data_wrapper('B', date)
@@ -120,7 +122,31 @@ class DetectCurtains:
             idx.intersection_update(idx_i)
         return idx
 
-    def plot_time_and_space_aligned(self, ax=None) -> None:
+class Validate_Detections(DetectDailyCurtains):
+    def __init__(self, date:datetime, bad_flags:typing.List[int]=[1,2], 
+                std_thresh:float=2, corr_thresh:float=None) -> None:
+        """
+        This class validates the detections made by the DetectDailyCurtains
+        class.
+        """
+        super().__init__(date, bad_flags=bad_flags)
+        self.std_thresh = std_thresh
+        self.corr_thresh = corr_thresh
+        return
+
+    def validate(self):
+        """
+        A wrapper to make the curtain detections.
+        """
+        self.shift_time()
+        self.align_space_time_stamps()
+        self.rolling_correlation()
+        self.baseline_significance()
+        self.detect(std_thresh=self.std_thresh, corr_thresh=self.corr_thresh)
+        self.plot_validation()
+        return
+
+    def plot_validation(self, ax=None) -> None:
         """
 
         """
@@ -210,12 +236,9 @@ class DetectCurtains:
             return self.labels[idx]
 
 if __name__ == '__main__':
-    s = DetectCurtains(datetime(2016, 10, 14))
-    s = DetectCurtains(datetime(2015, 7, 27))
-    # s = DetectCurtains(datetime(2015, 4, 9))
-    s.shift_time()
-    s.align_space_time_stamps()
-    s.rolling_correlation()
-    s.baseline_significance()
-    s.detect()
-    s.plot_time_and_space_aligned()
+    # A few possible dates to play around with:
+    # -datetime(2016, 10, 14)
+    # -datetime(2015, 7, 27)
+    # -datetime(2015, 4, 9)
+    v = Validate_Detections(datetime(2015, 7, 27))
+    v.validate()
