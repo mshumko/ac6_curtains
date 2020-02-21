@@ -75,21 +75,21 @@ class SpatialAlign:
         a top hat rolling average window of width window.
         """
         self.baseline_window = baseline_window
-        rolling_average_a = self.df_a['dos1rate'].rolling(window=baseline_window).mean()
-        rolling_average_b = self.df_b['dos1rate'].rolling(window=baseline_window).mean()
+        rolling_average_a = self.df_a['dos1rate'].rolling(window=baseline_window).mean()/10
+        rolling_average_b = self.df_b['dos1rate'].rolling(window=baseline_window).mean()/10
 
-        self.n_std_a = (self.df_a['dos1rate']-rolling_average_a)/np.sqrt(rolling_average_a)
-        self.n_std_b = (self.df_b['dos1rate']-rolling_average_b)/np.sqrt(rolling_average_b)
+        self.n_std_a = (self.df_a['dos1rate']/10-rolling_average_a)/np.sqrt(rolling_average_a+1)
+        self.n_std_b = (self.df_b['dos1rate']/10-rolling_average_b)/np.sqrt(rolling_average_b+1)
         return
 
-    def valid_flag_data(self, flags=[1,2]):
+    def valid_data_flag(self, bad_flags=[1,2]):
         """
         Use bitwise operations to filter out data with invalid data flags.
         Returns a set.
         """
         idx = set(np.arange(self.df_a.shape[0]))
 
-        for flag in flags:
+        for flag in bad_flags:
             # Returns a non-zero value if that flag was found in there
             a_and_flags = np.bitwise_and(self.df_a.flag, (1 << flag-1)).astype(bool)
             b_and_flags = np.bitwise_and(self.df_b.flag, (1 << flag-1)).astype(bool)
@@ -99,7 +99,7 @@ class SpatialAlign:
         return idx
 
 
-    def plot_time_and_space_aligned(self, ax=None, std_thresh:float=5, corr_thresh:float=0.7) -> None:
+    def plot_time_and_space_aligned(self, ax=None, std_thresh:float=2, corr_thresh:float=0.7) -> None:
         """
 
         """
@@ -130,10 +130,9 @@ class SpatialAlign:
         idx_corr = np.where(self.corr > corr_thresh)[0]
         # Find where the two above conditions are true and good data
         idx_detect = np.where((self.n_std_a > std_thresh) & 
-                              (self.corr > corr_thresh) & 
-                              (self.df_a.dos1rate > 100))[0]
-        valid_flag_set = self.valid_flag_data()
-        idx_detect_valid_flag = list(set(idx_detect).intersection(valid_flag_set))
+                              (self.n_std_b > std_thresh))[0]
+        valid_flags = self.valid_data_flag()
+        idx_detect_valid_flag = list(set(idx_detect).intersection(valid_flags))
 
         # Plot where the above conditions are true.
         ax[1].scatter(self.df_a.dateTime[idx_signif], self.df_a.dos1rate[idx_signif], 
