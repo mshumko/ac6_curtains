@@ -10,12 +10,13 @@ from matplotlib.ticker import FuncFormatter
 import mission_tools.ac6.read_ac_data as read_ac_data
 
 
-class SpatialAlign:
-    def __init__(self, date : datetime) -> None:
+class DetectCurtains:
+    def __init__(self, date : datetime, bad_flags:typing.List[int]=[1,2]) -> None:
         """
         This class
         """
         self.date = date
+        self.bad_flags = bad_flags
         self.load_data(self.date)
         return
 
@@ -57,7 +58,28 @@ class SpatialAlign:
         self.df_b.index = np.arange(self.df_b.shape[0])
         return
 
-    def rolling_correlation(self, window:int=5, thresh:int=1) -> None:
+    def detect(self, std_thresh:float=2, corr_thresh:float=None) -> typing.List[int]:
+        """
+
+        """
+        self.std_thresh = std_thresh
+        self.corr_thresh = corr_thresh
+
+        # Find indicies in the AC6A and B data that are significant 
+        # above the background
+        idx_signif = np.where((self.n_std_a > std_thresh) & 
+                            (self.n_std_b > std_thresh))[0]
+        if corr_thresh is not None:
+            # Find indicies where the temporal time series was 
+            # highly correlated
+            idx_corr = np.where(self.corr > corr_thresh)[0]
+            idx_signif = list(set(idx_signif).intersection(idx_corr))
+        # Now find good quality data.
+        valid_data = self.valid_data_flag()
+        self.detections = np.array(list(set(idx_signif).intersection(valid_data)))
+        return self.detections
+
+    def rolling_correlation(self, window:int=20) -> None:
         """
         Use df.rolling.corr to cross correlate the spatially-aligned time series.
         """
@@ -69,11 +91,11 @@ class SpatialAlign:
         self.corr = np.roll(self.corr, -window//2)
         return
 
-    def baseline_significance(self, baseline_window:int=5, significance:float=2) -> None:
+    def baseline_significance(self, baseline_window:int=50) -> None:
         """
-        Finds the data points that are significance number of standard deviations above
-        a top hat rolling average window of width window.
-        """
+        Calculates the number of standard deviations, assuming Poisson statistics, that a
+        a count value is above a rolling average baseline of length baseline_window.
+        """ 
         self.baseline_window = baseline_window
         rolling_average_a = self.df_a['dos1rate'].rolling(window=baseline_window).mean()/10
         rolling_average_b = self.df_b['dos1rate'].rolling(window=baseline_window).mean()/10
@@ -82,14 +104,14 @@ class SpatialAlign:
         self.n_std_b = (self.df_b['dos1rate']/10-rolling_average_b)/np.sqrt(rolling_average_b+1)
         return
 
-    def valid_data_flag(self, bad_flags=[1,2]):
+    def valid_data_flag(self) -> typing.Set:
         """
-        Use bitwise operations to filter out data with invalid data flags.
-        Returns a set.
+        Use bitwise operations to filter out data with invalid data flags 
+        using self.bad_flags attribute. Returns a set.
         """
         idx = set(np.arange(self.df_a.shape[0]))
 
-        for flag in bad_flags:
+        for flag in self.bad_flags:
             # Returns a non-zero value if that flag was found in there
             a_and_flags = np.bitwise_and(self.df_a.flag, (1 << flag-1)).astype(bool)
             b_and_flags = np.bitwise_and(self.df_b.flag, (1 << flag-1)).astype(bool)
@@ -98,8 +120,7 @@ class SpatialAlign:
             idx.intersection_update(idx_i)
         return idx
 
-
-    def plot_time_and_space_aligned(self, ax=None, std_thresh:float=2, corr_thresh:float=0.7) -> None:
+    def plot_time_and_space_aligned(self, ax=None) -> None:
         """
 
         """
@@ -115,37 +136,36 @@ class SpatialAlign:
         ax[1].plot(self.df_b.dateTime_shifted, self.df_b.dos1rate, 'b')
 
         ax[2].plot(self.df_a.dateTime, self.corr, 'k')
-        ax[2].axhline(corr_thresh, c='k', ls='--')
+        if self.corr_thresh is not None:
+            ax[2].axhline(self.corr_thresh, c='k', ls='--')
 
         ax[3].plot(self.df_a.dateTime, self.n_std_a, 'r')
         ax[3].plot(self.df_b.dateTime_shifted, self.n_std_b, 'b')
-        ax[3].axhline(std_thresh, c='k', ls='--')
-
-        # Find indicies in the AC6A and B data that are significant 
-        # above the background
-        idx_signif = np.where((self.n_std_a > std_thresh) & 
-                            (self.n_std_b > std_thresh))[0]
-        # Find indicies where the temporal time series was 
-        # highly correlated
-        #idx_corr = np.where(self.corr > corr_thresh)[0]
-        # Find where the two above conditions are true and good quality data
-        valid_data = self.valid_data_flag()
-        idx_detect_valid = list(set(idx_signif).intersection(valid_data))
+        if self.std_thresh is not None:
+            ax[3].axhline(self.std_thresh, c='k', ls='--')
 
         # Plot where the above conditions are true.
-        ax[1].scatter(self.df_a.dateTime[idx_detect_valid], self.df_a.dos1rate[idx_detect_valid], 
+        ax[1].scatter(self.df_a.dateTime[self.detections], self.df_a.dos1rate[self.detections], 
                     c='g', s=40, label='std signif')
         # ax[1].scatter(self.df_a.dateTime[idx_corr], 1.1*self.df_a.dos1rate[idx_corr], 
         #             c='g', s=20, marker='s', label='correlation signif')
         # ax[1].scatter(self.df_a.dateTime[idx_detect_valid_flag], 1.2*self.df_a.dos1rate[idx_detect_valid_flag],
         #             c='k', s=50, marker='X', label='detection')
 
+        self._adjust_plots(ax)     
+        plt.show()
+        return
+
+    def _adjust_plots(self, ax):
+        """
+        Makes small adjustments to the subplots.
+        """
         ax[0].set(ylabel='dos1rate\ntime-aligned', 
                 title=f'AC6 peak detection and curtain correlation\n{self.date.date()}')
         ax[1].set(ylabel='dos1rate\nspace-aligned')
         ax[2].set(ylabel=f'spatial correlation\nwindow={self.corr_window/10} s')
         ax[3].set(ylabel=f'std above {self.baseline_window/10} s\nmean baseline')
-        ax[3].set_ylim(bottom=0, top=3*std_thresh)
+        ax[3].set_ylim(bottom=0, top=3*self.std_thresh)
 
         ax[1].legend(loc=1)
         ax[0].legend(loc=1)
@@ -154,10 +174,8 @@ class SpatialAlign:
         ax[-1].xaxis.set_label_coords(-0.1,-0.03)
         plt.tight_layout()
         plt.subplots_adjust(bottom=0.17)
-        # plt.tight_layout()
         for a in ax:
-            a.format_coord = lambda x, y: f'{matplotlib.dates.num2date(x).replace(tzinfo=None).isoformat()}'        
-        plt.show()
+            a.format_coord = lambda x, y: f'{matplotlib.dates.num2date(x).replace(tzinfo=None).isoformat()}' 
         return
 
     def _plotLabels(self, skip_n:int=5):
@@ -192,11 +210,12 @@ class SpatialAlign:
             return self.labels[idx]
 
 if __name__ == '__main__':
-    s = SpatialAlign(datetime(2016, 10, 14))
-    # s = SpatialAlign(datetime(2015, 7, 27))
-    s = SpatialAlign(datetime(2015, 4, 9))
+    s = DetectCurtains(datetime(2016, 10, 14))
+    s = DetectCurtains(datetime(2015, 7, 27))
+    # s = DetectCurtains(datetime(2015, 4, 9))
     s.shift_time()
     s.align_space_time_stamps()
-    s.rolling_correlation(window=20)
-    s.baseline_significance(baseline_window=50)
+    s.rolling_correlation()
+    s.baseline_significance()
+    s.detect()
     s.plot_time_and_space_aligned()
