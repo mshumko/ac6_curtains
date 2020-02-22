@@ -1,13 +1,15 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime
+import typing
+
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.dates
-from datetime import datetime
-import typing
 from matplotlib.ticker import FuncFormatter
 
 import mission_tools.ac6.read_ac_data as read_ac_data
+import mission_tools.misc.locate_consecutive_numbers as locate_consecutive_numbers
 
 
 class DetectDailyCurtains:
@@ -121,7 +123,30 @@ class DetectDailyCurtains:
         # Now find good quality data.
         valid_data = self.valid_data_flag()
         self.detections = np.array(list(set(idx_signif).intersection(valid_data)))
+        self.detections = np.sort(self.detections)
         return self.detections
+
+    def find_peaks(self):
+        """
+        Given the self.detections array, find each continious index interval and 
+        find the index with highest count rates for each interval.
+        """
+        startInd, endInd = locate_consecutive_numbers.locateConsecutiveNumbers(
+            self.detections) # Find consecutive numbers to get a max of first
+        self.peaks_A = np.nan*np.ones(len(startInd), dtype=int)
+        self.peaks_B = np.nan*np.ones(len(startInd), dtype=int)
+        # Loop over every microburst detection region (consecutive microburst indicies)
+        for i, (st, et) in enumerate(zip(startInd, endInd)):
+            if st == et: 
+                # If the interval is just one point 
+                et += 1
+            # Find the max and reindex.
+            offset = self.df_a.index[self.detections[st]]
+            self.peaks_A[i] = np.argmax(
+                    self.df_a.loc[self.detections[st:et], 'dos1rate']) + offset
+            self.peaks_B[i] = np.argmax(
+                    self.df_b.loc[self.detections[st:et], 'dos1rate']) + offset
+        return
 
     def organize_detections(self, columns='default'):
         """
@@ -133,9 +158,9 @@ class DetectDailyCurtains:
         """
         if columns=='default':
             columns = [
-                'dateTime_A','dateTime_B','Lm_OPQ','MLT_OPQ','lat',
-                'lon','alt','Dist_In_Track','Lag_In_Track','Dist_Total',
-                'Loss_Cone_Type','flag']
+                'Lm_OPQ','MLT_OPQ','lat','lon','alt','Dist_In_Track',
+                'Lag_In_Track','Dist_Total', 'Loss_Cone_Type','flag'
+                ]
         df = pd.DataFrame(data=np.nan*np.zeros((len(self.detections), len(columns))), columns=columns)
 
 
@@ -163,6 +188,7 @@ class Validate_Detections(DetectDailyCurtains):
         self.rolling_correlation()
         self.baseline_significance()
         self.detect(std_thresh=self.std_thresh, corr_thresh=self.corr_thresh)
+        self.find_peaks()
         self.plot_validation()
         return
 
@@ -195,6 +221,11 @@ class Validate_Detections(DetectDailyCurtains):
         # Plot where the above conditions are true.
         ax[1].scatter(self.df_a.dateTime[self.detections], self.df_a.dos1rate[self.detections], 
                     c='g', s=40, label='Significant std A&B')
+        if hasattr(self, 'peaks_A'):
+            ax[1].scatter(self.df_a.dateTime[self.peaks_A], self.df_a.dos1rate[self.peaks_A], 
+                    marker='x', c='r', s=60, label='A peaks')
+            ax[1].scatter(self.df_b.dateTime_shifted[self.peaks_B], self.df_b.dos1rate[self.peaks_B], 
+                    marker='x', c='b', s=60, label='B peaks')
         # ax[1].scatter(self.df_a.dateTime[idx_corr], 1.1*self.df_a.dos1rate[idx_corr], 
         #             c='g', s=20, marker='s', label='correlation signif')
         # ax[1].scatter(self.df_a.dateTime[idx_detect_valid_flag], 1.2*self.df_a.dos1rate[idx_detect_valid_flag],
