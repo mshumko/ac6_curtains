@@ -74,7 +74,7 @@ class DetectDailyCurtains:
         self.corr = np.roll(self.corr, -window//2)
         return
 
-    def baseline_significance(self, baseline_window:int=50) -> None:
+    def baseline_significance(self, baseline_window:int=100) -> None:
         """
         Calculates the number of standard deviations, assuming Poisson statistics, that a
         a count value is above a rolling average baseline of length baseline_window.
