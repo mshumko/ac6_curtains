@@ -8,20 +8,20 @@ import matplotlib.pyplot as plt
 import matplotlib.dates
 from matplotlib.ticker import FuncFormatter
 
+# Set up enviromental variables in the directory that contains the 
+# mission_tools repo.
 import mission_tools.ac6.read_ac_data as read_ac_data
 import mission_tools.misc.locate_consecutive_numbers as locate_consecutive_numbers
 
-
 class DetectDailyCurtains:
     def __init__(self, date : datetime, bad_flags:typing.List[int]=[1,2], 
-                detect=False) -> None:
+                detect_script=True) -> None:
         """
         This class detects curtains for one day. Put this in a loop over days 
         to find all curtains in the AC6 data.
         """
         self.date = date
         self.bad_flags = bad_flags
-        self.load_data(self.date)
         return
 
     def load_data(self, date : datetime) -> typing.Tuple[pd.DataFrame, pd.DataFrame]:
@@ -148,23 +148,32 @@ class DetectDailyCurtains:
                     self.df_b.loc[self.detections[st:et], 'dos1rate']) + offset
         return
 
-    def organize_detections(self, columns='default'):
+    def catalog_detections(self, aux_columns='default'):
         """
         This method creates a pandas DataFrame that has the curtain time from the 
-        unshifted AC6A, and shifted AC6B data, and other information such as
-        L, MLT, lat, lon, alt, In_Track_Lag, etc. If columns='default', a default
-        set of AC6 data keys will be used, otherwise provide a list of columns that
-        exist in the AC6 10 Hz data.
+        AC6A, and shifted AC6B data. Auxiliary data columns such as L, MLT, lat, 
+        lon, alt, In_Track_Lag, etc are specified by the aux_columns kwarg. If 
+        aux_columns='default', a default set of AC6 data keys will be used, 
+        otherwise provide a list of aux_columns that exist in the AC6 10 Hz data.
         """
-        if columns=='default':
-            columns = [
+        if aux_columns=='default':
+            aux_columns = [
                 'Lm_OPQ','MLT_OPQ','lat','lon','alt','Dist_In_Track',
                 'Lag_In_Track','Dist_Total', 'Loss_Cone_Type','flag'
                 ]
-        df = pd.DataFrame(data=np.nan*np.zeros((len(self.detections), len(columns))), columns=columns)
-
-
-        # df.to_csv('my_csv.csv', mode='a', header=False)
+        # The dateTime column redundancy in times_df is to make the 
+        # DataFrame backwards compatable with the legacy code. 
+        times_df = pd.DataFrame(
+            data=np.array([
+                self.df_a.loc[self.peaks_A, 'dateTime'], 
+                self.df_a.loc[self.peaks_A, 'dateTime'],
+                self.df_b.loc[self.peaks_B, 'dateTime']]).T,
+            index=np.arange(len(self.peaks_A)), 
+            columns=['dateTime', 'time_spatial_A', 'time_spatial_B']
+            )
+        aux_df = self.df_a.loc[self.peaks_A, aux_columns]
+        aux_df.index = np.arange(len(self.peaks_A))
+        self.detections_df = times_df.merge(aux_df, left_index=True, right_index=True)
         return
 
 class Validate_Detections(DetectDailyCurtains):
@@ -183,12 +192,14 @@ class Validate_Detections(DetectDailyCurtains):
         """
         A wrapper to make the curtain detections.
         """
+        self.load_data(self.date)
         self.shift_time()
         self.align_space_time_stamps()
         self.rolling_correlation()
         self.baseline_significance()
         self.detect(std_thresh=self.std_thresh, corr_thresh=self.corr_thresh)
         self.find_peaks()
+        self.catalog_detections()
         self.plot_validation()
         return
 
