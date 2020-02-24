@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import os
+import time
 import progressbar
 
 import detect_daily
@@ -80,9 +81,11 @@ class DetectCurtainLoop():
         return
 
 if __name__ == '__main__':
+    start_time = time.time()
     d = DetectCurtainLoop(
         'ac6_curtains_baseline_method_v0.csv',
         std_thresh=2,
         corr_thresh=0.8
     )
     d.loop(overwrite=True)
+    print(f'Loop run in {round(time.time() - start_time)} seconds.')
