@@ -71,7 +71,7 @@ class DetectDailyCurtains:
         # Mark bad correlations with np.nan
         self.corr[self.corr > 1] = np.nan
         # Now roll the self.corr to center the non-NaN values
-        self.corr = np.roll(self.corr, -window//2)
+        # self.corr = np.roll(self.corr, -window//2)
         return
 
     def baseline_significance(self, baseline_window:int=100) -> None:
@@ -124,6 +124,8 @@ class DetectDailyCurtains:
         valid_data = self.valid_data_flag()
         self.detections = np.array(list(set(idx_signif).intersection(valid_data)))
         self.detections = np.sort(self.detections)
+        if len(self.detections) <= 1:
+            raise ValueError('No detections were found on this day.')
         return self.detections
 
     def find_peaks(self):
@@ -146,6 +148,8 @@ class DetectDailyCurtains:
                     self.df_a.loc[self.detections[st:et], 'dos1rate']) + offset
             self.peaks_B[i] = np.argmax(
                     self.df_b.loc[self.detections[st:et], 'dos1rate']) + offset
+        if len(self.peaks_A) <= 1:
+            raise ValueError('No detections were found on this day.')
         return
 
     def catalog_detections(self, aux_columns='default'):
@@ -171,6 +175,22 @@ class DetectDailyCurtains:
             index=np.arange(len(self.peaks_A)), 
             columns=['dateTime', 'time_spatial_A', 'time_spatial_B']
             )
+        # try:
+        #     times_df = pd.DataFrame(
+        #     data=np.array([
+        #         self.df_a.loc[self.peaks_A, 'dateTime'], 
+        #         self.df_a.loc[self.peaks_A, 'dateTime'],
+        #         self.df_b.loc[self.peaks_B, 'dateTime']]).T,
+        #     index=np.arange(len(self.peaks_A)), 
+        #     columns=['dateTime', 'time_spatial_A', 'time_spatial_B']
+        #     )
+        # except KeyError:
+        #     print(self.df_a.shape)
+        #     print(self.df_b.shape)
+        #     print(self.peaks_A)
+        #     print(self.peaks_B)
+        #     raise
+        
         aux_df = self.df_a.loc[self.peaks_A, aux_columns]
         aux_df.index = np.arange(len(self.peaks_A))
         self.detections_df = times_df.merge(aux_df, left_index=True, right_index=True)
@@ -265,7 +285,7 @@ class Validate_Detections(DetectDailyCurtains):
         plt.tight_layout()
         plt.subplots_adjust(bottom=0.17)
         for a in ax:
-            a.format_coord = lambda x, y: f'{matplotlib.dates.num2date(x).replace(tzinfo=None).isoformat()}' 
+            a.format_coord = lambda x, y: f'{matplotlib.dates.num2date(x).replace(tzinfo=None).isoformat()}, {y}' 
         return
 
     def _plotLabels(self, skip_n:int=5):
@@ -302,5 +322,5 @@ class Validate_Detections(DetectDailyCurtains):
 if __name__ == '__main__':
     # A few possible dates to play around with:
     # datetime(2016, 10, 14), datetime(2015, 7, 27), datetime(2015, 4, 9)
-    v = Validate_Detections(datetime(2015, 7, 27))
+    v = Validate_Detections(datetime(2015, 7, 27), corr_thresh=0.8)
     v.validate()
