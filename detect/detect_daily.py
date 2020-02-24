@@ -174,23 +174,7 @@ class DetectDailyCurtains:
                 self.df_b.loc[self.peaks_B, 'dateTime']]).T,
             index=np.arange(len(self.peaks_A)), 
             columns=['dateTime', 'time_spatial_A', 'time_spatial_B']
-            )
-        # try:
-        #     times_df = pd.DataFrame(
-        #     data=np.array([
-        #         self.df_a.loc[self.peaks_A, 'dateTime'], 
-        #         self.df_a.loc[self.peaks_A, 'dateTime'],
-        #         self.df_b.loc[self.peaks_B, 'dateTime']]).T,
-        #     index=np.arange(len(self.peaks_A)), 
-        #     columns=['dateTime', 'time_spatial_A', 'time_spatial_B']
-        #     )
-        # except KeyError:
-        #     print(self.df_a.shape)
-        #     print(self.df_b.shape)
-        #     print(self.peaks_A)
-        #     print(self.peaks_B)
-        #     raise
-        
+            )        
         aux_df = self.df_a.loc[self.peaks_A, aux_columns]
         aux_df.index = np.arange(len(self.peaks_A))
         self.detections_df = times_df.merge(aux_df, left_index=True, right_index=True)

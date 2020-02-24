@@ -16,18 +16,19 @@ plot_save_dir = '/home/mike/research/ac6_curtains/plots/'
 matplotlib.rcParams["savefig.directory"] = plot_save_dir
 
 class Browser(plot_curtains.PlotCurtains):
-    def __init__(self, catalog_version, plot_width=5, 
+    def __init__(self, catalog_version, plot_width=5, catalog_name=None,
                 catalog_save_name=None, width_tol=None, filterDict={}, 
-                jump_to_latest=True):
+                defaultFilter=False, jump_to_latest=True):
         """
         This class plots the AC6 microbursts and allows the user to browse
         detections in the future and past with buttons. Also there is a button
         to mark the event as a microburst.
         """
-        plot_curtains.PlotCurtains.__init__(self, catalog_version, 
+        plot_curtains.PlotCurtains.__init__(self, catalog_version,                      
+                                catalog_name=catalog_name,
                                 plot_width=plot_width, plot_width_flag=False, 
                                 make_plt_dir_flag=False)
-        self.filter_catalog(filterDict=filterDict)
+        self.filter_catalog(filterDict=filterDict, defaultFilter=defaultFilter)
         # Filter out events with widths whithin a width_tol.
         if width_tol is not None:
             self.catalog = self.catalog[np.isclose(
@@ -160,6 +161,17 @@ class Browser(plot_curtains.PlotCurtains):
         """ Print separation info as well as peak width info to the canvas. """
         self.textbox.clear()
         self.textbox.axis('off')
+
+        current_row = current_row.copy()
+
+        # Replace a few default values if they don't exist.
+        if not hasattr(current_row, 'peak_width_A'):
+            current_row['peak_width_A'] = np.nan
+            current_row['peak_width_B'] = np.nan
+        if not hasattr(current_row, 'time_cc'):
+            current_row['time_cc'] = np.nan
+            current_row['space_cc'] = np.nan
+
         col1 = ('Lag_In_Track = {} s\nDist_In_Track = {} km\n'
                     'Dist_total = {} km\npeak_width_A = {} s\n'
                     'peak_width_B = {} s'.format(
@@ -255,7 +267,9 @@ class Browser(plot_curtains.PlotCurtains):
         return
 
 
-callback = Browser(8, width_tol=None, filterDict={})
+# callback = Browser(8, width_tol=None, filterDict={})
+callback = Browser(None, catalog_name='ac6_curtains_baseline_method_v0.csv',            
+                    width_tol=None, filterDict={}, plot_width=10)
 # Initialize the GUI
 plt.show()
 # Save the catalog.
