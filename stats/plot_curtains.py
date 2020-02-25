@@ -168,6 +168,7 @@ class PlotCurtains:
             )
         ax[1].plot(df_space_a['dateTime'], df_space_a['dos1rate'], 'r', label='AC6-A')
         ax[1].plot(df_space_b['dateTime'], df_space_b['dos1rate'], 'b', label='AC6-B')
+        ax[1].axvline(row.dateTime, c='k')
 
         if log_scale:
             ax[0].set_yscale('log')
