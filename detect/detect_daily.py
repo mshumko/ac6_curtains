@@ -19,6 +19,17 @@ class DetectDailyCurtains:
         """
         This class detects curtains for one day. Put this in a loop over days 
         to find all curtains in the AC6 data.
+
+        Example calling sequence:
+            self.load_data(self.date)
+            self.shift_time()
+            self.align_space_time_stamps()
+            self.rolling_correlation()
+            self.baseline_significance()
+            self.detect(std_thresh=self.std_thresh, corr_thresh=self.corr_thresh)
+            self.find_peaks()
+            self.catalog_detections()
+            self.plot_validation()
         """
         self.date = date
         self.bad_flags = bad_flags
@@ -34,10 +45,12 @@ class DetectDailyCurtains:
 
     def shift_time(self) -> None:
         """
-
+        Shift the AC6B dateTime array by the in-track lag and save into a
+        dateTime_shifted column in df_b.
         """
-        # Add the time lag
+        # Round the lag to a tenths of a second.
         dt = np.round(self.df_b.Lag_In_Track, 1)
+        # Add the time lag
         self.df_b['dateTime_shifted'] = (self.df_b['dateTime'] - pd.to_timedelta(dt, unit='s'))
         # Round to nearest tenths second and strip timezone info.
         #self.df_b['dateTime_shifted'] = self.df_b['dateTime_shifted'].dt.round('0.1S')
@@ -48,7 +61,8 @@ class DetectDailyCurtains:
 
     def align_space_time_stamps(self) -> None:
         """
-
+        Match the AC6A and shifted AC6B time stamps. This method aligns df_a and df_b
+        so their indicies represent the same spatial location.
         """
         idxa = np.where(np.in1d(self.df_a['dateTime'], self.df_b['dateTime_shifted'], 
                         assume_unique=True))[0]
@@ -64,7 +78,8 @@ class DetectDailyCurtains:
 
     def rolling_correlation(self, window:int=20) -> None:
         """
-        Use df.rolling.corr to cross correlate the spatially-aligned time series.
+        Use df.rolling.corr to apply a rolling cross-correlation to the
+        spatially-aligned time series.
         """
         self.corr_window = window
         self.corr = self.df_b['dos1rate'].rolling(self.corr_window).corr(self.df_a['dos1rate'])
@@ -106,7 +121,7 @@ class DetectDailyCurtains:
     def detect(self, std_thresh:float=2, corr_thresh:float=None) -> typing.List[int]:
         """
         After running the baseline_significance() and/or rolling_correlation() methods,
-        use this method to organize the detections. 
+        use this method to find where both conditions are true (intersection).
         """
         self.std_thresh = std_thresh
         self.corr_thresh = corr_thresh
@@ -122,7 +137,8 @@ class DetectDailyCurtains:
             idx_signif = list(set(idx_signif).intersection(idx_corr))
         # Now find good quality data.
         valid_data = self.valid_data_flag()
-        self.detections = np.array(list(set(idx_signif).intersection(valid_data)))
+        intersect = set(idx_signif).intersection(valid_data)
+        self.detections = np.array(list(intersect))
         self.detections = np.sort(self.detections)
         if len(self.detections) <= 1:
             raise ValueError('No detections were found on this day.')
@@ -130,8 +146,9 @@ class DetectDailyCurtains:
 
     def find_peaks(self):
         """
-        Given the self.detections array, find each continious index interval and 
-        find the index with highest count rates for each interval.
+        Given the self.detections array, for each continious interval of 
+        indicies find the index with highest count rates in that ineterval 
+        from both spacecraft.
         """
         startInd, endInd = locate_consecutive_numbers.locateConsecutiveNumbers(
             self.detections) # Find consecutive numbers to get a max of first
@@ -178,7 +195,7 @@ class DetectDailyCurtains:
         aux_df = self.df_a.loc[self.peaks_A, aux_columns]
         aux_df.index = np.arange(len(self.peaks_A))
         self.detections_df = times_df.merge(aux_df, left_index=True, right_index=True)
-        return
+        return self.detections_df
 
 class Validate_Detections(DetectDailyCurtains):
     def __init__(self, date:datetime, bad_flags:typing.List[int]=[1,2], 
