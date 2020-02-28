@@ -143,5 +143,5 @@ for i, coord in enumerate(coords):
          ha='center', va='top', fontsize=20, color='r',
          transform=projection)
 
-gs.tight_layout(fig, h_pad=-1, w_pad=-1)
+gs.tight_layout(fig, h_pad=-0.9, w_pad=-0.5)
 plt.show()
