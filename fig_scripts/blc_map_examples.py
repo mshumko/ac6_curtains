@@ -36,7 +36,7 @@ gs = gridspec.GridSpec(nrows=2, ncols=3, figure=fig)
 # created matters!
 bx = 3*[None]
 for i in range(len(bx)):
-    bx[i] = fig.add_subplot(gs[1, i])
+    bx[i] = fig.add_subplot(gs[1, i], projection='rectilinear')
 ax = fig.add_subplot(gs[0, :], projection=projection)
 
 # ax = plt.subplot(111, projection=projection)
