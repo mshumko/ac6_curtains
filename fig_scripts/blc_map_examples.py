@@ -117,6 +117,10 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     bx_i.text(0, 1, f'({string.ascii_letters[i+1]})',
          ha='left', va='top', fontsize=20, color='k',
          transform=bx_i.transAxes)
+    
+    bx_i.text(1, 0.99, f'dt = {abs(int(round(df_b_flt.loc[df_b_flt.index[0], "Lag_In_Track"])))} s',
+         ha='right', va='top', fontsize=12, color='k',
+         transform=bx_i.transAxes)
 
     # Format time
     bx_i.xaxis.set_major_locator(mdates.SecondLocator(interval=3))
@@ -131,12 +135,6 @@ ax.set_title('AC6 Curtains in the Bounce Loss Cone', fontsize=25)
 ax.text(0, 1, f'(a)',
          ha='left', va='top', fontsize=20, color='k',
          transform=ax.transAxes)
-
-for i, b in enumerate(bx):
-    b.text(0, 1, f'({string.ascii_letters[i+1]})',
-         ha='left', va='top', fontsize=20, color='k',
-         transform=b.transAxes)
-
 
 for i, coord in enumerate(coords):
     ax.text(coord[0], coord[1]-1, f'{string.ascii_letters[i+1]}',
