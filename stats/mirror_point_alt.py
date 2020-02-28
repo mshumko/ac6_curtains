@@ -67,12 +67,12 @@ def calc_mirror_point_alt(alt=600, kext='OPQ77',
     return lat_bins, lon_bins, grid.T
 
 if __name__ == '__main__':
-    #lat_bins, lon_bins, grid = calc_mirror_point_alt()
+    lat_bins, lon_bins, grid = calc_mirror_point_alt()
 
     # Save to file
     save_name = 'lat_lon_mirror_alt.csv'
-    #df = pd.DataFrame(data=grid, index=lat_bins, columns=lon_bins)
-    #df.to_csv(os.path.join(dirs.BASE_DIR, 'data', save_name))
+    df = pd.DataFrame(data=grid, index=lat_bins, columns=lon_bins)
+    df.to_csv(os.path.join(dirs.BASE_DIR, 'data', save_name))
     df2 = pd.read_csv(os.path.join(dirs.BASE_DIR, 'data', save_name),
                     index_col=0, header=0)
     

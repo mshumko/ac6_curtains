@@ -111,7 +111,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
         ]
     
     bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'k', ls='--', label='AC6-A')
-    bx_i.plot(df_b_flt['dateTime_shifted'], df_b_flt['dos1rate'], 'k', ls='-', label='AC6-B')
+    bx_i.plot(df_b_flt['dateTime_shifted'], df_b_flt['dos1rate'], 'b', ls='-', label='AC6-B')
 
     # Add a subplot label.
     bx_i.text(0, 1, f'({string.ascii_letters[i+1]})',
@@ -125,7 +125,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     # Format time
     bx_i.xaxis.set_major_locator(mdates.SecondLocator(interval=3))
     bx_i.xaxis.set_major_formatter(mdates.DateFormatter('%S'))
-    bx_i.set_xlabel(f'Seconds from\n{datetime.strftime(start_time, "%m/%d/%y %H:%M:00")}')
+    bx_i.set_xlabel(f'Seconds after\n{datetime.strftime(start_time, "%Y/%m/%d %H:%M:00")}')
 
 bx[0].set_ylabel('dos1rate [counts/s]')
 
