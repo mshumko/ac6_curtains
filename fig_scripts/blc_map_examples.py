@@ -1,10 +1,11 @@
 import matplotlib.ticker as mticker
+import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
 import numpy as np
-# from datetime import datetime
 import dateutil.parser
+import string
 
 import cartopy
 import cartopy.crs as ccrs
@@ -27,25 +28,29 @@ curtain_times = [
                 ]
 curtain_times = [dateutil.parser.parse(t) for t in curtain_times]
 
-# projection = ccrs.NearsidePerspective(
-#     central_longitude=-30, 
-#     central_latitude=60.0, 
-#     satellite_height=3000000
-#     )
 projection = ccrs.PlateCarree()
-ax = plt.subplot(111, projection=projection)
-ax.set_extent([-100, 60, 10, 80], crs=ccrs.PlateCarree())
-ax.coastlines()
-# ax.add_feature(cartopy.feature.OCEAN, zorder=0)
+fig = plt.figure(constrained_layout=True)
+gs = gridspec.GridSpec(nrows=2, ncols=3, figure=fig)
+
+# Cartopy is stupid. The order of how ax and bx are 
+# created matters!
+bx = 3*[None]
+for i in range(len(bx)):
+    bx[i] = fig.add_subplot(gs[1, i])
+ax = fig.add_subplot(gs[0, :], projection=projection)
+
+# ax = plt.subplot(111, projection=projection)
+ax.set_extent([-70, 20, 40, 80], crs=ccrs.PlateCarree())
+ax.coastlines(resolution='50m', color='black', linewidth=1)
 ax.add_feature(cartopy.feature.LAND, zorder=0, edgecolor='black')
 
-gl = ax.gridlines(color='black', linestyle=':')
+# gl = ax.gridlines(color='black', linestyle=':')
 
-gl.ylocator = mticker.FixedLocator([0, 30, 60, 90])
-gl.xformatter = LONGITUDE_FORMATTER
-gl.yformatter = LATITUDE_FORMATTER
+# gl.ylocator = mticker.FixedLocator([0, 30, 60, 90])
+# gl.xformatter = LONGITUDE_FORMATTER
+# gl.yformatter = LATITUDE_FORMATTER
 
-# Load mirror_point altitude data
+# Load and plot the mirror_point altitude data
 save_name = 'lat_lon_mirror_alt.csv'
 mirror_point_df = pd.read_csv(os.path.join(dirs.BASE_DIR, 'data', save_name),
                             index_col=0, header=0)
@@ -58,6 +63,16 @@ ax.contour(lons, lats,
             mirror_point_df.values, transform=projection, 
             levels=[0, 100], colors=['k', 'k'], linestyles=['dashed', 'solid'])
 
+# Overlay L shell contours
+L_lons = np.load('/home/mike/research/mission_tools'
+                '/misc/irbem_l_lons.npy')
+L_lats = np.load('/home/mike/research/mission_tools'
+                '/misc/irbem_l_lats.npy')
+L = np.load('/home/mike/research/mission_tools'
+                '/misc/irbem_l_l.npy')
+levels = [4,8]
+CS = ax.contour(L_lons, L_lats, L, levels=levels, colors='k', linestyles='dotted')
+plt.clabel(CS, inline=1, fontsize=10, fmt='%d')
 
 # Load the curtain catalog.
 df_cat = pd.read_csv(os.path.join(dirs.CATALOG_DIR, 
@@ -67,11 +82,12 @@ coords = np.nan*np.zeros((len(curtain_times), 2))
 for i, time in enumerate(curtain_times):
     coords[i] = df_cat.loc[time, ['lon', 'lat']]
 
-# ax.scatter(coords[:, 0], coords[:, 1], marker='x')
+ax.scatter(coords[:,0], coords[:,1], marker='*', c='k', s=70)
 
 for i, coord in enumerate(coords):
-    plt.text(coord[0], coord[1], i,
-         horizontalalignment='right',
+    plt.text(coord[0]+3, coord[1], f'{string.ascii_letters[i]}',
+         horizontalalignment='right', fontsize=15,
          transform=projection)
 
+gs.tight_layout(fig)
 plt.show()
