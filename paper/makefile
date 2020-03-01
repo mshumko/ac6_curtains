@@ -1,0 +1,5 @@
+shumko_ac6_curtain_stats.pdf: shumko_ac6_curtain_stats.tex
+	pdflatex shumko_ac6_curtain_stats
+	bibtex shumko_ac6_curtain_stats
+	pdflatex shumko_ac6_curtain_stats
+	pdflatex shumko_ac6_curtain_stats
