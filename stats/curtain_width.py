@@ -2,8 +2,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import sys
 
+sys.path.insert(0, '/home/mike/research/ac6_curtains/detect')
 import dirs
+import detect_daily
 
 catalog_name = f'AC6_curtains_baseline_method_sorted_v0.txt'
 
@@ -11,6 +14,19 @@ cat = pd.read_csv(os.path.join(dirs.CATALOG_DIR, catalog_name))
 cat.dateTime = pd.to_datetime(cat.dateTime)
 
 peak_width_s = 5
+
+class CurtainWidth:
+    def __init__():
+
+        return
+
+    def find_peaks_loop():
+
+        return
+
+    def find_peaks():
+        
+        return
 
 
 
