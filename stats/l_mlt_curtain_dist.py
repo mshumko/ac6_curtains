@@ -9,10 +9,11 @@ plt.rcParams.update({'font.size':13})
 
 import dirs
 
-CATALOG_NAME = 'AC6_curtains_sorted_vNone.txt'
+CATALOG_NAME = 'AC6_curtains_baseline_method_sorted_v0.txt'
 CATALOG_PATH = os.path.join(dirs.CATALOG_DIR, CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
 NORM_FLAG = False
+low_exposure_thresh = 10000
 
 COLOR_MAP = 'jet' # Try Reds, plasma, 
 
@@ -39,13 +40,13 @@ def draw_earth(ax, earth_resolution=50):
     ax.fill_between(*earth_shadow, color='k')
     return
 
-def draw_L_contours(ax, L_labels=[2, 4, 6, 8], earth_resolution=50):
+def draw_L_contours(ax, color, L_labels=[2, 4, 6, 8], earth_resolution=50):
     """ Plots a subset of the L shell contours. """
     # Draw azimuthal lines for a subset of L shells.
     L_labels_names = [str(i) for i in L_labels[:-1]] + [f'L = {L_labels[-1]}']
     for L in L_labels:
         ax.plot(np.linspace(0, 2*np.pi, earth_resolution), 
-                    L*np.ones(earth_resolution), ls=':', c='k')
+                    L*np.ones(earth_resolution), ls=':', c=color)
     return L_labels, L_labels_names
 
 
@@ -61,7 +62,7 @@ cat_dist, mlt_bins, lm_bins = np.histogram2d(cat.MLT_OPQ, cat.Lm_OPQ,
 scaling_factors = (np.max(norm)/norm).T
 # Set the sectors with no observations or little observations to NaN.
 scaling_factors[np.isinf(scaling_factors)] = np.nan
-scaling_factors[norm.T < 20000] = np.nan
+scaling_factors[norm.T < low_exposure_thresh] = np.nan
 cat_norm = cat_dist*scaling_factors
 
 #cat_dist = np.ma.masked_invalid(scaling_factors)
@@ -69,9 +70,9 @@ cat_norm = cat_dist*scaling_factors
 mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 
 p0 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap=COLOR_MAP)
-p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T, cmap=COLOR_MAP, vmax=400)
-plt.colorbar(p0, ax=ax[0], label=r'True Number of curtains', pad=0.1, orientation='horizontal')
-plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains', pad=0.1, orientation='horizontal')
+p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/100, cmap=COLOR_MAP, vmax=4)
+plt.colorbar(p0, ax=ax[0], label=r'Observed Number of curtains', pad=0.1, orientation='horizontal')
+plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains x 100', pad=0.1, orientation='horizontal')
 
 # L shell filter for the L-MLT plot
 L_lower = 0
@@ -87,9 +88,9 @@ draw_earth(ax[1])
 draw_earth(ax[2])
 
 # Draw L shell contours
-draw_L_contours(ax[0])
-draw_L_contours(ax[1])
-L_labels, L_labels_names = draw_L_contours(ax[2])
+draw_L_contours(ax[0], 'w')
+draw_L_contours(ax[1], 'k')
+L_labels, L_labels_names = draw_L_contours(ax[2], 'w')
 L_label_colors = ['w', 'k', 'w']
 
 ### PLOT TWEEKS ###
