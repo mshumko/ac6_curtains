@@ -112,6 +112,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     
     bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'k', ls='--', label='AC6-A')
     bx_i.plot(df_b_flt['dateTime_shifted'], df_b_flt['dos1rate'], 'b', ls='-', label='AC6-B')
+    # bx_i.axvline(time, c='r')
     # bx_twin_i = bx_i.twinx()
     # bx_twin_i.plot(df_a_flt['dateTime'], df_a_flt['Loss_Cone_Type'], 'g', ls='--')
     # bx_twin_i.tick_params(axis='y', labelcolor='g')
