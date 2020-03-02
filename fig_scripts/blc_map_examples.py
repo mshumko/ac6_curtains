@@ -33,10 +33,10 @@ import dirs
 #                 '2017-04-27T09:34:57.200000',
 #                 ]
 curtain_times = [
-                '2016-10-29T01:21:38.400000', # Good
-                '2015-07-27T10:38:16.500000', # Good
-                '2016-09-26T00:11:57.400000', # Good
-                '2015-08-27T23:04:37.700000', # Good
+                '2016-10-29T01:21:38.400000', # Good (at midnight)
+                '2015-07-27T10:38:16.500000', # Good (10 MLT)
+                '2016-09-26T00:11:57.400000', # Good (midnight)
+                '2015-08-27T23:04:37.700000', # Good (midnight)
                 ]
 curtain_times = [dateutil.parser.parse(t) for t in curtain_times]
 
@@ -112,6 +112,9 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     
     bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'k', ls='--', label='AC6-A')
     bx_i.plot(df_b_flt['dateTime_shifted'], df_b_flt['dos1rate'], 'b', ls='-', label='AC6-B')
+    # bx_twin_i = bx_i.twinx()
+    # bx_twin_i.plot(df_a_flt['dateTime'], df_a_flt['Loss_Cone_Type'], 'g', ls='--')
+    # bx_twin_i.tick_params(axis='y', labelcolor='g')
 
     # Add a subplot label.
     bx_i.text(0, 1, f'({string.ascii_letters[i+1]})',
