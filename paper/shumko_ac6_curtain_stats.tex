@@ -52,20 +52,19 @@
 %
 %% ------------------------------------------------------------------------ %%
 
-\authors{M. Shumko\affil{1}, A.T. Johnson\affil{1}, J.G. Sample\affil{1}, D.L. Turner\affil{4}, T.P. O'Brien\affil{2}, J.B. Blake\affil{2}, S. G. Claudepierre\affil{2,4}}
+\authors{M. Shumko\affil{1}, A.T. Johnson\affil{1}, J.G. Sample\affil{1}, D.L. Turner\affil{3}, T.P. O'Brien\affil{2}, and J.B. Blake\affil{2}}
 
 
 \affiliation{1}{Department of Physics, Montana State University, Bozeman, Montana, USA}
 \affiliation{2}{Space Science Applications Laboratory, The Aerospace Corportation, El Segundo, California USA}
-\affiliation{3}{Space Sciences Laboratory, University of California Berkeley, Berkeley, California USA}
-\affiliation{4}{Johns Hopkins Applied Physics Laboratory}
+\affiliation{3}{Johns Hopkins Applied Physics Laboratory, Laurel, Maryland, USA}
 
 \correspondingauthor{M. Shumko}{msshumko@gmail.com}
 
 \begin{keypoints}
-\item a
-\item b
-\item c
+\item We used the dual AeroCube-6 CubeSats to identify stationary, narrow, and persistent $>30$ keV precipitation in low Earth orbit
+\item A single low Earth-orbiting spacecraft can easily misidentify curtains as microburst precipitation
+\item A few curtains actively precipitated for at least six seconds
 \end{keypoints}
 
 %% ------------------------------------------------------------------------ %%
@@ -85,7 +84,12 @@ yeah
 \end{abstract}
 
 \section{Plain Language Summary}
-blah
+\textcolor{blue}{
+Outline
+\begin{enumerate}
+\item Stuff
+\end{enumerate}
+}
 
 \section{Introduction}
 
@@ -93,7 +97,12 @@ blah
 
 \section{Methodology} 
 \subsection{Curtain Identification} \label{curtain_identification}
-text 
+
+\begin{figure}
+\includegraphics[width=\textwidth]{fig1.pdf}
+\caption{Four examples showing the AC6 $> 30$ keV electron data taken by AC6 at the same time in the top row and at the same position in the bottom row. To show the data at the same position the time series data from one spacecraft was shifted by the in-track lag and annotated by dt. These examples show curtain precipitation highly correlated for up to 26 seconds.}
+\label{fig1}
+\end{figure}
 
 \section{Results}
 \subsection{Curtain Statistics} \label{stats}
@@ -110,11 +119,6 @@ text
 
 \acknowledgments
 This work was made possible with the help from the many engineers and scientists at The Aerospace Corporation who designed, built, and operated AC6. M. Shumko was supported by NASA Headquarters under the NASA Earth and Space Science Fellowship Program - Grant 80NSSC18K1204. D.L. Turner is thankful for support from the Van Allen Probes mission and a NASA grant (Prime award number: 80NSSC19K0280). The work at The Aerospace Corporation was supported in part by RBSP-ECT funding provided by JHU/APL contract 967399 under NASA's Prime contract NAS501072. The AC6 data is available at http://rbspgway.jhuapl.edu/ac6 and the IRBEM-Lib version used for this analysis can be downloaded from https://sourceforge.net/p/irbem/code/616/tree/.
-
-\bibliography{/home/mike/Dropbox/0_firebird_research/A_presentations/refs}
-\bibliography{"refs"}
-
-\end{document}
 
 Title: Statistical Properties of Curtains--Latitudinally-Narrow and Persistent Electron Precipitation Phenomena
 
@@ -139,3 +143,8 @@ Sections:
 - statistical properties
 - what are curtains?
 - discussion and conclusion
+
+\bibliography{/home/mike/Dropbox/0_firebird_research/A_presentations/refs}
+\bibliography{"refs"}
+
+\end{document}

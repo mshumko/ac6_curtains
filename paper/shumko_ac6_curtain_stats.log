@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  1 MAR 2020 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  1 MAR 2020 19:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -288,94 +288,217 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 58.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 58.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+Overfull \hbox (5.93231pt too wide) in paragraph at lines 65--66
+[]\OT1/cmr/m/n/10 We used the dual AeroCube-6 Cube-Sats to iden-tify sta-tion-a
+ry, nar-row, and per- 
+ []
+
+
+Overfull \hbox (19.93234pt too wide) in paragraph at lines 66--67
+[]\OT1/cmr/m/n/10 A sin-gle low Earth-orbiting space-craft can eas-ily misiden-
+tify cur-tains as mi-croburst 
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 87.
+(Font)              size <10.95> substituted on input line 86.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 87.
+(Font)              size <10.95> substituted on input line 86.
+
+<figures/fig1.pdf, id=18, 987.20822pt x 361.35pt>
+File: figures/fig1.pdf Graphic file (type pdf)
+<use figures/fig1.pdf>
+Package pdftex.def Info: figures/fig1.pdf  used on input line 102.
+(pdftex.def)             Requested size: 397.48499pt x 145.49132pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 103.
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+\OT1/cmr/m/n/9 time in the top row and at the same po-si-tion in the bot-tom ro
+w. To show the data at the same
+ []
 
 
-Overfull \hbox (1.48782pt too wide) in paragraph at lines 111--113
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+\OT1/cmr/m/n/9 po-si-tion the time se-ries data from one space-craft was shifte
+d by the in-track lag and an-no-tated
+ []
+
+
+Overfull \hbox (1.48782pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
  []
 
 
-Overfull \hbox (20.73793pt too wide) in paragraph at lines 111--113
+Overfull \hbox (20.73793pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 The Aerospace Cor-po-ra-tion who de-signed, built, and op-er-at
 ed AC6. M. Shumko was sup- 
  []
 
 
-Overfull \hbox (21.65457pt too wide) in paragraph at lines 111--113
+Overfull \hbox (21.65457pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 ported by NASA Head-quar-ters un-der the NASA Earth and Space S
 ci-ence Fel-low-ship Pro- 
  []
 
 
-Overfull \hbox (11.613pt too wide) in paragraph at lines 111--113
+Overfull \hbox (11.613pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 gram - Grant 80NSSC18K1204. D.L. Turner is thank-ful for sup-po
 rt from the Van Allen 
  []
 
 
-Overfull \hbox (10.73798pt too wide) in paragraph at lines 111--113
+Overfull \hbox (10.73798pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 Probes mis-sion and a NASA grant (Prime award num-ber: 80NSSC19
 K0280). The work 
  []
 
 
-Overfull \hbox (5.73795pt too wide) in paragraph at lines 111--113
+Overfull \hbox (5.73795pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 at The Aerospace Cor-po-ra-tion was sup-ported in part by RBSP-
 ECT fund-ing pro-vided 
  []
 
 
-Overfull \hbox (17.79353pt too wide) in paragraph at lines 111--113
+Overfull \hbox (17.79353pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 by JHU/APL con-tract 967399 un-der NASA's Prime con-tract NAS50
 1072. The AC6 data 
  []
 
 
-Overfull \hbox (12.71022pt too wide) in paragraph at lines 111--113
+Overfull \hbox (12.71022pt too wide) in paragraph at lines 120--122
 \OT1/cmr/m/n/10 is avail-able at http://rbspgway.jhuapl.edu/ac6 and the IRBEM-L
 ib ver-sion used for this 
  []
 
+[2 <./figures/fig1.pdf>]
+Overfull \hbox (12.34901pt too wide) in paragraph at lines 123--124
+[]\OT1/cmr/m/n/10 Title: Sta-tis-ti-cal Prop-er-ties of Curtains--Latitudinally
+-Narrow and Per-sis-tent Elec- 
+ []
+
+
+Overfull \hbox (11.04341pt too wide) in paragraph at lines 125--126
+[]\OT1/cmr/m/n/10 This study lever-ages AC6, a multi-spacecraft mis-sion, to in
+-ter-pret and un-der-stand 
+ []
+
+
+Overfull \hbox (23.32124pt too wide) in paragraph at lines 127--128
+[]\OT1/cmr/m/n/10 This study lever-ages the asym-me-try in Earth's mag-netic fi
+eld. The asym-met-ric mag- 
+ []
+
+
+Overfull \hbox (20.09906pt too wide) in paragraph at lines 129--130
+[]\OT1/cmr/m/n/10 Particles that im-pact the at-mo-sphere are lost dur-ing that
+ bounce mo-tion. We found 
+ []
+
+
+Overfull \hbox (11.79344pt too wide) in paragraph at lines 129--130
+\OT1/cmr/m/n/10 cur-tains in the bounce loss cone, a re-gion in the North At-la
+ntic near and above Ice-land.  
+ []
+
+
+Overfull \hbox (4.26558pt too wide) in paragraph at lines 131--132
+[]\OT1/cmr/m/n/10 The bounce loss cone is mag-net-i-cally con-nected to the SAA
+, where Earth's mag- 
+ []
+
+
+Overfull \hbox (4.04333pt too wide) in paragraph at lines 131--132
+\OT1/cmr/m/n/10 netic field is weak-est near Earth's sur-face. A par-ti-cle ob-
+served in the blc in the north- 
+ []
+
+
+Overfull \hbox (1.26566pt too wide) in paragraph at lines 131--132
+\OT1/cmr/m/n/10 ern hemi-sphere will de-scend be-low 100 km al-ti-tude. At sub-
+100 km al-ti-tudes the par- 
+ []
+
+
+Overfull \hbox (10.15456pt too wide) in paragraph at lines 131--132
+\OT1/cmr/m/n/10 ti-cle has a high chance of en-coun-ter-ing and scat-ter-ing wi
+th the at-mo-sphere and be lost.  
+ []
+
+
+Overfull \hbox (1.18224pt too wide) in paragraph at lines 133--134
+[]\OT1/cmr/m/n/10 We found cur-tain elec-tions that, when given the chance to e
+x-e-cute their cycli-cal 
+ []
+
+
+Overfull \hbox (12.23787pt too wide) in paragraph at lines 133--134
+\OT1/cmr/m/n/10 bounce mo-tion, will de-scend be-low Earth's sur-face in the SA
+A. An elec-tion can not sur- 
+ []
+
+
+Overfull \hbox (14.23793pt too wide) in paragraph at lines 135--136
+[]\OT1/cmr/m/n/10 Write the pa-per and ask the ques-tion: "What is this pa-per 
+re-ally about?" Not just 
+ []
+
+
+Overfull \hbox (6.84908pt too wide) in paragraph at lines 135--136
+\OT1/cmr/m/n/10 cur-tains, but un-cov-er-ing some-thing un-ex-pected that has b
+een ob-served and over-looked 
+ []
+
+
+Overfull \hbox (11.23787pt too wide) in paragraph at lines 137--138
+[]\OT1/cmr/m/n/10 Are cur-tains re-lated to au-rora? This is a good question---
+one that is not per-ti-nent 
+ []
+
+
+Overfull \hbox (15.01567pt too wide) in paragraph at lines 139--146
+[]\OT1/cmr/m/n/10 Sections: - In-tro-duc-tion - in-stru-men-ta-tion - cur-tain 
+iden-ti-fi-ca-tion - sta-tis-ti-cal prop- 
+ []
+
 No file shumko_ac6_curtain_stats.bbl.
 No file shumko_ac6_curtain_stats.bbl.
-[2] (./shumko_ac6_curtain_stats.aux)
+[3] (./shumko_ac6_curtain_stats.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 3317 strings out of 492982
- 45125 string characters out of 6134897
- 111472 words of memory out of 5000000
- 6828 multiletter control sequences out of 15000+600000
- 8514 words of font info for 31 fonts, out of 8000000 for 9000
+ 3331 strings out of 492982
+ 45325 string characters out of 6134897
+ 112480 words of memory out of 5000000
+ 6837 multiletter control sequences out of 15000+600000
+ 9435 words of font info for 34 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,764b,236s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,764b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (2 pages, 138174 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on shumko_ac6_curtain_stats.pdf (3 pages, 180838 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 114 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

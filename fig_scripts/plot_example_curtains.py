@@ -54,7 +54,7 @@ class PlotCurtains:
             # Separation info
             self.ax[0, i].text(0.99, 0.99, f's = {abs(int(round(row.Dist_In_Track)))} km', 
                             transform=self.ax[0, i].transAxes, va='top', ha='right', fontsize=15)
-            self.ax[1, i].text(0.99, 0.99, f'shifted by dt = {abs(int(round(row.Lag_In_Track)))} s',
+            self.ax[1, i].text(0.99, 0.99, f'dt = {abs(int(round(row.Lag_In_Track)))} s',
                             transform=self.ax[1, i].transAxes, va='top', ha='right', fontsize=15)
             
         plt.show()
@@ -199,11 +199,12 @@ class PlotCurtains:
 if __name__ == '__main__':
     plot_width_s = 7
     t0_times = [
-                datetime(2015, 3, 26, 9, 20, 42, 600000),
+                datetime(2015, 10, 28, 3, 19, 27, 700000),
                 datetime(2015, 4, 4, 15, 3, 7, 200000),
-                datetime(2015, 4, 16, 19, 29, 51, 300000),
-                datetime(2015, 5, 6, 11, 37, 23, 800000)
+                datetime(2015, 5, 12, 21, 27, 5, 600000),
+                datetime(2017, 1, 22, 10, 0, 3, 400000)
                 ]
-    sc_shift = ['a', 'a', 'b', 'b']
+    #sc_shift = ['a', 'a', 'b', 'b']
+    sc_shift = ['b', 'a', 'b', 'b']
     p = PlotCurtains(plot_width_s, t0_times, sc_shift)
     p.plot_examples()
