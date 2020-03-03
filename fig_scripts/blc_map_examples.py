@@ -33,10 +33,10 @@ import dirs
 #                 '2017-04-27T09:34:57.200000',
 #                 ]
 curtain_times = [
-                '2016-10-29T01:21:38.400000', # Good (at midnight)
-                '2015-07-27T10:38:16.500000', # Good (10 MLT)
-                '2016-09-26T00:11:57.400000', # Good (midnight)
-                '2015-08-27T23:04:37.700000', # Good (midnight)
+                '2016-10-29T01:21:38.400000', # Good (at midnight, AE=787)
+                '2015-07-27T10:38:16.500000', # Good (10 MLT, AE=587)
+                '2016-09-26T00:11:57.400000', # Good (midnight, AE=581)
+                '2015-08-27T23:04:37.700000', # Good (midnight, AE=745)
                 ]
 curtain_times = [dateutil.parser.parse(t) for t in curtain_times]
 

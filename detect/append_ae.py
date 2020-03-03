@@ -65,7 +65,7 @@ class Append_AE:
         Saves the edited catalog to save_name which is the same as 
         self.catalog_name by default.
         """
-        self.cat.to_csv(self.cat_path, index=False)
+        self.cat.to_csv(self.cat_path)
         return
 
 if __name__ == '__main__':
