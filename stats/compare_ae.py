@@ -34,11 +34,17 @@ bin_width = 100
 bins = np.arange(0, 1200, bin_width)
 H_AE, _ = np.histogram(ae['AE'], density=True, bins=bins)
 H_c, _ = np.histogram(cat['AE'], density=True, bins=bins)
-H_diff = H_c - H_AE
+
+# Scale the curtain distribution by the total AE time. In other
+# words this normalized distribution is the distribution of
+# curtains assuming any AE index is equally likeliy to occur.
+H_scaled = H_c*(np.max(H_AE)/H_AE)
+H_scaled = H_scaled/(np.sum(H_scaled)*bin_width)
 
 fig, ax = plt.subplots()
 ax.step(bins[:-1], H_AE, where='post', label='All AE')
 ax.step(bins[:-1], H_c, where='post', label='Curtain AE')
+#ax.step(bins[:-1], H_scaled, where='post', label='Scaled curtain AE')
 ax.set(title='Distribution of all AE and curtain AE',
         xlabel='AE [nT]', ylabel='Probability density', xlim=(0, None))
 ax.legend()
