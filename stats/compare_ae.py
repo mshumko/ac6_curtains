@@ -36,14 +36,12 @@ H_AE, _ = np.histogram(ae['AE'], density=True, bins=bins)
 H_c, _ = np.histogram(cat['AE'], density=True, bins=bins)
 H_diff = H_c - H_AE
 
-fig, ax = plt.subplots(3, sharex=True, figsize=(8, 7))
-ax[0].hist(ae['AE'], density=True, bins=bins)
-ax[1].hist(cat['AE'], density=True, bins=bins)
-ax[2].bar(bins[:-1], H_diff, width=bin_width, align='edge')
-ax[0].set(ylabel='Probability density', title='All AE between 2014 and 2017')
-ax[1].set(ylabel='Probability density', title='Curtain AE')
-ax[2].set(ylabel='Probability density difference\ncurtain AE - all AE', 
-            xlabel='AE [nT]', title='Difference in the probability densities')
+fig, ax = plt.subplots()
+ax.step(bins[:-1], H_AE, where='post', label='All AE')
+ax.step(bins[:-1], H_c, where='post', label='Curtain AE')
+ax.set(title='Distribution of all AE and curtain AE',
+        xlabel='AE [nT]', ylabel='Probability density', xlim=(0, None))
+ax.legend()
 
 plt.tight_layout()
 plt.show()
