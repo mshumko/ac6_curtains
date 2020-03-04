@@ -34,7 +34,7 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
         self.cat.index = pd.to_datetime(self.cat.index)
         return
 
-    def loop(self, test_plots=True):
+    def loop(self, test_plots=False):
         """
         Loop over all of the days and find the peak width for each curtain.
         """
@@ -43,7 +43,8 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
                                 columns=['width_A', 'width_B'])
         current_date = pd.to_datetime('2014-01-01')
 
-        for i, (t0, row) in enumerate(self.cat.iterrows()):
+        #for t0, row in self.cat.iterrows():
+        for t0 in self.cat.index:
             # Load the data from this day if it has not already.
             if current_date != t0.date():
                 #daily_detections = detect_daily.DetectDailyCurtains(t0)
@@ -57,13 +58,33 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
             center_time_B = np.where(self.df_b['dateTime_shifted'] == t0)[0]
             assert ((len(center_time_A) == 1) and (len(center_time_B) == 1)), 'No matches found!'
             peak_id_window_dp = 10    
-            peak_A = np.argmax(self.df_a['dos1rate'][center_time_A[0]-peak_id_window_dp:center_time_A[0]+peak_id_window_dp])
-            peak_B = np.argmax(self.df_b['dos1rate'][center_time_B[0]-peak_id_window_dp:center_time_B[0]+peak_id_window_dp])    
+            # peak_A = np.argmax(self.df_a['dos1rate'][center_time_A[0]-peak_id_window_dp:
+            #                     center_time_A[0]+peak_id_window_dp])
+            # peak_B = np.argmax(self.df_b['dos1rate'][center_time_B[0]-peak_id_window_dp:
+            #                     center_time_B[0]+peak_id_window_dp])    
+            peak_A = self.df_a['dos1rate'][center_time_A[0]-peak_id_window_dp:
+                                        center_time_A[0]+peak_id_window_dp].argmax()+\
+                                            center_time_A[0]-peak_id_window_dp
+            peak_B = self.df_b['dos1rate'][center_time_B[0]-peak_id_window_dp:
+                                        center_time_B[0]+peak_id_window_dp].argmax()+\
+                                            center_time_B[0]-peak_id_window_dp
+            try:
+                widths_A, widths_B = self.calc_peak_width(peak_A, peak_B)
+            except ValueError as err:
+                if 'is not a valid peak' in str(err):
+                    print(err)
+                    continue
+                else:
+                    raise
 
-            widths_A, widths_B = self.calc_peak_width(peak_A, peak_B)
+            width_df.loc[t0, 'width_A'] = widths_A[0]*0.1
+            width_df.loc[t0, 'width_B'] = widths_B[0]*0.1
 
             if test_plots:
                 self.make_test_plot([peak_A, peak_B], [widths_A, widths_B])
+        
+        # Merge data frames
+        self.cat = self.cat.merge(width_df, left_index=True, right_index=True)
 
         return
 
@@ -106,6 +127,14 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
         plt.show()
         return
 
+    def save_catalog(self, catalog_name='same'):
+        if catalog_name == 'same':
+            catalog_name = self.catalog_name
+        catalog_path = os.path.join(dirs.CATALOG_DIR, catalog_name)
+        self.cat.to_csv(catalog_path)
+
+
 if __name__ == '__main__':
     c = Curtain_Width('AC6_curtains_baseline_method_sorted_v0.txt')
     c.loop()
+    c.save_catalog(catalog_name='test.csv')
