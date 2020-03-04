@@ -34,7 +34,7 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
         self.cat.index = pd.to_datetime(self.cat.index)
         return
 
-    def loop(self):
+    def loop(self, test_plots=True):
         """
         Loop over all of the days and find the peak width for each curtain.
         """
@@ -62,40 +62,49 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
 
             widths_A, widths_B = self.calc_peak_width(peak_A, peak_B)
 
-            plot_width = 10
-            plot_width_dp = plot_width//2*10
-            if plot_width:
-                plt.plot(self.df_a['dateTime'][center_time_A[0]-plot_width_dp:center_time_A[0]+plot_width_dp], 
-                        self.df_a['dos1rate'][center_time_A[0]-plot_width_dp:center_time_A[0]+plot_width_dp], 'r')
-                plt.plot(self.df_b['dateTime_shifted'][center_time_B[0]-plot_width_dp:center_time_B[0]+plot_width_dp], 
-                        self.df_b['dos1rate'][center_time_B[0]-plot_width_dp:center_time_B[0]+plot_width_dp], 'b')
-                plt.axvline(self.df_a['dateTime'][peak_A], c='r')
-                plt.axvline(self.df_b['dateTime_shifted'][peak_B], c='b')
-
-                plt.hlines(widths_A[1], 
-                            self.df_a['dateTime'][int(widths_A[2])], 
-                            self.df_a['dateTime'][int(widths_A[3])], 
-                            color="r", lw=3)
-                plt.hlines(widths_B[1], 
-                            self.df_b['dateTime_shifted'][int(widths_B[2])], 
-                            self.df_b['dateTime_shifted'][int(widths_B[3])], 
-                            color="b", lw=3)
-                # plt.hlines(*widths_B[1:], color="b")
-
-                plt.title(row.Lag_In_Track)
-                plt.show()
-            print(center_time_A, peak_A, center_time_B, peak_B)
-            #print(self.calc_peak_width(peak_A, peak_B))
+            if test_plots:
+                self.make_test_plot([peak_A, peak_B], [widths_A, widths_B])
 
         return
 
     def calc_peak_width(self, peak_A, peak_B):
         """
-
+        Use scipy's peak_widths function to estimate the peak width for 
+        the peaks in AC6A and AC6B time series using the topographic 
+        prominence.
         """
-        widths_A = scipy.signal.peak_widths(self.df_a['dos1rate'], [peak_A], rel_height=self.rel_height)
-        widths_B = scipy.signal.peak_widths(self.df_b['dos1rate'], [peak_B], rel_height=self.rel_height)
+        widths_A = scipy.signal.peak_widths(self.df_a['dos1rate'], [peak_A], 
+                                            rel_height=self.rel_height)
+        widths_B = scipy.signal.peak_widths(self.df_b['dos1rate'], [peak_B], 
+                                            rel_height=self.rel_height)
         return widths_A, widths_B
+
+    def make_test_plot(self, peak_idx, widths, plot_width_s = 10):
+        """
+        Make test plots to varify the peak width calculation.
+        peak_idx is an array of two elements representing the 
+        peaks from AC6A and B. widths argument is a two element
+        tuple containing the output from scipy.signal.find_peaks().
+        """
+        plot_width_dp = plot_width_s//2*10
+        _, ax = plt.subplots(2, sharex=True)
+        ax[0].plot(self.df_a['dateTime'][peak_idx[0]-plot_width_dp:peak_idx[0]+plot_width_dp], 
+                self.df_a['dos1rate'][peak_idx[0]-plot_width_dp:peak_idx[0]+plot_width_dp], 'r')
+        ax[1].plot(self.df_b['dateTime_shifted'][peak_idx[1]-plot_width_dp:peak_idx[1]+plot_width_dp], 
+                self.df_b['dos1rate'][peak_idx[1]-plot_width_dp:peak_idx[1]+plot_width_dp], 'b')
+        ax[0].axvline(self.df_a['dateTime'][peak_idx[0]], c='r')
+        ax[1].axvline(self.df_b['dateTime_shifted'][peak_idx[1]], c='b')
+
+        ax[0].hlines(widths[0][1], 
+                    self.df_a['dateTime'][int(widths[0][2])], 
+                    self.df_a['dateTime'][int(widths[0][3])], 
+                    color="r", lw=3)
+        ax[1].hlines(widths[1][1], 
+                    self.df_b['dateTime_shifted'][int(widths[1][2])], 
+                    self.df_b['dateTime_shifted'][int(widths[1][3])], 
+                    color="b", lw=3)
+        plt.show()
+        return
 
 if __name__ == '__main__':
     c = Curtain_Width('AC6_curtains_baseline_method_sorted_v0.txt')
