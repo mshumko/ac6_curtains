@@ -117,14 +117,14 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
         ax[0].axvline(self.df_a['dateTime'][peak_idx[0]], c='r')
         ax[1].axvline(self.df_b['dateTime_shifted'][peak_idx[1]], c='b')
 
-        # ax[0].hlines(widths[0][1], 
-        #             self.df_a['dateTime'][int(widths[0][2])], 
-        #             self.df_a['dateTime'][int(widths[0][3])], 
-        #             color="r", lw=3)
-        # ax[1].hlines(widths[1][1], 
-        #             self.df_b['dateTime_shifted'][int(widths[1][2])], 
-        #             self.df_b['dateTime_shifted'][int(widths[1][3])], 
-        #             color="b", lw=3)
+        ax[0].hlines(widths[0][1], 
+                    self.df_a['dateTime'][int(widths[0][2])], 
+                    self.df_a['dateTime'][int(widths[0][3])], 
+                    color="r", lw=3)
+        ax[1].hlines(widths[1][1], 
+                    self.df_b['dateTime_shifted'][int(widths[1][2])], 
+                    self.df_b['dateTime_shifted'][int(widths[1][3])], 
+                    color="b", lw=3)
         plt.show()
         return
 
@@ -137,5 +137,5 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
 
 if __name__ == '__main__':
     c = Curtain_Width('AC6_curtains_baseline_method_sorted_v0.txt')
-    c.loop(test_plots=True)
+    c.loop(test_plots=False)
     c.save_catalog()
