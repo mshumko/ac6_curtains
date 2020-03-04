@@ -41,33 +41,34 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
         width_df = pd.DataFrame(data=np.nan*np.ones((self.cat.shape[0], 2)),
                                 index=self.cat.index,
                                 columns=['width_A', 'width_B'])
-        current_date = pd.to_datetime('2014-01-01')
+        self.date = pd.to_datetime('2014-01-01')
 
         #for t0, row in self.cat.iterrows():
         for t0 in self.cat.index:
             # Load the data from this day if it has not already.
-            if current_date != t0.date():
+            if self.date != t0.date():
+                print(f'Loading data from {t0.date()}')
                 #daily_detections = detect_daily.DetectDailyCurtains(t0)
                 self.date = t0.date()
                 self.load_data(t0)
                 self.shift_time()
                 self.align_space_time_stamps()
-                current_date = t0
-
+                #current_date = t0
+                
             center_time_A = np.where(self.df_a['dateTime'] == t0)[0]
             center_time_B = np.where(self.df_b['dateTime_shifted'] == t0)[0]
             assert ((len(center_time_A) == 1) and (len(center_time_B) == 1)), 'No matches found!'
             peak_id_window_dp = 10    
-            # peak_A = np.argmax(self.df_a['dos1rate'][center_time_A[0]-peak_id_window_dp:
-            #                     center_time_A[0]+peak_id_window_dp])
-            # peak_B = np.argmax(self.df_b['dos1rate'][center_time_B[0]-peak_id_window_dp:
-            #                     center_time_B[0]+peak_id_window_dp])    
-            peak_A = self.df_a['dos1rate'][center_time_A[0]-peak_id_window_dp:
-                                        center_time_A[0]+peak_id_window_dp].argmax()+\
-                                            center_time_A[0]-peak_id_window_dp
-            peak_B = self.df_b['dos1rate'][center_time_B[0]-peak_id_window_dp:
-                                        center_time_B[0]+peak_id_window_dp].argmax()+\
-                                            center_time_B[0]-peak_id_window_dp
+            peak_A = np.argmax(self.df_a['dos1rate'][center_time_A[0]-peak_id_window_dp:
+                                center_time_A[0]+peak_id_window_dp])
+            peak_B = np.argmax(self.df_b['dos1rate'][center_time_B[0]-peak_id_window_dp:
+                                center_time_B[0]+peak_id_window_dp])    
+            # peak_A = self.df_a['dos1rate'][center_time_A[0]-peak_id_window_dp:
+            #                             center_time_A[0]+peak_id_window_dp].argmax()+\
+            #                                 center_time_A[0]-peak_id_window_dp
+            # peak_B = self.df_b['dos1rate'][center_time_B[0]-peak_id_window_dp:
+            #                             center_time_B[0]+peak_id_window_dp].argmax()+\
+            #                                 center_time_B[0]-peak_id_window_dp
             try:
                 widths_A, widths_B = self.calc_peak_width(peak_A, peak_B)
             except ValueError as err:
@@ -100,7 +101,7 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
                                             rel_height=self.rel_height)
         return widths_A, widths_B
 
-    def make_test_plot(self, peak_idx, widths, plot_width_s = 10):
+    def make_test_plot(self, peak_idx, widths, plot_width_s=10):
         """
         Make test plots to varify the peak width calculation.
         peak_idx is an array of two elements representing the 
@@ -116,14 +117,14 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
         ax[0].axvline(self.df_a['dateTime'][peak_idx[0]], c='r')
         ax[1].axvline(self.df_b['dateTime_shifted'][peak_idx[1]], c='b')
 
-        ax[0].hlines(widths[0][1], 
-                    self.df_a['dateTime'][int(widths[0][2])], 
-                    self.df_a['dateTime'][int(widths[0][3])], 
-                    color="r", lw=3)
-        ax[1].hlines(widths[1][1], 
-                    self.df_b['dateTime_shifted'][int(widths[1][2])], 
-                    self.df_b['dateTime_shifted'][int(widths[1][3])], 
-                    color="b", lw=3)
+        # ax[0].hlines(widths[0][1], 
+        #             self.df_a['dateTime'][int(widths[0][2])], 
+        #             self.df_a['dateTime'][int(widths[0][3])], 
+        #             color="r", lw=3)
+        # ax[1].hlines(widths[1][1], 
+        #             self.df_b['dateTime_shifted'][int(widths[1][2])], 
+        #             self.df_b['dateTime_shifted'][int(widths[1][3])], 
+        #             color="b", lw=3)
         plt.show()
         return
 
@@ -136,5 +137,5 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
 
 if __name__ == '__main__':
     c = Curtain_Width('AC6_curtains_baseline_method_sorted_v0.txt')
-    c.loop()
-    c.save_catalog(catalog_name='test.csv')
+    c.loop(test_plots=True)
+    c.save_catalog()
