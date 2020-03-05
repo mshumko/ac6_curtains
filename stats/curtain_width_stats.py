@@ -11,11 +11,14 @@ Script to calculate the curtain width statistics.
 
 catalog_name='AC6_curtains_baseline_method_sorted_v0.txt'
 catalog_path = os.path.join(dirs.CATALOG_DIR, catalog_name)
-
 cat = pd.read_csv(catalog_path)
 thresh=0.25
 cat_similar_width = cat[((cat['width_A']/cat['width_B'] > 1+thresh) | 
                         (cat['width_B']/cat['width_A'] > 1+thresh))]
+
+max_size=21
+print(f'{100*(sum(cat["width_A"] < max_size/7.5))/len(cat["width_A"])}% '
+      f'of curtains are less than {max_size} km wide.')
 
 fig, ax = plt.subplots(3, sharex=True)
 bins = np.arange(0, 5, 0.25)
