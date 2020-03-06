@@ -44,7 +44,7 @@ H_scaled = H_scaled/(np.sum(H_scaled)*ae_bin_width)
 # Curtain width histogram
 size_bin_width_km = 2
 size_bins = np.arange(0, 35, size_bin_width_km)
-H_size, _ = np.histogram(7.5*cat['width_A'], density=True, bins=size_bins)
+H_size, _ = np.histogram(7.5*cat['width_B'], density=True, bins=size_bins)
 
 
 fig, ax = plt.subplots(1, 2, figsize=(10,4))
