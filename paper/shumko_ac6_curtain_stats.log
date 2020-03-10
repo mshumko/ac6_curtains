@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  9 MAR 2020 14:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  10 MAR 2020 10:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -303,251 +303,374 @@ tify cur-tains as mi-croburst
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 86.
+(Font)              size <10.95> substituted on input line 85.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 86.
+(Font)              size <10.95> substituted on input line 85.
+
+
+Overfull \hbox (11.01566pt too wide) in paragraph at lines 96--96
+[]\OT1/cmr/m/n/10 Introduce mi-crobursts and their ef-fect on at-mo-spheric che
+m-istry. Maybe men-tion 
+ []
+
+
+Overfull \hbox (5.01572pt too wide) in paragraph at lines 96--96
+[]\OT1/cmr/m/n/10 Introduce cur-tains and the pre-vail-ing hy-poth-e-sis link-i
+ng cur-tains to mi-crobursts  
+ []
+
+
+Overfull \hbox (18.93239pt too wide) in paragraph at lines 96--96
+[]\OT1/cmr/m/n/10 Our goal is to study three sta-tis-ti-cal prop-er-ties of cur
+-tains: lo-ca-tion, spa-tial width, 
+ []
+
+
+Overfull \hbox (3.54338pt too wide) in paragraph at lines 96--96
+\OT1/cmr/m/n/10 and pre-ferred ge-o-mag-netic con-di-tions. Lastly we will use 
+the SAA to de-ter-mine 
+ []
+
+
+Overfull \hbox (16.55736pt too wide) in paragraph at lines 105--105
+[]\OT1/cmr/m/n/10 Mention sep-a-ra-tion con-firmed with GPS and in-track lag ca
+n be read-ily cal-cu-lated  
+ []
+
+
+Overfull \hbox (2.68227pt too wide) in paragraph at lines 117--117
+[]\OT1/cmr/m/n/10 Shifted the AC6B time se-ries by the in-track lag and looked 
+for times when the 
+ []
+
+
+Overfull \hbox (1.87663pt too wide) in paragraph at lines 117--117
+[]\OT1/cmr/m/n/10 the cor-re-lated counts were bursty - de-fined as greater tha
+n two stan-dard de-vi-a- 
+ []
+
+
+Overfull \hbox (20.349pt too wide) in paragraph at lines 117--117
+[]\OT1/cmr/m/n/10 Events were au-to-mat-i-cally iden-ti-fied and checked by an 
+au-thor to cat-a-log 1634 cur- 
+ []
 
 <figures/fig1.pdf, id=18, 987.20822pt x 361.35pt>
 File: figures/fig1.pdf Graphic file (type pdf)
 <use figures/fig1.pdf>
-Package pdftex.def Info: figures/fig1.pdf  used on input line 102.
+Package pdftex.def Info: figures/fig1.pdf  used on input line 120.
 (pdftex.def)             Requested size: 397.48499pt x 145.49132pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 103.
+(Font)              <9> on input line 121.
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--103
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
 \OT1/cmr/m/n/9 time in the top row and at the same po-si-tion in the bot-tom ro
 w. To show the data at the same
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--103
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
 \OT1/cmr/m/n/9 po-si-tion the time se-ries data from one space-craft was shifte
 d by the in-track lag and an-no-tated
  []
 
 
-Overfull \hbox (7.07108pt too wide) in paragraph at lines 108--109
+Overfull \hbox (6.9323pt too wide) in paragraph at lines 134--134
+[]\OT1/cmr/m/n/10 Show cur-tain width and com-ment how nar-row they are. Whethe
+r they are drift- 
+ []
+
+
+Overfull \hbox (12.32126pt too wide) in paragraph at lines 134--134
+\OT1/cmr/m/n/10 ing or lo-cally pre-cip-i-tat-ing, they must have a very fil-a-
+men-tary struc-ture that per- 
+ []
+
+
+Overfull \hbox (5.37666pt too wide) in paragraph at lines 134--134
+[]\OT1/cmr/m/n/10 Show, and com-ment on the Au-ro-ral elec-tro-ject strengths w
+hen each cur-tain was 
+ []
+
+
+Overfull \hbox (0.2378pt too wide) in paragraph at lines 134--134
+[]\OT1/cmr/m/n/10 Discuss the SAA, BLC, and show the cur-tains the the BLC plot
+. Men-tion how 
+ []
+
+
+Overfull \hbox (3.84889pt too wide) in paragraph at lines 134--134
+\OT1/cmr/m/n/10 these elec-trons must have been pre-cip-i-tat-ing for mul-ti-pl
+e sec-onds, over an or-der 
+ []
+
+
+Overfull \hbox (7.07108pt too wide) in paragraph at lines 136--137
 []\OT1/cmr/m/n/10 In the spirit of brevity, we lim-ited the scope of these re-s
 ults to an-swer the fol-low- 
  []
 
-<figures/ac6_curtains_ae_width_dist.pdf, id=19, 722.7pt x 289.08pt>
+[2]
+<figures/ac6_curtains_ae_width_dist.pdf, id=22, 722.7pt x 289.08pt>
 File: figures/ac6_curtains_ae_width_dist.pdf Graphic file (type pdf)
 <use figures/ac6_curtains_ae_width_dist.pdf>
 Package pdftex.def Info: figures/ac6_curtains_ae_width_dist.pdf  used on input 
-line 117.
+line 145.
 (pdftex.def)             Requested size: 397.48499pt x 158.99448pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--118
+Underfull \hbox (badness 10000) in paragraph at lines 146--146
 []\OT1/cmr/bx/n/9 Figure  2. \OT1/cmr/m/n/9 Dis-tri-bu-tion of cur-tain in-trac
 k width (AC6 in-track sep-a-ra-tion mostly in lat-i-tude)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--118
+Underfull \hbox (badness 10000) in paragraph at lines 146--146
 \OT1/cmr/m/n/9 in panel a. Panel b shows the dis-tri-bu-tion of the Au-ro-ral E
 lec-tro-ject (AE) in-dex from 2014 to
  []
 
-<figures/fig2.pdf, id=20, 987.20822pt x 361.35pt>
+<figures/fig2.pdf, id=23, 987.20822pt x 361.35pt>
 File: figures/fig2.pdf Graphic file (type pdf)
 <use figures/fig2.pdf>
-Package pdftex.def Info: figures/fig2.pdf  used on input line 124.
+Package pdftex.def Info: figures/fig2.pdf  used on input line 151.
 (pdftex.def)             Requested size: 397.48499pt x 145.49132pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
 []\OT1/cmr/bx/n/9 Figure  3. \OT1/cmr/m/n/9 Dis-tri-bu-tion of cur-tains as a f
 unc-tion of L and MLT. To avoid noisy nor-mal-iza-tion
  []
 
-<figures/fig3.pdf, id=21, 650.43pt x 490.7133pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--152
+\OT1/cmr/m/n/9 scal-ing, bins with less than $10\OML/cmm/m/it/9 ; \OT1/cmr/m/n/
+9 000$ 10 Hz sam-ples were not nor-mal-ized in panel b. []Check that
+ []
+
+<figures/curtain_L_vs_AE.pdf, id=24, 462.52798pt x 346.89601pt>
+File: figures/curtain_L_vs_AE.pdf Graphic file (type pdf)
+<use figures/curtain_L_vs_AE.pdf>
+Package pdftex.def Info: figures/curtain_L_vs_AE.pdf  used on input line 157.
+(pdftex.def)             Requested size: 397.48499pt x 298.12889pt.
+<figures/fig3.pdf, id=25, 650.43pt x 490.7133pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
-Package pdftex.def Info: figures/fig3.pdf  used on input line 132.
+Package pdftex.def Info: figures/fig3.pdf  used on input line 163.
 (pdftex.def)             Requested size: 397.48499pt x 299.88876pt.
 
-Overfull \hbox (14.2933pt too wide) in paragraph at lines 138--139
-[]\OT1/cmr/m/n/10 Here are two part-ing ques-tions to con-sider that are not co
-n-sid-ered here. Why were 
+Overfull \hbox (6.23788pt too wide) in paragraph at lines 176--176
+[]\OT1/cmr/m/n/10 Curtains are spa-tially small and must be around a few hun-dr
+ed km at the equa- 
  []
 
 
-Overfull \hbox (16.76567pt too wide) in paragraph at lines 138--139
-\OT1/cmr/m/n/10 some cur-tains shifted slightly? Per-haps it was due to the mov
-e-ment of the mag-netic field 
+Overfull \hbox (9.23795pt too wide) in paragraph at lines 176--176
+[]\OT1/cmr/m/n/10 curtain phe-nom-ena orig-i-nates in the outer ra-di-a-tion be
+lt, and ob-served rel-a-tively 
  []
 
 
-Overfull \hbox (1.15457pt too wide) in paragraph at lines 138--139
-\OT1/cmr/m/n/10 lines. Also do cur-tains have a cor-re-spond-ing vi-sual sig-na
--ture on the ground? The an- 
+Overfull \hbox (14.90451pt too wide) in paragraph at lines 176--176
+\OT1/cmr/m/n/10 more in the evening than morn-ing re-gions. Lim-ited AC6 cov-er
+-age pre-vents a com- 
  []
 
-[2 <./figures/fig1.pdf>] [3 <./figures/ac6_curtains_ae_width_dist.pdf> <./figur
-es/fig2.pdf
 
-pdfTeX warning: pdflatex (file ./figures/fig2.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
+Underfull \vbox (badness 1215) has occurred while \output is active []
+
+ [3 <./figures/fig1.pdf> <./figures/ac6_curtains_ae_width_dist.pdf
+
+pdfTeX warning: pdflatex (file ./figures/ac6_curtains_ae_width_dist.pdf): PDF i
+nclusion: multiple pdfs with page group included in a single page
+>] [4 <./figures/fig2.pdf> <./figures/curtain_L_vs_AE.pdf
+
+pdfTeX warning: pdflatex (file ./figures/curtain_L_vs_AE.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
 >]
-Overfull \hbox (1.48782pt too wide) in paragraph at lines 145--147
+Overfull \hbox (2.23788pt too wide) in paragraph at lines 176--176
+[]\OT1/cmr/m/n/10 some cur-tains lo-cally pre-cip-i-tate for an ex-tended pe-ri
+od of time. AC6 can't an- 
+ []
+
+
+Overfull \hbox (25.29344pt too wide) in paragraph at lines 176--176
+\OT1/cmr/m/n/10 swer this ques-tion, but cur-tains could pro-vide a sub-stan-ti
+al source of HOx and NOX 
+ []
+
+
+Overfull \hbox (5.96002pt too wide) in paragraph at lines 176--176
+\OT1/cmr/m/n/10 molecules re-spon-si-ble for de-stroy-ing ozone. We need AC6 wi
+th en-ergy and pitch 
+ []
+
+
+Overfull \hbox (1.48782pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
  []
 
 
-Overfull \hbox (20.73793pt too wide) in paragraph at lines 145--147
+Overfull \hbox (20.73793pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 The Aerospace Cor-po-ra-tion who de-signed, built, and op-er-at
 ed AC6. M. Shumko was sup- 
  []
 
 
-Overfull \hbox (21.65457pt too wide) in paragraph at lines 145--147
+Overfull \hbox (21.65457pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 ported by NASA Head-quar-ters un-der the NASA Earth and Space S
 ci-ence Fel-low-ship Pro- 
  []
 
 
-Overfull \hbox (11.613pt too wide) in paragraph at lines 145--147
+Overfull \hbox (11.613pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 gram - Grant 80NSSC18K1204. D.L. Turner is thank-ful for sup-po
 rt from the Van Allen 
  []
 
 
-Overfull \hbox (10.73798pt too wide) in paragraph at lines 145--147
+Overfull \hbox (10.73798pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 Probes mis-sion and a NASA grant (Prime award num-ber: 80NSSC19
 K0280). The work 
  []
 
 
-Overfull \hbox (5.73795pt too wide) in paragraph at lines 145--147
+Overfull \hbox (5.73795pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 at The Aerospace Cor-po-ra-tion was sup-ported in part by RBSP-
 ECT fund-ing pro-vided 
  []
 
 
-Overfull \hbox (17.79353pt too wide) in paragraph at lines 145--147
+Overfull \hbox (17.79353pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 by JHU/APL con-tract 967399 un-der NASA's Prime con-tract NAS50
 1072. The AC6 data 
  []
 
 
-Overfull \hbox (12.71022pt too wide) in paragraph at lines 145--147
+Overfull \hbox (12.71022pt too wide) in paragraph at lines 182--184
 \OT1/cmr/m/n/10 is avail-able at http://rbspgway.jhuapl.edu/ac6 and the IRBEM-L
 ib ver-sion used for this 
  []
 
 
-Overfull \hbox (12.34901pt too wide) in paragraph at lines 148--149
+Overfull \hbox (12.34901pt too wide) in paragraph at lines 187--188
 []\OT1/cmr/m/n/10 Title: Sta-tis-ti-cal Prop-er-ties of Curtains--Latitudinally
 -Narrow and Per-sis-tent Elec- 
  []
 
 
-Overfull \hbox (11.04341pt too wide) in paragraph at lines 150--151
+Overfull \hbox (11.04341pt too wide) in paragraph at lines 189--190
 []\OT1/cmr/m/n/10 This study lever-ages AC6, a multi-spacecraft mis-sion, to in
 -ter-pret and un-der-stand 
  []
 
-
-Overfull \hbox (23.32124pt too wide) in paragraph at lines 152--153
+[5 <./figures/fig3.pdf>]
+Overfull \hbox (23.32124pt too wide) in paragraph at lines 191--192
 []\OT1/cmr/m/n/10 This study lever-ages the asym-me-try in Earth's mag-netic fi
 eld. The asym-met-ric mag- 
  []
 
 
-Overfull \hbox (20.09906pt too wide) in paragraph at lines 154--155
+Overfull \hbox (20.09906pt too wide) in paragraph at lines 193--194
 []\OT1/cmr/m/n/10 Particles that im-pact the at-mo-sphere are lost dur-ing that
  bounce mo-tion. We found 
  []
 
 
-Overfull \hbox (11.79344pt too wide) in paragraph at lines 154--155
+Overfull \hbox (11.79344pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 cur-tains in the bounce loss cone, a re-gion in the North At-la
 ntic near and above Ice-land.  
  []
 
 
-Overfull \hbox (4.26558pt too wide) in paragraph at lines 156--157
+Overfull \hbox (4.26558pt too wide) in paragraph at lines 195--196
 []\OT1/cmr/m/n/10 The bounce loss cone is mag-net-i-cally con-nected to the SAA
 , where Earth's mag- 
  []
 
 
-Overfull \hbox (4.04333pt too wide) in paragraph at lines 156--157
+Overfull \hbox (4.04333pt too wide) in paragraph at lines 195--196
 \OT1/cmr/m/n/10 netic field is weak-est near Earth's sur-face. A par-ti-cle ob-
 served in the blc in the north- 
  []
 
 
-Overfull \hbox (1.26566pt too wide) in paragraph at lines 156--157
+Overfull \hbox (1.26566pt too wide) in paragraph at lines 195--196
 \OT1/cmr/m/n/10 ern hemi-sphere will de-scend be-low 100 km al-ti-tude. At sub-
 100 km al-ti-tudes the par- 
  []
 
 
-Overfull \hbox (10.15456pt too wide) in paragraph at lines 156--157
+Overfull \hbox (10.15456pt too wide) in paragraph at lines 195--196
 \OT1/cmr/m/n/10 ti-cle has a high chance of en-coun-ter-ing and scat-ter-ing wi
 th the at-mo-sphere and be lost.  
  []
 
 
-Underfull \vbox (badness 6188) has occurred while \output is active []
-
- [4 <./figures/fig3.pdf>]
-Overfull \hbox (1.18224pt too wide) in paragraph at lines 158--159
+Overfull \hbox (1.18224pt too wide) in paragraph at lines 197--198
 []\OT1/cmr/m/n/10 We found cur-tain elec-tions that, when given the chance to e
 x-e-cute their cycli-cal 
  []
 
 
-Overfull \hbox (12.23787pt too wide) in paragraph at lines 158--159
+Overfull \hbox (12.23787pt too wide) in paragraph at lines 197--198
 \OT1/cmr/m/n/10 bounce mo-tion, will de-scend be-low Earth's sur-face in the SA
 A. An elec-tion can not sur- 
  []
 
 
-Overfull \hbox (14.23793pt too wide) in paragraph at lines 160--161
+Overfull \hbox (14.23793pt too wide) in paragraph at lines 199--200
 []\OT1/cmr/m/n/10 Write the pa-per and ask the ques-tion: "What is this pa-per 
 re-ally about?" Not just 
  []
 
 
-Overfull \hbox (6.84908pt too wide) in paragraph at lines 160--161
+Overfull \hbox (6.84908pt too wide) in paragraph at lines 199--200
 \OT1/cmr/m/n/10 cur-tains, but un-cov-er-ing some-thing un-ex-pected that has b
 een ob-served and over-looked 
  []
 
 
-Overfull \hbox (11.23787pt too wide) in paragraph at lines 162--163
+Overfull \hbox (11.23787pt too wide) in paragraph at lines 201--202
 []\OT1/cmr/m/n/10 Are cur-tains re-lated to au-rora? This is a good question---
 one that is not per-ti-nent 
  []
 
 
-Overfull \hbox (15.01567pt too wide) in paragraph at lines 164--171
-[]\OT1/cmr/m/n/10 Sections: - In-tro-duc-tion - in-stru-men-ta-tion - cur-tain 
-iden-ti-fi-ca-tion - sta-tis-ti-cal prop- 
+Overfull \hbox (14.2933pt too wide) in paragraph at lines 203--204
+[]\OT1/cmr/m/n/10 Here are two part-ing ques-tions to con-sider that are not co
+n-sid-ered here. Why were 
+ []
+
+
+Overfull \hbox (16.76567pt too wide) in paragraph at lines 203--204
+\OT1/cmr/m/n/10 some cur-tains shifted slightly? Per-haps it was due to the mov
+e-ment of the mag-netic field 
+ []
+
+
+Overfull \hbox (1.15457pt too wide) in paragraph at lines 203--204
+\OT1/cmr/m/n/10 lines. Also do cur-tains have a cor-re-spond-ing vi-sual sig-na
+-ture on the ground? The an- 
  []
 
 No file shumko_ac6_curtain_stats.bbl.
 No file shumko_ac6_curtain_stats.bbl.
-[5] (./shumko_ac6_curtain_stats.aux)
+[6] (./shumko_ac6_curtain_stats.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 3349 strings out of 492982
- 45809 string characters out of 6134897
- 113502 words of memory out of 5000000
- 6852 multiletter control sequences out of 15000+600000
+ 3354 strings out of 492982
+ 45979 string characters out of 6134897
+ 115502 words of memory out of 5000000
+ 6856 multiletter control sequences out of 15000+600000
  9435 words of font info for 34 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,764b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,764b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -561,10 +684,10 @@ fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (5 pages, 388528 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (6 pages, 403580 bytes).
 PDF statistics:
- 271 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 314 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -59,13 +59,15 @@ ax[2] = plt.subplot(133, projection='polar')
 cat_dist, mlt_bins, lm_bins = np.histogram2d(cat.MLT_OPQ, cat.Lm_OPQ,
                      bins=[bins['MLT_OPQ'], bins['Lm_OPQ']])
 
-scaling_factors = (np.max(norm)/norm).T
+cat_dist[cat_dist ==0] = np.nan
+norm[norm == 0] = np.nan
+
+scaling_factors = (np.nanmax(norm)/norm).T
 # Set the sectors with no observations or little observations to NaN.
 scaling_factors[np.isinf(scaling_factors)] = np.nan
 scaling_factors[norm.T < low_exposure_thresh] = np.nan
 cat_norm = cat_dist*scaling_factors
 
-#cat_dist = np.ma.masked_invalid(scaling_factors)
 
 mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 
