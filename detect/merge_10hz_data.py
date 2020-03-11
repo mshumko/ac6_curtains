@@ -8,7 +8,6 @@ import numpy as np
 import detect_daily
 import dirs
 
-# Before: 22.1 GB for all files.
 class CombineData():
     def __init__(self, save_dir=None):
         """
