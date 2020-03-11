@@ -9,7 +9,7 @@ import os
 import pandas as pd
 
 from mission_tools.ac6.read_ac_data import read_ac_data_wrapper
-from ac6_microburst_scale_sizes.validation.plot_microbursts import PlotMicrobursts
+# from ac6_microburst_scale_sizes.validation.plot_microbursts import PlotMicrobursts
 
 plt.rcParams.update({'font.size': 15})
 
@@ -40,7 +40,7 @@ class PlotCurtains:
 
         for i, (t0, sc) in enumerate(zip(self.t0_times, self.sc_shift)): # Loop over t0_times.
             # First load AC6 10Hz data for that day
-            self.load_ten_hz_data(t0.date())
+            self.load_data(t0)
             row = self.ac6a_data[self.ac6a_data['dateTime'] == t0]
             assert len(row) > 0, 'None or multiple rows found!'
             # Make plots for that day.
@@ -56,6 +56,8 @@ class PlotCurtains:
                             transform=self.ax[0, i].transAxes, va='top', ha='right', fontsize=15)
             self.ax[1, i].text(0.99, 0.99, f'dt = {abs(int(round(row.Lag_In_Track)))} s',
                             transform=self.ax[1, i].transAxes, va='top', ha='right', fontsize=15)
+
+            print(f'AC6A is ahead by {row["Lag_In_Track"]} s')
             
         plt.show()
         return
@@ -117,20 +119,12 @@ class PlotCurtains:
         #     plt.savefig(os.path.join(self.plot_save_dir, save_name))
         return
 
-    def load_ten_hz_data(self, day):
+    def load_data(self, day):
         """
-        Load the 10 Hz AC6 data from both spacecraft on date.
+        Load the 10 Hz AC6 data from both spacecraft from a day.
         """
-        time_keys = ['year', 'month', 'day', 'hour', 'minute', 'second']
-        dayStr = '{0:%Y%m%d}'.format(day)
-        pathA = os.path.join(AC6_DATA_PATH('a'), 
-                'AC6-A_{}_L2_10Hz_V03.csv'.format(dayStr))
-        pathB = os.path.join(AC6_DATA_PATH('b'), 
-                'AC6-B_{}_L2_10Hz_V03.csv'.format(dayStr))
-        self.ac6a_data = pd.read_csv(pathA, na_values='-1e+31')
-        self.ac6a_data['dateTime'] = pd.to_datetime(self.ac6a_data[time_keys])
-        self.ac6b_data = pd.read_csv(pathB, na_values='-1e+31')
-        self.ac6b_data['dateTime'] = pd.to_datetime(self.ac6b_data[time_keys])
+        self.ac6a_data = read_ac_data_wrapper('A', day)
+        self.ac6b_data = read_ac_data_wrapper('B', day)
         return
 
     def _plot_setup(self):
@@ -165,7 +159,6 @@ class PlotCurtains:
         """
         Get the 
         """
-        print(row['dateTime'].iat[0], self.ac6b_data['dateTime'].iat[0])
         df_time_a = self.ac6a_data[
                             (self.ac6a_data['dateTime'] > row['dateTime'].iat[0]-self.plot_width) & 
                             (self.ac6a_data['dateTime'] < row['dateTime'].iat[0]+self.plot_width)
