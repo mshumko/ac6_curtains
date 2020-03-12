@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  10 MAR 2020 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  11 MAR 2020 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -373,13 +373,25 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 Underfull \hbox (badness 10000) in paragraph at lines 121--121
 \OT1/cmr/m/n/9 time in the top row and at the same po-si-tion in the bot-tom ro
-w. To show the data at the same
+w. The AC6-A data, shown in
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 121--121
-\OT1/cmr/m/n/9 po-si-tion the time se-ries data from one space-craft was shifte
-d by the in-track lag and an-no-tated
+\OT1/cmr/m/n/9 these four ex-am-ples with red curves, was $\OML/cmm/m/it/9 s$ \
+OT1/cmr/m/n/9 kilo-me-ters ahead of AC6-B. To show the data at the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+\OT1/cmr/m/n/9 same po-si-tion the time se-ries data from one space-craft was s
+hifted by the in-track lag and an-no-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+\OT1/cmr/m/n/9 tated by dt. These ex-am-ples show cur-tain pre-cip-i-ta-tion th
+at was highly cor-re-lated for up to 26
  []
 
 
@@ -483,7 +495,7 @@ Overfull \hbox (14.90451pt too wide) in paragraph at lines 177--177
  []
 
 
-Underfull \vbox (badness 1215) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./figures/fig1.pdf> <./figures/ac6_curtains_ae_width_dist.pdf
 
@@ -560,15 +572,15 @@ ib ver-sion used for this
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./figures/fig3.pdf>]
 Overfull \hbox (12.34901pt too wide) in paragraph at lines 188--189
 []\OT1/cmr/m/n/10 Title: Sta-tis-ti-cal Prop-er-ties of Curtains--Latitudinally
 -Narrow and Per-sis-tent Elec- 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./figures/fig3.pdf>]
 Overfull \hbox (11.04341pt too wide) in paragraph at lines 190--191
 []\OT1/cmr/m/n/10 This study lever-ages AC6, a multi-spacecraft mis-sion, to in
 -ter-pret and un-der-stand 
@@ -675,7 +687,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  3354 strings out of 492982
  45979 string characters out of 6134897
- 115502 words of memory out of 5000000
+ 116502 words of memory out of 5000000
  6856 multiletter control sequences out of 15000+600000
  9435 words of font info for 34 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
@@ -693,7 +705,7 @@ fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (6 pages, 403685 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (6 pages, 404282 bytes).
 PDF statistics:
  314 PDF objects out of 1000 (max. 8388607)
  87 compressed objects within 1 object stream
