@@ -118,7 +118,7 @@ Outline
 
 \begin{figure}
 \includegraphics[width=\textwidth]{fig1.pdf}
-\caption{Four examples showing the AC6 $> 30$ keV electron data taken by AC6 at the same time in the top row and at the same position in the bottom row. The AC6-A data, shown in these four examples with red curves, was $s$ kilometers ahead of AC6-B. To show the data at the same position the time series data from one spacecraft was shifted by the in-track lag and annotated by dt. These examples show curtain precipitation that was highly correlated for up to 26 seconds.}
+\caption{Four examples showing the AC6 $> 30$ keV electron data taken by AC6 at the same time in the top row and at the same position in the bottom row. AC6-A, whose data is shown with red curves, was $s$ kilometers ahead of AC6-B. To show the data at the same position the time series data from one spacecraft was shifted by the in-track lag and annotated by dt. These examples show curtain precipitation that was highly correlated for up to 26 seconds.}
 \label{fig1}
 \end{figure}
 
@@ -142,20 +142,30 @@ In the spirit of brevity, we limited the scope of these results to answer the fo
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=\textwidth]{ac6_curtains_ae_width_dist.pdf}
-\caption{Distribution of curtain in-track width (AC6 in-track separation mostly in latitude) in panel a. Panel b shows the distribution of the Auroral Electroject (AE) index from 2014 to 2017 in black, and the AE index when curtains were observed by the thicker red curve.}
+\includegraphics[width=\textwidth]{ac6_curtain_microburst_width_dist.pdf}
+\caption{Size distributions of curtains (AC6 in-track separation mostly in latitude) in black and microbursts in red as a function of AC6 in-track width. Microburst distribution adopted from \citeA{Shumko2019}.}
+\label{ae_width_dist}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{ac6_curtain_AE_dist.pdf}
+\caption{The distribution of the Auroral Electroject index from 2014 to 2017 shown by the thick black curve, and the Auroral Electroject index when curtains were observed by the red curve.}
 \label{ae_width_dist}
 \end{figure}
 
 \begin{figure}
 \includegraphics[width=\textwidth]{fig2.pdf}
-\caption{Distribution of curtains as a function of L and MLT. To avoid noisy normalization scaling, bins with less than $10,000$ 10 Hz samples were not normalized in panel b. \textcolor{red}{Check that there is no bug interpolating MLT between 24 and 0 hours.}}
-\label{fig2}
+\caption{Distribution of curtains as a function of L and MLT. To avoid noisy normalization scaling, bins with less than $10,000$ 10 Hz samples were not normalized in panel b.}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{fig2_2.pdf}
+\caption{Distribution of curtains as a function of L and MLT. White bins in panels a and c have 0 curtain detections or 10 Hz samples. To avoid noisy normalization scaling, bins with less than $10,000$ 10 Hz samples were not normalized in panel b. \textcolor{red}{Or show this version?}}
 \end{figure}
 
 \begin{figure}
 \includegraphics[width=\textwidth]{curtain_L_vs_AE.pdf}
-\caption{\textcolor{red}{Or show this figure?}}
+\caption{\textcolor{red}{What about this figure?}}
 \end{figure}
 
 \subsection{Local Atmospheric Precipitation}
@@ -204,6 +214,6 @@ Are curtains related to aurora? This is a good question---one that is not pertin
 Here are two parting questions to consider that are not considered here. Why were some curtains shifted slightly? Perhaps it was due to the movement of the magnetic field lines. Also do curtains have a corresponding visual signature on the ground? The answer to this question will show if curtains are related to the aurora.
 
 \bibliography{/home/mike/Dropbox/0_firebird_research/A_presentations/refs}
-\bibliography{"refs"}
+%\bibliography{"refs"}
 
 \end{document}

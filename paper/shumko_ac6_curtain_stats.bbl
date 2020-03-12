@@ -1,0 +1,34 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+Shumko%
+\ \protect \BOthers {.}}{%
+Shumko%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2019}}%
+}]{%
+Shumko2019}
+\APACinsertmetastar {%
+Shumko2019}%
+\begin{APACrefauthors}%
+Shumko, M.%
+, Johnson, A.%
+, Sample, J.%
+, Griffith, B\BPBI A.%
+, Turner, D\BPBI L.%
+, O'Brien, T\BPBI P.%
+\BDBL {}Claudepierre, S\BPBI G.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Electron Microburst Size Distribution Derived with
+  AeroCube-6} {Electron microburst size distribution derived with
+  aerocube-6}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{}{}{e2019JA027651}.
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}
