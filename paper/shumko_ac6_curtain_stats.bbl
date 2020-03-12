@@ -1,6 +1,33 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
+O'Brien%
+, Blake%
+\BCBL {}\ \BBA {} W.%
+}{%
+O'Brien%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2016}}%
+}]{%
+O'brien2016}
+\APACinsertmetastar {%
+O'brien2016}%
+\begin{APACrefauthors}%
+O'Brien, T\BPBI P.%
+, Blake, J\BPBI B.%
+\BCBL {}\ \BBA {} W., G\BPBI J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{May}{}.
+\newblock
+\APACrefbtitle {AeroCube-6 Dosimeter Data README} {Aerocube-6 dosimeter data
+  readme}\ \APACbVolEdTR{}{\BTR{}\ \BNUM\ TOR-2016-01155}.
+\newblock
+\APACaddressInstitution{}{The Aerospace Corporation}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Shumko%
 \ \protect \BOthers {.}}{%
 Shumko%

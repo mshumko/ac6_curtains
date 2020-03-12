@@ -92,17 +92,21 @@ Outline
 \item Introduce microbursts and their effect on atmospheric chemistry. Maybe mention how there is an unexplained source of HOX and NOX?
 \item Introduce curtains and the prevailing hypothesis linking curtains to microbursts
 \item Our goal is to study three statistical properties of curtains: location, spatial width, and preferred geomagnetic conditions. Lastly we will use the SAA to determine if some curtains were drifting around the Earth or locally precipitating
+\item Maybe cite the curtain paper from 2000 that relates them to lightning? Title: Trapped energetic electron curtains produced by thunderstorm driven relativistic runaway electrons
 \end{enumerate}
 }
 
 \section{Instrumentation} \label{instrumentation}
-\textcolor{blue}{
-Outline
-\begin{enumerate}
-\item Basically same as AC6 microburst paper
-\item Mention separation confirmed with GPS and in-track lag can be readily calculated
-\end{enumerate}
-}
+\textcolor{blue}{Think about the flow, and avoid plagiarizing myself}
+
+The AC6 mission was a pair of 0.5U (10x10x5 cm) CubeSats built by The Aerospace Corporation designed to measure the electron and proton environment in low Earth orbit \cite{O'brien2016}. AC6 was launched on 19 June 2014 into a 620x700 km, $98^\circ$ inclination orbit. The AC6 orbit over the three year mission lifetime was roughly dawn-dusk, and precessed only a few hours in MLT; 8-12 MLT in dawn and 20-24 MLT in dusk. The two AC6 spacecraft, designated as AC6-A and AC6-B, separated after launch and were in proximity for the duration of the three year mission---maintained by an active attitude control system. The attitude control system allowed then to precisely control the amount of atmospheric drag experienced by each AC6 unit using the surface area of their solar panel ``wings". By changing their orientation, AC6 was able to maintain a separation between 2-800 km, confirmed with the Global Positioning System. The two AC6 units were in a string of pearls configuration so one unit, typically unit A, was leading the other by an in-track lag---the time it would take the following spacecraft to catch up to the position of the leading spacecraft. To convert between the AC6 in-track separation and in-track lag, we assume a typical 7.5 km/s orbital velocity of LEO spacecraft. The in-track lag was readily available with the Global Positioning System which makes it easy to study precipitation phenomena observed at the same time, and at the same position by shifting one time series by the in-track lag.
+
+Each AC6 unit contains three Aerospace microdosimeters (licensed to Teledyne Microelectronics, Inc) that measure the electron and proton dose in orbit \cite{O'brien2016}. The dosimeter used for this study is dos1 with a $30$ keV electron threshold. dos1 is used for this study because the other dosimeters were not identical between unit A and B. All dosimeters sample at 1 Hz in survey mode, and 10 Hz in burst mode. 10 Hz data was readily available from both AC6 units from June 2014 to May 2017 while their in-track lag was less than 65 seconds, and at times was a fraction of a second. \textcolor{red}{Show a distribution of the in-track lag when they had 10 Hz data?} The variety of AC6 separations and data availability over the three-year mission makes it possible to study tranisent electron microburst precipitation \cite{Shumko2019} and now stationary electron curtain precipitation.
+
+\iffalse
+The AC6 mission consists of a pair of 0.5U (10x10x5 cm) CubeSats built by The Aerospace Corporation and launched on June 19th, 2014 into a 620 x 700 km, $98^\circ$ inclination orbit. The two satellites, designated as AC6-A and AC6-B, separated after launch and drifted apart. Both AC6 units have an active attitude control system which allows them to adjust the atmospheric drag experienced by each AC6 unit by orienting their solar panel ``wings" with respect to the ram direction. By changing their orientation, the AC6 mission was able to achieve fine separation control and maintain a separation between 2-800 km, which was confirmed with GPS. Figure \ref{fig1}a shows the AC6 separation for the duration of the mission. Figure \ref{fig1}b shows where both AC6 units were taking 10 Hz data simultaneously as a function of L and MLT which highlights that most data were taken at 8-12 MLT, an ideal local time for observing microbursts. Lastly Fig. \ref{fig1}b shows that over a three year period the AC6 orbit was roughly dawn-dusk, sun-synchronous, and precessed 8 to 12 MLT in the dawn region. AC6's 8-12 MLT precession is ideal for sampling the region where microbursts are most likely to be observed \cite<e.g.>{O'Brien2003} but the tradeoff is limited microburst size information in MLT.
+
+Each AC6 unit is equipped with three Aerospace microdosimeters (licensed to Teledyne Microelectronics, Inc). The dosimeter used for this study, dos1, is identical on both AC6 units and has a $35$ keV electron threshold. All AC6 dosimeters sample at 1 Hz in survey mode, and 10 Hz in burst mode in the radiation belts  \cite{O'brien2016}. Since microburst duration is less than a second, only the 10 Hz data was used to identify microbursts. \fi
 
 \section{Methodology} 
 \subsection{Curtain Identification} \label{curtain_identification}
@@ -113,6 +117,9 @@ Outline
 \item a one second running correlation was greater than 0.8 and
 \item the correlated counts were bursty - defined as greater than two standard deviations (assuming Poission statistics) above a ten second-long running mean.
 \item Events were automatically identified and checked by an author to catalog 1634 curtains. Examples shown in Fig. 1.
+\item Detection method similar to Greeley 2019 and Blum 2015.
+\item Various parameters were explored and we tuned it to have as many candidate events as possible while being feasible to inspect every detection. 
+\item Baseline sensitivity decreases with larger structures, depending on the curtain amplitude, background level, and baseline width. Sensitivity begins to rapidly diminish for widths close to half of the baseline width---around five seconds, correspondent to 38 km size, for this identification criteria.
 \end{enumerate}
 }
 
