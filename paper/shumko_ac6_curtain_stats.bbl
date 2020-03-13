@@ -1,6 +1,75 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
+Blum%
+, Li%
+\BCBL {}\ \BBA {} Denton%
+}{%
+Blum%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+Blum2015}
+\APACinsertmetastar {%
+Blum2015}%
+\begin{APACrefauthors}%
+Blum, L.%
+, Li, X.%
+\BCBL {}\ \BBA {} Denton, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Rapid {MeV} electron precipitation as observed by
+  {SAMPEX/HILT} during high-speed stream-driven storms} {Rapid {MeV} electron
+  precipitation as observed by {SAMPEX/HILT} during high-speed stream-driven
+  storms}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{120}{5}{3783--3794}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1002/2014JA020633}
+  \end{APACrefURL}
+\newblock
+\APACrefnote{2014JA020633}
+\newblock
+\begin{APACrefDOI} \doi{10.1002/2014JA020633} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Greeley%
+, Kanekal%
+, Baker%
+, Klecker%
+\BCBL {}\ \BBA {} Schiller%
+}{%
+Greeley%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2019}}%
+}]{%
+Greeley2019}
+\APACinsertmetastar {%
+Greeley2019}%
+\begin{APACrefauthors}%
+Greeley, A.%
+, Kanekal, S.%
+, Baker, D.%
+, Klecker, B.%
+\BCBL {}\ \BBA {} Schiller, Q.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Quantifying the Contribution of Microbursts to Global
+  Electron Loss in the Radiation Belts} {Quantifying the contribution of
+  microbursts to global electron loss in the radiation belts}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space Physics}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 O'Brien%
 , Blake%
 \BCBL {}\ \BBA {} W.%

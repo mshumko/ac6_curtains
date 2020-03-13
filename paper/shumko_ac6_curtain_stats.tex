@@ -125,6 +125,14 @@ Outline
 \end{enumerate}
 }
 
+The 10 Hz data was used to identify curtains with the following two criteria: a high spatial correlation, and \textcolor{red}{bursty}. The first criterion quantifies the similarity of the feature between both AC6 units, and the second criterion checks that highly correlated times were \textcolor{red}{bursty}. Before we we applied the identification criteria, the AC6-B time series was shifted by the in-track lag to spatially align it with the AC6-A time series. 
+
+The first identification criterion is a 1-second rolling Pearson correlation applied to both time series. Spatial features with a correlation greater than 0.8 were considered highly correlated and saved.
+
+The second identification criterion checks for locations where both AC6 units observed \textcolor{red}{bursty} precipitation. Similar to how precipitation bands were identified in \citeA{Blum2015} and microbursts in \citeA{Greeley2019}, we find \textcolor{red}{bursty} precipitation by estimating the number of Poisson standard deviations, $\sigma$, that a dos1 count rate, $c$, is above a centered 10-second running average, $B_{10}$. Locations where the count rates are at least two $\sigma$ above $B_{10}$ are bursty. 
+
+The locations where the two criteria are met are curtain candidates and the time of the peak count rates are saved. To check the quality of the data set, one author visually checked every candidate curtain. After the visual inspection, 1634 curtains were identified. Four examples of curtains are shown in Fig. \ref{fig1}. In these examples the unmodified time series is in the top row and the corresponding spatially-aligned time series is shown in the bottom row. 
+
 \begin{figure}
 \includegraphics[width=\textwidth]{fig1.pdf}
 \caption{Four examples showing the AC6 $> 30$ keV electron data taken by AC6 at the same time in the top row and at the same position in the bottom row. AC6-A, whose data is shown with red curves, was $s$ kilometers ahead of AC6-B. To show the data at the same position the time series data from one spacecraft was shifted by the in-track lag and annotated by dt. These examples show curtain precipitation that was highly correlated for up to 26 seconds.}
