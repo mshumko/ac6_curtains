@@ -1,6 +1,73 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
+Anderson%
+\ \BBA {} Milton%
+}{%
+Anderson%
+\ \BBA {} Milton%
+}{%
+{\protect \APACyear {1964}}%
+}]{%
+Anderson1964}
+\APACinsertmetastar {%
+Anderson1964}%
+\begin{APACrefauthors}%
+Anderson, K\BPBI A.%
+\BCBT {}\ \BBA {} Milton, D\BPBI W.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1964}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Balloon observations of {X} rays in the auroral zone: 3.
+  {H}igh time resolution studies} {Balloon observations of {X} rays in the
+  auroral zone: 3. {H}igh time resolution studies}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{69}{21}{4457--4479}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1029/JZ069i021p04457}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1029/JZ069i021p04457} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Blake%
+\ \BBA {} O'Brien%
+}{%
+Blake%
+\ \BBA {} O'Brien%
+}{%
+{\protect \APACyear {2016}}%
+}]{%
+Blake2016}
+\APACinsertmetastar {%
+Blake2016}%
+\begin{APACrefauthors}%
+Blake, J\BPBI B.%
+\BCBT {}\ \BBA {} O'Brien, T\BPBI P.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Observations of small-scale latitudinal structure in
+  energetic electron precipitation} {Observations of small-scale latitudinal
+  structure in energetic electron precipitation}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{121}{4}{3031--3035}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1002/2015JA021815}
+  \end{APACrefURL}
+\newblock
+\APACrefnote{2015JA021815}
+\newblock
+\begin{APACrefDOI} \doi{10.1002/2015JA021815} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Blum%
 , Li%
 \BCBL {}\ \BBA {} Denton%
@@ -38,6 +105,104 @@ Blum, L.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Breneman%
+\ \protect \BOthers {.}}{%
+Breneman%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+Breneman2017}
+\APACinsertmetastar {%
+Breneman2017}%
+\begin{APACrefauthors}%
+Breneman, A.%
+, Crew, A.%
+, Sample, J.%
+, Klumpar, D.%
+, Johnson, A.%
+, Agapitov, O.%
+\BDBL {}others%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Observations directly linking relativistic electron
+  microbursts to whistler mode chorus: Van Allen Probes and {FIREBIRD II}}
+  {Observations directly linking relativistic electron microbursts to whistler
+  mode chorus: Van allen probes and {FIREBIRD II}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Douma%
+\ \protect \BOthers {.}}{%
+Douma%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2019}}%
+}]{%
+Douma2019}
+\APACinsertmetastar {%
+Douma2019}%
+\begin{APACrefauthors}%
+Douma, E.%
+, Rodger, C.%
+, Blum, L.%
+, O'Brien, T.%
+, Clilverd, M.%
+\BCBL {}\ \BBA {} Blake, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Characteristics of relativistic microburst intensity
+  from SAMPEX observations} {Characteristics of relativistic microburst
+  intensity from sampex observations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space Physics}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Douma%
+, Rodger%
+, Blum%
+\BCBL {}\ \BBA {} Clilverd%
+}{%
+Douma%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+Douma2017}
+\APACinsertmetastar {%
+Douma2017}%
+\begin{APACrefauthors}%
+Douma, E.%
+, Rodger, C\BPBI J.%
+, Blum, L\BPBI W.%
+\BCBL {}\ \BBA {} Clilverd, M\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Occurrence characteristics of relativistic electron
+  microbursts from {SAMPEX} observations} {Occurrence characteristics of
+  relativistic electron microbursts from {SAMPEX} observations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{122}{8}{8096--8107}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1002/2017JA024067}
+  \end{APACrefURL}
+\newblock
+\APACrefnote{2017JA024067}
+\newblock
+\begin{APACrefDOI} \doi{10.1002/2017JA024067} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Greeley%
 , Kanekal%
 , Baker%
@@ -70,6 +235,42 @@ Greeley, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Lorentzen%
+, Blake%
+, Inan%
+\BCBL {}\ \BBA {} Bortnik%
+}{%
+Lorentzen%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2001}}%
+}]{%
+Lorentzen2001a}
+\APACinsertmetastar {%
+Lorentzen2001a}%
+\begin{APACrefauthors}%
+Lorentzen, K\BPBI R.%
+, Blake, J\BPBI B.%
+, Inan, U\BPBI S.%
+\BCBL {}\ \BBA {} Bortnik, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2001}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Observations of relativistic electron microbursts in
+  association with {VLF} chorus} {Observations of relativistic electron
+  microbursts in association with {VLF} chorus}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{106}{A4}{6017--6027}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1029/2000JA003018}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1029/2000JA003018} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 O'Brien%
 , Blake%
 \BCBL {}\ \BBA {} W.%
@@ -94,6 +295,73 @@ O'Brien, T\BPBI P.%
   readme}\ \APACbVolEdTR{}{\BTR{}\ \BNUM\ TOR-2016-01155}.
 \newblock
 \APACaddressInstitution{}{The Aerospace Corporation}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+O'Brien%
+\ \protect \BOthers {.}}{%
+O'Brien%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2003}}%
+}]{%
+O'Brien2003}
+\APACinsertmetastar {%
+O'Brien2003}%
+\begin{APACrefauthors}%
+O'Brien, T\BPBI P.%
+, Lorentzen, K\BPBI R.%
+, Mann, I\BPBI R.%
+, Meredith, N\BPBI P.%
+, Blake, J\BPBI B.%
+, Fennell, J\BPBI F.%
+\BDBL {}Anderson, R\BPBI R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2003}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {{Energization of relativistic electrons in the presence
+  of ULF power and MeV microbursts: Evidence for dual ULF and VLF
+  acceleration}} {{Energization of relativistic electrons in the presence of
+  ULF power and MeV microbursts: Evidence for dual ULF and VLF
+  acceleration}}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{108}{A8}{}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1029/2002JA009784}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1029/2002JA009784} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Sepp{\"a}l{\"a}%
+\ \protect \BOthers {.}}{%
+Sepp{\"a}l{\"a}%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2018}}%
+}]{%
+Seppala2018}
+\APACinsertmetastar {%
+Seppala2018}%
+\begin{APACrefauthors}%
+Sepp{\"a}l{\"a}, A.%
+, Douma, E.%
+, Rodger, C.%
+, Verronen, P.%
+, Clilverd, M\BPBI A.%
+\BCBL {}\ \BBA {} Bortnik, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Relativistic electron microburst events: Modeling the
+  atmospheric impact} {Relativistic electron microburst events: Modeling the
+  atmospheric impact}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{45}{2}{1141--1147}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
