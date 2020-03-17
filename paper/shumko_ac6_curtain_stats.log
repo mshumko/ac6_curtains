@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  17 MAR 2020 15:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  17 MAR 2020 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -547,21 +547,69 @@ n elec-trons, these elec-
  []
 
 
-Overfull \hbox (5.01563pt too wide) in paragraph at lines 97--98
+Overfull \hbox (3.15451pt too wide) in paragraph at lines 97--98
 \OT1/cmr/m/n/10 trons are drift-ing east in the drift loss cone un-til they are
- scat-tered into the South At- 
+ scat-tered in the at-mo-sphere 
+ []
+
+
+Overfull \hbox (18.23795pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 in the South At-lantic Anomaly (SAA). The SAA is a re-gion wher
+e Earth's mag-netic field 
+ []
+
+
+Overfull \hbox (9.09892pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 is weak-est near the sur-face, caused by the spa-tial off-set o
+f Earth's mag-netic field. A re- 
+ []
+
+
+Overfull \hbox (6.18236pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 lated re-gion, mag-net-i-cally con-ju-gate to the SAA is the bo
+unce loss cone (BLC). Tra-di- 
+ []
+
+
+Overfull \hbox (15.48785pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 tion-ally, the BLC is de-fined as the North At-lantic re-gion w
+here if an elec-tron is ob-served 
+ []
+
+
+Overfull \hbox (2.40453pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 in LEO, it will ei-ther pre-cip-i-tate in the at-mo-sphere be-l
+ow the space-craft, or mir-ror at 
+ []
+
+
+Overfull \hbox (2.54353pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 the space-craft al-ti-tude and then po-ten-tially mir-ror at or
+ be-low 100 km al-ti-tude in the 
+ []
+
+
+Overfull \hbox (2.46014pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 SAA. At sub-100 kilo-me-ter al-ti-tude, col-li-sions with the a
+t-mo-sphere are nu-mer-ous and 
+ []
+
+
+Overfull \hbox (2.5434pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 the par-ti-cle will be lost. In this study we will as-sume this
+ def-i-ni-tion and a more strict 
+ []
+
+
+Overfull \hbox (10.98787pt too wide) in paragraph at lines 97--98
+\OT1/cmr/m/n/10 def-i-ni-tion that the par-ti-cle will mir-ror at or be-low sea
+ level in the SAA---in other words 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Overfull \hbox (5.15448pt too wide) in paragraph at lines 99--100
-[]\OT1/cmr/m/n/10 drifting to the east around the earth in the drift loss clone
-. The drift loss cone is  
- []
-
-
 Overfull \hbox (22.79344pt too wide) in paragraph at lines 104--105
 []\OT1/cmr/m/n/10 The AC6 mis-sion was a pair of 0.5U (10x10x5 cm) Cube-Sats bu
 ilt by The Aerospace 
@@ -718,6 +766,9 @@ Overfull \hbox (14.3213pt too wide) in paragraph at lines 106--107
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
 Overfull \hbox (25.71004pt too wide) in paragraph at lines 121--121
 []\OT1/cmr/m/n/10 Various pa-ram-e-ters were ex-plored and we tuned it to have 
 as many can-di-date events 
@@ -742,9 +793,6 @@ ve sec-onds, cor-re-spon-
  []
 
 
-Underfull \vbox (badness 2073) has occurred while \output is active []
-
- [3]
 Overfull \hbox (18.26563pt too wide) in paragraph at lines 123--124
 []\OT1/cmr/m/n/10 The 10 Hz data was used to iden-tify cur-tains with the fol-l
 ow-ing two cri-te-ria: a high 
@@ -902,9 +950,6 @@ men-tary struc-ture that per-
  []
 
 
-Underfull \vbox (badness 1412) has occurred while \output is active []
-
- [4 <./figures/fig1.pdf>]
 Overfull \hbox (5.37666pt too wide) in paragraph at lines 148--148
 []\OT1/cmr/m/n/10 Show, and com-ment on the Au-ro-ral elec-tro-ject strengths w
 hen each cur-tain was 
@@ -928,7 +973,11 @@ Overfull \hbox (7.07108pt too wide) in paragraph at lines 150--151
 ults to an-swer the fol-low- 
  []
 
-<figures/ac6_curtain_microburst_width_dist.pdf, id=75, 462.52798pt x 346.89601p
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+<figures/ac6_curtain_microburst_width_dist.pdf, id=30, 462.52798pt x 346.89601p
 t>
 File: figures/ac6_curtain_microburst_width_dist.pdf Graphic file (type pdf)
 <use figures/ac6_curtain_microburst_width_dist.pdf>
@@ -947,7 +996,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 160--160
 -croburst dis-tri-bu-tion adopted
  []
 
-<figures/ac6_curtain_AE_dist.pdf, id=76, 462.52798pt x 346.89601pt>
+<figures/ac6_curtain_AE_dist.pdf, id=31, 462.52798pt x 346.89601pt>
 File: figures/ac6_curtain_AE_dist.pdf Graphic file (type pdf)
 <use figures/ac6_curtain_AE_dist.pdf>
 Package pdftex.def Info: figures/ac6_curtain_AE_dist.pdf  used on input line 16
@@ -965,7 +1014,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 166--166
 ur-tains were ob-served by the red
  []
 
-<figures/fig2.pdf, id=77, 987.20822pt x 361.35pt>
+<figures/fig2.pdf, id=32, 987.20822pt x 361.35pt>
 File: figures/fig2.pdf Graphic file (type pdf)
 <use figures/fig2.pdf>
 Package pdftex.def Info: figures/fig2.pdf  used on input line 171.
@@ -976,7 +1025,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--172
 unc-tion of L and MLT. To avoid noisy nor-mal-iza-tion
  []
 
-<figures/fig2_2.pdf, id=78, 987.20822pt x 361.35pt>
+<figures/fig2_2.pdf, id=33, 987.20822pt x 361.35pt>
 File: figures/fig2_2.pdf Graphic file (type pdf)
 <use figures/fig2_2.pdf>
 Package pdftex.def Info: figures/fig2_2.pdf  used on input line 176.
@@ -993,12 +1042,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 177--177
 or-mal-iza-tion scal-ing, bins with less
  []
 
-<figures/curtain_L_vs_AE.pdf, id=79, 462.52798pt x 346.89601pt>
+<figures/curtain_L_vs_AE.pdf, id=34, 462.52798pt x 346.89601pt>
 File: figures/curtain_L_vs_AE.pdf Graphic file (type pdf)
 <use figures/curtain_L_vs_AE.pdf>
 Package pdftex.def Info: figures/curtain_L_vs_AE.pdf  used on input line 181.
 (pdftex.def)             Requested size: 397.48499pt x 298.12889pt.
-<figures/fig3.pdf, id=80, 650.43pt x 490.7133pt>
+<figures/fig3.pdf, id=35, 650.43pt x 490.7133pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 187.
@@ -1016,18 +1065,6 @@ ed km at the equa-
  []
 
 
-Underfull \vbox (badness 1184) has occurred while \output is active []
-
- [5 <./figures/ac6_curtain_microburst_width_dist.pdf>] [6 <./figures/ac6_curtai
-n_AE_dist.pdf> <./figures/fig2.pdf
-
-pdfTeX warning: pdflatex (file ./figures/fig2.pdf): PDF inclusion: multiple pdf
-s with page group included in a single page
->] [7 <./figures/fig2_2.pdf> <./figures/curtain_L_vs_AE.pdf
-
-pdfTeX warning: pdflatex (file ./figures/curtain_L_vs_AE.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
->] [8 <./figures/fig3.pdf>]
 Overfull \hbox (9.23795pt too wide) in paragraph at lines 201--201
 []\OT1/cmr/m/n/10 curtain phe-nom-ena orig-i-nates in the outer ra-di-a-tion be
 lt, and ob-served rel-a-tively 
@@ -1105,7 +1142,16 @@ Overfull \hbox (12.71022pt too wide) in paragraph at lines 207--209
 ib ver-sion used for this 
  []
 
+[5 <./figures/fig1.pdf>] [6 <./figures/ac6_curtain_microburst_width_dist.pdf>]
+[7 <./figures/ac6_curtain_AE_dist.pdf> <./figures/fig2.pdf
 
+pdfTeX warning: pdflatex (file ./figures/fig2.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>] [8 <./figures/fig2_2.pdf> <./figures/curtain_L_vs_AE.pdf
+
+pdfTeX warning: pdflatex (file ./figures/curtain_L_vs_AE.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>] [9 <./figures/fig3.pdf>]
 Overfull \hbox (12.34901pt too wide) in paragraph at lines 212--213
 []\OT1/cmr/m/n/10 Title: Sta-tis-ti-cal Prop-er-ties of Curtains--Latitudinally
 -Narrow and Per-sis-tent Elec- 
@@ -1207,10 +1253,6 @@ Overfull \hbox (2.57123pt too wide) in paragraph at lines 228--229
 n the ground? The an-swer to 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
 (./shumko_ac6_curtain_stats.bbl
 Underfull \hbox (badness 2837) in paragraph at lines 16--34
 []\OT1/cmr/m/n/10 Anderson, K. A., & Mil-ton, D. W.  (1964).  Bal-loon ob-ser-v
@@ -1279,7 +1321,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--137
 OT1/cmr/m/it/10 Geo-phys-i-cal 
  []
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 149--166
 []\OT1/cmr/m/n/10 Douma, E., Rodger, C., Blum, L., O'Brien, T., Clil-verd, M., 
 & Blake, J.  (2019). 
@@ -1393,7 +1435,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 378--397
 -cal Re-search: Space Physics\OT1/cmr/m/n/10 , 
  []
 
-) [10] (./shumko_ac6_curtain_stats.aux)
+) [11] (./shumko_ac6_curtain_stats.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
@@ -1405,11 +1447,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3420 strings out of 492982
  47188 string characters out of 6134897
- 119823 words of memory out of 5000000
+ 118823 words of memory out of 5000000
  6916 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1566b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1633b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -1427,10 +1469,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (10 pages, 516887 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (11 pages, 517879 bytes).
 PDF statistics:
- 434 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
+ 437 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
