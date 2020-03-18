@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  18 MAR 2020 12:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  18 MAR 2020 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -610,60 +610,210 @@ Overfull \hbox (10.98787pt too wide) in paragraph at lines 97--98
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Overfull \hbox (17.15451pt too wide) in paragraph at lines 101--102
-[]\OT1/cmr/m/n/10 The con-cept of the bounce loss cone pitch an-gle is tra-di-t
-ion-ally de-fined as the pitch 
+Overfull \hbox (6.32118pt too wide) in paragraph at lines 99--100
+[]\OT1/cmr/m/n/10 The con-cept of the bounce loss cone (BLC) pitch an-gle is tr
+a-di-tion-ally de-fined as 
  []
 
 
-Overfull \hbox (6.01567pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 an-gle of a par-ti-cle that will mir-ror at 100 km where col-li
--sions with the at-mo-sphere be- 
+Overfull \hbox (1.51566pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 the pitch an-gle of a par-ti-cle that will mir-ror at or be-low
+ 100 km where col-li-sions with 
  []
 
 
-Overfull \hbox (21.34898pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 come more nu-mer-ous and the par-ti-cle is likely to be lost. T
-his pitch an-gle, how-ever small, 
+Overfull \hbox (3.51566pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 the at-mo-sphere be-come more nu-mer-ous and the par-ti-cle is 
+likely to be lost within one 
  []
 
 
-Overfull \hbox (20.46013pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 is al-ways de-fined but most LEO space-craft do not have the pi
-tch an-gle res-o-lu-tion to iden- 
+Overfull \hbox (1.79344pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 bounce pe-riod. The BLC pitch an-gle, how-ever small, is al-way
+s de-fined but most LEO 
  []
 
 
-Overfull \hbox (4.59906pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 tify par-ti-cles that will be im-me-di-ately lost. A par-ti-cle
- can also be pseudo-trapped if it 
+Overfull \hbox (6.23795pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 space-craft do not have the an-gu-lar res-o-lu-tion to iden-tif
+y par-ti-cles that will be im-me-di- 
  []
 
 
-Overfull \hbox (7.1267pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 has a pitch an-gle be-tween the bounce loss cone and the drift 
-loss cone. A par-ti-cle with 
+Overfull \hbox (17.07121pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 ately lost. A par-ti-cle can also be pseudo-trapped if it has a
+ pitch an-gle be-tween the BLC 
  []
 
 
-Overfull \hbox (5.51564pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 a pitch an-gle smaller than the drift loss cone and larger than
- the bounce loss cone will 
+Overfull \hbox (16.349pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 and the drift loss cone. A par-ti-cle with a pitch an-gle small
+er than the drift loss cone and 
  []
 
 
-Overfull \hbox (10.18243pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 not im-me-di-ately pre-cip-i-tate, rather it will drift around 
-the Earth and pre-cip-i-tate in the 
+Overfull \hbox (0.76578pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 larger than the BLC will lo-cally mir-ror above 100 km and drif
+t around the Earth un- 
  []
 
 
-Overfull \hbox (0.98792pt too wide) in paragraph at lines 101--102
-\OT1/cmr/m/n/10 SAA where the mir-ror point mag-netic field strength is at al-t
-i-tudes be-low 100 km and 
+Overfull \hbox (17.82129pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 til the al-ti-tude of the mir-ror point mag-netic field de-scen
+ds be-low 100 km in the SAA and 
  []
 
 
+Overfull \hbox (9.3767pt too wide) in paragraph at lines 99--100
+\OT1/cmr/m/n/10 the par-ti-cle is lost. For pitch an-gles greater than the drif
+t loss cone, the par-ti-cle is con- 
+ []
+
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no ‰ in font cmr10!
+Missing character: There is no ˆ in font cmr10!
+
+Overfull \hbox (0.62677pt too wide) in paragraph at lines 101--102
+[]\OT1/cmr/m/n/10 Without the an-gu-lar res-o-lu-tion nec-es-sary to study the 
+par-ti-cles in the BLC and 
+ []
+
+
+Overfull \hbox (2.0157pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 DLC, the ge-o-graphic lo-ca-tion of the LEO space-craft can be 
+used to par-tially dif-fer-en- 
+ []
+
+
+Overfull \hbox (6.65462pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 ti-ate be-tween the dif-fer-ent pop-u-la-tions. For most lo-ca-
+tions out-side of the SAA, a LEO 
+ []
+
+
+Overfull \hbox (15.46008pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 state-craft does not ob-serve trapped par-ti-cles and thus ob-s
+erves par-ti-cles in the DLC and 
+ []
+
+
+Overfull \hbox (14.62674pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 BLC. Those par-ti-cles must be lost soon but the ques-tion re-m
+ains if the par-ti-cles are lost 
+ []
+
+
+Overfull \hbox (11.5991pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 im-me-di-ately or when they drift into the SAA. The re-gion mag
+-net-i-cally con-ju-gate to the 
+ []
+
+
+Overfull \hbox (9.73793pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 SAA in the north At-lantic ocean in also con-fus-ingly called t
+he BLC. In the BLC re-gion 
+ []
+
+
+Overfull \hbox (1.09894pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 a par-ti-cle ei-ther pre-cip-i-tates be-low the satel-lite, or 
+mir-ror just be-low the satel-lite and 
+ []
+
+
+Overfull \hbox (9.04341pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 pre-cip-i-tate in the SAA, where the par-ti-cles mir-ror point 
+in the SAAs re-duced mag-netic 
+ []
+
+
+Overfull \hbox (12.79335pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 field strength is lower in the at-mo-sphere. In other words, th
+e elec-tron will be lost to the 
+ []
+
+
+Overfull \hbox (4.40453pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 at-mo-sphere. Thus in the BLC re-gion any ob-served par-ti-cle 
+is lost within a bounce pe- 
+ []
+
+
+Overfull \hbox (11.599pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10 riod ( 1 sec-ond for 30 keV elec-trons). Since AC6 does not hav
+e an-gu-lar res-o-lu-tion, BLC 
+ []
+
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no ‰ in font cmr10!
+Missing character: There is no ˆ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Overfull \hbox (15.29343pt too wide) in paragraph at lines 103--104
+[][]\OT1/cmr/m/n/10 OLD: I pro-pose to test this ques-tion us-ing Earths asym-m
+et-ric mag-netic field which 
+ []
+
+
+Overfull \hbox (3.34898pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/10 cre-ates a re-gion of weaker mag-netic field in the South At-la
+ntic Anomaly (SAA). A re- 
+ []
+
+
+Overfull \hbox (18.12685pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/10 lated re-gion, mag-net-i-cally con-ju-gate to the SAA in the No
+rth At-lantic, is the bounce loss 
+ []
+
+
+Overfull \hbox (2.93225pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/10 cone (BLC). The BLC and the SAA are crit-i-cal to test the pro-
+posed sci-ence ques-tion. 
+ []
+
+
+Overfull \hbox (3.07124pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/10 A par-ti-cle ob-served in LEO and in the BLC will pre-cip-i-tat
+e within one bounce pe-riod 
+ []
+
+
+Overfull \hbox (10.71pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/10 ( 1 sec-ond for 35 keV elec-trons). The elec-tron will ei-ther 
+pre-cip-i-tate be-low the satel-lite, 
+ []
+
+
+Overfull \hbox (24.46011pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/10 or mir-ror just be-low the satel-lite and travel into the SAA, 
+where the par-ti-cles mir-ror point 
+ []
+
+
+Overfull \hbox (10.82117pt too wide) in paragraph at lines 103--104
+\OT1/cmr/m/n/10 in the SAAs re-duced mag-netic field strength is deep in the at
+-mo-sphere. In other words, 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
 Overfull \hbox (22.79344pt too wide) in paragraph at lines 109--110
 []\OT1/cmr/m/n/10 The AC6 mis-sion was a pair of 0.5U (10x10x5 cm) Cube-Sats bu
 ilt by The Aerospace 
@@ -820,9 +970,6 @@ Overfull \hbox (14.3213pt too wide) in paragraph at lines 111--112
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
 Overfull \hbox (25.71004pt too wide) in paragraph at lines 126--126
 []\OT1/cmr/m/n/10 Various pa-ram-e-ters were ex-plored and we tuned it to have 
 as many can-di-date events 
@@ -912,7 +1059,7 @@ Overfull \hbox (11.98956pt too wide) in paragraph at lines 132--133
 $\OT1/cmr/m/n/10 . Lo-ca-tions where the count rates are at least 
  []
 
-
+[4]
 Overfull \hbox (6.0711pt too wide) in paragraph at lines 134--135
 []\OT1/cmr/m/n/10 The lo-ca-tions where the two cri-te-ria are met are cur-tain
  can-di-dates and the time 
@@ -966,7 +1113,7 @@ Overfull \hbox (9.01567pt too wide) in paragraph at lines 134--135
 n a 10-kilometer scale that 
  []
 
-<figures/fig1.pdf, id=26, 987.20822pt x 361.35pt>
+<figures/fig1.pdf, id=29, 987.20822pt x 361.35pt>
 File: figures/fig1.pdf Graphic file (type pdf)
 <use figures/fig1.pdf>
 Package pdftex.def Info: figures/fig1.pdf  used on input line 139.
@@ -1004,9 +1151,6 @@ men-tary struc-ture that per-
  []
 
 
-Underfull \vbox (badness 2073) has occurred while \output is active []
-
- [4]
 Overfull \hbox (5.37666pt too wide) in paragraph at lines 153--153
 []\OT1/cmr/m/n/10 Show, and com-ment on the Au-ro-ral elec-tro-ject strengths w
 hen each cur-tain was 
@@ -1030,7 +1174,11 @@ Overfull \hbox (7.07108pt too wide) in paragraph at lines 155--156
 ults to an-swer the fol-low- 
  []
 
-<figures/ac6_curtain_microburst_width_dist.pdf, id=30, 462.52798pt x 346.89601p
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./figures/fig1.pdf>]
+<figures/ac6_curtain_microburst_width_dist.pdf, id=78, 462.52798pt x 346.89601p
 t>
 File: figures/ac6_curtain_microburst_width_dist.pdf Graphic file (type pdf)
 <use figures/ac6_curtain_microburst_width_dist.pdf>
@@ -1049,7 +1197,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--165
 -croburst dis-tri-bu-tion adopted
  []
 
-<figures/ac6_curtain_AE_dist.pdf, id=31, 462.52798pt x 346.89601pt>
+<figures/ac6_curtain_AE_dist.pdf, id=79, 462.52798pt x 346.89601pt>
 File: figures/ac6_curtain_AE_dist.pdf Graphic file (type pdf)
 <use figures/ac6_curtain_AE_dist.pdf>
 Package pdftex.def Info: figures/ac6_curtain_AE_dist.pdf  used on input line 17
@@ -1067,7 +1215,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 171--171
 ur-tains were ob-served by the red
  []
 
-<figures/fig2.pdf, id=32, 987.20822pt x 361.35pt>
+<figures/fig2.pdf, id=80, 987.20822pt x 361.35pt>
 File: figures/fig2.pdf Graphic file (type pdf)
 <use figures/fig2.pdf>
 Package pdftex.def Info: figures/fig2.pdf  used on input line 176.
@@ -1078,7 +1226,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 177--177
 unc-tion of L and MLT. To avoid noisy nor-mal-iza-tion
  []
 
-<figures/fig2_2.pdf, id=33, 987.20822pt x 361.35pt>
+<figures/fig2_2.pdf, id=81, 987.20822pt x 361.35pt>
 File: figures/fig2_2.pdf Graphic file (type pdf)
 <use figures/fig2_2.pdf>
 Package pdftex.def Info: figures/fig2_2.pdf  used on input line 181.
@@ -1095,12 +1243,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 182--182
 or-mal-iza-tion scal-ing, bins with less
  []
 
-<figures/curtain_L_vs_AE.pdf, id=34, 462.52798pt x 346.89601pt>
+<figures/curtain_L_vs_AE.pdf, id=82, 462.52798pt x 346.89601pt>
 File: figures/curtain_L_vs_AE.pdf Graphic file (type pdf)
 <use figures/curtain_L_vs_AE.pdf>
 Package pdftex.def Info: figures/curtain_L_vs_AE.pdf  used on input line 186.
 (pdftex.def)             Requested size: 397.48499pt x 298.12889pt.
-<figures/fig3.pdf, id=35, 650.43pt x 490.7133pt>
+<figures/fig3.pdf, id=83, 650.43pt x 490.7133pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 192.
@@ -1150,8 +1298,8 @@ Overfull \hbox (9.82117pt too wide) in paragraph at lines 206--206
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5 <./figures/fig1.pdf>] [6 <./figures/ac6_curtain_microburst_width_dist.pdf>]
- [7 <./figures/ac6_curtain_AE_dist.pdf> <./figures/fig2.pdf
+ [6 <./figures/ac6_curtain_microburst_width_dist.pdf>] [7 <./figures/ac6_curtai
+n_AE_dist.pdf> <./figures/fig2.pdf
 
 pdfTeX warning: pdflatex (file ./figures/fig2.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
@@ -1525,7 +1673,7 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (11 pages, 518236 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (11 pages, 519330 bytes).
 PDF statistics:
  437 PDF objects out of 1000 (max. 8388607)
  126 compressed objects within 2 object streams
