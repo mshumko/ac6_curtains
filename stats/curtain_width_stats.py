@@ -8,6 +8,7 @@ import dirs
 """
 Script to calculate the curtain width statistics.
 """
+similar_thresh = 0.25
 
 curtain_catalog_name='AC6_curtains_baseline_method_sorted_v0.txt'
 curtain_catalog_path = os.path.join(dirs.CATALOG_DIR, curtain_catalog_name)
@@ -28,6 +29,13 @@ coincident_microburst_cat = pd.read_csv(coincident_microburst_catalog_path)
 size_bin_width_km = 5
 max_bin = 56
 size_bins = np.arange(0, max_bin, size_bin_width_km)
+# Filter similar curtain widths
+idx = (
+      (curtain_cat['width_B']/curtain_cat['width_A'] < 1+similar_thresh) &
+      (curtain_cat['width_A']/curtain_cat['width_B'] < 1+similar_thresh)
+      )
+curtain_cat = curtain_cat[idx]
+# Histogram this
 H_size, _ = np.histogram(7.5*curtain_cat['width_B'], 
                         density=True, bins=size_bins)
 
@@ -51,7 +59,7 @@ ax.step(size_bins, np.append(microburst_fraction, np.nan), c='r',
 
 ax.set(title='Distribution of > 30 keV curtain and microburst sizes',
             ylabel='Probability density', xlim=(0, size_bins[-1]), 
-            xlabel='In-track width [km]')
+            xlabel='In-track size [km]')
 ax.legend()
 
 # fig, ax = plt.subplots(3, sharex=True)
