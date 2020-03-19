@@ -15,6 +15,11 @@ cat_path = os.path.join(dirs.CATALOG_DIR, cat_name)
 cat = pd.read_csv(cat_path)
 cat['dateTime'] = pd.to_datetime(cat['dateTime'])
 
+# Load the microburst catalog
+burst_name = 'AC6_microbursts_sorted_v6.txt'
+burst_path = os.path.join(dirs.CATALOG_DIR, burst_name)
+burst_cat = pd.read_csv(burst_path)
+
 # Load the AE index for all of the years that curtains 
 # were observed
 ae_dir = os.path.join(dirs.BASE_DIR, 'data', 'ae')
@@ -34,6 +39,7 @@ bin_width = 100
 bins = np.arange(0, 1200, bin_width)
 H_AE, _ = np.histogram(ae['AE'], density=True, bins=bins)
 H_c, _ = np.histogram(cat['AE'], density=True, bins=bins)
+H_m, _ = np.histogram(burst_cat['AE'], density=True, bins=bins)
 
 # Scale the curtain distribution by the total AE time. In other
 # words this normalized distribution is the distribution of
@@ -42,11 +48,16 @@ H_scaled = H_c*(np.max(H_AE)/H_AE)
 H_scaled = H_scaled/(np.sum(H_scaled)*bin_width)
 
 fig, ax = plt.subplots()
-ax.step(bins[:-1], H_AE, where='post', label='All AE', c='k', lw=4)
-ax.step(bins[:-1], H_c, where='post', label='Curtain AE', c='r', lw=2)
+ax.step(bins[:-1], H_AE, where='post', label='AE', 
+        c='k', lw=2)
+ax.step(bins[:-1], H_c, where='post', label='Curtain AE', 
+        c='b', lw=2, linestyle=':')
+ax.step(bins[:-1], H_m, where='post', label='Microburst AE', 
+        c='g', lw=2, linestyle='--')
+
 #ax.step(bins[:-1], H_scaled, where='post', label='Scaled curtain AE')
-ax.set(title='Distribution of all AE and curtain AE',
-        xlabel='AE [nT]', ylabel='Probability density', xlim=(0, None))
+ax.set(title='Distribution of the Auroral Electrojet\nall | curtain | micorburst',
+        xlabel='AE [nT]', ylabel='Probability density', xlim=(0, 1000))
 ax.legend()
 
 plt.tight_layout()

@@ -54,7 +54,7 @@ ax = fig.add_subplot(gs[:2, :], projection=projection)
 # ax = plt.subplot(111, projection=projection)
 ax.set_extent([-60, 30, 40, 80], crs=ccrs.PlateCarree())
 ax.coastlines(resolution='50m', color='black', linewidth=1)
-ax.add_feature(cartopy.feature.LAND, zorder=0, edgecolor='black')
+ax.add_feature(cartopy.feature.LAND, zorder=0, edgecolor='black', facecolor='grey')
 
 # gl = ax.gridlines(color='black', linestyle=':')
 
@@ -118,7 +118,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     # bx_twin_i.tick_params(axis='y', labelcolor='g')
 
     # Add a subplot label.
-    bx_i.text(0, 1, f'({string.ascii_letters[i+1]})',
+    bx_i.text(0, 0.98, f'({string.ascii_letters[i+1]})',
          ha='left', va='top', fontsize=20, color='k',
          transform=bx_i.transAxes)
 
@@ -140,8 +140,8 @@ bx[0].set_ylabel('dos1rate [counts/s]')
 ax.scatter(coords[:,0], coords[:,1], marker='*', c='r', s=150)
 
 ax.set_title('AC6 Curtains in the Bounce Loss Cone', fontsize=25)
-ax.text(0, 1, f'(a)',
-         ha='left', va='top', fontsize=20, color='k',
+ax.text(0, 0.98, f'(a)',
+         ha='left', va='top', fontsize=20, color='white',
          transform=ax.transAxes)
 
 for i, coord in enumerate(coords):
