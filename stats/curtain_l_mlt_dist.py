@@ -90,10 +90,11 @@ draw_earth(ax[1])
 draw_earth(ax[2])
 
 # Draw L shell contours
-draw_L_contours(ax[0], 'w')
-draw_L_contours(ax[1], 'k')
-L_labels, L_labels_names = draw_L_contours(ax[2], 'w')
-L_label_colors = ['w', 'k', 'w']
+L_label_colors = ['k', 'k', 'k']
+L_contour_colors = L_label_colors
+draw_L_contours(ax[0], L_contour_colors[0])
+draw_L_contours(ax[1], L_contour_colors[1])
+L_labels, L_labels_names = draw_L_contours(ax[2], L_contour_colors[2])
 
 ### PLOT TWEEKS ###
 ax[0].set_title(f'(a) AC6 curtain distribution', y=1.08)
@@ -107,6 +108,7 @@ for i, a in enumerate(ax):
     a.set_theta_zero_location("S") # Midnight at bottom
     a.set_xticklabels(mlt_labels) # Transform back from 0->2pi to 0->24.
     a.set_yticks(L_labels)
+    a.set_rlabel_position(45)
     a.set_yticklabels(L_labels_names, color=L_label_colors[i])
     a.set_ylim(top=10)
     
