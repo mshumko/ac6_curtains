@@ -9,7 +9,8 @@ plt.rcParams.update({'font.size':13})
 
 import dirs
 
-CATALOG_NAME = 'AC6_coincident_microbursts_v8.txt'
+# CATALOG_NAME = 'AC6_coincident_microbursts_v8.txt'
+CATALOG_NAME = 'AC6_microbursts_sorted_v6.txt'
 CATALOG_PATH = os.path.join(dirs.CATALOG_DIR, CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
 NORM_FLAG = False
@@ -71,11 +72,13 @@ cat_norm = cat_dist*scaling_factors
 
 mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 
-p0 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap=COLOR_MAP)
-p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/100, cmap=COLOR_MAP, vmax=150)
+p0 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, 
+                    cmap=COLOR_MAP)
+p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T, 
+                    cmap=COLOR_MAP)
 plt.colorbar(p0, ax=ax[0], label=r'Observed Number of microbursts', 
             pad=0.1, orientation='horizontal')
-plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of microbursts x 100', 
+plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of microbursts', 
             pad=0.1, orientation='horizontal')
 
 # L shell filter for the L-MLT plot
