@@ -48,15 +48,15 @@ H_scaled = H_c*(np.max(H_AE)/H_AE)
 H_scaled = H_scaled/(np.sum(H_scaled)*bin_width)
 
 fig, ax = plt.subplots()
-ax.step(bins[:-1], H_AE, where='post', label='AE', 
+ax.step(bins[:-1], H_AE, where='post', label='Index', 
         c='k', lw=2)
-ax.step(bins[:-1], H_c, where='post', label='Curtain AE', 
+ax.step(bins[:-1], H_c, where='post', label='Curtains', 
         c='b', lw=2, linestyle=':')
-ax.step(bins[:-1], H_m, where='post', label='Microburst AE', 
+ax.step(bins[:-1], H_m, where='post', label='Microbursts', 
         c='g', lw=2, linestyle='--')
 
-#ax.step(bins[:-1], H_scaled, where='post', label='Scaled curtain AE')
-ax.set(title='Distribution of the Auroral Electrojet\nall | curtain | micorburst',
+ax.set(title='Distribution of the Auroral Electrojet index\n'
+                'for curtains, microbursts, and index',
         xlabel='AE [nT]', ylabel='Probability density', xlim=(0, 1000))
 ax.legend()
 
