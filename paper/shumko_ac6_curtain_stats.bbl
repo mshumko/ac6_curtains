@@ -395,4 +395,44 @@ Shumko, M.%
   Physics}{}{}{e2019JA027651}.
 \PrintBackRefs{\CurrentBib}
 
+\bibitem [\protect \citeauthoryear {%
+Thorne%
+, O'Brien%
+, Shprits%
+, Summers%
+\BCBL {}\ \BBA {} Horne%
+}{%
+Thorne%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2005}}%
+}]{%
+Thorne2005}
+\APACinsertmetastar {%
+Thorne2005}%
+\begin{APACrefauthors}%
+Thorne, R\BPBI M.%
+, O'Brien, T\BPBI P.%
+, Shprits, Y\BPBI Y.%
+, Summers, D.%
+\BCBL {}\ \BBA {} Horne, R\BPBI B.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2005}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Timescale for {MeV} electron microburst loss during
+  geomagnetic storms} {Timescale for {MeV} electron microburst loss during
+  geomagnetic storms}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{110}{A9}{}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1029/2004JA010882}
+  \end{APACrefURL}
+\newblock
+\APACrefnote{A09202}
+\newblock
+\begin{APACrefDOI} \doi{10.1029/2004JA010882} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
 \end{thebibliography}
