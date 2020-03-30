@@ -105,6 +105,34 @@ Blum, L.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Boscher%
+, Bourdarie%
+, O'Brien%
+, Guild%
+\BCBL {}\ \BBA {} Shumko%
+}{%
+Boscher%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2012}}%
+}]{%
+irbem}
+\APACinsertmetastar {%
+irbem}%
+\begin{APACrefauthors}%
+Boscher, D.%
+, Bourdarie, S.%
+, O'Brien, P.%
+, Guild, T.%
+\BCBL {}\ \BBA {} Shumko, M.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2012}{}{}.
+\newblock
+\APACrefbtitle {Irbem-lib library.} {Irbem-lib library.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Breneman%
 \ \protect \BOthers {.}}{%
 Breneman%
