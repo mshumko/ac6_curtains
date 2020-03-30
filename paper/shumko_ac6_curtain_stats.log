@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  30 MAR 2020 08:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  30 MAR 2020 09:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -756,39 +756,46 @@ me-di-ately pre-cip-i-tat-ing in the
  []
 
 
-Overfull \hbox (2.23792pt too wide) in paragraph at lines 105--106
-\OT1/cmr/m/n/10 bounce loss cone. Lastly, above the SAA con-ju-gate point, AC6 
-only ob-serves im-me-di- 
+Overfull \hbox (14.98796pt too wide) in paragraph at lines 105--106
+\OT1/cmr/m/n/10 bounce loss cone. Lastly, the re-gion in the North At-lantic th
+at is mag-net-i-cally con-ju-gate 
  []
 
 
-Overfull \hbox (8.84898pt too wide) in paragraph at lines 105--106
-\OT1/cmr/m/n/10 ately pre-cip-i-tat-ing par-ti-cles. If a par-ti-cle is ob-serv
-ed by AC6, then its pitch an-gle must 
+Overfull \hbox (21.6823pt too wide) in paragraph at lines 105--106
+\OT1/cmr/m/n/10 to the SAA is the bounce loss cone. Here AC6 only ob-serves par
+-ti-cles pre-cip-i-tat-ing within 
  []
 
 
-Overfull \hbox (5.94614pt too wide) in paragraph at lines 105--106
-\OT1/cmr/m/n/10 be in the loss cone. If the par-ti-cle's lo-cal pitch an-gle is
- less than $90[]$ then it will travel 
+Overfull \hbox (8.79335pt too wide) in paragraph at lines 105--106
+\OT1/cmr/m/n/10 a bounce pe-riod ($\OMS/cmsy/m/n/10 ^^Y \OT1/cmr/m/n/10 1\OML/c
+mm/m/it/10 :\OT1/cmr/m/n/10 5$ sec-ond for 30 keV elec-trons). If a par-ti-cle 
+makes it to AC6's al- 
  []
 
 
-Overfull \hbox (8.12683pt too wide) in paragraph at lines 105--106
-\OT1/cmr/m/n/10 to al-ti-tudes be-low AC6, and po-ten-tially be lost. On the ot
-her hand, if the par-ti-cle's lo- 
+Overfull \hbox (8.9046pt too wide) in paragraph at lines 105--106
+\OT1/cmr/m/n/10 ti-tude, it can gy-rate past AC6 and pre-cip-i-tate in the Nort
+h At-lantic. Al-ter-na-tively, the 
  []
 
 
-Overfull \hbox (3.33504pt too wide) in paragraph at lines 105--106
-\OT1/cmr/m/n/10 cal pitch an-gle is near $90[]$ then it will mir-ror at or be-l
-ow AC6. This par-ti-cle will then 
+Overfull \hbox (12.01564pt too wide) in paragraph at lines 105--106
+\OT1/cmr/m/n/10 par-ti-cle will mir-ror at or be-low AC6 and gy-rate into the S
+AA where the equiv-a-lent mir- 
  []
 
 
-Overfull \hbox (0.32115pt too wide) in paragraph at lines 105--106
-\OT1/cmr/m/n/10 gy-rate to-wards the SAA where the par-ti-cle's mir-ror point i
-s in the at-mo-sphere or be- 
+Overfull \hbox (14.43228pt too wide) in paragraph at lines 105--106
+\OT1/cmr/m/n/10 ror point mag-netic field strength is deep in the at-mo-sphere,
+ or be-low sea level. Thus the 
+ []
+
+
+Overfull \hbox (10.98784pt too wide) in paragraph at lines 105--106
+\OT1/cmr/m/n/10 par-ti-cle is lost. There-fore, any pre-cip-i-ta-tion struc-tur
+es ob-served in the bounce loss cone 
  []
 
 
@@ -804,27 +811,33 @@ i-brary []Boscher et al.[], 2012)
  []
 
 
-Overfull \hbox (17.79344pt too wide) in paragraph at lines 107--108
-\OT1/cmr/m/n/10 to es-ti-mate the lo-cal mag-netic field strength. Then we trac
-ed the mag-netic field line that 
+Overfull \hbox (10.26573pt too wide) in paragraph at lines 107--108
+\OT1/cmr/m/n/10 to es-ti-mate the lo-cal mag-netic field strength at a typ-i-ca
+l 700 km al-ti-tude of AC6. Then 
  []
 
 
-Overfull \hbox (12.18234pt too wide) in paragraph at lines 107--108
-\OT1/cmr/m/n/10 AC6 is on to the south-ern hemi-sphere and searched for the po-
-si-tion along that field line 
+Overfull \hbox (20.18227pt too wide) in paragraph at lines 107--108
+\OT1/cmr/m/n/10 we traced the mag-netic field line that AC6 is on to the south-
+ern hemi-sphere and searched 
  []
 
 
-Overfull \hbox (12.98795pt too wide) in paragraph at lines 107--108
-\OT1/cmr/m/n/10 with an equiv-a-lent field strength. If that po-si-tion is 100 
-kilo-me-ters or less above Earth's 
+Overfull \hbox (1.738pt too wide) in paragraph at lines 107--108
+\OT1/cmr/m/n/10 for the po-si-tion along that field line with an equiv-a-lent f
+ield strength. If that po-si-tion 
  []
 
 
-Overfull \hbox (1.93224pt too wide) in paragraph at lines 107--108
-\OT1/cmr/m/n/10 sur-face we con-sid-ered that the BLC. Fur-ther-more we noted w
-here the equiv-a-lent field 
+Overfull \hbox (14.90451pt too wide) in paragraph at lines 107--108
+\OT1/cmr/m/n/10 is 100 kilo-me-ters or less above Earth's sur-face we con-sid-e
+red that the BLC. Fur-ther-more 
+ []
+
+
+Overfull \hbox (20.2378pt too wide) in paragraph at lines 107--108
+\OT1/cmr/m/n/10 we noted where the equiv-a-lent field strength is be-low sea le
+vel as a more strin-gent bounce 
  []
 
 
@@ -1641,7 +1654,10 @@ Overfull \hbox (9.01567pt too wide) in paragraph at lines 156--157
 n a 10-kilometer scale that 
  []
 
-[6]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
 <figures/fig1.pdf, id=36, 987.20822pt x 361.35pt>
 File: figures/fig1.pdf Graphic file (type pdf)
 <use figures/fig1.pdf>
@@ -1715,7 +1731,10 @@ Overfull \hbox (12.57123pt too wide) in paragraph at lines 183--184
 are con-tin-u-ously scat-tered and 
  []
 
-[7 <./figures/fig1.pdf>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./figures/fig1.pdf>]
 Overfull \hbox (23.21017pt too wide) in paragraph at lines 186--187
 []\OT1/cmr/m/n/10 We quan-ti-fied cur-tain width in time as the width at half o
 f the cur-tain's to-po-graphic 
@@ -1997,12 +2016,6 @@ nce loss cone. []Re-frence Comess 2013 and DI-ET-
  []
 
 
-Overfull \hbox (6.23788pt too wide) in paragraph at lines 235--235
-[]\OT1/cmr/m/n/10 Curtains are spa-tially small and must be around a few hun-dr
-ed km at the equa- 
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
@@ -2012,6 +2025,12 @@ pdfTeX warning: pdflatex (file ./figures/fig2_2.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
 >] [10 <./figures/ac6_curtain_microburst_AE_dist.pdf>] [11 <./figures/fig3.pdf>
 ]
+Overfull \hbox (6.23788pt too wide) in paragraph at lines 235--235
+[]\OT1/cmr/m/n/10 Curtains are spa-tially small and must be around a few hun-dr
+ed km at the equa- 
+ []
+
+
 Overfull \hbox (9.23795pt too wide) in paragraph at lines 235--235
 []\OT1/cmr/m/n/10 curtain phe-nom-ena orig-i-nates in the outer ra-di-a-tion be
 lt, and ob-served rel-a-tively 
@@ -2180,6 +2199,9 @@ th the at-mo-sphere and be lost.
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
 Overfull \hbox (2.32112pt too wide) in paragraph at lines 256--257
 []\OT1/cmr/m/n/10 We found cur-tain elec-trons that, when given the chance to e
 x-e-cute their cycli-cal 
@@ -2204,9 +2226,6 @@ een ob-served and over-looked
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12]
 Overfull \hbox (11.23787pt too wide) in paragraph at lines 260--261
 []\OT1/cmr/m/n/10 Are cur-tains re-lated to au-rora? This is a good question---
 one that is not per-ti-nent 
@@ -2359,6 +2378,9 @@ Underfull \hbox (badness 1189) in paragraph at lines 314--327
  []
 
 
+Underfull \vbox (badness 2277) has occurred while \output is active []
+
+ [13]
 Underfull \hbox (badness 10000) in paragraph at lines 339--365
 []\OT1/cmr/m/n/10 O'Brien, T. P., Lorentzen, K. R., Mann, I. R., Mered-ith, N. 
 P., Blake, J. B., Fen- 
@@ -2394,7 +2416,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 377--394
 ng the at-mo-spheric 
  []
 
-[13]
+
 Underfull \hbox (badness 10000) in paragraph at lines 406--425
 []\OT1/cmr/m/n/10 Shumko, M., John-son, A., Sam-ple, J., Grif-fith, B. A., Turn
 er, D. L., O'Brien, T. P., 
@@ -2417,15 +2439,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 406--425
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  3420 strings out of 492982
  47072 string characters out of 6134897
- 121110 words of memory out of 5000000
+ 120110 words of memory out of 5000000
  6918 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1660b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1660b,328s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2444,7 +2469,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (14 pages, 482336 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (14 pages, 482553 bytes).
 PDF statistics:
  361 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams

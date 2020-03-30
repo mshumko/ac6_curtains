@@ -8,7 +8,7 @@ import matplotlib.colors
 import dirs
 import IRBEM
 
-def calc_mirror_point_alt(alt=600, kext='OPQ77', 
+def calc_mirror_point_alt(alt=700, kext='OPQ77', 
                 lat_bins=np.linspace(-30, 91, num=200), 
                 lon_bins=np.linspace(-100, 50, num=200),
                 t0=datetime(2019, 1, 1)):
@@ -83,5 +83,4 @@ if __name__ == '__main__':
     
     c = plt.contour(lons, df2.index, df2.values, levels=[0, 100], 
                     colors=['k', 'k'], linestyles=['dashed', 'solid'])
-    #cbar.ax.set_yticklabels(['Trapped/DLC', 'BLC/open'])
     plt.show()
