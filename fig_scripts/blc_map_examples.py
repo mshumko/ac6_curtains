@@ -110,7 +110,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
         (data_df.df_b['dateTime_shifted'] < end_time)
         ]
     
-    bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'r', ls='--', label='AC6-A')
+    bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'r', ls='-', label='AC6-A')
     bx_i.plot(df_b_flt['dateTime_shifted'], df_b_flt['dos1rate'], 'b', ls='-', label='AC6-B')
     # bx_i.axvline(time, c='r')
     # bx_twin_i = bx_i.twinx()

@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  1 APR 2020 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  1 APR 2020 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**shumko_ac6_curtain_stats.tex
+**shumko_ac6_curtain_stats
 (./shumko_ac6_curtain_stats.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
@@ -1565,6 +1565,24 @@ hown in []Comess et al.[] (2013,
  []
 
 
+Overfull \hbox (10.62679pt too wide) in paragraph at lines 198--199
+\OT1/cmr/m/n/10 Fig-ure 1) and []Dietrich et al.[] (2010, Fig-ure 3). We used t
+he Olson-Pfitzer mag-netic field 
+ []
+
+
+Overfull \hbox (22.82129pt too wide) in paragraph at lines 198--199
+\OT1/cmr/m/n/10 model []Olson & Pfitzer, 1982) to es-ti-mate the bounce loss co
+ne bound-ary. The same anal- 
+ []
+
+
+Overfull \hbox (4.18248pt too wide) in paragraph at lines 198--199
+\OT1/cmr/m/n/10 y-sis us-ing the Tsy-ga-nenko 1989 model []Tsyganenko, 1989) yi
+elded sim-i-lar bound-aries.  
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
@@ -1665,13 +1683,10 @@ m-ples shown in pan-els b-e. The pan-els
 
 Underfull \hbox (badness 10000) in paragraph at lines 204--204
 \OT1/cmr/m/n/9 b-e show the 4 ex-am-ple cur-tains with the AC6-A shown by the r
-ed dashed line, and AC6-B with
+ed line, and AC6-B with the blue
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9 <./figures/fig3.pdf>]
 Overfull \hbox (3.40459pt too wide) in paragraph at lines 218--218
 []\OT1/cmr/m/n/10 Curtains are lat-i-tu-di-nally nar-row and must be around a f
 ew hun-dred km at the 
@@ -1810,6 +1825,10 @@ he mi-croburst size dis-tri-bu-tion
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+[10 <./figures/fig3.pdf>]
 Overfull \hbox (13.68233pt too wide) in paragraph at lines 224--225
 []\OT1/cmr/m/n/10 Furthermore the de-tec-tion al-go-rithm de-scribed in sec-tio
 n 4.1[] has a width bias. For 
@@ -1888,9 +1907,6 @@ n the bounce loss cone is above
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10]
 Overfull \hbox (1.48782pt too wide) in paragraph at lines 236--238
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
@@ -2005,6 +2021,9 @@ A. An elec-trons can not sur-
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
 Overfull \hbox (14.23793pt too wide) in paragraph at lines 253--254
 []\OT1/cmr/m/n/10 Write the pa-per and ask the ques-tion: "What is this pa-per 
 re-ally about?" Not just 
@@ -2066,7 +2085,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--69
 / 10 [] .1002 / 
  []
 
-[11]
+
 Underfull \hbox (badness 2635) in paragraph at lines 83--106
 []\OT1/cmr/m/n/10 Blum, L., Li, X., & Den-ton, M.  (2015).  Rapid MeV elec-tron
  pre-cip-i-ta-tion as ob- 
@@ -2193,7 +2212,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 351--372
 cmr/m/it/10 106\OT1/cmr/m/n/10 (A4), 6017--6027.  Re-trieved from 
  []
 
-
+[12]
 Underfull \hbox (badness 1189) in paragraph at lines 386--399
 []\OT1/cmr/m/n/10 O'Brien, T. P., Blake, J. B., & W., G. J.  (2016, May).  \OT1
 /cmr/m/it/10 Aerocube-6 dosime-ter data 
@@ -2224,49 +2243,81 @@ Underfull \hbox (badness 3029) in paragraph at lines 411--437
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--466
+Underfull \hbox (badness 4739) in paragraph at lines 451--470
+[]\OT1/cmr/m/n/10 Olson, W. P., & Pfitzer, K. A.  (1982).  A dy-namic model of 
+the mag-ne-to-spheric 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--470
+\OT1/cmr/m/it/10 Space Physics\OT1/cmr/m/n/10 , \OT1/cmr/m/it/10 87\OT1/cmr/m/n
+/10 (A8), 5943--5948.  Re-trieved from $\OT1/cmtt/m/n/10 http :// dx [] .doi []
+ .org / 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 482--499
 []\OT1/cmr/m/n/10 Sepp^^?al^^?a, A., Douma, E., Rodger, C., Ver-ro-nen, P., Cli
 l-verd, M. A., & Bort-nik, J. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 449--466
+Underfull \hbox (badness 10000) in paragraph at lines 482--499
 \OT1/cmr/m/n/10 (2018).  Rel-a-tivis-tic elec-tron mi-croburst events: Mod-el-i
 ng the at-mo-spheric 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--497
+Underfull \hbox (badness 10000) in paragraph at lines 511--530
 []\OT1/cmr/m/n/10 Shumko, M., John-son, A., Sam-ple, J., Grif-fith, B. A., Turn
 er, D. L., O'Brien, T. P., 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--497
+Underfull \hbox (badness 10000) in paragraph at lines 511--530
 \OT1/cmr/m/n/10 ... Claude-pierre, S. G.  (2019).  Elec-tron mi-croburst size d
 is-tri-bu-tion de- 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 478--497
+Underfull \hbox (badness 10000) in paragraph at lines 511--530
 \OT1/cmr/m/n/10 rived with aerocube-6.  \OT1/cmr/m/it/10 Jour-nal of Geo-phys-i
 -cal Re-search: Space Physics\OT1/cmr/m/n/10 , 
  []
 
-) [12] (./shumko_ac6_curtain_stats.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 582--601
+[]\OT1/cmr/m/n/10 Tsyganenko, N.  (1989).  A so-lu-tion of the chapman-ferraro 
+prob-lem for an el- 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 582--601
+\OT1/cmr/m/n/10 lip-soidal mag-ne-topause.  \OT1/cmr/m/it/10 Plan-e-tary and Sp
+ace Sci-ence\OT1/cmr/m/n/10 , \OT1/cmr/m/it/10 37\OT1/cmr/m/n/10 (9), 1037 - 10
+46. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 582--601
+\OT1/cmr/m/n/10 Re-trieved from $\OT1/cmtt/m/n/10 http :// www [] .sciencedirec
+t [] .com / science / article / pii / 
+ []
+
+) [13] (./shumko_ac6_curtain_stats.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 3428 strings out of 492982
- 47196 string characters out of 6134897
- 121419 words of memory out of 5000000
- 6926 multiletter control sequences out of 15000+600000
+ 3436 strings out of 492982
+ 47324 string characters out of 6134897
+ 121601 words of memory out of 5000000
+ 6934 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1645b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1641b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2284,10 +2335,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (12 pages, 473844 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (13 pages, 475491 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
+ 354 PDF objects out of 1000 (max. 8388607)
+ 117 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
