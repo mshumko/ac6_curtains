@@ -164,6 +164,78 @@ Breneman, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Comess%
+, Smith%
+, Selesnick%
+, Millan%
+\BCBL {}\ \BBA {} Sample%
+}{%
+Comess%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2013}}%
+}]{%
+Comess2013}
+\APACinsertmetastar {%
+Comess2013}%
+\begin{APACrefauthors}%
+Comess, M.%
+, Smith, D.%
+, Selesnick, R.%
+, Millan, R.%
+\BCBL {}\ \BBA {} Sample, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Duskside relativistic electron precipitation as measured
+  by SAMPEX: A statistical survey} {Duskside relativistic electron
+  precipitation as measured by sampex: A statistical survey}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{118}{8}{5050-5058}.
+\newblock
+\begin{APACrefURL}
+  \url{https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1002/jgra.50481}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{10.1002/jgra.50481} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Dietrich%
+, Rodger%
+, Clilverd%
+, Bortnik%
+\BCBL {}\ \BBA {} Raita%
+}{%
+Dietrich%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2010}}%
+}]{%
+Dietrich2010}
+\APACinsertmetastar {%
+Dietrich2010}%
+\begin{APACrefauthors}%
+Dietrich, S.%
+, Rodger, C\BPBI J.%
+, Clilverd, M\BPBI A.%
+, Bortnik, J.%
+\BCBL {}\ \BBA {} Raita, T.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2010}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Relativistic microburst storm characteristics: Combined
+  satellite and ground-based observations} {Relativistic microburst storm
+  characteristics: Combined satellite and ground-based observations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{115}{A12}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Douma%
 \ \protect \BOthers {.}}{%
 Douma%
