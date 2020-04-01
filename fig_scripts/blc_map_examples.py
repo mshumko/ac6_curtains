@@ -110,7 +110,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
         (data_df.df_b['dateTime_shifted'] < end_time)
         ]
     
-    bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'k', ls='--', label='AC6-A')
+    bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'r', ls='--', label='AC6-A')
     bx_i.plot(df_b_flt['dateTime_shifted'], df_b_flt['dos1rate'], 'b', ls='-', label='AC6-B')
     # bx_i.axvline(time, c='r')
     # bx_twin_i = bx_i.twinx()
@@ -121,6 +121,9 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     bx_i.text(0, 0.98, f'({string.ascii_letters[i+1]})',
          ha='left', va='top', fontsize=20, color='k',
          transform=bx_i.transAxes)
+
+    print(f'Panel {string.ascii_letters[i+1]} Lag_In_Track: '
+            f'{df_b_flt.loc[df_b_flt.index[0], "Lag_In_Track"]}')
 
     annotate_string=(f'dt = {abs(int(round(df_b_flt.loc[df_b_flt.index[0], "Lag_In_Track"])))} s\n'
                     f'MLT = {int(round(df_b_flt.loc[df_b_flt.index[0], "MLT_OPQ"]))}\n'
