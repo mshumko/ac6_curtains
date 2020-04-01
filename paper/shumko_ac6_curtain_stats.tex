@@ -147,17 +147,17 @@ The locations where the two criteria are met are curtain candidates and the time
 In the spirit of brevity, we limited the scope of this statistical study to answer three questions:
 
 \begin{enumerate}
-\item how narrow are curtains,
-\item when and where are curtains observed, and
-\item are curtains drifting or locally precipitating?
-\end{enumerate} For each of these questions we will compare the curtain distribution against the $>30$ keV microburst distribution from \citeA{Shumko2020}. Then we will provide observational evidence that suggests that some curtain electrons are continuously scattered and can not be drifting.
+\item How narrow are curtains?
+\item When and where are curtains observed?
+\item Are curtains drifting or locally precipitating?
+\end{enumerate} For each of these questions we will compare the curtain distribution with the $>30$ keV microburst distribution from \citeA{Shumko2020}. Lastly, we will show evidence that suggests that some curtains are continuously scattered and not drifting.
 
 \subsection{Curtain Width}
-We quantified curtain width in time as the width at half of the curtain's topographic prominence: the height of the peak above the lowest contour that encircles the peak but contains no higher peak. The spatial width of a curtain is the product of the temporal width and the 7.5 km/s orbital velocity mostly in latitude. The distribution of curtain widths is shown in Fig. \ref{width_dist} by the thick black curve. Curtains are very narrow in latitude. Many curtains are less than 10 km wide, and 90\% are narrower than 21 km. \textcolor{red}{There is a bias inherent to this detection algorithm. The detection algorithm looses sensitivity to wider curtains so the latitudinal curtain width distribution is likely somewhat underestimated.}
+We quantified curtain width in time as the width at half of the curtain's topographic prominence: the height of the peak above the lowest contour that encircles the peak but contains no higher peak. The spatial width of a curtain is the product of the temporal width and the 7.5 km/s orbital velocity mostly in latitude. The distribution of curtain widths is shown in Fig. \ref{width_dist} by the thick black curve. Curtains are very narrow in latitude. Many curtains are less than 10 km wide, and 90\% are narrower than 21 km.
 	
 We compared the curtain width distribution to the microburst size distribution estimated in \citeA{Shumko2020}. \citeA{Shumko2020} estimated the microburst size distribution by finding microbursts that were observed simultaneously by both AC6 units so the microburst size much be larger than the AC6 separation. The red curve in Fig. \ref{width_dist} shows the microburst distribution estimated from the ratio of the number of concurrent and nonconcurrent microbursts observed in each separation bin. 
 
-The curtain and microburst size distributions are very similar with a one notable difference. Curtain widths are observed directly hence their distribution is peaked, while the microburst distribution is estimated from concurrent observations so their distribution is peaked at 0 km AC6 separation. \textcolor{red}{What about the geometric arguments that push the microburst size higher?} 
+The curtain and microburst size distributions are very similar with a one notable difference. Curtain widths are observed directly hence their distribution is peaked, while the microburst distribution is estimated from concurrent observations so their distribution is peaked at 0 km AC6 separation.
 
 \subsection{When and Where Are Curtains Observed}
 The distribution of curtains in L and MLT is shown in Fig. \ref{l_mlt_dist}. Figure \ref{l_mlt_dist}a shows the distribution of the 1634 observed curtains and Fig. \ref{l_mlt_dist}b shows the normalized distribution. The white bins, mostly in the early morning and evening MLT regions, had no observed curtains because the AC6 orbit did not sample there. Figure \ref{l_mlt_dist}c confirms this by showing the distribution of the number of quality (data quality flag = 0) 10 Hz samples.
@@ -203,6 +203,14 @@ Outline
 \item some curtains locally precipitate for an extended period of time so there must be a sustained parallel electric field. Show the derivation and estimated potential.
 \item AC6 can't answer this question, but curtains could provide a substantial source of HOx and NOX molecules responsible for destroying ozone. We need AC6 with energy and pitch angle resolution.
 \end{enumerate}}
+
+If curtains are remnants of microbursts then the distribution of curtain widths in latitude corresponds to the microburst size distribution. Figure \ref{width_dist} shows a good correspondence between the distribution of curtain widths in latitude and the microburst size distribution from \citeA{Shumko2020}. Therefore, it is reasonable to believe that curtains and microbursts are related, but this result need to be closely inspected for sources of bias. 
+
+The microburst scale size distribution, as described in \citeA{Shumko2020}, is the fraction of microbursts observed simultaneously to all microbursts observed either simultaneously or by only one AC6 unit. A microburst observed simultaneously must be larger than the spacecraft separation so the microburst distribution represents a lower bound. \citeA{Shumko2020} attempted to account for this bias but it is difficult. This bias that shifts the microburst distribution to smaller sizes so in the microburst size distribution shown in Fig. \ref{width_dist} is underestimated.
+
+Furthermore the detection algorithm described in section \ref{curtain_identification} has a width bias. For wide curtains with a similar width to the detection algorithm's 10-second baseline, the 10-second baseline is then calculated using the enhanced curtain counts instead of the background and is increased above the true background and thus the curtain peak is less pronounced relative to the baseline. As a result, the curtain detection algorithm is less sensitive to wider curtains. The result of this bias is similar to the bias inherent in the microburst distribution---the curtain widths are underestimated.
+
+
 
 \section{Conclusions}
 
