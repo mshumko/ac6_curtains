@@ -225,8 +225,19 @@ Furthermore the detection algorithm described in section \ref{curtain_identifica
 
 Now we address curtains observed in the bounce loss cone. What can cause continuous, $>30$ keV electron precipitation observed for multiple seconds? The precipitation mechanism responsible must be radially localized near the magnetic equator, on a scale of a few hundred kilometers. One potential driver is a parallel DC electric field that lowers the mirror point to AC6 altitudes. We now estimate the minimum potential that can accelerate these curtain electrons and lower the mirror point. We assume the particle is initially just trapped with a mirror point at 100 kilometers in the SAA. This condition implies that the particle's mirror point in the bounce loss cone is above AC6. 
 
-\textcolor{red}{Show Paul's derivation here.}
+To find the parallel potential potential we use the kinetic energy, $W$, of a $30$ keV particle at its initial mirror point at a magnetic field strength of $B_i$. The kinetic energy can be written as $W_i = \mu B_i$ where $\mu \sim W_\perp / B$ is the first adiabatic invariant, and $W_{\perp}$ is the kinetic energy of the particle perpendicular to the background magnetic field. Now when a parallel potential acts on the electron of charge $q$ and does $q \Phi$ amount of work, the electron will mirror closer to Earth's surface and mirror at a field strength $B_f$ where its final energy is $W_f = \mu B_f$. Now we relate the initial and final states of the electron,
 
+\begin{equation}
+\mu B_f = \mu B_i + q \Phi
+\end{equation} which can be rewritten as \textcolor{red}{Check if this jump is easy to follow}
+
+\begin{equation}
+ q \Phi = \frac{W}{B_i}(B_f - B_i).
+\end{equation}
+
+We again use IRBEM-Lib to estimate $ q \Phi$. For each example curtain in Fig. \ref{fig3}, we traced the field line from AC6 into the SAA. Then we found $B_i$ at 100 kilometer altitude in the SAA for barely trapped electrons.
+
+\textcolor{red}{Recalculate these potentials for the four cases.}
 
 
 \section{Conclusions}
