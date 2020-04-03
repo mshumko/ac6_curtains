@@ -52,7 +52,7 @@
 %
 %% ------------------------------------------------------------------------ %%
 
-\authors{M. Shumko\affil{1}, A.T. Johnson\affil{1}, J.G. Sample\affil{1}, D.L. Turner\affil{3}, T.P. O'Brien\affil{2}, J.B. Blake\affil{2}, L.W. Blum\affil{4}, A.J. Halford\affil{4}}
+\authors{M. Shumko\affil{1}, A.T. Johnson\affil{1},  T.P. O'Brien\affil{2}, D.L. Turner\affil{3}, J.G. Sample\affil{1}, J.B. Blake\affil{2}, L.W. Blum\affil{4}, A.J. Halford\affil{4}}
 
 
 \affiliation{1}{Department of Physics, Montana State University, Bozeman, Montana, USA}
@@ -65,8 +65,8 @@
 
 \begin{keypoints}
 \item We used the dual AeroCube-6 CubeSats to identify stationary, narrow, and persistent $>30$ keV precipitation in low Earth orbit
-\item A single low Earth-orbiting spacecraft can easily misidentify curtains as microburst precipitation
-\item A few curtains were persistently scattered into the atmosphere for at least six seconds
+\item 90\% of curtains observed are narrower than 21 kilometers in latitude
+\item A few curtains persistently scattered into the atmosphere for at least six seconds
 \end{keypoints}
 
 
@@ -169,7 +169,7 @@ The curtain and microburst size distributions are very similar with a one notabl
 \subsection{When and Where Are Curtains Observed}
 The distribution of curtains in L and MLT is shown in Fig. \ref{l_mlt_dist}. Figure \ref{l_mlt_dist}a shows the distribution of the 1634 observed curtains and Fig. \ref{l_mlt_dist}b shows the normalized distribution. The white bins, mostly in the early morning and evening MLT regions, had no observed curtains because the AC6 orbit did not sample there. Figure \ref{l_mlt_dist}c confirms this by showing the distribution of the number of quality (data quality flag = 0) 10 Hz samples.
 
-After scaling by the uneven sampling in the late morning and midnight MLT regions, the normalized distribution in Fig. \ref{l_mlt_dist}b shows enhanced curtain occurrence in the outer radiation belt in late morning and midnight MLT regions. The highest curtain occurrence rate is near midnight while the microburst peak occurrence rate is in the late morning MLT \cite<e.g.>{O'Brien2003, Douma2017}.
+After scaling by the uneven sampling in the late morning and midnight MLT regions, the normalized distribution in Fig. \ref{l_mlt_dist}b shows enhanced curtain occurrence in the outer radiation belt in late morning and midnight MLT regions.
 
 Now we quantify the geomagnetic conditions favorable for curtains. Figure \ref{ae_dist} shows the distribution of the Auroral Electroject (AE) index between 2014 and 2017, and the distribution of the AE index when curtains and microbursts were observed. The distribution of the AE index when $> 30$ keV microbursts were observed is shown with a dashed green curve. Curtains are observed typically when AE is enhanced. Microbursts are observed when AE is enhanced more than for curtains.
 
@@ -194,7 +194,6 @@ Now we quantify the geomagnetic conditions favorable for curtains. Figure \ref{a
 \subsection{Local Atmospheric Precipitation}
 Now we will show examples of curtains that were scattered over an extended period of time in the bounce loss cone. We estimated the bounce loss cone region in the North Atlantic Ocean using the IRBEM-Lib magnetic field library \cite{irbem}. First we estimated the local magnetic field strength on a latitude-longitude grid spanning the North Atlantic, at 700 kilometer altitude that is typical for AC6. For each latitude-longitude point we traced that magnetic field line to the SAA and found the position along that field line with an equivalent field strength as in the North Atlantic. A particle that mirrors at the grid location will mirror and gyrate to the southern hemisphere before mirroring at an altitude with the eqivulant field strength or be lost in the atmosphere. Since we are considering particles mirroring at the grid points in North Atlantic, this estimate is the upper bound altitude that the particle can mirror. Particles mirroring above the grid will not be observed, and the particles that are observed will mirror at or below the estimated altitude in the SAA. If the corresponding field strength position is at 100 kilometers or lower in the SAA we considered that grid point in the North Atlantic in the bounce loss cone region. For the more rigorous bounce loss cone criteria, we saved the grid locations where the equivalent field strength altitude in the SAA is below sea level. 
 
-
 Figure \ref{fig3}a shows a map of the bounce loss cone region in the North Atlantic. The solid blue line is the north bound of the region where a particle observed at 700 kilometers at that location will mirror at 100 kilometers in the SAA. Immediately south of the solid blue line the SAA mirror altitude rapidly decreases towards, and below, sea level. The dashed blue line is the set of latitude-longitude points where the SAA mirror point altitude is at sea level. Furthermore we superposed two dotted black lines on Fig. \ref{fig3}a that represent the boundary of the outer radiation belt defined between L shells of 4 and 8. The bounce loss cone region here closely matches the region shown in \citeA[Figure 1]{Comess2013} and \citeA[Figure 3]{Dietrich2010}. We used the Olson-Pfitzer magnetic field model \cite{Olson1982} to estimate the bounce loss cone boundary. The same analysis using the Tsyganenko 1989 model \cite{Tsyganenko1989} yielded similar boundaries. 
 
 We found four good curtains that were observed inside the bounce loss cone regions and included the shifted time series plots in Fig. \ref{fig3}b-e, with the AC6 in-track lag, L and MLT of the observations annotated. The AC6 locations where these curtains were observed are shown in \ref{fig3}a with red stars and the corresponding panel labels. The curtains shown in Fig. \ref{fig3}c and e were observed near the sea level SAA mirror altitude curve thus they were not drifting and were precipitating as much as 6 seconds as shown in Fig. \ref{fig3}e. For reference, the precipitation persisted for longer than the typical $\approx 1.5$ second bounce period of 30 keV electrons in this region.
@@ -209,20 +208,26 @@ We found four good curtains that were observed inside the bounce loss cone regio
 \textcolor{blue}{
 Outline
 \begin{enumerate}
-\item Curtains are latitudinally narrow and must be around a few hundred km at the equator. Whatever they are they keep their shape for multiple seconds
-\item curtain phenomena originates in the outer radiation belt, and observed relatively more in the evening than morning regions. Limited AC6 coverage prevents a complete MLT distribution
-\item preference to disturbed conditions
-\item To explain the randomness in the leading/following spacecraft count rates. If curtains are microburst remnants and the microburst electrons were recently scattered, then those electrons are not yet mixed homogeneously among the field line. With AC6 the leading and trailing spacecraft will observe a part of the spread out packet. Assuming the microburst had a falling energy spectrum, the leading spacecraft could see a smaller number of higher energy electrons, or a higher number of low energy electrons.
-\item some curtains locally precipitate for an extended period of time so there must be a sustained parallel electric field. Show the derivation and estimated potential.
 \item AC6 can't answer this question, but curtains could provide a substantial source of HOx and NOX molecules responsible for destroying ozone. We need AC6 with energy and pitch angle resolution.
 \end{enumerate}}
 
-If curtains are remnants of microbursts then the distribution of curtain widths in latitude corresponds to the microburst size distribution. Figure \ref{width_dist} shows a good correspondence between the distribution of curtain widths in latitude and the microburst size distribution from \citeA{Shumko2020}. Therefore, it is reasonable to believe that curtains and microbursts are related, but this result need to be closely inspected for sources of bias. 
+\subsection{Curtain Width In Latitude}
+Curtains are very narrow in latitude. Figure \ref{width_dist} shows the width in latitude of many curtains are on the order of 10 kilometers and 90\% are narrower than 21 km. Scaled to the magnetic equator, where we presume curtains are generated, these latitudinal widths correspond to a source with a radial scale size of a few hundred kilometers. As shown in Fig. \ref{fig1}f and \ref{fig1}h; it is remarkable that some curtains maintain a fine structure after multiple seconds with little observable difference. Sometimes curtains appear to be slightly and systematically shifted in latitude, while maintaining their shape (not shown).
+
+If curtains are remnants of microbursts then the distribution of curtain widths in latitude correspond to the microburst size distribution. Figure \ref{width_dist} shows a good correspondence between the distribution of curtain widths in latitude and the microburst size distribution from \citeA{Shumko2020}. Therefore, it is reasonable to believe that curtains and microbursts are related, but this result need to be closely inspected for sources of bias. 
 
 The microburst scale size distribution, as described in \citeA{Shumko2020}, is the fraction of microbursts observed simultaneously to all microbursts observed either simultaneously or by only one AC6 unit. A microburst observed simultaneously must be larger than the spacecraft separation so the microburst distribution represents a lower bound. \citeA{Shumko2020} attempted to account for this bias but it is difficult. This bias that shifts the microburst distribution to smaller sizes so in the microburst size distribution shown in Fig. \ref{width_dist} is underestimated.
 
 Furthermore the detection algorithm described in section \ref{curtain_identification} has a width bias. For wide curtains with a similar width to the detection algorithm's 10-second baseline, the 10-second baseline is then calculated using the enhanced curtain counts instead of the background and is increased above the true background and thus the curtain peak is less pronounced relative to the baseline. As a result, the curtain detection algorithm is less sensitive to wider curtains. The result of this bias is similar to the bias inherent in the microburst distribution---the curtain widths are underestimated.
 
+Both of these biases underestimate the true size of curtains and microbursts, so this evidence agrees with the \citeA{Blake2016} microburst-curtain hypothesis.
+
+\subsection{When and Where Are Curtains Observed}
+Figure \ref{l_mlt_dist} shows that curtain phenomena originates in the outer radiation belt, and observed relatively more in the evening than morning regions. Unfortunately, the limited AC6 coverage prevents a complete curtain distribution in MLT. From the MLT information we have in Fig. \ref{l_mlt_dist}b, curtains are most often observed near midnight MLT with relatively less observed in the late morning MLT. This distribution, though limited, appears to be similar to the L-MLT distribution of microbursts from prior studies \cite<e.g.>{O'Brien2003, Douma2017}.
+
+Curtains also exhibit a preference to disturbed geomagnetic conditions as shown in Fig. \ref{ae_dist}, but not as disturbed as microbursts from \citeA{Shumko2020}. A possible explanation: during quiet conditions the remnant microburst electrons are more likely to drift undisturbed and AC6 is more likely to observe the fine, highly-correlated curtain structure. In contrast, during active conditions curtain electrons are still drifting, but the dynamics of an actively-changing magnetosphere can easily perturb curtain electrons until AC6 no longer observes a highly correlated structure at the same location.
+ 
+\subsection{Curtains Observed in The Bounce Loss Cone}
 Now we address curtains observed in the bounce loss cone. What can cause continuous, $>30$ keV electron precipitation observed for multiple seconds? The precipitation mechanism responsible must be radially localized near the magnetic equator, on a scale of a few hundred kilometers. One potential driver is a parallel DC electric field that lowers the mirror point to AC6 altitudes. We now estimate the minimum potential that can accelerate these curtain electrons and lower the mirror point. We assume the particle is initially just trapped with a mirror point at 100 kilometers in the SAA. This condition implies that the particle's mirror point in the bounce loss cone is above AC6. 
 
 To find the parallel potential potential we use the kinetic energy, $W$, of a $30$ keV particle at its initial mirror point at a magnetic field strength of $B_i$. The kinetic energy can be written as $W_i = \mu B_i$ where $\mu \sim W_\perp / B$ is the first adiabatic invariant, and $W_{\perp}$ is the kinetic energy of the particle perpendicular to the background magnetic field. Now when a parallel potential acts on the electron of charge $q$ and does $q \Phi$ amount of work, the electron will mirror closer to Earth's surface and mirror at a field strength $B_f$ where its final energy is $W_f = \mu B_f$. Now we relate the initial and final states of the electron,
