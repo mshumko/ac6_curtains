@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  3 APR 2020 08:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  3 APR 2020 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1909,39 +1909,45 @@ e. What can cause con-
  []
 
 
-Overfull \hbox (6.57129pt too wide) in paragraph at lines 231--232
-\OT1/cmr/m/n/10 ta-tion mech-a-nism re-spon-si-ble must be ra-di-ally lo-cal-iz
-ed near the mag-netic equa-tor, on 
+Overfull \hbox (2.48784pt too wide) in paragraph at lines 231--232
+\OT1/cmr/m/n/10 tin-u-ous $\OML/cmm/m/it/10 > \OT1/cmr/m/n/10 30$ keV elec-tron
+ pre-cip-i-ta-tion last-ing for mul-ti-ple sec-onds? This mech-a-nism 
  []
 
 
-Overfull \hbox (5.04338pt too wide) in paragraph at lines 231--232
-\OT1/cmr/m/n/10 a scale of a few hun-dred kilo-me-ters. One po-ten-tial driver 
-is a par-al-lel DC elec-tric field 
+Overfull \hbox (5.90457pt too wide) in paragraph at lines 231--232
+\OT1/cmr/m/n/10 must be ra-di-ally lo-cal-ized near the mag-netic equa-tor, on 
+a scale of a few hun-dred kilo- 
  []
 
 
-Overfull \hbox (0.9601pt too wide) in paragraph at lines 231--232
-\OT1/cmr/m/n/10 that low-ers the mir-ror point to AC6 al-ti-tudes. We now es-ti
--mate the min-i-mum po-ten- 
+Overfull \hbox (1.62668pt too wide) in paragraph at lines 231--232
+\OT1/cmr/m/n/10 me-ters. A can-di-date mech-a-nism is a di-rect cur-rent elec-t
+ric field that is par-al-lel to the 
  []
 
 
-Overfull \hbox (4.71002pt too wide) in paragraph at lines 231--232
-\OT1/cmr/m/n/10 tial that can ac-cel-er-ate these cur-tain elec-trons and lower
- the mir-ror point. We as-sume 
+Overfull \hbox (0.40456pt too wide) in paragraph at lines 231--232
+\OT1/cmr/m/n/10 back-ground mag-netic field that low-ers the elec-tron mir-ror 
+point to AC6 al-ti-tudes. To 
  []
 
 
-Overfull \hbox (3.51575pt too wide) in paragraph at lines 231--232
-\OT1/cmr/m/n/10 the par-ti-cle is ini-tially just trapped with a mir-ror point 
-at 100 kilo-me-ters in the SAA. 
+Overfull \hbox (6.34903pt too wide) in paragraph at lines 231--232
+\OT1/cmr/m/n/10 find the min-i-mum po-ten-tial we as-sume the elec-tron is bare
+ly trapped and has a mir-ror 
  []
 
 
-Overfull \hbox (6.12679pt too wide) in paragraph at lines 231--232
-\OT1/cmr/m/n/10 This con-di-tion im-plies that the par-ti-cle's mir-ror point i
-n the bounce loss cone is above 
+Overfull \hbox (14.84904pt too wide) in paragraph at lines 231--232
+\OT1/cmr/m/n/10 point at 100 kilo-me-ters in the SAA (and will like-wise mir-ro
+r above AC6's al-ti-tude in the 
+ []
+
+
+Overfull \hbox (5.12688pt too wide) in paragraph at lines 231--232
+\OT1/cmr/m/n/10 con-ju-gate point). This con-di-tion im-plies that the par-ti-c
+le's mir-ror point in the bounce 
  []
 
 
@@ -2453,7 +2459,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (13 pages, 486600 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (13 pages, 486593 bytes).
 PDF statistics:
  358 PDF objects out of 1000 (max. 8388607)
  120 compressed objects within 2 object streams
