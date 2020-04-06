@@ -469,6 +469,65 @@ Olson, W\BPBI P.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Partamies%
+, Donovan%
+\BCBL {}\ \BBA {} Knudsen%
+}{%
+Partamies%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2008}}%
+}]{%
+Partamies2008}
+\APACinsertmetastar {%
+Partamies2008}%
+\begin{APACrefauthors}%
+Partamies, N.%
+, Donovan, E.%
+\BCBL {}\ \BBA {} Knudsen, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Statistical study of inverted-V structures in FAST data}
+  {Statistical study of inverted-v structures in fast data}.{\BBCQ}
+\newblock
+\BIn{} \APACrefbtitle {Annales Geophysicae} {Annales geophysicae}\ (\BVOL~26,
+  \BPGS\ 1439--1449).
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Randall%
+\ \protect \BOthers {.}}{%
+Randall%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2015}}%
+}]{%
+Randall2015}
+\APACinsertmetastar {%
+Randall2015}%
+\begin{APACrefauthors}%
+Randall, C\BPBI E.%
+, Harvey, V\BPBI L.%
+, Holt, L\BPBI A.%
+, Marsh, D\BPBI R.%
+, Kinnison, D.%
+, Funke, B.%
+\BCBL {}\ \BBA {} Bernath, P\BPBI F.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Simulation of energetic particle precipitation effects
+  during the 2003--2004 Arctic winter} {Simulation of energetic particle
+  precipitation effects during the 2003--2004 arctic winter}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{120}{6}{5035--5048}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Sepp{\"a}l{\"a}%
 \ \protect \BOthers {.}}{%
 Sepp{\"a}l{\"a}%

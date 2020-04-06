@@ -224,17 +224,19 @@ Curtains also exhibit a preference to disturbed geomagnetic conditions as shown 
 \subsection{Curtains Observed in The Bounce Loss Cone}
 Lastly we address curtains observed in the bounce loss cone. What can cause continuous $>30$ keV electron precipitation lasting for multiple seconds? This mechanism must be radially localized near the magnetic equator, on a scale of a few hundred kilometers. A candidate mechanism is a direct current electric field that is parallel to the background magnetic field that lowers the electron mirror point to AC6 altitudes. To find the minimum potential we assume the electron is barely trapped and has a mirror point at 100 kilometers in the SAA (and will likewise mirror above AC6's altitude in the conjugate point). This condition implies that the particle's mirror point in the bounce loss cone is above AC6. 
 
-To find the parallel potential potential we use the kinetic energy, $W$, of a $30$ keV particle at its initial mirror point at a magnetic field strength of $B_i$. The kinetic energy can be written as $W_i = \mu B_i$ where $\mu \sim W_\perp / B$ is the first adiabatic invariant, and $W_{\perp}$ is the kinetic energy of the particle perpendicular to the background magnetic field. Now when a parallel potential acts on the electron of charge $q$ and does $q \Phi$ amount of work, the electron will mirror closer to Earth's surface and mirror at a field strength $B_f$ where its final energy is $W_f = \mu B_f$. Now we relate the initial and final states of the electron,
+To find the parallel potential potential we use the kinetic energy, $W$, of a $30$ keV particle at its initial mirror point at a magnetic field strength of $B_i$. The kinetic energy at the initial mirror point can be written as $W_i = \mu B_i$ where $\mu$ is the first adiabatic invariant. Now when a parallel potential acts on the electron of charge $q$ and does $q \Phi$ amount of work, the electron will mirror closer to Earth's surface and mirror at a field strength $B_f$ where its final energy is $W_f = \mu B_f$. \textcolor{red}{In this derivation we assume that the work done on the electron is a small fraction of its kinetic energy.} Now we relate the initial and final kinetic energy of the electron,
 
 \begin{equation}
-\mu B_f = \mu B_i + q \Phi
-\end{equation} which can be rewritten as \textcolor{red}{Check if this jump is easy to follow}
+\mu_f B_f = \mu_i B_i + q \Phi
+\end{equation} which after we rearrange, and substitute $\mu$ assuming it does not change, the above expression is approximately
 
 \begin{equation}
- q \Phi = W \frac{(B_f - B_i)}{B_i}.
+ q \Phi \approx W \frac{(B_f - B_i)}{B_i}.
 \end{equation}
 
-We again use IRBEM-Lib to estimate $ q \Phi$. For each example curtain in Fig. \ref{fig3}, we traced the field line from AC6 into the SAA. Then we found $B_i$ at 100 kilometers altitude in the SAA for barely trapped electrons. With the local magnetic field strength at AC6 as $B_f$, we estimated the minimum potential necessary to lower a $30$ keV particle's mirror point to be 1-4 kV. \textcolor{red}{Recalculate these potentials for the four cases. Also cite FAST paper here.}
+We again use IRBEM-Lib to estimate $ q \Phi$. For each example curtain in Fig. \ref{fig3}, we first estimated the local magnetic field, $B_f$ for this derivation. Then we traced the field line from AC6 into the SAA. We found $B_i$ at 100 kilometers altitude in the SAA for barely trapped electrons. With the initial and final $B$, along with $W = 30$ keV, the minimum potential must be $q \Phi = 1-4$ kV. \textcolor{red}{Recalculate the potentials for the four cases.}. This range of potentials is typical for the aurora. \citeA{Partamies2008} used the observations made by the Fast Auroral SnapshoT (FAST) mission and reported that the inverted-V auroral structures, observed up to a few tens of keV, were accelerated by 2-4 kV potentials. While the aurora and curtains are likely different, the aurora is observed at higher L and near midnight MLT region, they do share a number of similarities. If AC6 had differential energy channels below 30 keV, then it is possible that curtains and inverted-V structures are related.
+
+Outside of the BLC, the lack of pitch angle information makes the AC6 electron data ambiguous, but the curtains observed in the BLC suggest that some curtains continuously precipitate for multiple seconds. Curtains could be a significant source of energetic particles into the atmosphere responsible for generating odd Nitrogen ($\mathrm{HO_X}$) that is currently underestimated by atmospheric models such as the widely-used Whole Atmosphere Community Climate Model using Specified Dynamics (SD-WACCM) \cite<e.g.>{Randall2015}. A comprehensive study of the curtain impact on the atmosphere should be done with an AC6-like mission with pitch angle and energy resolution. 
 
 
 \section{Conclusions}
