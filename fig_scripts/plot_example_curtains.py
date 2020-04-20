@@ -47,8 +47,6 @@ class PlotCurtains:
             row['sc'] = sc
             self.make_plot(row, savefig=False, ax=self.ax[:, i], plot_legend=False,
                             mean_subtracted=False, plot_dos2_and_dos3=False)
-            self.ax[1, i].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=3))
-            self.ax[1, i].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%H:%M:%S'))
 
             # Add text to each subplot
             # Separation info
@@ -56,6 +54,13 @@ class PlotCurtains:
                             transform=self.ax[0, i].transAxes, va='top', ha='right', fontsize=15)
             self.ax[1, i].text(0.99, 0.99, f'dt = {abs(int(round(row.Lag_In_Track)))} s',
                             transform=self.ax[1, i].transAxes, va='top', ha='right', fontsize=15)
+            
+            # self.ax[1, i].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=7))
+            # self.ax[1, i].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%H:%M:%S'))
+            self.ax[1, i].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%S'))
+            self.ax[1, i].xaxis.set_minor_locator(matplotlib.dates.SecondLocator(interval=1))
+            xlabel = f'Seconds after\n{datetime.strftime(t0-self.plot_width, "%Y/%m/%d %H:%M:00")}'
+            self.ax[1, i].set_xlabel(xlabel)
 
             print(f'AC6A is ahead by {row["Lag_In_Track"]} s')
             
@@ -137,15 +142,14 @@ class PlotCurtains:
             self.ax[0, i].get_xaxis().set_visible(False)
 
         # Set up plot labels.
-        self.fig.text(0.5, 0.01, 'UTC', ha='center', va='center')
+        #self.fig.text(0.5, 0.01, 'UTC', ha='center', va='center')
         self.fig.text(0.015, 0.5, 'dos1 [counts/s]', ha='center', 
                     va='center', rotation='vertical')
 
-        # subplot titles
-        for i in range(len(self.t0_times)):
-            self.ax[0, i].set_title(f'{self.t0_times[i].date()}')
-
-        plt.subplots_adjust(left=0.07, right=0.97, hspace=0.1)
+        # # subplot titles
+        # for i in range(len(self.t0_times)):
+        #     self.ax[0, i].set_title(f'{self.t0_times[i].date()}')
+        self.fig.suptitle('Curtains Observed by AC6', y=1)
 
         # subplot labels
         for i in range(len(self.t0_times)):
@@ -153,6 +157,8 @@ class PlotCurtains:
                                 transform=self.ax[0, i].transAxes, fontsize=20)
             self.ax[1, i].text(0, 0.99, f'({string.ascii_letters[2*i+1]})', va='top',
                                 transform=self.ax[1, i].transAxes, fontsize=20)
+
+        plt.subplots_adjust(left=0.07, right=0.99, hspace=0.1, bottom=0.15, top=0.92)
         return
 
     def _get_filtered_plot_data(self, row):
@@ -190,7 +196,7 @@ class PlotCurtains:
 
 
 if __name__ == '__main__':
-    plot_width_s = 7
+    plot_width_s = 17
     t0_times = [
                 datetime(2015, 10, 28, 3, 19, 27, 700000),
                 datetime(2015, 4, 4, 15, 3, 7, 200000),

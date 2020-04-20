@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  20 APR 2020 09:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  20 APR 2020 10:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1150,11 +1150,11 @@ sist for at least 26 sec-onds.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
-<figures/fig1.pdf, id=29, 987.20822pt x 361.35pt>
+<figures/fig1.pdf, id=29, 1011.78pt x 361.35pt>
 File: figures/fig1.pdf Graphic file (type pdf)
 <use figures/fig1.pdf>
 Package pdftex.def Info: figures/fig1.pdf  used on input line 122.
-(pdftex.def)             Requested size: 397.48499pt x 145.49132pt.
+(pdftex.def)             Requested size: 397.48499pt x 141.96251pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 123.
 
@@ -1275,6 +1275,18 @@ t ob-ser-va-tions so their dis-tri-bu-
  []
 
 
+Overfull \hbox (9.0435pt too wide) in paragraph at lines 141--142
+\OT1/cmr/m/n/10 tion is peaked at 0 km AC6 sep-a-ra-tion. []some-thing some-thi
+ng ... as one would ex-pect if 
+ []
+
+
+Overfull \hbox (18.46016pt too wide) in paragraph at lines 141--142
+\OT1/cmr/m/n/10 cur-tains mea-sure the en-tire re-gion of in-sta-bil-ity, where
+as in-di-vid-ual mi-crobursts only rep- 
+ []
+
+
 Overfull \hbox (14.54341pt too wide) in paragraph at lines 144--145
 []\OT1/cmr/m/n/10 The dis-tri-bu-tion of cur-tains in L and MLT is shown in Fig
 . 3[]. Fig-ure 3[]a shows the 
@@ -1346,7 +1358,7 @@ Overfull \hbox (11.32117pt too wide) in paragraph at lines 148--149
 hanced. Mi-crobursts are ob- 
  []
 
-<figures/ac6_curtain_microburst_width_dist.pdf, id=78, 462.52798pt x 346.89601p
+<figures/ac6_curtain_microburst_width_dist.pdf, id=82, 462.52798pt x 346.89601p
 t>
 File: figures/ac6_curtain_microburst_width_dist.pdf Graphic file (type pdf)
 <use figures/ac6_curtain_microburst_width_dist.pdf>
@@ -1365,7 +1377,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 152--152
 -croburst dis-tri-bu-tion adopted
  []
 
-<figures/fig2_2.pdf, id=79, 1011.78pt x 361.35pt>
+<figures/fig2_2.pdf, id=83, 1011.78pt x 361.35pt>
 File: figures/fig2_2.pdf Graphic file (type pdf)
 <use figures/fig2_2.pdf>
 Package pdftex.def Info: figures/fig2_2.pdf  used on input line 157.
@@ -1394,7 +1406,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 158--158
 er 0 de-tec-tions or very lit-tle 10 Hz
  []
 
-<figures/ac6_curtain_microburst_AE_dist.pdf, id=80, 462.52798pt x 346.89601pt>
+<figures/ac6_curtain_microburst_AE_dist.pdf, id=84, 462.52798pt x 346.89601pt>
 File: figures/ac6_curtain_microburst_AE_dist.pdf Graphic file (type pdf)
 <use figures/ac6_curtain_microburst_AE_dist.pdf>
 Package pdftex.def Info: figures/ac6_curtain_microburst_AE_dist.pdf  used on in
@@ -1672,7 +1684,7 @@ Overfull \hbox (18.90462pt too wide) in paragraph at lines 176--177
 l be nec-es-sary to fully con- 
  []
 
-<figures/fig3.pdf, id=231, 650.43pt x 484.9317pt>
+<figures/fig3.pdf, id=235, 650.43pt x 484.9317pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 179.
@@ -2038,6 +2050,9 @@ Overfull \hbox (4.59665pt too wide) in paragraph at lines 208--209
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
 Overfull \hbox (8.28293pt too wide) in paragraph at lines 214--215
 []\OT1/cmr/m/n/10 We again use IRBEM-Lib to es-ti-mate $\OML/cmm/m/it/10 q\OT1/
 cmr/m/n/10 ^^H$. For each ex-am-ple cur-tain in Fig. 5[], we 
@@ -2098,7 +2113,7 @@ Overfull \hbox (1.07118pt too wide) in paragraph at lines 214--215
 be pos-si-ble to test a pos-si-ble 
  []
 
-[11]
+
 Overfull \hbox (2.34898pt too wide) in paragraph at lines 216--217
 []\OT1/cmr/m/n/10 Outside of the BLC, the lack of pitch an-gle in-for-ma-tion m
 akes the AC6 elec-tron 
@@ -2442,7 +2457,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--165
 OT1/cmr/m/it/10 Geo-phys-i-cal 
  []
 
-
+[13]
 Underfull \hbox (badness 3029) in paragraph at lines 181--204
 []\OT1/cmr/m/n/10 Comess, M., Smith, D., Se-lesnick, R., Mil-lan, R., & Sam-ple
 , J.  (2013).  Dusk-side 
@@ -2468,9 +2483,6 @@ ibrary [] .wiley [] .com / doi / abs /
  []
 
 
-Underfull \vbox (badness 1748) has occurred while \output is active []
-
- [13]
 Underfull \hbox (badness 10000) in paragraph at lines 220--237
 \OT1/cmr/m/n/10 tivis-tic mi-croburst storm char-ac-ter-is-tics: Com-bined sate
 l-lite and ground-based 
@@ -2629,6 +2641,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 605--624
  []
 
 
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [14]
 Underfull \hbox (badness 10000) in paragraph at lines 676--695
 []\OT1/cmr/m/n/10 Tsyganenko, N.  (1989).  A so-lu-tion of the chapman-ferraro 
 prob-lem for an el- 
@@ -2647,11 +2662,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 676--695
 t [] .com / science / article / pii / 
  []
 
-
-Underfull \vbox (badness 1264) has occurred while \output is active []
-
- [14])
-[15] (./shumko_ac6_curtain_stats.aux)
+) [15] (./shumko_ac6_curtain_stats.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
@@ -2664,7 +2675,7 @@ Here is how much of TeX's memory you used:
  6946 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1566b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,9n,37p,1566b,340s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2683,9 +2694,9 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 491154 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 498360 bytes).
 PDF statistics:
- 364 PDF objects out of 1000 (max. 8388607)
+ 368 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
