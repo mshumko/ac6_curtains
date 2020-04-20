@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  20 APR 2020 09:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  20 APR 2020 09:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -738,27 +738,27 @@ Overfull \hbox (3.96007pt too wide) in paragraph at lines 90--91
  []
 
 
-Overfull \hbox (5.93231pt too wide) in paragraph at lines 90--91
-\OT1/cmr/m/n/10 be-low 100 km. If a BLC elec-tron makes it to AC6's al-ti-tude,
- it can be in the lo-cal loss 
+Overfull \hbox (10.37675pt too wide) in paragraph at lines 90--91
+\OT1/cmr/m/n/10 be-low 100 km. If an elec-tron makes it to AC6's al-ti-tude, it
+ can be in the lo-cal loss cone 
  []
 
 
-Overfull \hbox (3.98788pt too wide) in paragraph at lines 90--91
-\OT1/cmr/m/n/10 cone and pre-cip-i-tate in the lo-cal hemi-sphere. Al-ter-na-ti
-vely, the elec-tron will mir-ror at 
+Overfull \hbox (10.40456pt too wide) in paragraph at lines 90--91
+\OT1/cmr/m/n/10 and pre-cip-i-tate in the lo-cal hemi-sphere. Al-ter-na-tively,
+ the elec-tron will mir-ror at or be- 
  []
 
 
-Overfull \hbox (13.6268pt too wide) in paragraph at lines 90--91
-\OT1/cmr/m/n/10 or be-low AC6 and gy-rate into the SAA where the equiv-a-lent m
-ir-ror point mag-netic field 
+Overfull \hbox (30.62683pt too wide) in paragraph at lines 90--91
+\OT1/cmr/m/n/10 low AC6 and gy-rate into the SAA where the equiv-a-lent mir-ror
+ point mag-netic field strength 
  []
 
 
-Overfull \hbox (5.51561pt too wide) in paragraph at lines 90--91
-\OT1/cmr/m/n/10 strength is deep in the at-mo-sphere or be-low sea level. There
--fore, any pre-cip-i-ta-tion ob- 
+Overfull \hbox (1.62671pt too wide) in paragraph at lines 90--91
+\OT1/cmr/m/n/10 is deep in the at-mo-sphere or be-low sea level. There-fore, an
+y pre-cip-i-ta-tion ob-served in 
  []
 
 Missing character: There is no â in font cmr10!
@@ -885,9 +885,9 @@ n---maintained by an ac-tive
  []
 
 
-Overfull \hbox (3.01566pt too wide) in paragraph at lines 107--108
+Overfull \hbox (5.79344pt too wide) in paragraph at lines 107--108
 \OT1/cmr/m/n/10 at-ti-tude con-trol sys-tem. The at-ti-tude con-trol sys-tem al
--lowed then to pre-cisely con-trol 
+-lowed them to pre-cisely con-trol 
  []
 
 
@@ -966,39 +966,45 @@ eV elec-tron thresh-old. dos1
  []
 
 
-Overfull \hbox (9.2379pt too wide) in paragraph at lines 109--110
-\OT1/cmr/m/n/10 and B. All dosime-ters sam-ple at 1 Hz in sur-vey mode, and 10 
-Hz in burst mode. 10 Hz 
+Overfull \hbox (1.34897pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10 is used for this study be-cause the other dosime-ters ei-ther r
+e-sponded pri-mar-ily to pro- 
  []
 
 
-Overfull \hbox (13.54356pt too wide) in paragraph at lines 109--110
-\OT1/cmr/m/n/10 data was read-ily avail-able from both AC6 units from June 2014
- to May 2017 while their 
+Overfull \hbox (8.43224pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10 tons or were not iden-ti-cal be-tween unit A and B. All dosime-
+ters sam-ple at 1 Hz in sur- 
  []
 
 
-Overfull \hbox (3.40448pt too wide) in paragraph at lines 109--110
-\OT1/cmr/m/n/10 in-track lag was less than 65 sec-onds, and at times was a frac
--tion of a sec-ond. []Show a 
+Overfull \hbox (2.54352pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10 vey mode, and 10 Hz in burst mode. 10 Hz data was read-ily avai
+l-able from both AC6 
  []
 
 
-Overfull \hbox (7.29347pt too wide) in paragraph at lines 109--110
-\OT1/cmr/m/n/10 dis-tri-bu-tion of the in-track lag when they had 10 Hz data?[]
- The va-ri-ety of AC6 sep-a-ra- 
+Overfull \hbox (13.46013pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10 units from June 2014 to May 2017 while their in-track lag was l
+ess than 65 sec-onds, and 
  []
 
 
-Overfull \hbox (22.0713pt too wide) in paragraph at lines 109--110
-\OT1/cmr/m/n/10 tions and data avail-abil-ity over the three-year mis-sion make
-s it pos-si-ble to study tranisent 
+Overfull \hbox (2.37679pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10 at times was a frac-tion of a sec-ond. []Show a dis-tri-bu-tion
+ of the in-track lag when they 
  []
 
 
-Overfull \hbox (14.3213pt too wide) in paragraph at lines 109--110
-\OT1/cmr/m/n/10 elec-tron mi-croburst pre-cip-i-ta-tion []Shumko et al.[], 2019
-) and now sta-tion-ary elec-tron cur- 
+Overfull \hbox (0.90459pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10 had 10 Hz data?[] The va-ri-ety of AC6 sep-a-ra-tions and data 
+avail-abil-ity over the three- 
+ []
+
+
+Overfull \hbox (29.3491pt too wide) in paragraph at lines 109--110
+\OT1/cmr/m/n/10 year mis-sion makes it pos-si-ble to study tranisent elec-tron 
+mi-croburst pre-cip-i-ta-tion []Shumko 
  []
 
 
@@ -1020,9 +1026,9 @@ t highly cor-re-lated times
  []
 
 
-Overfull \hbox (5.20996pt too wide) in paragraph at lines 113--114
-\OT1/cmr/m/n/10 were spiky. Be-fore we we ap-plied the iden-ti-fi-ca-tion cri-t
-e-ria, the AC6-B time se-ries was 
+Overfull \hbox (23.04337pt too wide) in paragraph at lines 113--114
+\OT1/cmr/m/n/10 were spiky. Be-fore we ap-plied the iden-ti-fi-ca-tion cri-te-r
+ia, the AC6-B time se-ries was shifted 
  []
 
 
@@ -2677,7 +2683,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 491139 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 491154 bytes).
 PDF statistics:
  364 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
