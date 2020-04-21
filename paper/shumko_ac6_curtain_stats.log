@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  20 APR 2020 10:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  21 APR 2020 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1367,14 +1367,14 @@ Package pdftex.def Info: figures/ac6_curtain_microburst_width_dist.pdf  used on
 (pdftex.def)             Requested size: 397.48499pt x 298.12889pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 152--152
-[]\OT1/cmr/bx/n/9 Figure  2. \OT1/cmr/m/n/9 Size dis-tri-bu-tions of cur-tains 
-(AC6 in-track sep-a-ra-tion mostly in lat-i-tude) in black
+[]\OT1/cmr/bx/n/9 Figure  2. \OT1/cmr/m/n/9 Dis-tri-bu-tion of cur-tain width i
+n lat-i-tude shown in black and sizes of mi-crobursts
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 152--152
-\OT1/cmr/m/n/9 and mi-crobursts in red as a func-tion of AC6 in-track width. Mi
--croburst dis-tri-bu-tion adopted
+\OT1/cmr/m/n/9 when they were si-mul-ta-ne-ously ob-served by AC6 is shown in r
+ed. Mi-croburst dis-tri-bu-tion
  []
 
 <figures/fig2_2.pdf, id=83, 1011.78pt x 361.35pt>
@@ -1684,7 +1684,7 @@ Overfull \hbox (18.90462pt too wide) in paragraph at lines 176--177
 l be nec-es-sary to fully con- 
  []
 
-<figures/fig3.pdf, id=235, 650.43pt x 484.9317pt>
+<figures/fig3.pdf, id=240, 650.43pt x 484.9317pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 179.
@@ -2694,9 +2694,9 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 498360 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 500460 bytes).
 PDF statistics:
- 368 PDF objects out of 1000 (max. 8388607)
+ 373 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)

@@ -62,13 +62,21 @@ curtain_fraction_lower = (curtain_hist-curtain_mc_std)/\
       (size_bin_width_km*(sum(curtain_hist)-sum(curtain_mc_std)))
 curtain_fraction_err = np.abs(curtain_fraction_upper-curtain_fraction_lower)
 
-# Calculate the microburst probability density.
-all_microbursts, _ = np.histogram(microburst_cat['Dist_In_Track'], 
-                              density=True, bins=size_bins)
-coincident_microbursts, _ = np.histogram(coincident_microburst_cat['Dist_In_Track'], 
-                              density=True, bins=size_bins)
-microburst_fraction = coincident_microbursts/all_microbursts
-microburst_fraction /= size_bin_width_km*np.sum(microburst_fraction)
+# Histogram and estimate errors for microbursts
+# all_microbursts, _ = np.histogram(microburst_cat['Dist_In_Track'], 
+#                               density=True, bins=size_bins)
+microburst_hist, _ = np.histogram(coincident_microburst_cat['Dist_In_Track'], 
+                              bins=size_bins)
+microburst_mc_std = mc_err(microburst_hist)
+microburst_fraction_mid = microburst_hist/(coincident_microburst_cat.shape[0]*size_bin_width_km)
+microburst_fraction_upper = (microburst_hist+microburst_mc_std)/\
+      (size_bin_width_km*(sum(microburst_hist)+sum(microburst_mc_std)))
+microburst_fraction_lower = (microburst_hist-microburst_mc_std)/\
+      (size_bin_width_km*(sum(microburst_hist)-sum(microburst_mc_std)))
+microburst_fraction_err = np.abs(microburst_fraction_upper-microburst_fraction_lower)
+
+# microburst_fraction = coincident_microbursts/all_microbursts
+# microburst_fraction /= size_bin_width_km*np.sum(microburst_fraction)
 
 max_size=21
 print(f'{100*(sum(curtain_cat["width_A"] < max_size/7.5))/len(curtain_cat["width_A"])}% '
@@ -76,15 +84,15 @@ print(f'{100*(sum(curtain_cat["width_A"] < max_size/7.5))/len(curtain_cat["width
 
 fig, ax = plt.subplots()
 ax.step(size_bins, np.append(curtain_fraction_mid, np.nan), where='post', c='k', 
-      label='curtain', lw=2)
+      label='curtain', lw=4)
 ax.errorbar(size_bins+size_bin_width_km/2, np.append(curtain_fraction_mid, np.nan), 
             yerr=np.append(curtain_fraction_err, np.nan),
             ls='', color='k', capsize=3, lw=2)
 
-ax.step(size_bins, np.append(microburst_fraction, np.nan), c='r', 
+ax.step(size_bins, np.append(microburst_fraction_mid, np.nan), c='r', 
       where='post', label='microburst', lw=2)
-# ax.errorbar(size_bins+size_bin_width_km/2, np.append(microburst_fraction, np.nan), 
-#             yerr=np.append(microburst_fraction_err, np.nan), ls='', color='r', capsize=2, lw=1)
+ax.errorbar(size_bins+size_bin_width_km/2, np.append(microburst_fraction_mid, np.nan), 
+            yerr=np.append(microburst_fraction_err, np.nan), ls='', color='r', capsize=3, lw=1)
 
 ax.set(title='Distribution of > 30 keV curtain and microburst sizes',
             ylabel='Probability density', xlim=(0, size_bins[-1]), 
