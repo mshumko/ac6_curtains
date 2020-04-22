@@ -4,6 +4,10 @@ import numpy as np
 import pandas as pd
 from datetime import datetime, date, timedelta
 import matplotlib.pyplot as plt
+import matplotlib.dates
+
+import cartopy
+import cartopy.crs as ccrs
 
 # Paths that are used everywhere in the class
 import dirs
@@ -54,17 +58,17 @@ class PlotCurtains:
             # High CC filter
             self.catalog = self.catalog[self.catalog['space_cc'] >= 0.8]
 
-            for key, vals in filterDict.items():
+        for key, vals in filterDict.items():
 
-                # If supplied bounds
-                if hasattr(vals, '__len__'):
-                    self.catalog = self.catalog[
-                        ((self.catalog[key] > min(vals)) & 
-                        (self.catalog[key] < max(vals)))
-                                    ]
-                # If one value - check for equality
-                else:
-                    self.catalog = self.catalog[self.catalog[key] ==vals]
+            # If supplied bounds
+            if hasattr(vals, '__len__'):
+                self.catalog = self.catalog[
+                    ((self.catalog[key] > min(vals)) & 
+                    (self.catalog[key] < max(vals)))
+                                ]
+            # If one value - check for equality
+            else:
+                self.catalog = self.catalog[self.catalog[key] ==vals]
         print(f'Plotting {self.catalog.shape[0]} curtains')
         return
 
@@ -97,7 +101,12 @@ class PlotCurtains:
         """
         current_date = date.min
 
-        _, self.ax = plt.subplots(2)
+        self.fig = plt.figure(figsize=(15, 8))
+        self.gs = self.fig.add_gridspec(2, 3)
+        self.ax = [self.fig.add_subplot(self.gs[0, 0]), self.fig.add_subplot(self.gs[1, 0])]
+        self.bx = self.fig.add_subplot(self.gs[:, 1:], projection=ccrs.PlateCarree())
+
+        self.make_map(self.bx)
 
         for _, row in self.catalog.iterrows():
             if row.dateTime.date() != current_date:
@@ -107,7 +116,37 @@ class PlotCurtains:
             self.make_plot(row, **kwargs)
             self.ax[0].clear()
             self.ax[1].clear()
+            # self.bx.clear()
         plt.close()
+        return
+
+    def make_map(self, ax):
+        """
+        Make a map of the BLC region.
+        """
+        self.bx.set_extent([-60, 30, 40, 80], crs=ccrs.PlateCarree())
+        self.bx.coastlines(resolution='50m', color='black', linewidth=1)
+        self.bx.add_feature(cartopy.feature.LAND, zorder=0, 
+                            edgecolor='black', facecolor='grey')
+
+        # Overlay L shell contours
+        L_lons = np.load('/home/mike/research/mission_tools'
+                        '/misc/irbem_l_lons.npy')
+        L_lats = np.load('/home/mike/research/mission_tools'
+                        '/misc/irbem_l_lats.npy')
+        L = np.load('/home/mike/research/mission_tools'
+                        '/misc/irbem_l_l.npy')
+        levels = [4,8]
+        ax.contour(L_lons, L_lats, L, levels=levels, colors='k', linestyles='dotted')
+
+        # Overlay BLC boundary
+        mirror_point_df = pd.read_csv(os.path.join(dirs.BASE_DIR, 'data', 'lat_lon_mirror_alt.csv'),
+                                    index_col=0, header=0)
+        lons = np.array(mirror_point_df.columns, dtype=float)
+        lats = mirror_point_df.index.values.astype(float)
+        ax.contour(lons, lats, 
+            mirror_point_df.values, transform=ccrs.PlateCarree(), 
+            levels=[0, 100], colors=['b', 'b'], linestyles=['dashed', 'solid'])
         return
 
     def load_ten_hz_data(self, day):
@@ -168,7 +207,11 @@ class PlotCurtains:
             )
         ax[1].plot(df_space_a['dateTime'], df_space_a['dos1rate'], 'r', label='AC6-A')
         ax[1].plot(df_space_b['dateTime'], df_space_b['dos1rate'], 'b', label='AC6-B')
-        ax[1].axvline(row.dateTime, c='k')
+        # ax[1].axvline(row.dateTime, c='k')
+
+        self.star = self.bx.scatter(row.lon, row.lat, marker='*', c='r', s=150)
+
+        # self.bx.set_extent([row.lon-10, row.lon+10, row.lat-10, row.lat+10], crs=ccrs.PlateCarree())
 
         if log_scale:
             ax[0].set_yscale('log')
@@ -177,11 +220,13 @@ class PlotCurtains:
         ax[1].set_ylabel('dos1rate [counts/s]')
         ax[1].set_xlabel('UTC')
         ax[0].set_title(f'AC6 Curtain Validation | {row.dateTime.date()}')
+        ax[0].axes.get_xaxis().set_ticks([])
 
         # Print peak width if it exists in the catalog.
         if set(['peak_width_A', 'peak_width_B']).issubset(row.index) and self.plot_width_flag:
-            s = 'peak_width_A = {} s\npeak_width_B = {} s'.format(
-                    round(row['peak_width_A'], 2), round(row['peak_width_B'], 2))
+            s = (f'peak_width_A = {round(row["peak_width_A"], 2)} s\n'
+                f'peak_width_B = {round(row["peak_width_B"], 2)} s\n'
+                f'AE = {row["AE"]}, L = {round(row["Lm_OPQ"], 1)}, L = {round(row["MLT_OPQ"], 1)}')
             ax[0].text(0.02, 1, s, transform=ax[0].transAxes, va='top')
             
         # Print the time shift seconds
@@ -196,10 +241,16 @@ class PlotCurtains:
                     f'Loss_Cone_Type={row.Loss_Cone_Type}')
         ax[1].text(0.02, 0.9, pos_str, transform=ax[1].transAxes, va='top')
 
+        ax[1].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=3))
+
+        self.gs.tight_layout(self.fig)
+
         if savefig:
             save_name = '{0:%Y%m%d_%H%M%S}_ac6_curtain_validation.png'.format(
                         row['dateTime'])
             plt.savefig(os.path.join(self.plot_save_dir, save_name))
+        
+        self.star.remove()
         return
 
     def _get_filtered_plot_data(self, row):
@@ -230,7 +281,8 @@ class PlotCurtains:
         return df_time_a, df_time_b, df_space_a, df_space_b
 
 if __name__ == '__main__':
-    version = 8
-    p = PlotCurtains(version, catalog_name=f'AC6_curtains_sorted_v{version}.txt')
-    p.filter_catalog(filterDict={'Loss_Cone_Type':2})
-    p.loop(mean_subtracted=True, savefig=True)
+    version = 0
+    catalog_name = f'AC6_curtains_baseline_method_sorted_v{version}.txt'
+    p = PlotCurtains(version, catalog_name=catalog_name, plot_width=10)
+    p.filter_catalog(filterDict={'Loss_Cone_Type':2}, defaultFilter=False)
+    p.loop(mean_subtracted=False, savefig=True)
