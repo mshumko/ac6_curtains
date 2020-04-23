@@ -5,6 +5,10 @@ import pathlib
 
 import dirs
 
+# This script estimates the distribution
+# of in-track lags where AC6 was taking data
+# together.
+
 ac6_merged_paths = pathlib.Path(dirs.AC6_MERGED_DATA_DIR).glob('*')
 
 lag_bins_s = np.arange(0, 100)
