@@ -42,7 +42,8 @@ curtain_times = [dateutil.parser.parse(t) for t in curtain_times]
 
 projection = ccrs.PlateCarree()
 fig = plt.figure(figsize=(9, 7))
-gs = gridspec.GridSpec(nrows=3, ncols=len(curtain_times), figure=fig)
+gs = gridspec.GridSpec(nrows=3, ncols=len(curtain_times), figure=fig, 
+                        left=0.07, right=0.99, wspace=0.25, top=0.96, hspace=0)
 
 # Cartopy is stupid. The order of how ax and bx are 
 # created matters!
@@ -152,5 +153,4 @@ for i, coord in enumerate(coords):
          ha='center', va='top', fontsize=20, color='r',
          transform=projection)
 
-gs.tight_layout(fig, h_pad=-0.9, w_pad=-0.5)
 plt.show()

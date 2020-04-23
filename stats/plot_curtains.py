@@ -101,10 +101,10 @@ class PlotCurtains:
         """
         current_date = date.min
 
-        self.fig = plt.figure(figsize=(15, 8))
-        self.gs = self.fig.add_gridspec(2, 3)
+        self.fig = plt.figure(figsize=(6, 8))
+        self.gs = self.fig.add_gridspec(3, 1)
         self.ax = [self.fig.add_subplot(self.gs[0, 0]), self.fig.add_subplot(self.gs[1, 0])]
-        self.bx = self.fig.add_subplot(self.gs[:, 1:], projection=ccrs.PlateCarree())
+        self.bx = self.fig.add_subplot(self.gs[2, 0], projection=ccrs.PlateCarree())
 
         self.make_map(self.bx)
 
@@ -231,14 +231,15 @@ class PlotCurtains:
             
         # Print the time shift seconds
         if row.Lag_In_Track > 0:
-            ax[1].text(0.02, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} s', 
+            ax[1].text(0.02, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} [s]', 
                         transform=ax[1].transAxes, va='top')
         else:
-            ax[1].text(0.02, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} s', 
+            ax[1].text(0.02, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} [s]', 
                         transform=ax[1].transAxes, va='top')
 
         pos_str = (f'lat={round(row.lat)}, lon={round(row.lon)}, alt={round(row.alt)} [km]\n'
-                    f'Loss_Cone_Type={row.Loss_Cone_Type}')
+                    f'Loss_Cone_Type={row.Loss_Cone_Type}\n'
+                    f'AE={row.AE} [nT]')
         ax[1].text(0.02, 0.9, pos_str, transform=ax[1].transAxes, va='top')
 
         ax[1].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=3))
@@ -282,7 +283,8 @@ class PlotCurtains:
 
 if __name__ == '__main__':
     version = 0
+    plot_width = 15
     catalog_name = f'AC6_curtains_baseline_method_sorted_v{version}.txt'
-    p = PlotCurtains(version, catalog_name=catalog_name, plot_width=10)
+    p = PlotCurtains(version, catalog_name=catalog_name, plot_width=plot_width)
     p.filter_catalog(filterDict={'Loss_Cone_Type':2}, defaultFilter=False)
     p.loop(mean_subtracted=False, savefig=True)
