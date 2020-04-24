@@ -1,100 +1,94 @@
-# Plot the curtain detections on a map of the Earth
-import matplotlib.pyplot as plt
-import matplotlib.colors    
-import matplotlib.dates
-from datetime import datetime
-import os
-import pandas as pd
-import numpy as np
+"""
+This scipt plots the lat-lon distribution of curtains and normalizes 
+it.
+"""
 
-import cartopy.crs as ccrs
+import pandas as pd
+import matplotlib.pyplot as plt
+import pathlib
+import numpy as np
 
 import dirs
 
+cat_path = pathlib.Path(dirs.CATALOG_DIR, 
+        'AC6_curtains_baseline_method_sorted_v0.txt')
+cat = pd.read_csv(cat_path)
 
-class MapPlot:
-    def __init__(self,):
+# Load normalization file
+norm_bin_path = pathlib.Path(dirs.NORM_DIR, 
+        'ac6_lat_lon_bins.csv')
+norm_path = pathlib.Path(dirs.NORM_DIR, 
+        'ac6_lat_lon_norm.csv')
 
-        self.fig = plt.figure(figsize=(12, 6))
-        self.ax = plt.subplot(111, projection=ccrs.PlateCarree())
-        return
+# Load the L-MLT normalization files.
+with open(norm_bin_path) as f:
+    keys = next(f).rstrip().split(',')
+    bins = {}
+    for key in keys:
+        bins[key] = next(f).rstrip().split(',')
+        bins[key] = list(map(float, bins[key]))
 
-    def load_catalog(self, catalog_name='AC6_curtains_sorted_v8.txt'):
-        CATALOG_PATH = os.path.join(dirs.CATALOG_DIR, catalog_name)
-        self.cat = pd.read_csv(CATALOG_PATH, index_col=0)
-        self.cat.index = pd.to_datetime(self.cat.index)
-        return
+norm = pd.read_csv(norm_path, skiprows=1, names=bins['lon'])
+norm.index = bins['lat'][:-1]
 
-    def draw_earth(self):
-        self.ax.coastlines()
-        self.ax.gridlines(draw_labels=True)
-        return
+def rebin(df, deg, coord):
+    # Group by latitude into deg degree chucks
+    assert coord in ['lat', 'lon'], 'Coodinates much be lat or lon!'
 
-    def draw_curtains(self, unique_times=None):
-        if (unique_times is None):
-            c = ['b' for _ in range(len(self.cat['lon']))]
-            s = 10*np.ones_like(self.cat['lon'])
-        else:
-            c, s = self._get_marker_colors_sizes(unique_times)
+    if coord == 'lon':
+        df = df.T
 
-        sc = self.ax.scatter(self.cat['lon'], self.cat['lat'],
-                    transform=ccrs.PlateCarree(), s=s, c=c)
-        self.ax.set_title('AC6 Curtain observations', y=1.08)
-        self.ax.text(-0.05, 0.55, 'latitude', va='bottom', ha='center',
-            rotation='vertical', rotation_mode='anchor',
-            transform=self.ax.transAxes)
-        self.ax.text(0.5, -0.1, 'longitude', va='bottom', ha='center',
-            rotation='horizontal', rotation_mode='anchor',
-            transform=self.ax.transAxes)
-        return
+    df = df.groupby(df.index//deg).sum(axis=0)
+    
+    if coord == 'lon':
+        df.index = np.arange(-180, 181, deg)
+        df = df.T
+    else:
+        df.index = np.arange(-90, 91, deg)
+    return df
 
-    def draw_blc(self, alpha=0.5):
-        """ 
-        Use a pcolormesh to draw the BLC/open field line region 
-        with transparancy alpha=0.5
-        """
-        blc = pd.read_csv(os.path.join(dirs.BASE_DIR, 'data', 'lat_lon_blc_flag.csv'), 
-                        index_col=0)
-        blc[blc == 0] = np.nan
-        c = matplotlib.colors.ListedColormap(['g'])
-        p = plt.pcolormesh(blc.index, blc.columns, blc.T, cmap=c, alpha=alpha)
-        return
+# norm = rebin(norm, 10, 'lon')
 
-    def _get_marker_colors_sizes(self, c_times):
-        """ 
-        For a set of curtain times find the matchihing index in self.cat and 
-        give it a distinct color.
-        """
-        t_num = matplotlib.dates.date2num(self.cat.index)
-        idx_array = np.nan*np.ones_like(c_times)
-        colors = ['b' for _ in self.cat.index]
-        sizes = [10 for _ in self.cat.index]
+curtain_hist, _, _ = np.histogram2d(x=cat.loc[:, 'lon'], y=cat.loc[:, 'lat'], 
+                bins=[bins['lon'], bins['lat']])
+                # bins=[norm.columns, norm.index])
+curtain_hist = curtain_hist.T
+curtain_hist_norm = curtain_hist*(np.nanmax(norm.values)/norm.values[:, :-1])
+curtain_hist_norm[np.where(np.isinf(curtain_hist_norm))] = np.nan
 
-        for i, t_i in enumerate(c_times):
-            t_i_num = matplotlib.dates.date2num(t_i)
-            idx_array[i] = np.argmin(np.abs(t_i_num-t_num))
-            colors[idx_array[i]] = 'r'
-            sizes[idx_array[i]] = 40
-        return colors, sizes
+fig, ax = plt.subplots(3, figsize=(8, 10), 
+                        sharex=True, sharey=True)
+curtain_hist_plt = ax[0].pcolormesh(norm.columns[:-1], norm.index, curtain_hist)
+plt.colorbar(curtain_hist_plt, label='Number of curtains', ax=ax[0])
+ax[0].set(ylabel='lat', title='Lat-Lon Curtain Distribution')
 
+curtain_hist_norm_plt = ax[1].pcolormesh(norm.columns[:-1], norm.index, curtain_hist_norm)
+plt.colorbar(curtain_hist_norm_plt, label='Normalized\nNumber of curtains', ax=ax[1])
+ax[1].set(ylabel='lat', title='Normalized Lat-Lon Curtain Distribution')
 
-if __name__ == '__main__':
-    m = MapPlot()
-    m.load_catalog()
+norm_hist = ax[-1].pcolormesh(norm.columns, norm.index, norm)
+plt.colorbar(norm_hist, label='Number of 10 Hz seconds', ax=ax[-1])
+ax[-1].set(xlabel='lon', ylabel='lat', title='Normalization')
 
-    cat2 = m.cat[(m.cat.lat > 56) & (m.cat.lat < 76) &
-                (m.cat.lon > -30) & (m.cat.lon < 10)]
-    print(cat2.shape)
+# Overlay BLC boundary
+mirror_point_df = pd.read_csv(pathlib.Path(dirs.BASE_DIR, 'data', 'lat_lon_mirror_alt.csv'),
+                                    index_col=0, header=0)
+lons = np.array(mirror_point_df.columns, dtype=float)
+lats = mirror_point_df.index.values.astype(float)   
 
-    unique_times = [
-        datetime(2015, 7, 23, 10, 29, 26, 600000), 
-        datetime(2015, 7, 27, 10, 38, 21, 199999),
-        datetime(2015, 8, 27, 23, 4, 44, 500000),
-        datetime(2016, 10, 29, 1, 21, 38,399999),
-        datetime(2017, 2, 2, 9, 36, 10, 900000)
-         ]
+# # Overlay rad belt L contours
+# L_lons = np.load('/home/mike/research/mission_tools'
+#                 '/misc/irbem_l_lons.npy')
+# L_lats = np.load('/home/mike/research/mission_tools'
+#                 '/misc/irbem_l_lats.npy')
+# L = np.load('/home/mike/research/mission_tools'
+#                 '/misc/irbem_l_l.npy')
+# levels = [4,8]
 
-    m.draw_earth()
-    m.draw_blc()
-    m.draw_curtains(unique_times=unique_times)
-    plt.show()
+for a in ax:
+    a.contour(lons, lats, mirror_point_df.values,
+            levels=[0, 100], colors=['r', 'r'], linestyles=['dashed', 'solid'], alpha=0.4)
+    # a.contour(L_lons, L_lats, L, levels=levels, colors='k', linestyles='dotted')
+
+plt.tight_layout()
+plt.show()
