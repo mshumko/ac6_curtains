@@ -143,6 +143,16 @@ bx[0].set_ylabel('dos1rate [counts/s]')
 
 ax.scatter(coords[:,0], coords[:,1], marker='*', c='r', s=150)
 
+### How far does AC6 travel in interval_s on the map?
+# interval_s = 30
+# orbit_dlat_deg = interval_s*7.5/111 
+
+# for lon_i, lat_i in zip(coords[:,0], coords[:,1]):
+#     lat_range = np.linspace(lat_i-orbit_dlat_deg/2, 
+#                             lat_i+orbit_dlat_deg/2)
+#     ax.plot(lon_i*np.ones_like(lat_range), lat_range, 
+#             transform=projection, color='red', lw=2)
+
 ax.set_title('AC6 Curtains in the Bounce Loss Cone', fontsize=25)
 ax.text(0, 0.98, f'(a)',
          ha='left', va='top', fontsize=20, color='white',

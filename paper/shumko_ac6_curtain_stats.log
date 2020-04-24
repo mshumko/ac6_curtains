@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  21 APR 2020 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  24 APR 2020 16:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1569,33 +1569,39 @@ Overfull \hbox (3.79346pt too wide) in paragraph at lines 176--177
  []
 
 
-Overfull \hbox (2.18227pt too wide) in paragraph at lines 176--177
-\OT1/cmr/m/n/10 at sea level. Fur-ther-more we su-per-posed two dot-ted black l
-ines on Fig. 5[]a that rep-re- 
+Overfull \hbox (30.5434pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/10 at sea level. AC6 takes about 30 sec-onds to move be-tween the 
+solid and dashed blue curves. 
  []
 
 
-Overfull \hbox (5.51567pt too wide) in paragraph at lines 176--177
-\OT1/cmr/m/n/10 sent the bound-ary of the outer ra-di-a-tion belt de-fined be-t
-ween L shells of 4 and 8. The 
+Overfull \hbox (22.29349pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/10 We su-per-posed two dot-ted black lines on Fig. 5[]a that rep-r
+e-sent the bound-ary of the outer 
  []
 
 
-Overfull \hbox (13.71008pt too wide) in paragraph at lines 176--177
-\OT1/cmr/m/n/10 BLC re-gion here closely matches the re-gion shown in []Comess 
-et al.[] (2013, Fig-ure 1) and 
+Overfull \hbox (13.90451pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/10 ra-di-a-tion belt de-fined be-tween L shells of 4 and 8. The BL
+C re-gion here closely matches 
  []
 
 
-Overfull \hbox (9.40457pt too wide) in paragraph at lines 176--177
-[]\OT1/cmr/m/n/10 Dietrich et al.[] (2010, Fig-ure 3). We used the Olson-Pfitze
-r mag-netic field model []Olson 
+Overfull \hbox (8.04346pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/10 the re-gion shown in []Comess et al.[] (2013, Fig-ure 1) and []
+Dietrich et al.[] (2010, Fig-ure 3). 
  []
 
 
-Overfull \hbox (20.09909pt too wide) in paragraph at lines 176--177
-\OT1/cmr/m/n/10 & Pfitzer, 1982) to es-ti-mate the BLC bound-ary. The same anal
--y-sis us-ing the Tsy-ga-nenko 
+Overfull \hbox (10.68234pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/10 We used the Olson-Pfitzer mag-netic field model []Olson & Pfitz
+er, 1982) to es-ti-mate the 
+ []
+
+
+Overfull \hbox (19.37695pt too wide) in paragraph at lines 176--177
+\OT1/cmr/m/n/10 BLC bound-ary. The same anal-y-sis us-ing the Tsy-ga-nenko 1989
+ model []Tsyganenko, 1989) 
  []
 
 
@@ -1607,33 +1613,46 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdfTeX warning: pdflatex (file ./figures/fig2_2.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
 >] [8 <./figures/ac6_curtain_microburst_AE_dist.pdf>]
-Overfull \hbox (9.43228pt too wide) in paragraph at lines 178--179
-\OT1/cmr/m/n/10 cluded the shifted time se-ries plots in Fig. 5[]b-e, with the 
-AC6 in-track lag, L and MLT 
+Overfull \hbox (12.51564pt too wide) in paragraph at lines 178--179
+[]\OT1/cmr/m/n/10 We found 4 good cur-tains that were ob-served in-side the BLC
+ re-gions and in-cluded 
  []
 
 
-Overfull \hbox (2.54338pt too wide) in paragraph at lines 178--179
-\OT1/cmr/m/n/10 of the ob-ser-va-tions an-no-tated. The AC6 lo-ca-tions where t
-hese cur-tains were ob-served 
+Overfull \hbox (6.37672pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/10 the shifted time se-ries plots in Fig. 5[]b-e, with the AC6 in-
+track lag, L and MLT of the 
  []
 
 
-Overfull \hbox (8.1823pt too wide) in paragraph at lines 178--179
-\OT1/cmr/m/n/10 are shown in 5[]a with red stars and the cor-re-spond-ing panel
- la-bels. The cur-tains shown 
+Overfull \hbox (20.96005pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/10 ob-ser-va-tions an-no-tated. The AC6 lo-ca-tions where these cu
+r-tains were ob-served are shown 
  []
 
 
-Overfull \hbox (3.12668pt too wide) in paragraph at lines 178--179
-\OT1/cmr/m/n/10 in Fig. 5[]c and e were ob-served near the sea level SAA mir-ro
-r al-ti-tude curve thus they 
+Overfull \hbox (7.12677pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/10 in 5[]a with red stars and the cor-re-spond-ing panel la-bels. 
+The cur-tains shown in Fig. 5[]c 
  []
 
 
-Overfull \hbox (7.54337pt too wide) in paragraph at lines 178--179
-\OT1/cmr/m/n/10 were not drift-ing and were pre-cip-i-tat-ing as much as 6 sec-
-onds as shown in Fig. 5[]e. For 
+Overfull \hbox (23.87668pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/10 and e were ob-served near the sea level SAA mir-ror al-ti-tude 
+curve thus they were not drift- 
+ []
+
+
+Overfull \hbox (9.48778pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/10 ing and were pre-cip-i-tat-ing as much as 6 sec-onds as shown i
+n Fig. 5[]e. For ref-er-ence, the 
+ []
+
+
+Overfull \hbox (12.09901pt too wide) in paragraph at lines 178--179
+\OT1/cmr/m/n/10 pre-cip-i-ta-tion per-sisted for longer than the typ-i-cal $\OM
+S/cmsy/m/n/10 ^^Y \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5$ sec-ond
+ bounce pe-riod of 30 keV 
  []
 
 
@@ -1810,9 +1829,9 @@ a-son-able to be-lieve that cur-tains
  []
 
 
-Overfull \hbox (2.43227pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 and mi-crobursts are re-lated, but this re-sult need to be clos
-ely in-spected for sources of 
+Overfull \hbox (6.37671pt too wide) in paragraph at lines 192--193
+\OT1/cmr/m/n/10 and mi-crobursts are re-lated, but this re-sult needs to be clo
+sely in-spected for sources of 
  []
 
 
@@ -2061,7 +2080,10 @@ Overfull \hbox (4.59665pt too wide) in paragraph at lines 212--213
  ^^V$ \OT1/cmr/m/n/10 as-sum-ing it does not change, the above ex- 
  []
 
-[11]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
 Overfull \hbox (8.28293pt too wide) in paragraph at lines 218--219
 []\OT1/cmr/m/n/10 We again use IRBEM-Lib to es-ti-mate $\OML/cmm/m/it/10 q\OT1/
 cmr/m/n/10 ^^H$. For each ex-am-ple cur-tain in Fig. 5[], we 
@@ -2449,6 +2471,9 @@ Underfull \hbox (badness 6542) in paragraph at lines 83--106
  []
 
 
+Underfull \vbox (badness 6575) has occurred while \output is active []
+
+ [13]
 Underfull \hbox (badness 10000) in paragraph at lines 146--165
 []\OT1/cmr/m/n/10 Breneman, A., Crew, A., Sam-ple, J., Klumpar, D., John-son, A
 ., Agapi-tov, O., ... 
@@ -2466,7 +2491,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--165
 OT1/cmr/m/it/10 Geo-phys-i-cal 
  []
 
-[13]
+
 Underfull \hbox (badness 3029) in paragraph at lines 181--204
 []\OT1/cmr/m/n/10 Comess, M., Smith, D., Se-lesnick, R., Mil-lan, R., & Sam-ple
 , J.  (2013).  Dusk-side 
@@ -2650,7 +2675,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 605--624
  []
 
 
-Underfull \vbox (badness 1558) has occurred while \output is active []
+Underfull \vbox (badness 1264) has occurred while \output is active []
 
  [14]
 Underfull \hbox (badness 10000) in paragraph at lines 676--695
@@ -2684,7 +2709,7 @@ Here is how much of TeX's memory you used:
  6946 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,9n,37p,1566b,340s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1566b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2703,7 +2728,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 500548 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 500625 bytes).
 PDF statistics:
  373 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
