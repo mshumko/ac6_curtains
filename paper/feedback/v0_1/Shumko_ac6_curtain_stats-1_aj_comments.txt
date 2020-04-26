@@ -36,9 +36,11 @@ if SAA:
 if BLC:
 else:
 right now your sentence "In most regions, outside of the SAA and its conjugate point, AC6 will ovserve [...]" is awkward because you have to define 'most regions'. Leaving it until last means you can just say "In all other regions AC6 will observe [...]". I think you left BLC for last for the extra description that follows, but... (next comment)
+
 -lines 90 -94: This description holds your hand way too much. This is how I might describe these concepts to my family or non-science friends. Just stating that the region is conjugate to the weaker magnetic field and lower mirror points in the SAA should be enough for your intended audience to understand why these particles must be in the BLC. In addition, if you move these paragraphs to the results section you'll also be describing quantitatively how you determined if AC6 is in the BLC which you can use to shore up your argument.
 
 -red paragraph, 95-102: The quote you have here doesn't really describe what the BLC is or why it exists but rather describes the exact criteria Comess used to determine if SAMPEX was in the BLC, namely the local BLC must be large enough to fully include the FoV of both PET and HILT. You lay out your criteria later using IRBEM mapping. The only definition Comess offers is "the bounce loss cone is defined such that any electrons detected should precipitate on their next bounce". I think your description of why the BLC exists and why it's in the North Atlantic maybe isn't necessary, but it's also not out of place and I'm sure some new grad student will thank you for not assuming they know everything.
+
 -paragraph 103-109: some repetition here stating twice you'll address the Blake and O'Brien hypothesis (highlighted).
 
 Instrumentation

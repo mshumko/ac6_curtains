@@ -130,14 +130,10 @@ We quantified curtain width in time as the width at half of the curtain's topogr
 	
 We compared the curtain width distribution to the microburst size distribution estimated in \citeA{Shumko2020}. \citeA{Shumko2020} estimated the microburst size distribution by finding microbursts that were observed simultaneously by both AC6 units so the microburst size must be larger than the AC6 separation. The red curve in Fig. \ref{width_dist} shows the microburst distribution estimated from the ratio of the number of concurrent and nonconcurrent microbursts observed in each separation bin. 
 
-The curtain and microburst size distributions are very similar with one notable difference. Curtain widths are observed directly and measure the entire region of instability hence their distribution is peaked, while the microburst distribution is estimated from concurrent observations that sample a sub-region of a microburst so their distribution is peaked at 0 km AC6 separation.
-
 \subsection{When and Where Are Curtains Observed}
-The distribution of curtains in L and MLT is shown in Fig. \ref{l_mlt_dist}. Figure \ref{l_mlt_dist}a shows the distribution of the 1634 observed curtains and Fig. \ref{l_mlt_dist}b shows the normalized distribution. The white bins, mostly in the early morning and evening MLT regions, had no observed curtains because the AC6 orbit did not sample there. Figure \ref{l_mlt_dist}c confirms this by showing the distribution of the number of quality (data quality flag = 0) 10 Hz samples.
+The distribution of curtains in L and MLT is shown in Fig. \ref{l_mlt_dist}. Figure \ref{l_mlt_dist}a shows the distribution of the observed curtains and Fig. \ref{l_mlt_dist}b shows the same distribution normalized by the number of quality 10 Hz samples AC6 took in each L-MLT bin. This normalization is shown in Fig. \ref{l_mlt_dist}c. The white bins in the early morning and evening MLT regions in Fig. \ref{l_mlt_dist}a had no observed curtains because the AC6 orbit did not sample there as confirmed by Fig. \ref{l_mlt_dist}c. The normalized curtain distribution in Fig. \ref{l_mlt_dist}b shows an enhanced curtain occurrence in the outer radiation belt in late morning and midnight MLT regions.
 
-After scaling by the uneven sampling in the late morning and midnight MLT regions, the normalized distribution in Fig. \ref{l_mlt_dist}b shows enhanced curtain occurrence in the outer radiation belt in late morning and midnight MLT regions.
-
-Now we quantify the geomagnetic conditions favorable for curtains. Figure \ref{ae_dist} shows the distribution of the Auroral Electroject (AE) index between 2014 and 2017, and the distribution of the AE index when curtains and microbursts were observed. The distribution of the AE index when $> 30$ keV microbursts were observed is shown with a dashed green curve. Curtains are observed typically when AE is enhanced. Microbursts are observed when AE is enhanced more than for curtains.
+Now we quantify the geomagnetic conditions favorable for curtains. Figure \ref{ae_dist} shows the distribution of the Auroral Electroject (AE) index between 2014 and 2017 in solid black. The distribution of the AE index when curtains were observed is shown by the dotted blue lines. Lastly, the distribution of the AE index when $> 30$ keV microbursts were observed is shown with a dashed green lines. 
 
 \begin{figure}
 \includegraphics[width=\textwidth]{ac6_curtain_microburst_width_dist.pdf}
@@ -147,13 +143,13 @@ Now we quantify the geomagnetic conditions favorable for curtains. Figure \ref{a
 
 \begin{figure}
 \includegraphics[width=\textwidth]{fig2_2.pdf}
-\caption{Distribution of observed curtains as a function of L and MLT in panel a and normalized number of curtains in panel b. Panel c shows the number of quality 10 Hz samples taken at the same time that was used to normalize panel b. The white bins in panels a have 0 curtain observations. In panel b the white shaded bins had either 0 detections or very little 10 Hz samples (less than $10,000$).}
+\caption{Distribution of observed curtains by L shell and MLT. Panel a shows the locations of all curtains used in this study. Panel b shows the curtain distribution normalized by the number of quality 10 Hz samples taken in each bin, shown in panel c. The white bins in panels a and b have no observed curtains. In panel c the white bins show where AC6 did not take any 10 Hz data due to its orbit.}
 \label{l_mlt_dist}
 \end{figure}
 
 \begin{figure}
 \includegraphics[width=\textwidth]{ac6_curtain_microburst_AE_dist.pdf}
-\caption{The distribution of the Auroral Electroject (AE) index from 2014 to 2017. The black curve shows the distribution for the entire 2014-2017 AE data set, the dotted blue curve shows the AE distribution for curtains, and the dashed green curve shows AE the distribution for microbursts studied in \citeA{Shumko2020}.}
+\caption{The distribution of the Auroral Electroject (AE) index from 2014 to 2017. The black curve shows the distribution for the entire 2014-2017 AE data set, the dotted blue curve shows the AE distribution for curtains, and the dashed green curve shows AE the distribution for microbursts studied in \citeA{Shumko2020}. \textcolor{red}{Make a normalized version of this plot}}
 \label{ae_dist}
 \end{figure}
 
@@ -189,7 +185,7 @@ Both of these biases underestimate the true size of curtains and microbursts, so
 \subsection{When and Where Are Curtains Observed}
 Figure \ref{l_mlt_dist} shows that curtain phenomena originates in the outer radiation belt, and observed relatively more in the evening than morning regions. Unfortunately, the limited AC6 coverage prevents a complete curtain distribution in MLT. From the MLT information we have in Fig. \ref{l_mlt_dist}b, curtains are most often observed near midnight MLT with relatively less observed in the late morning MLT. This distribution, though limited, appears to be similar to the L-MLT distribution of microbursts from prior studies \cite<e.g.>{O'Brien2003, Douma2017}.
 
-Curtains also exhibit a preference to disturbed geomagnetic conditions as shown in Fig. \ref{ae_dist}, but not as disturbed as microbursts from \citeA{Shumko2020}. A possible explanation: during quiet conditions the remnant microburst electrons are more likely to drift undisturbed and AC6 is more likely to observe the fine, highly-correlated curtain structure. In contrast, during active conditions curtain electrons are still drifting, but the dynamics of an actively-changing magnetosphere can easily perturb curtain electrons until AC6 no longer observes a highly correlated structure at the same location.
+Figure \ref{ae_dist} shows that the microburst and curtain observations are both associated with an enhanced AE. The occurrence rate of microbursts increases with enhanced AE more than the occurrence rate of curtains. One possible explanation is that during quiet conditions the remnant microburst electrons are more likely to drift undisturbed and AC6 is more likely to observe the fine, highly-correlated curtain structure. In contrast, during active conditions curtain electrons are still drifting, but the dynamics of an actively-changing magnetosphere can easily perturb curtain electrons until AC6 no longer observes a highly correlated structure at the same location.
  
 \subsection{Curtains Observed in The Bounce Loss Cone}
 Lastly we address curtains observed in the bounce loss cone. What can cause continuous $>30$ keV electron precipitation lasting for multiple seconds? This mechanism must be radially localized near the magnetic equator, on a scale of a few hundred kilometers. A candidate mechanism is a direct current electric field that is parallel to the background magnetic field that lowers the electron mirror point to AC6 altitudes. To find the minimum potential we assume the electron is barely trapped and has a mirror point at 100 kilometers in the SAA (and will likewise mirror above AC6's altitude in the conjugate point). This condition implies that the particle's mirror point in the bounce loss cone is above AC6. 

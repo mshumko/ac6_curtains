@@ -59,22 +59,22 @@ ax[2] = plt.subplot(133, projection='polar')
 cat_dist, mlt_bins, lm_bins = np.histogram2d(cat.MLT_OPQ, cat.Lm_OPQ,
                      bins=[bins['MLT_OPQ'], bins['Lm_OPQ']])
 
-cat_dist[cat_dist ==0] = np.nan
+cat_dist[cat_dist == 0] = np.nan
 norm[norm == 0] = np.nan
 
 scaling_factors = (np.nanmax(norm)/norm).T
 # Set the sectors with no observations or little observations to NaN.
 scaling_factors[np.isinf(scaling_factors)] = np.nan
-scaling_factors[norm.T < low_exposure_thresh] = np.nan
+# scaling_factors[norm.T < low_exposure_thresh] = np.nan
 cat_norm = cat_dist*scaling_factors
 
 
 mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 
 p0 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap=COLOR_MAP)
-p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/100, cmap=COLOR_MAP, vmax=4)
-plt.colorbar(p0, ax=ax[0], label=r'Observed Number of curtains', pad=0.1, orientation='horizontal')
-plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains x 100', pad=0.1, orientation='horizontal')
+p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/100, cmap=COLOR_MAP, vmax=7)
+plt.colorbar(p0, ax=ax[0], label=r'Observed Number of curtains', pad=0.11, orientation='horizontal')
+plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains x 100', pad=0.11, orientation='horizontal')
 
 # L shell filter for the L-MLT plot
 L_lower = 0
@@ -82,7 +82,7 @@ idL = np.where(np.array(bins['Lm_OPQ']) >= L_lower)[0][0]
 p2 = ax[2].pcolormesh(np.array(bins['MLT_OPQ'])*np.pi/12, 
                     bins['Lm_OPQ'], norm/1E5, 
                     cmap=COLOR_MAP, vmax=3)
-plt.colorbar(p2, ax=ax[2], label=r'10 Hz Samples x $10^5$', pad=0.1, orientation='horizontal')
+plt.colorbar(p2, ax=ax[2], label=r'10 Hz Samples x $10^5$', pad=0.11, orientation='horizontal')
 
 # Draw Earth and shadow
 draw_earth(ax[0])
