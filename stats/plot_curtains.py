@@ -286,5 +286,6 @@ if __name__ == '__main__':
     plot_width = 15
     catalog_name = f'AC6_curtains_baseline_method_sorted_v{version}.txt'
     p = PlotCurtains(version, catalog_name=catalog_name, plot_width=plot_width)
-    p.filter_catalog(filterDict={'Loss_Cone_Type':2}, defaultFilter=False)
+    # p.filter_catalog(filterDict={'Loss_Cone_Type':2}, defaultFilter=False)
+    p.filter_catalog(filterDict={'Lag_In_Track':[30, 100]}, defaultFilter=False)
     p.loop(mean_subtracted=False, savefig=True)
