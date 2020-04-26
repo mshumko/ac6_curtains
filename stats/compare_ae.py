@@ -35,23 +35,31 @@ for year in years:
     del year_ae['DATE_TIME']
     ae = ae.append(year_ae)
 
+thresh = 20
 bin_width = 100
 bins = np.arange(0, 1200, bin_width)
 H_AE, _ = np.histogram(ae['AE'], density=True, bins=bins)
 H_c, _ = np.histogram(cat['AE'], density=True, bins=bins)
+H_c_near, _ = np.histogram(cat[cat.Lag_In_Track < thresh]['AE'], density=True, bins=bins)
+H_c_far, _ = np.histogram(cat[cat.Lag_In_Track > thresh]['AE'], density=True, bins=bins)
 H_m, _ = np.histogram(burst_cat['AE'], density=True, bins=bins)
+
+print("cat[cat.Lag_In_Track < thresh]['AE'] = ", cat[cat.Lag_In_Track < thresh]['AE'].shape[0])
+print("cat[cat.Lag_In_Track > thresh]['AE'] = ", cat[cat.Lag_In_Track > thresh]['AE'].shape[0])
 
 # Scale the curtain distribution by the total AE time. In other
 # words this normalized distribution is the distribution of
 # curtains assuming any AE index is equally likeliy to occur.
-H_scaled = H_c*(np.max(H_AE)/H_AE)
-H_scaled = H_scaled/(np.sum(H_scaled)*bin_width)
+# H_scaled = H_c*(np.max(H_AE)/H_AE)
+# H_scaled = H_scaled/(np.sum(H_scaled)*bin_width)
 
 fig, ax = plt.subplots()
 ax.step(bins[:-1], H_AE, where='post', label='Index', 
         c='k', lw=2)
-ax.step(bins[:-1], H_c, where='post', label='Curtains', 
+ax.step(bins[:-1], H_c_near, where='post', label=f'Curtains | AC6 lag < {thresh} s', 
         c='b', lw=2, linestyle=':')
+ax.step(bins[:-1], H_c_far, where='post', label=f'Curtains | AC6 lag > {thresh} s', 
+        c='r', lw=2, linestyle=':')
 ax.step(bins[:-1], H_m, where='post', label='Microbursts', 
         c='g', lw=2, linestyle='--')
 

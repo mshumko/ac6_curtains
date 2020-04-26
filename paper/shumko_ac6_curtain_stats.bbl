@@ -335,6 +335,35 @@ Greeley, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Lehtinen%
+, Inan%
+\BCBL {}\ \BBA {} Bell%
+}{%
+Lehtinen%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2000}}%
+}]{%
+Lehtinen2000}
+\APACinsertmetastar {%
+Lehtinen2000}%
+\begin{APACrefauthors}%
+Lehtinen, N\BPBI G.%
+, Inan, U\BPBI S.%
+\BCBL {}\ \BBA {} Bell, T\BPBI F.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2000}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Trapped energetic electron curtains produced by
+  thunderstorm driven relativistic runaway electrons} {Trapped energetic
+  electron curtains produced by thunderstorm driven relativistic runaway
+  electrons}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical research letters}{27}{8}{1095--1098}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Lorentzen%
 , Blake%
 , Inan%
