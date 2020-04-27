@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  27 APR 2020 09:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  27 APR 2020 10:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1433,124 +1433,116 @@ low, sea level. The dashed blue
  []
 
 
-Overfull \hbox (3.71011pt too wide) in paragraph at lines 165--166
-\OT1/cmr/m/n/10 line is the north-ern bound-ary where the SAA mir-ror point al-
-ti-tude is at sea level. For 
+Overfull \hbox (7.32118pt too wide) in paragraph at lines 165--166
+\OT1/cmr/m/n/10 line is the bound-ary where the SAA mir-ror point al-ti-tude is
+ at sea level. For ref-er-ence, 
  []
 
 
-Overfull \hbox (19.71004pt too wide) in paragraph at lines 165--166
-\OT1/cmr/m/n/10 ref-er-ence, AC6 takes about 30 sec-onds to move be-tween the s
-olid and dashed blue curves. 
+Overfull \hbox (15.48781pt too wide) in paragraph at lines 165--166
+\OT1/cmr/m/n/10 AC6 takes about 30 sec-onds to move be-tween the solid and dash
+ed blue curves. The two 
  []
 
 
-Overfull \hbox (22.29349pt too wide) in paragraph at lines 165--166
-\OT1/cmr/m/n/10 We su-per-posed two dot-ted black lines on Fig. 5[]a that rep-r
-e-sent the bound-ary of the outer 
+Overfull \hbox (7.59903pt too wide) in paragraph at lines 165--166
+\OT1/cmr/m/n/10 dot-ted black curves in Fig. 5[]a bound the outer ra-di-a-tion 
+belt, de-fined be-tween L shells 
  []
 
 
-Overfull \hbox (12.51564pt too wide) in paragraph at lines 167--168
-[]\OT1/cmr/m/n/10 We found 4 good cur-tains that were ob-served in-side the BLC
- re-gions and in-cluded 
+Overfull \hbox (15.51558pt too wide) in paragraph at lines 167--168
+[]\OT1/cmr/m/n/10 We found 36 cur-tains that were ob-served in-side the BLC re-
+gion. Fig-ure 5[]b-e shows 
  []
 
 
-Overfull \hbox (6.37672pt too wide) in paragraph at lines 167--168
-\OT1/cmr/m/n/10 the shifted time se-ries plots in Fig. 5[]b-e, with the AC6 in-
-track lag, L and MLT of the 
+Overfull \hbox (8.57117pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/10 the shifted time se-ries plots for 4 ex-am-ples with the AC6 in
+-track lag, L and MLT dur- 
  []
 
 
-Overfull \hbox (20.96005pt too wide) in paragraph at lines 167--168
-\OT1/cmr/m/n/10 ob-ser-va-tions an-no-tated. The AC6 lo-ca-tions where these cu
-r-tains were ob-served are shown 
+Overfull \hbox (7.82117pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/10 ing the ob-ser-va-tions an-no-tated. The AC6 lo-ca-tions where 
+these cur-tains were ob-served 
  []
 
 
-Overfull \hbox (7.12677pt too wide) in paragraph at lines 167--168
-\OT1/cmr/m/n/10 in 5[]a with red stars and the cor-re-spond-ing panel la-bels. 
-The cur-tains shown in Fig. 5[]c 
+Overfull \hbox (3.82118pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/10 are shown in Fig. 5[]a with red stars and the cor-re-spond-ing 
+panel la-bels. []Move the rest 
  []
 
 
-Overfull \hbox (23.87668pt too wide) in paragraph at lines 167--168
-\OT1/cmr/m/n/10 and e were ob-served near the sea level SAA mir-ror al-ti-tude 
-curve thus they were not drift- 
+Overfull \hbox (10.29333pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/10 of the P to the dis-cus-sion?[] The cur-tains shown in Fig. 5[]
+c and e were ob-served near the 
  []
 
 
-Overfull \hbox (9.48778pt too wide) in paragraph at lines 167--168
-\OT1/cmr/m/n/10 ing and were pre-cip-i-tat-ing as much as 6 sec-onds as shown i
-n Fig. 5[]e. For ref-er-ence, the 
+Overfull \hbox (4.34897pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/10 sea level SAA mir-ror al-ti-tude curve thus they were not drift
+-ing and were pre-cip-i-tat-ing 
  []
 
 
-Overfull \hbox (12.09901pt too wide) in paragraph at lines 167--168
-\OT1/cmr/m/n/10 pre-cip-i-ta-tion per-sisted for longer than the typ-i-cal $\OM
-S/cmsy/m/n/10 ^^Y \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5$ sec-ond
- bounce pe-riod of 30 keV 
+Overfull \hbox (5.82115pt too wide) in paragraph at lines 167--168
+\OT1/cmr/m/n/10 as much as 6 sec-onds as shown in Fig. 5[]e. The cur-tain pre-c
+ip-i-ta-tion per-sisted for mul- 
+ []
+
+<figures/fig3.pdf, id=85, 650.43pt x 484.9317pt>
+File: figures/fig3.pdf Graphic file (type pdf)
+<use figures/fig3.pdf>
+Package pdftex.def Info: figures/fig3.pdf  used on input line 170.
+(pdftex.def)             Requested size: 397.48499pt x 296.35545pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+[]\OT1/cmr/bx/n/9 Figure  5. \OT1/cmr/m/n/9 Cur-tains ob-served in-side the bou
+nce loss cone re-gion. Panel a shows a map of the
  []
 
 
-Overfull \hbox (22.34886pt too wide) in paragraph at lines 169--170
-[][]\OT1/cmr/m/n/10 These ex-am-ples were ob-served near the sea level BLC curv
-e, so at a min-i-mum, those 
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+\OT1/cmr/m/n/9 North At-lantic re-gion with the outer ra-di-a-tion belt, de-fin
+ed by an L shell range be-tween 4 and
  []
 
 
-Overfull \hbox (6.79343pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 elec-trons would have gy-rated down to sea level in the South A
-t-lantic Anomaly. This is 
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+\OT1/cmr/m/n/9 8, shown with the dot-ted black curves. The solid blue curve sho
+ws the north-ern bound-ary of the
  []
 
 
-Overfull \hbox (5.87671pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 a very con-ser-va-tive es-ti-mate be-cause the ob-served elec-t
-rons likely mir-rored be-low AC6 
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+\OT1/cmr/m/n/9 bounce loss cone re-gion. Along this curve, elec-trons ob-served
+ at a 700 kilo-me-ter al-ti-tude in the
  []
 
 
-Overfull \hbox (46.40459pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 and thus be-low sea level (if Earth was not in the way). Fig-ur
-e 3 casts doubt on the microburst- 
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+\OT1/cmr/m/n/9 North At-lantic will mir-ror at 100 kilo-me-ters in the SAA. A m
+ore strict bounce loss cone cri-te-ria
  []
 
 
-Overfull \hbox (10.9046pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 curtain hy-poth-e-sis but more work will be nec-es-sary to full
-y con-clude if mi-crobursts and 
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+\OT1/cmr/m/n/9 is the dashed blue curve that rep-re-sents a mir-ror point al-ti
+-tude at sea level in the SAA. The 4
  []
 
 
-Overfull \hbox (8.70995pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 cur-tains are re-lated. These ex-am-ples were ob-served near th
-e sea level BLC curve, so at 
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+\OT1/cmr/m/n/9 red stars with la-bels show the lo-ca-tions of the cur-tain ex-a
+m-ples shown in pan-els b-e. The pan-els
  []
 
 
-Overfull \hbox (10.07123pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 a min-i-mum, those elec-trons would have gy-rated down to sea l
-evel in the South At-lantic 
- []
-
-
-Overfull \hbox (13.98785pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 Anomaly. This is a very con-ser-va-tive es-ti-mate be-cause the
- ob-served elec-trons likely mir- 
- []
-
-
-Overfull \hbox (9.68225pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 rored be-low AC6 and thus be-low sea level (if Earth was not in
- the way). Fig-ure 3 casts 
- []
-
-
-Overfull \hbox (18.90462pt too wide) in paragraph at lines 169--170
-\OT1/cmr/m/n/10 doubt on the microburst-curtain hy-poth-e-sis but more work wil
-l be nec-es-sary to fully con- 
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+\OT1/cmr/m/n/9 b-e show the 4 ex-am-ple cur-tains with the AC6-A shown by the r
+ed line, and AC6-B with the blue
  []
 
 
@@ -1561,281 +1553,224 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 pdfTeX warning: pdflatex (file ./figures/fig2_2.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
->] [8 <./figures/ac6_curtain_microburst_AE_dist.pdf>]
-<figures/fig3.pdf, id=241, 650.43pt x 484.9317pt>
-File: figures/fig3.pdf Graphic file (type pdf)
-<use figures/fig3.pdf>
-Package pdftex.def Info: figures/fig3.pdf  used on input line 172.
-(pdftex.def)             Requested size: 397.48499pt x 296.35545pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-[]\OT1/cmr/bx/n/9 Figure  5. \OT1/cmr/m/n/9 Cur-tains ob-served in-side the bou
-nce loss cone re-gion. Panel a shows a map of the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\OT1/cmr/m/n/9 North At-lantic re-gion with the outer ra-di-a-tion belt, de-fin
-ed by an L shell range be-tween 4 and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\OT1/cmr/m/n/9 8, shown with the dot-ted black curves. The solid blue curve sho
-ws the north-ern bound-ary of the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\OT1/cmr/m/n/9 bounce loss cone re-gion. Along this curve, elec-trons ob-served
- at a 700 kilo-me-ter al-ti-tude in the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\OT1/cmr/m/n/9 North At-lantic will mir-ror at 100 kilo-me-ters in the SAA. A m
-ore strict bounce loss cone cri-te-ria
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\OT1/cmr/m/n/9 is the dashed blue curve that rep-re-sents a mir-ror point al-ti
--tude at sea level in the SAA. The 4
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\OT1/cmr/m/n/9 red stars with la-bels show the lo-ca-tions of the cur-tain ex-a
-m-ples shown in pan-els b-e. The pan-els
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 173--173
-\OT1/cmr/m/n/9 b-e show the 4 ex-am-ple cur-tains with the AC6-A shown by the r
-ed line, and AC6-B with the blue
- []
-
-
-Overfull \hbox (15.15457pt too wide) in paragraph at lines 179--180
+>] [8 <./figures/ac6_curtain_microburst_AE_dist.pdf>] [9 <./figures/fig3.pdf>]
+Overfull \hbox (15.15457pt too wide) in paragraph at lines 177--178
 []\OT1/cmr/m/n/10 Curtains are very nar-row in lat-i-tude. Fig-ure 2[] shows th
 e width in lat-i-tude of many 
  []
 
 
-Overfull \hbox (8.82124pt too wide) in paragraph at lines 179--180
+Overfull \hbox (8.82124pt too wide) in paragraph at lines 177--178
 \OT1/cmr/m/n/10 cur-tains are on the or-der of 10 kilo-me-ters and 90% are nar-
 rower than 21 km. Scaled to 
  []
 
 
-Overfull \hbox (15.79341pt too wide) in paragraph at lines 179--180
+Overfull \hbox (15.79341pt too wide) in paragraph at lines 177--178
 \OT1/cmr/m/n/10 the mag-netic equa-tor, where we pre-sume cur-tains are gen-er-
 ated, these lat-i-tu-di-nal widths 
  []
 
 
-Overfull \hbox (1.79335pt too wide) in paragraph at lines 179--180
+Overfull \hbox (1.79335pt too wide) in paragraph at lines 177--178
 \OT1/cmr/m/n/10 cor-re-spond to a source with a ra-dial scale size of a few hun
 -dred kilo-me-ters. As shown 
  []
 
 
-Overfull \hbox (19.26575pt too wide) in paragraph at lines 179--180
+Overfull \hbox (19.26575pt too wide) in paragraph at lines 177--178
 \OT1/cmr/m/n/10 in Fig. 1[]f and 1[]h; it is re-mark-able that some cur-tains m
 ain-tain a fine struc-ture af-ter mul- 
  []
 
 
-Overfull \hbox (8.6268pt too wide) in paragraph at lines 179--180
+Overfull \hbox (8.6268pt too wide) in paragraph at lines 177--178
 \OT1/cmr/m/n/10 ti-ple sec-onds with lit-tle ob-serv-able dif-fer-ence. Some-ti
 mes cur-tains ap-pear to be slightly 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9 <./figures/fig3.pdf>]
-Overfull \hbox (6.32123pt too wide) in paragraph at lines 181--182
+Overfull \hbox (6.32123pt too wide) in paragraph at lines 179--180
 []\OT1/cmr/m/n/10 If cur-tains are rem-nants of mi-crobursts then the dis-tri-b
 u-tion of cur-tain widths in 
  []
 
 
-Overfull \hbox (18.93239pt too wide) in paragraph at lines 181--182
+Overfull \hbox (18.93239pt too wide) in paragraph at lines 179--180
 \OT1/cmr/m/n/10 lat-i-tude cor-re-spond to the mi-croburst size dis-tri-bu-tion
 . Fig-ure 2[] shows a good cor-re-spon- 
  []
 
 
-Overfull \hbox (13.57121pt too wide) in paragraph at lines 181--182
+Overfull \hbox (13.57121pt too wide) in paragraph at lines 179--180
 \OT1/cmr/m/n/10 dence be-tween the dis-tri-bu-tion of cur-tain widths in lat-i-
 tude and the mi-croburst size dis- 
  []
 
 
-Overfull \hbox (10.18242pt too wide) in paragraph at lines 181--182
+Overfull \hbox (10.18242pt too wide) in paragraph at lines 179--180
 \OT1/cmr/m/n/10 tri-bu-tion from []Shumko et al.[] (2019). There-fore, it is re
 a-son-able to be-lieve that cur-tains 
  []
 
 
-Overfull \hbox (6.37671pt too wide) in paragraph at lines 181--182
+Overfull \hbox (6.37671pt too wide) in paragraph at lines 179--180
 \OT1/cmr/m/n/10 and mi-crobursts are re-lated, but this re-sult needs to be clo
 sely in-spected for sources of 
  []
 
 
-Overfull \hbox (11.57117pt too wide) in paragraph at lines 183--184
+Overfull \hbox (11.57117pt too wide) in paragraph at lines 181--182
 []\OT1/cmr/m/n/10 The mi-croburst scale size dis-tri-bu-tion, as de-scribed in 
 []Shumko et al.[] (2019), is the 
  []
 
 
-Overfull \hbox (15.29349pt too wide) in paragraph at lines 183--184
+Overfull \hbox (15.29349pt too wide) in paragraph at lines 181--182
 \OT1/cmr/m/n/10 frac-tion of mi-crobursts ob-served si-mul-ta-ne-ously to all m
 i-crobursts ob-served ei-ther si-mul- 
  []
 
 
-Overfull \hbox (19.51575pt too wide) in paragraph at lines 183--184
+Overfull \hbox (19.51575pt too wide) in paragraph at lines 181--182
 \OT1/cmr/m/n/10 ta-ne-ously or by only one AC6 unit. A mi-croburst ob-served si
 -mul-ta-ne-ously must be larger 
  []
 
 
-Overfull \hbox (9.07123pt too wide) in paragraph at lines 183--184
+Overfull \hbox (9.07123pt too wide) in paragraph at lines 181--182
 \OT1/cmr/m/n/10 than the space-craft sep-a-ra-tion so the mi-croburst dis-tri-b
 u-tion rep-re-sents a lower bound. 
  []
 
 
-Overfull \hbox (14.87688pt too wide) in paragraph at lines 183--184
+Overfull \hbox (14.87688pt too wide) in paragraph at lines 181--182
 []\OT1/cmr/m/n/10 Shumko et al.[] (2019) at-tempted to ac-count for this bias b
 ut it is dif-fi-cult. This bias that 
  []
 
 
-Overfull \hbox (7.04344pt too wide) in paragraph at lines 183--184
+Overfull \hbox (7.04344pt too wide) in paragraph at lines 181--182
 \OT1/cmr/m/n/10 shifts the mi-croburst dis-tri-bu-tion to smaller sizes so in t
 he mi-croburst size dis-tri-bu-tion 
  []
 
 
-Overfull \hbox (13.68233pt too wide) in paragraph at lines 185--186
+Overfull \hbox (13.68233pt too wide) in paragraph at lines 183--184
 []\OT1/cmr/m/n/10 Furthermore the de-tec-tion al-go-rithm de-scribed in sec-tio
 n 4.1[] has a width bias. For 
  []
 
 
-Overfull \hbox (5.76567pt too wide) in paragraph at lines 185--186
+Overfull \hbox (5.76567pt too wide) in paragraph at lines 183--184
 \OT1/cmr/m/n/10 wide cur-tains with a sim-i-lar width to the de-tec-tion al-go-
 rithm's 10-second base-line, the 
  []
 
 
-Overfull \hbox (2.98785pt too wide) in paragraph at lines 185--186
+Overfull \hbox (2.98785pt too wide) in paragraph at lines 183--184
 \OT1/cmr/m/n/10 10-second base-line is then cal-cu-lated us-ing the en-hanced c
 ur-tain counts in-stead of the 
  []
 
 
-Overfull \hbox (16.15459pt too wide) in paragraph at lines 185--186
+Overfull \hbox (16.15459pt too wide) in paragraph at lines 183--184
 \OT1/cmr/m/n/10 back-ground and is in-creased above the true back-ground and th
 us the cur-tain peak is less 
  []
 
 
-Overfull \hbox (6.71008pt too wide) in paragraph at lines 185--186
+Overfull \hbox (6.71008pt too wide) in paragraph at lines 183--184
 \OT1/cmr/m/n/10 pro-nounced rel-a-tive to the base-line. As a re-sult, the cur-
 tain de-tec-tion al-go-rithm is less 
  []
 
 
-Overfull \hbox (6.04337pt too wide) in paragraph at lines 185--186
+Overfull \hbox (6.04337pt too wide) in paragraph at lines 183--184
 \OT1/cmr/m/n/10 sen-si-tive to wider cur-tains. The re-sult of this bias is sim
 -i-lar to the bias in-her-ent in the 
  []
 
 
-Overfull \hbox (18.84894pt too wide) in paragraph at lines 187--188
+Overfull \hbox (18.84894pt too wide) in paragraph at lines 185--186
 []\OT1/cmr/m/n/10 Both of these bi-ases un-der-es-ti-mate the true size of cur-
 tains and mi-crobursts, so this 
  []
 
 
-Overfull \hbox (10.68239pt too wide) in paragraph at lines 190--191
+Overfull \hbox (10.68239pt too wide) in paragraph at lines 188--189
 []\OT1/cmr/m/n/10 Figure 3[] shows that cur-tain phe-nom-ena orig-i-nates in th
 e outer ra-di-a-tion belt, and 
  []
 
 
-Overfull \hbox (3.18242pt too wide) in paragraph at lines 190--191
+Overfull \hbox (3.18242pt too wide) in paragraph at lines 188--189
 \OT1/cmr/m/n/10 ob-served rel-a-tively more in the evening than morn-ing re-gio
 ns. Un-for-tu-nately, the lim- 
  []
 
 
-Overfull \hbox (8.84895pt too wide) in paragraph at lines 190--191
+Overfull \hbox (8.84895pt too wide) in paragraph at lines 188--189
 \OT1/cmr/m/n/10 ited AC6 cov-er-age pre-vents a com-plete cur-tain dis-tri-bu-t
 ion in MLT. From the MLT in- 
  []
 
 
-Overfull \hbox (15.43239pt too wide) in paragraph at lines 190--191
+Overfull \hbox (15.43239pt too wide) in paragraph at lines 188--189
 \OT1/cmr/m/n/10 for-ma-tion we have in Fig. 3[]b, cur-tains are most of-ten ob-
 served near mid-night MLT with 
  []
 
 
-Overfull \hbox (10.09906pt too wide) in paragraph at lines 190--191
+Overfull \hbox (10.09906pt too wide) in paragraph at lines 188--189
 \OT1/cmr/m/n/10 rel-a-tively less ob-served in the late morn-ing MLT. This dis-
 tri-bu-tion, though lim-ited, ap- 
  []
 
 
-Overfull \hbox (35.62688pt too wide) in paragraph at lines 190--191
+Overfull \hbox (35.62688pt too wide) in paragraph at lines 188--189
 \OT1/cmr/m/n/10 pears to be sim-i-lar to the L-MLT dis-tri-bu-tion of mi-crobur
 sts from prior stud-ies []e.g. O'Brien 
  []
 
 
-Overfull \hbox (4.26567pt too wide) in paragraph at lines 192--193
+Overfull \hbox (4.26567pt too wide) in paragraph at lines 190--191
 []\OT1/cmr/m/n/10 Figure 4[] shows that the mi-croburst and cur-tain ob-ser-va-
 tions are both as-so-ci-ated 
  []
 
 
-Overfull \hbox (7.18225pt too wide) in paragraph at lines 192--193
+Overfull \hbox (7.18225pt too wide) in paragraph at lines 190--191
 \OT1/cmr/m/n/10 with an en-hanced AE. The oc-cur-rence rate of mi-crobursts in-
 creases with en-hanced AE 
  []
 
 
-Overfull \hbox (14.40462pt too wide) in paragraph at lines 192--193
+Overfull \hbox (14.40462pt too wide) in paragraph at lines 190--191
 \OT1/cmr/m/n/10 more than the oc-cur-rence rate of cur-tains. One pos-si-ble ex
 -pla-na-tion is that dur-ing quiet 
  []
 
 
-Overfull \hbox (21.40463pt too wide) in paragraph at lines 192--193
+Overfull \hbox (21.40463pt too wide) in paragraph at lines 190--191
 \OT1/cmr/m/n/10 con-di-tions the rem-nant mi-croburst elec-trons are more likel
 y to drift undis-turbed and AC6 
  []
 
 
-Overfull \hbox (5.3212pt too wide) in paragraph at lines 192--193
+Overfull \hbox (5.3212pt too wide) in paragraph at lines 190--191
 \OT1/cmr/m/n/10 is more likely to ob-serve the fine, highly-correlated cur-tain
  struc-ture. In con-trast, dur- 
  []
 
 
-Overfull \hbox (12.96019pt too wide) in paragraph at lines 192--193
+Overfull \hbox (12.96019pt too wide) in paragraph at lines 190--191
 \OT1/cmr/m/n/10 ing ac-tive con-di-tions cur-tain elec-trons are still drift-in
 g, but the dy-nam-ics of an actively- 
  []
 
 
-Overfull \hbox (21.98792pt too wide) in paragraph at lines 192--193
+Overfull \hbox (21.98792pt too wide) in paragraph at lines 190--191
 \OT1/cmr/m/n/10 changing mag-ne-to-sphere can eas-ily per-turb cur-tain elec-tr
 ons un-til AC6 no longer ob-serves 
  []
@@ -1844,214 +1779,214 @@ ons un-til AC6 no longer ob-serves
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [10]
-Overfull \hbox (11.1822pt too wide) in paragraph at lines 195--196
+Overfull \hbox (11.1822pt too wide) in paragraph at lines 193--194
 []\OT1/cmr/m/n/10 Lastly we ad-dress cur-tains ob-served in the bounce loss con
 e. What can cause con- 
  []
 
 
-Overfull \hbox (2.48784pt too wide) in paragraph at lines 195--196
+Overfull \hbox (2.48784pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 tin-u-ous $\OML/cmm/m/it/10 > \OT1/cmr/m/n/10 30$ keV elec-tron
  pre-cip-i-ta-tion last-ing for mul-ti-ple sec-onds? This mech-a-nism 
  []
 
 
-Overfull \hbox (5.90457pt too wide) in paragraph at lines 195--196
+Overfull \hbox (5.90457pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 must be ra-di-ally lo-cal-ized near the mag-netic equa-tor, on 
 a scale of a few hun-dred kilo- 
  []
 
 
-Overfull \hbox (1.62668pt too wide) in paragraph at lines 195--196
+Overfull \hbox (1.62668pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 me-ters. A can-di-date mech-a-nism is a di-rect cur-rent elec-t
 ric field that is par-al-lel to the 
  []
 
 
-Overfull \hbox (0.40456pt too wide) in paragraph at lines 195--196
+Overfull \hbox (0.40456pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 back-ground mag-netic field that low-ers the elec-tron mir-ror 
 point to AC6 al-ti-tudes. To 
  []
 
 
-Overfull \hbox (6.34903pt too wide) in paragraph at lines 195--196
+Overfull \hbox (6.34903pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 find the min-i-mum po-ten-tial we as-sume the elec-tron is bare
 ly trapped and has a mir-ror 
  []
 
 
-Overfull \hbox (14.84904pt too wide) in paragraph at lines 195--196
+Overfull \hbox (14.84904pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 point at 100 kilo-me-ters in the SAA (and will like-wise mir-ro
 r above AC6's al-ti-tude in the 
  []
 
 
-Overfull \hbox (5.12688pt too wide) in paragraph at lines 195--196
+Overfull \hbox (5.12688pt too wide) in paragraph at lines 193--194
 \OT1/cmr/m/n/10 con-ju-gate point). This con-di-tion im-plies that the par-ti-c
 le's mir-ror point in the bounce 
  []
 
 
-Overfull \hbox (5.07115pt too wide) in paragraph at lines 197--198
+Overfull \hbox (5.07115pt too wide) in paragraph at lines 195--196
 []\OT1/cmr/m/n/10 To find the par-al-lel po-ten-tial po-ten-tial we use the ki-
 netic en-ergy, $\OML/cmm/m/it/10 W$\OT1/cmr/m/n/10 , of a $30$ keV 
  []
 
 
-Overfull \hbox (10.7634pt too wide) in paragraph at lines 197--198
+Overfull \hbox (10.7634pt too wide) in paragraph at lines 195--196
 \OT1/cmr/m/n/10 par-ti-cle at its ini-tial mir-ror point at a mag-netic field s
 trength of $\OML/cmm/m/it/10 B[]$\OT1/cmr/m/n/10 . The ki-netic en-ergy 
  []
 
 
-Overfull \hbox (1.93921pt too wide) in paragraph at lines 197--198
+Overfull \hbox (1.93921pt too wide) in paragraph at lines 195--196
 \OT1/cmr/m/n/10 in-vari-ant. Now when a par-al-lel po-ten-tial acts on the elec
 -tron of charge $\OML/cmm/m/it/10 q$ \OT1/cmr/m/n/10 and does $\OML/cmm/m/it/10
  q\OT1/cmr/m/n/10 ^^H$ 
  []
 
 
-Overfull \hbox (5.18233pt too wide) in paragraph at lines 197--198
+Overfull \hbox (5.18233pt too wide) in paragraph at lines 195--196
 \OT1/cmr/m/n/10 amount of work, the elec-tron will mir-ror closer to Earth's su
 r-face and mir-ror at a field 
  []
 
 
-Overfull \hbox (7.70772pt too wide) in paragraph at lines 197--198
+Overfull \hbox (7.70772pt too wide) in paragraph at lines 195--196
 \OT1/cmr/m/n/10 strength $\OML/cmm/m/it/10 B[]$ \OT1/cmr/m/n/10 where its fi-na
 l en-ergy is $\OML/cmm/m/it/10 W[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^VB[]$\O
 T1/cmr/m/n/10 . Now we re-late the ini-tial and fi-nal ki- 
  []
 
 
-Overfull \hbox (11.12688pt too wide) in paragraph at lines 207--207
+Overfull \hbox (11.12688pt too wide) in paragraph at lines 205--205
 [][]\OT1/cmr/m/n/10 Also, com-ment that needed Phi de-pends pro-por-tion-ally o
 n ini-tial en-ergy, and that 
  []
 
 
-Overfull \hbox (15.73788pt too wide) in paragraph at lines 207--207
+Overfull \hbox (15.73788pt too wide) in paragraph at lines 205--205
 \OT1/cmr/m/n/10 AC6 dos1 re-sponse in-creases sharply with en-ergy up to a peak
  re-sponse around 100 keV.  
  []
 
 
-Overfull \hbox (6.87672pt too wide) in paragraph at lines 207--208
+Overfull \hbox (6.87672pt too wide) in paragraph at lines 205--206
 []\OT1/cmr/m/n/10 In the au-rora pa-pers, do we need to worry about the *sign* 
 of Phi? In the FAST 
  []
 
 
-Overfull \hbox (8.28293pt too wide) in paragraph at lines 209--210
+Overfull \hbox (8.28293pt too wide) in paragraph at lines 207--208
 []\OT1/cmr/m/n/10 We again use IRBEM-Lib to es-ti-mate $\OML/cmm/m/it/10 q\OT1/
 cmr/m/n/10 ^^H$. For each ex-am-ple cur-tain in Fig. 5[], we 
  []
 
 
-Overfull \hbox (9.56258pt too wide) in paragraph at lines 209--210
+Overfull \hbox (9.56258pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 first es-ti-mated the lo-cal mag-netic field, $\OML/cmm/m/it/10
  B[]$ \OT1/cmr/m/n/10 for this deriva-tion. Then we traced the field 
  []
 
 
-Overfull \hbox (26.48566pt too wide) in paragraph at lines 209--210
+Overfull \hbox (26.48566pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 line from AC6 into the SAA. We found $\OML/cmm/m/it/10 B[]$ \OT
 1/cmr/m/n/10 at 100 kilo-me-ters al-ti-tude in the SAA for barely 
  []
 
 
-Overfull \hbox (6.10242pt too wide) in paragraph at lines 209--210
+Overfull \hbox (6.10242pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 trapped elec-trons. With the ini-tial and fi-nal $\OML/cmm/m/it
 /10 B$\OT1/cmr/m/n/10 , along with $\OML/cmm/m/it/10 W \OT1/cmr/m/n/10 = 30$ ke
 V, the min-i-mum 
  []
 
 
-Overfull \hbox (2.09903pt too wide) in paragraph at lines 209--210
+Overfull \hbox (2.09903pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 range of po-ten-tials is typ-i-cal for the au-rora. []Partamies
  et al.[] (2008) used the ob-ser-va- 
  []
 
 
-Overfull \hbox (24.15463pt too wide) in paragraph at lines 209--210
+Overfull \hbox (24.15463pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 tions made by the Fast Au-ro-ral Snap-shoT (FAST) mis-sion and 
 re-ported that the inverted- 
  []
 
 
-Overfull \hbox (6.93222pt too wide) in paragraph at lines 209--210
+Overfull \hbox (6.93222pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 V au-ro-ral struc-tures, ob-served up to a few tens of keV, wer
 e ac-cel-er-ated by 2-4 kV po- 
  []
 
 
-Overfull \hbox (26.71016pt too wide) in paragraph at lines 209--210
+Overfull \hbox (26.71016pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 ten-tials. While the au-rora and cur-tains are likely dif-fer-e
 nt, the au-rora is ob-served at higher 
  []
 
 
-Overfull \hbox (0.43236pt too wide) in paragraph at lines 209--210
+Overfull \hbox (0.43236pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 L and near mid-night MLT re-gion, they do share a num-ber of si
 m-i-lar-i-ties. If AC6 had 
  []
 
 
-Overfull \hbox (1.07118pt too wide) in paragraph at lines 209--210
+Overfull \hbox (1.07118pt too wide) in paragraph at lines 207--208
 \OT1/cmr/m/n/10 dif-fer-en-tial en-ergy chan-nels be-low 30 keV, then it would 
 be pos-si-ble to test a pos-si-ble 
  []
 
 
-Overfull \hbox (2.34898pt too wide) in paragraph at lines 211--212
+Overfull \hbox (2.34898pt too wide) in paragraph at lines 209--210
 []\OT1/cmr/m/n/10 Outside of the BLC, the lack of pitch an-gle in-for-ma-tion m
 akes the AC6 elec-tron 
  []
 
 
-Overfull \hbox (8.3768pt too wide) in paragraph at lines 211--212
+Overfull \hbox (8.3768pt too wide) in paragraph at lines 209--210
 \OT1/cmr/m/n/10 data am-bigu-ous, but the cur-tains ob-served in the BLC sug-ge
 st that some cur-tains con- 
  []
 
 
-Overfull \hbox (7.2379pt too wide) in paragraph at lines 211--212
+Overfull \hbox (7.2379pt too wide) in paragraph at lines 209--210
 \OT1/cmr/m/n/10 tin-u-ously pre-cip-i-tate for mul-ti-ple sec-onds. Cur-tains c
 ould be a sig-nif-i-cant source of en- 
  []
 
 
-Overfull \hbox (12.29341pt too wide) in paragraph at lines 211--212
+Overfull \hbox (12.29341pt too wide) in paragraph at lines 209--210
 \OT1/cmr/m/n/10 er-getic par-ti-cles into the at-mo-sphere. En-er-getic elec-tr
 on pre-cip-i-ta-tion gen-er-ates odd Ni- 
  []
 
 
-Overfull \hbox (22.83517pt too wide) in paragraph at lines 211--212
+Overfull \hbox (22.83517pt too wide) in paragraph at lines 209--210
 \OT1/cmr/m/n/10 tro-gen ($[]$) that is cur-rently un-der-es-ti-mated by at-mo-s
 pheric mod-els such as the widely- 
  []
 
 
-Overfull \hbox (38.15465pt too wide) in paragraph at lines 211--212
+Overfull \hbox (38.15465pt too wide) in paragraph at lines 209--210
 \OT1/cmr/m/n/10 used Whole At-mo-sphere Com-mu-nity Cli-mate Model us-ing Spec-
 i-fied Dy-nam-ics (SD-WACCM) 
  []
 
 
-Overfull \hbox (4.87685pt too wide) in paragraph at lines 211--212
+Overfull \hbox (4.87685pt too wide) in paragraph at lines 209--210
 []\OT1/cmr/m/n/10 e.g. Ran-dall et al.[], 2015). A com-pre-hen-sive study of th
 e cur-tain im-pact on the at-mo- 
  []
 
 
-Overfull \hbox (11.59901pt too wide) in paragraph at lines 211--212
+Overfull \hbox (11.59901pt too wide) in paragraph at lines 209--210
 \OT1/cmr/m/n/10 sphere should be done with an AC6-like mis-sion with pitch an-g
 le and en-ergy res-o-lu-tion.  
  []
 
 
-Overfull \hbox (16.15453pt too wide) in paragraph at lines 215--216
+Overfull \hbox (16.15453pt too wide) in paragraph at lines 213--214
 []\OT1/cmr/m/n/10 The 1634 con-firmed cur-tains al-lowed us to make the fol-low
 -ing sta-tis-ti-cal in-fer-ences:  
  []
@@ -2060,145 +1995,145 @@ Overfull \hbox (16.15453pt too wide) in paragraph at lines 215--216
 Underfull \vbox (badness 2903) has occurred while \output is active []
 
  [11]
-Overfull \hbox (8.4046pt too wide) in paragraph at lines 219--220
+Overfull \hbox (8.4046pt too wide) in paragraph at lines 217--218
 []\OT1/cmr/m/n/10 Curtains are ob-served in the outer ra-di-a-tion belt, pre-do
 m-i-nately in the mid-night 
  []
 
 
-Overfull \hbox (4.34901pt too wide) in paragraph at lines 219--220
+Overfull \hbox (4.34901pt too wide) in paragraph at lines 217--218
 \OT1/cmr/m/n/10 and the late morn-ing MLT re-gions, dur-ing pe-ri-ods of mod-er
 -ate ge-o-mag-netic ac- 
  []
 
 
-Overfull \hbox (6.01564pt too wide) in paragraph at lines 220--221
+Overfull \hbox (6.01564pt too wide) in paragraph at lines 218--219
 []\OT1/cmr/m/n/10 At least some cur-tains con-tin-u-ously pre-cip-i-tate into t
 he at-mo-sphere for mul-ti-ple 
  []
 
 
-Overfull \hbox (3.29338pt too wide) in paragraph at lines 223--224
+Overfull \hbox (3.29338pt too wide) in paragraph at lines 221--222
 []\OT1/cmr/m/n/10 Curtains are re-mark-ably nar-row with fine struc-ture that p
 er-sist for mul-ti-ple sec- 
  []
 
 
-Overfull \hbox (0.54343pt too wide) in paragraph at lines 223--224
+Overfull \hbox (0.54343pt too wide) in paragraph at lines 221--222
 \OT1/cmr/m/n/10 onds. Ei-ther the scat-ter-ing mech-a-nism that con-tentiously 
 gen-er-ates cur-tains is phys-i- 
  []
 
 
-Overfull \hbox (4.76572pt too wide) in paragraph at lines 225--226
+Overfull \hbox (4.76572pt too wide) in paragraph at lines 223--224
 []\OT1/cmr/m/n/10 The curtain-microburst re-la-tion-ship hy-poth-e-sized in []B
 lake and O'Brien (2016) is 
  []
 
 
-Overfull \hbox (20.09903pt too wide) in paragraph at lines 225--226
+Overfull \hbox (20.09903pt too wide) in paragraph at lines 223--224
 \OT1/cmr/m/n/10 not clear. The two re-sults in sup-port of the hy-poth-e-sis ar
 e: cur-tain width and mi-croburst 
  []
 
 
-Overfull \hbox (21.32127pt too wide) in paragraph at lines 225--226
+Overfull \hbox (21.32127pt too wide) in paragraph at lines 223--224
 \OT1/cmr/m/n/10 size dis-tri-bu-tions are very sim-i-lar, and the lim-ited AC6 
 sam-pling in MLT shows that both 
  []
 
 
-Overfull \hbox (3.2101pt too wide) in paragraph at lines 225--226
+Overfull \hbox (3.2101pt too wide) in paragraph at lines 223--224
 \OT1/cmr/m/n/10 oc-cur in sim-i-lar lo-ca-tions in the mag-ne-to-sphere. But th
 e bounce loss cone re-sult com- 
  []
 
 
-Overfull \hbox (16.43233pt too wide) in paragraph at lines 225--226
+Overfull \hbox (16.43233pt too wide) in paragraph at lines 223--224
 \OT1/cmr/m/n/10 pli-cates this in-ter-pre-ta-tion. Some cur-tains con-tin-u-ous
 ly pre-cip-i-tate for at least a few sec- 
  []
 
 
-Overfull \hbox (1.23787pt too wide) in paragraph at lines 225--226
+Overfull \hbox (1.23787pt too wide) in paragraph at lines 223--224
 \OT1/cmr/m/n/10 onds and can be a sig-nif-i-cant source of en-er-getic elec-tro
 n pre-cip-i-ta-tion into the at-mo- 
  []
 
 
-Overfull \hbox (5.68231pt too wide) in paragraph at lines 225--226
+Overfull \hbox (5.68231pt too wide) in paragraph at lines 223--224
 \OT1/cmr/m/n/10 sphere. Fur-ther-more, the con-tin-u-ous scat-ter of cur-tain e
 lec-trons can be ex-plained by a 
  []
 
 
-Overfull \hbox (1.48782pt too wide) in paragraph at lines 229--231
+Overfull \hbox (1.48782pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
  []
 
 
-Overfull \hbox (20.73793pt too wide) in paragraph at lines 229--231
+Overfull \hbox (20.73793pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 The Aerospace Cor-po-ra-tion who de-signed, built, and op-er-at
 ed AC6. M. Shumko was sup- 
  []
 
 
-Overfull \hbox (21.65457pt too wide) in paragraph at lines 229--231
+Overfull \hbox (21.65457pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 ported by NASA Head-quar-ters un-der the NASA Earth and Space S
 ci-ence Fel-low-ship Pro- 
  []
 
 
-Overfull \hbox (11.613pt too wide) in paragraph at lines 229--231
+Overfull \hbox (11.613pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 gram - Grant 80NSSC18K1204. D.L. Turner is thank-ful for sup-po
 rt from the Van Allen 
  []
 
 
-Overfull \hbox (10.73798pt too wide) in paragraph at lines 229--231
+Overfull \hbox (10.73798pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 Probes mis-sion and a NASA grant (Prime award num-ber: 80NSSC19
 K0280). The work 
  []
 
 
-Overfull \hbox (5.73795pt too wide) in paragraph at lines 229--231
+Overfull \hbox (5.73795pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 at The Aerospace Cor-po-ra-tion was sup-ported in part by RBSP-
 ECT fund-ing pro-vided 
  []
 
 
-Overfull \hbox (17.79353pt too wide) in paragraph at lines 229--231
+Overfull \hbox (17.79353pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 by JHU/APL con-tract 967399 un-der NASA's Prime con-tract NAS50
 1072. The AC6 data 
  []
 
 
-Overfull \hbox (12.71022pt too wide) in paragraph at lines 229--231
+Overfull \hbox (12.71022pt too wide) in paragraph at lines 227--229
 \OT1/cmr/m/n/10 is avail-able at http://rbspgway.jhuapl.edu/ac6 and the IRBEM-L
 ib ver-sion used for this 
  []
 
 
-Overfull \hbox (10.93233pt too wide) in paragraph at lines 235--236
+Overfull \hbox (10.93233pt too wide) in paragraph at lines 233--234
 []\OT1/cmr/m/n/10 Figure A1[] shows the dis-tri-bu-tion of colo-cated AC6 10 Hz
  data as a func-tion of in- 
  []
 
 
-Overfull \hbox (9.65459pt too wide) in paragraph at lines 235--236
+Overfull \hbox (9.65459pt too wide) in paragraph at lines 233--234
 \OT1/cmr/m/n/10 track lag. This dis-tri-bu-tion is weighted to small in-track l
 ags -- 72% of the colo-cated 10 
  []
 
 
-Overfull \hbox (24.26556pt too wide) in paragraph at lines 235--236
+Overfull \hbox (24.26556pt too wide) in paragraph at lines 233--234
 \OT1/cmr/m/n/10 Hz data was taken when AC6 were sep-a-rated in-track by less th
 an 10 sec-onds, cor-re-spond- 
  []
 
 
-Overfull \hbox (8.59897pt too wide) in paragraph at lines 235--236
+Overfull \hbox (8.59897pt too wide) in paragraph at lines 233--234
 \OT1/cmr/m/n/10 ing to 75 km in-track sep-a-ra-tion. There-fore, most of the cu
 r-tains stud-ied here were ob- 
  []
@@ -2206,40 +2141,40 @@ r-tains stud-ied here were ob-
 <figures/a_10hz_dist.pdf, id=298, 462.52798pt x 346.89601pt>
 File: figures/a_10hz_dist.pdf Graphic file (type pdf)
 <use figures/a_10hz_dist.pdf>
-Package pdftex.def Info: figures/a_10hz_dist.pdf  used on input line 238.
+Package pdftex.def Info: figures/a_10hz_dist.pdf  used on input line 236.
 (pdftex.def)             Requested size: 397.48499pt x 298.12889pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--239
+Underfull \hbox (badness 10000) in paragraph at lines 237--237
 []\OT1/cmr/bx/n/9 Figure  A1. \OT1/cmr/m/n/9 The dis-tri-bu-tion of colo-cated 
 10 Hz data as a func-tion of in-track lag. Bins are 5
  []
 
 
-Overfull \hbox (12.34901pt too wide) in paragraph at lines 245--246
+Overfull \hbox (12.34901pt too wide) in paragraph at lines 243--244
 []\OT1/cmr/m/n/10 Title: Sta-tis-ti-cal Prop-er-ties of Curtains--Latitudinally
 -Narrow and Per-sis-tent Elec- 
  []
 
 
-Overfull \hbox (11.04341pt too wide) in paragraph at lines 247--248
+Overfull \hbox (11.04341pt too wide) in paragraph at lines 245--246
 []\OT1/cmr/m/n/10 This study lever-ages AC6, a multi-spacecraft mis-sion, to in
 -ter-pret and un-der-stand 
  []
 
 
-Overfull \hbox (23.32124pt too wide) in paragraph at lines 249--250
+Overfull \hbox (23.32124pt too wide) in paragraph at lines 247--248
 []\OT1/cmr/m/n/10 This study lever-ages the asym-me-try in Earth's mag-netic fi
 eld. The asym-met-ric mag- 
  []
 
 
-Overfull \hbox (20.09906pt too wide) in paragraph at lines 251--252
+Overfull \hbox (20.09906pt too wide) in paragraph at lines 249--250
 []\OT1/cmr/m/n/10 Particles that im-pact the at-mo-sphere are lost dur-ing that
  bounce mo-tion. We found 
  []
 
 
-Overfull \hbox (11.79344pt too wide) in paragraph at lines 251--252
+Overfull \hbox (11.79344pt too wide) in paragraph at lines 249--250
 \OT1/cmr/m/n/10 cur-tains in the bounce loss cone, a re-gion in the North At-la
 ntic near and above Ice-land.  
  []
@@ -2249,73 +2184,73 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
 [13 <./figures/a_10hz_dist.pdf>]
-Overfull \hbox (4.26558pt too wide) in paragraph at lines 253--254
+Overfull \hbox (4.26558pt too wide) in paragraph at lines 251--252
 []\OT1/cmr/m/n/10 The bounce loss cone is mag-net-i-cally con-nected to the SAA
 , where Earth's mag- 
  []
 
 
-Overfull \hbox (4.04333pt too wide) in paragraph at lines 253--254
+Overfull \hbox (4.04333pt too wide) in paragraph at lines 251--252
 \OT1/cmr/m/n/10 netic field is weak-est near Earth's sur-face. A par-ti-cle ob-
 served in the blc in the north- 
  []
 
 
-Overfull \hbox (1.26566pt too wide) in paragraph at lines 253--254
+Overfull \hbox (1.26566pt too wide) in paragraph at lines 251--252
 \OT1/cmr/m/n/10 ern hemi-sphere will de-scend be-low 100 km al-ti-tude. At sub-
 100 km al-ti-tudes the par- 
  []
 
 
-Overfull \hbox (10.15456pt too wide) in paragraph at lines 253--254
+Overfull \hbox (10.15456pt too wide) in paragraph at lines 251--252
 \OT1/cmr/m/n/10 ti-cle has a high chance of en-coun-ter-ing and scat-ter-ing wi
 th the at-mo-sphere and be lost.  
  []
 
 
-Overfull \hbox (2.32112pt too wide) in paragraph at lines 255--256
+Overfull \hbox (2.32112pt too wide) in paragraph at lines 253--254
 []\OT1/cmr/m/n/10 We found cur-tain elec-trons that, when given the chance to e
 x-e-cute their cycli-cal 
  []
 
 
-Overfull \hbox (17.3212pt too wide) in paragraph at lines 255--256
+Overfull \hbox (17.3212pt too wide) in paragraph at lines 253--254
 \OT1/cmr/m/n/10 bounce mo-tion, will de-scend be-low Earth's sur-face in the SA
 A. An elec-trons can not sur- 
  []
 
 
-Overfull \hbox (14.23793pt too wide) in paragraph at lines 257--258
+Overfull \hbox (14.23793pt too wide) in paragraph at lines 255--256
 []\OT1/cmr/m/n/10 Write the pa-per and ask the ques-tion: "What is this pa-per 
 re-ally about?" Not just 
  []
 
 
-Overfull \hbox (6.84908pt too wide) in paragraph at lines 257--258
+Overfull \hbox (6.84908pt too wide) in paragraph at lines 255--256
 \OT1/cmr/m/n/10 cur-tains, but un-cov-er-ing some-thing un-ex-pected that has b
 een ob-served and over-looked 
  []
 
 
-Overfull \hbox (11.23787pt too wide) in paragraph at lines 259--260
+Overfull \hbox (11.23787pt too wide) in paragraph at lines 257--258
 []\OT1/cmr/m/n/10 Are cur-tains re-lated to au-rora? This is a good question---
 one that is not per-ti-nent 
  []
 
 
-Overfull \hbox (8.73772pt too wide) in paragraph at lines 261--262
+Overfull \hbox (8.73772pt too wide) in paragraph at lines 259--260
 []\OT1/cmr/m/n/10 Here are two part-ing ques-tions that are not con-sid-ered he
 re. Why were some cur- 
  []
 
 
-Overfull \hbox (3.40454pt too wide) in paragraph at lines 261--262
+Overfull \hbox (3.40454pt too wide) in paragraph at lines 259--260
 \OT1/cmr/m/n/10 tains shifted slightly? Per-haps it was due to the move-ment of
  the mag-netic field lines. 
  []
 
 
-Overfull \hbox (2.57123pt too wide) in paragraph at lines 261--262
+Overfull \hbox (2.57123pt too wide) in paragraph at lines 259--260
 \OT1/cmr/m/n/10 Also do cur-tains have a cor-re-spond-ing vi-sual sig-na-ture o
 n the ground? The an-swer to 
  []
@@ -2605,7 +2540,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  3458 strings out of 492982
  47759 string characters out of 6134897
- 122119 words of memory out of 5000000
+ 123119 words of memory out of 5000000
  6955 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
@@ -2628,7 +2563,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 511170 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 510486 bytes).
 PDF statistics:
  416 PDF objects out of 1000 (max. 8388607)
  130 compressed objects within 2 object streams
