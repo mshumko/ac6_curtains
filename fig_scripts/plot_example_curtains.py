@@ -59,7 +59,7 @@ class PlotCurtains:
             # self.ax[1, i].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%H:%M:%S'))
             self.ax[1, i].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%S'))
             self.ax[1, i].xaxis.set_minor_locator(matplotlib.dates.SecondLocator(interval=1))
-            xlabel = f'Seconds after\n{datetime.strftime(t0-self.plot_width, "%Y/%m/%d %H:%M:00")}'
+            xlabel = f'AC6A seconds after\n{datetime.strftime(t0-self.plot_width, "%Y/%m/%d %H:%M:00")}'
             self.ax[1, i].set_xlabel(xlabel)
 
             print(f'AC6A is ahead by {row["Lag_In_Track"]} s')
@@ -199,11 +199,11 @@ if __name__ == '__main__':
     plot_width_s = 17
     t0_times = [
                 datetime(2015, 10, 28, 3, 19, 27, 700000),
-                datetime(2015, 4, 4, 15, 3, 7, 200000),
+                datetime(2015, 4, 4, 15, 2, 41, 200000),
                 datetime(2015, 5, 12, 21, 27, 5, 600000),
                 datetime(2017, 1, 22, 10, 0, 3, 400000)
                 ]
     #sc_shift = ['a', 'a', 'b', 'b']
-    sc_shift = ['b', 'a', 'b', 'b']
+    sc_shift = ['b', 'b', 'b', 'b']
     p = PlotCurtains(plot_width_s, t0_times, sc_shift)
     p.plot_examples()

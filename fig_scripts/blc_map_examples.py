@@ -137,7 +137,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     # Format time
     bx_i.xaxis.set_major_locator(mdates.SecondLocator(interval=3))
     bx_i.xaxis.set_major_formatter(mdates.DateFormatter('%S'))
-    bx_i.set_xlabel(f'Seconds after\n{datetime.strftime(start_time, "%Y/%m/%d %H:%M:00")}')
+    bx_i.set_xlabel(f'AC6A seconds after\n{datetime.strftime(start_time, "%Y/%m/%d %H:%M:00")}')
 
 bx[0].set_ylabel('dos1rate [counts/s]')
 
