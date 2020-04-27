@@ -203,7 +203,6 @@ if __name__ == '__main__':
                 datetime(2015, 5, 12, 21, 27, 5, 600000),
                 datetime(2017, 1, 22, 10, 0, 3, 400000)
                 ]
-    #sc_shift = ['a', 'a', 'b', 'b']
     sc_shift = ['b', 'b', 'b', 'b']
     p = PlotCurtains(plot_width_s, t0_times, sc_shift)
     p.plot_examples()
