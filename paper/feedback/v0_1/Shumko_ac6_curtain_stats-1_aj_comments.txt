@@ -90,12 +90,6 @@ Results
 -lines 240-244: you're starting to get into the discussion here, the rest of this section has been a description of the observations without inference. These should probably be moved to section 6. Since this and the previous comment shorten the last two paragraphs here they might work better combined.
 -line 242: "not drifting and were precipitating as much as 6 seconds as shown in Fig. 5e." There's a lot of concepts here just strung together, this could be 3-4 sentences.
 
-
-
-
-
-
-
 Discussion
 6.1 Curtain Width
 -line 247: You haven't projected the AC6 orbit onto latitude as far as I've seen, so you do not know the width in latitude of these curtains. Your language earlier when first describing Figure 2 took care to mention the widths were mostly in latitude, but here Figure 2 is described to be latitudinal width exactly. I would suggest reminding the readers that Figure 2 is the widths along the AC6 orbit, which is mostly across latitude, then for the remainder of the section just use the word "width" without specifying latitude. The fact that AC6 does have some angle with latitude actually means the latitudinal size of these structures is probably smaller than what we measure.
@@ -107,6 +101,7 @@ Discussion
 
 6.2 when and where
 -line 278: "evening" and "morning". You've probably used these terms this way earlier, I just now had this thought though. Using the terms "evening" and "morning" are correct, and quickly identify what region of Figure 3 you're referring too. I think you should rethink how you refer to these regions in the context of other literature, however. Typically we say microbursts are most common in the "morning" which refers to a wide region from 22ish-noonish, but mostly in the MLTs where AC6 has no data. You say here curtains are observed relatively more in the evening than the morning, but also say the distribution is similar to that of microbursts citing papers that probably say microbursts are observed relatively more in the morning (see the issue?). I'd prefer adopting "near midnight" and "late morning" (or similar) like you use later in this paragraph throughout the paper.
+
 -explanation starting line 286: I like this explanation, makes simple intuitive sense without too much reaching outside the evidence
 
 6.3 curtains in the BLC
