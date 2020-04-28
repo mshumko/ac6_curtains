@@ -194,19 +194,17 @@ To find the parallel potential, $q \Phi$,  we use the kinetic energy, $W$, of a 
 
 \begin{equation}
  q \Phi = W_i \frac{(B_f - B_i)}{B_i}.
-\end{equation}
+\end{equation} The parallel potential is proportional to $W_i$ so a larger potential is necessary to accelerate higher energy electrons. AC6 dos1 energy response increases rapidly from 30 keV to a peak at 100 keV so the assumed $W_i = 30$ keV is approximately correct \textcolor{red}{Finish this. Also, comment that needed Phi depends proportionally on initial energy, and that AC6 dos1 response increases sharply with energy up to a peak response around 100 keV.}
 
-\textcolor{red}{Also, comment that needed Phi depends proportionally on initial energy, and that AC6 dos1 response increases sharply with energy up to a peak response around 100 keV. \newline In the aurora papers, do we need to worry about the *sign* of Phi? In the FAST papers, is it pointing the right way to pull electrons down?}
+We again use IRBEM-Lib to estimate $ q \Phi$. For each example curtain in Fig. \ref{fig3}, we first estimated the local magnetic field, $B_f$, that the electron descended to after the acceleration. Then we traced the field line from AC6 into the SAA. We found $B_i$ at 100 kilometers altitude in the SAA for barely trapped electrons. With the initial and final $B$, along with $W = 30$ keV, the minimum potential must be $q \Phi = 1-4$ kV for the 4 examples shown in Fig. \ref{fig3}. 
 
-We again use IRBEM-Lib to estimate $ q \Phi$. For each example curtain in Fig. \ref{fig3}, we first estimated the local magnetic field, $B_f$, that the electron descended to after the acceleration. Then we traced the field line from AC6 into the SAA. We found $B_i$ at 100 kilometers altitude in the SAA for barely trapped electrons. With the initial and final $B$, along with $W = 30$ keV, the minimum potential must be $q \Phi = 1-4$ kV for the 4 examples shown in Fig. \ref{fig3}. \textcolor{red}{Recalculate the potentials for the four cases.}. 
-
-The range of estimated potentials is typical for the aurora. \citeA{Partamies2008} used the observations made by the Fast Auroral SnapshoT (FAST) mission and reported that the inverted-V auroral structures, observed up to a few tens of keV, were accelerated by 2-4 kV potentials. While the aurora and curtains are likely different, the aurora is observed at higher L and near midnight MLT region, they do share a number of similarities. If AC6 had differential energy channels below 30 keV, then it would be possible to test a possible relationship between curtains and inverted-V structures.
+The range of estimated potentials is typical for the aurora. \citeA{Partamies2008} used the observations made by the Fast Auroral SnapshoT (FAST) mission and reported that the auroral inverted-V electron precipitation structures, with electron energies up to a few tens of keV, were accelerated by 2-4 kV parallel potentials. The inverted-V structure and curtains share a number of similarities including: their extent in energy, latitudinal width, and high occurance rate in the midnight MLT region. One notable difference is the aurora is observed at higher L shells. A possible connection between the inverted-V structures is intriguing, but by itself AC6 can not easily test this hypothesis. A follow-on study can incorporate the list of curtains observed by AC6 with ground-based auroral imagers and look for simultaneous occurrence of curtains and meso-scale auroral arcs.
 
 Outside of the BLC, the lack of pitch angle information makes the AC6 electron data ambiguous, but the curtains observed in the BLC suggest that some curtains continuously precipitate for multiple seconds. Curtains could be a significant source of energetic particles into the atmosphere. Energetic electron precipitation generates odd Nitrogen ($\mathrm{HO_X}$) that is currently underestimated by atmospheric models such as the widely-used Whole Atmosphere Community Climate Model using Specified Dynamics (SD-WACCM) \cite<e.g.>{Randall2015}. A comprehensive study of the curtain impact on the atmosphere should be done with an AC6-like mission with pitch angle and energy resolution. 
 
 
 \section{Conclusions}
-The 1634 confirmed curtains allowed us to make the following statistical inferences:
+The 1634 confirmed curtains allowed us to make the following inferences:
 
 \begin{enumerate}
 \item Curtains are very narrow---90\% are less than 21 kilometers wide in latitude.
@@ -233,26 +231,6 @@ Figure \ref{a_10Hz_dist} shows the distribution of colocated AC6 10 Hz data as a
 \caption{The distribution of colocated 10 Hz data as a function of in-track lag. Bins are 5 kilometers wide.}
 \label{a_10Hz_dist}
 \end{figure}
-
-\section{Homeless Words}
-
-Title: Statistical Properties of Curtains--Latitudinally-Narrow and Persistent Electron Precipitation Phenomena
-
-This study leverages AC6, a multi-spacecraft mission, to interpret and understand particle precipitation in a way that is impossible with a single spacecraft.
-
-This study leverages the asymmetry in Earth's magnetic field. The asymmetric magnetic field results in the SAA and the BLC, two very related and unique regions
-
-Particles that impact the atmosphere are lost during that bounce motion. We found curtains in the bounce loss cone, a region in the North Atlantic near and above Iceland.
-
-The bounce loss cone is magnetically connected to the SAA, where Earth's magnetic field is weakest near Earth's surface. A particle observed in the blc in the northern hemisphere will descend below 100 km altitude. At sub-100 km altitudes the particle has a high chance of encountering and scattering with the atmosphere and be lost. 
-
-We found curtain electrons that, when given the chance to execute their cyclical bounce motion, will descend below Earth's surface in the SAA. An electrons can not survive that trip.
-
-Write the paper and ask the question: "What is this paper really about?" Not just curtains, but uncovering something unexpected that has been observed and overlooked for decades.
-
-Are curtains related to aurora? This is a good question---one that is not pertinent here (idea from The Elements of Style p.68).
-
-Here are two parting questions that are not considered here. Why were some curtains shifted slightly? Perhaps it was due to the movement of the magnetic field lines. Also do curtains have a corresponding visual signature on the ground? The answer to this question will show if curtains are related to the aurora.
 
 \bibliography{/home/mike/Dropbox/0_firebird_research/A_presentations/refs}
 %\bibliography{"refs"}
