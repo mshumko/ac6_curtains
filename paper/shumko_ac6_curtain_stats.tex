@@ -194,7 +194,7 @@ To find the parallel potential, $q \Phi$,  we use the kinetic energy, $W$, of a 
 
 \begin{equation}
  q \Phi = W_i \frac{(B_f - B_i)}{B_i}.
-\end{equation} The parallel potential is proportional to $W_i$ so a larger potential is necessary to accelerate higher energy electrons. AC6 dos1 energy response increases rapidly from 30 keV to a peak at 100 keV so the assumed $W_i = 30$ keV is approximately correct \textcolor{red}{Finish this. Also, comment that needed Phi depends proportionally on initial energy, and that AC6 dos1 response increases sharply with energy up to a peak response around 100 keV.}
+\end{equation} The parallel potential is proportional to $W_i$ so a larger potential is necessary to accelerate higher energy electrons. \textcolor{red}{Is the following explanation satisfactory?} AC6 dos1 electron energy response increases rapidly from 30 keV to a peak at 100 keV \cite[Figure 2]{O'brien2019}, therefore our assumption that $W_i = 30$ keV will underestimate the parallel potential. In reality, the counts observed by AC6 is a convolution of, among other things, the AC6 dos1 electron energy response and the falling electron energy spectrum. Thus, the majority of electrons that AC6 observed have energies close to 30 keV and the $W_i = 30$ is appropriate.
 
 We again use IRBEM-Lib to estimate $ q \Phi$. For each example curtain in Fig. \ref{fig3}, we first estimated the local magnetic field, $B_f$, that the electron descended to after the acceleration. Then we traced the field line from AC6 into the SAA. We found $B_i$ at 100 kilometers altitude in the SAA for barely trapped electrons. With the initial and final $B$, along with $W = 30$ keV, the minimum potential must be $q \Phi = 1-4$ kV for the 4 examples shown in Fig. \ref{fig3}. 
 
@@ -219,7 +219,7 @@ The curtain-microburst relationship hypothesized in \citeA{Blake2016} is not cle
 % \appendix
 
 \acknowledgments
-This work was made possible with the help from the many engineers and scientists at The Aerospace Corporation who designed, built, and operated AC6. M. Shumko was supported by NASA Headquarters under the NASA Earth and Space Science Fellowship Program - Grant 80NSSC18K1204. D.L. Turner is thankful for support from the Van Allen Probes mission and a NASA grant (Prime award number: 80NSSC19K0280). The work at The Aerospace Corporation was supported in part by RBSP-ECT funding provided by JHU/APL contract 967399 under NASA's Prime contract NAS501072. The AC6 data is available at http://rbspgway.jhuapl.edu/ac6 and the IRBEM-Lib version used for this analysis can be downloaded from https://sourceforge.net/p/irbem/code/616/tree/.
+This work was made possible with the help from the many engineers and scientists at The Aerospace Corporation who designed, built, and operated AC6. M. Shumko was supported by NASA Headquarters under the NASA Earth and Space Science Fellowship Program - Grant 80NSSC18K1204 and NASA Postdoctoral Program at the NASA's Goddard Space Flight Center, administered by Universities Space Research Association under contract with NASA. D.L. Turner is thankful for support from the Van Allen Probes mission and a NASA grant (Prime award number: 80NSSC19K0280). The work at The Aerospace Corporation was supported in part by RBSP-ECT funding provided by JHU/APL contract 967399 under NASA's Prime contract NAS501072. The AC6 data is available at http://rbspgway.jhuapl.edu/ac6 and the IRBEM-Lib version used for this analysis can be downloaded from https://sourceforge.net/p/irbem/code/616/tree/.
 
 \appendix
 

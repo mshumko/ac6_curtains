@@ -14,45 +14,46 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: /home/mike/Dropbox/0_firebird_research/A_presentations/refs.bib
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--No address in O'brien2016
-You've used 22 entries,
+Warning--No address in O'brien2019
+You've used 23 entries,
             6951 wiz_defined-function locations,
-            1445 strings with 15940 characters,
-and the built_in function-call counts, 51892 in all, are:
-= -- 6209
-> -- 512
-< -- 2657
-+ -- 2979
-- -- 46
-* -- 3565
-:= -- 9616
-add.period$ -- 88
-call.type$ -- 22
-change.case$ -- 377
+            1451 strings with 16112 characters,
+and the built_in function-call counts, 54462 in all, are:
+= -- 6536
+> -- 545
+< -- 2784
++ -- 3117
+- -- 48
+* -- 3726
+:= -- 10100
+add.period$ -- 93
+call.type$ -- 23
+change.case$ -- 396
 chr.to.int$ -- 0
-cite$ -- 45
-duplicate$ -- 1592
-empty$ -- 1866
-format.name$ -- 921
-if$ -- 9459
+cite$ -- 48
+duplicate$ -- 1657
+empty$ -- 1946
+format.name$ -- 953
+if$ -- 9953
 int.to.chr$ -- 0
-int.to.str$ -- 66
+int.to.str$ -- 69
 missing$ -- 0
-newline$ -- 655
-num.names$ -- 176
-pop$ -- 765
+newline$ -- 681
+num.names$ -- 184
+pop$ -- 816
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 96
 quote$ -- 0
-skip$ -- 2980
+skip$ -- 3114
 stack$ -- 0
-substring$ -- 3256
-swap$ -- 870
-text.length$ -- 72
+substring$ -- 3445
+swap$ -- 902
+text.length$ -- 91
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 1824
-warning$ -- 1
-while$ -- 311
+type$ -- 1904
+warning$ -- 2
+while$ -- 326
 width$ -- 0
-write$ -- 870
-(There was 1 warning)
+write$ -- 905
+(There were 2 warnings)
