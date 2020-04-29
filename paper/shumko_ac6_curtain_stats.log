@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  28 APR 2020 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  29 APR 2020 09:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1046,15 +1046,15 @@ does not only ob-serve
  []
 
 
-Overfull \hbox (5.15463pt too wide) in paragraph at lines 118--118
-\OT1/cmr/m/n/10 par-ti-cles that are im-me-di-ately lost, but a com-bi-na-tion 
-of par-ti-cles that are in the drift 
+Overfull \hbox (8.48795pt too wide) in paragraph at lines 118--118
+\OT1/cmr/m/n/10 elec-trons that are im-me-di-ately lost, but a com-bi-na-tion o
+f elec-trons that are in the drift 
  []
 
 
-Overfull \hbox (28.40462pt too wide) in paragraph at lines 118--118
-\OT1/cmr/m/n/10 loss cone, bounce loss cone, and trapped (the trapped par-ti-cl
-es that lo-cally mir-ror at AC6's 
+Overfull \hbox (21.18237pt too wide) in paragraph at lines 118--118
+\OT1/cmr/m/n/10 loss cone, bounce loss cone, and trapped (a trapped elec-tron t
+hat lo-cally mir-rors at AC6's 
  []
 
 
@@ -1064,21 +1064,21 @@ e re-gion mag-net-i-cally con-ju-
  []
 
 
-Overfull \hbox (6.21007pt too wide) in paragraph at lines 118--118
-\OT1/cmr/m/n/10 gate to the SAA in the North At-lantic, AC6 only ob-serves par-
-ti-cles in the BLC. []which 
+Overfull \hbox (7.87672pt too wide) in paragraph at lines 118--118
+\OT1/cmr/m/n/10 gate to the SAA in the North At-lantic, AC6 only ob-serves elec
+-trons in the BLC. []which 
  []
 
 
-Overfull \hbox (13.48784pt too wide) in paragraph at lines 118--118
-\OT1/cmr/m/n/10 ver-sion A or B? A: A par-ti-cle that is ob-served by AC6 ei-th
-er pre-cip-i-tates lo-cally or mir- 
+Overfull \hbox (15.1545pt too wide) in paragraph at lines 118--118
+\OT1/cmr/m/n/10 ver-sion A or B? A: A elec-tron that is ob-served by AC6 ei-the
+r pre-cip-i-tates lo-cally or mir- 
  []
 
 
-Overfull \hbox (12.71004pt too wide) in paragraph at lines 118--118
-\OT1/cmr/m/n/10 rors at or be-low AC6. If a par-ti-cle mir-rors at or be-low AC
-6, the par-ti-cle will bounce to- 
+Overfull \hbox (0.48778pt too wide) in paragraph at lines 118--118
+\OT1/cmr/m/n/10 rors at or be-low AC6. If a elec-tron mir-rors at or be-low AC6
+, the elec-tron will bounce 
  []
 
 
@@ -1142,9 +1142,9 @@ Overfull \hbox (13.98798pt too wide) in paragraph at lines 120--121
  []
 
 
-Overfull \hbox (16.01573pt too wide) in paragraph at lines 120--121
+Overfull \hbox (17.68239pt too wide) in paragraph at lines 120--121
 \OT1/cmr/m/n/10 al-ti-tude. If the con-ju-gate mir-ror point is at or be-low 10
-0 kilo-me-ters, the par-ti-cle is likely 
+0 kilo-me-ters, the elec-tron is likely 
  []
 
 
@@ -1833,16 +1833,16 @@ c-tron will mir-ror above AC6
  []
 
 
-Overfull \hbox (4.92178pt too wide) in paragraph at lines 189--190
+Overfull \hbox (6.56064pt too wide) in paragraph at lines 189--190
 []\OT1/cmr/m/n/10 To find the par-al-lel po-ten-tial, $\OML/cmm/m/it/10 q\OT1/c
 mr/m/n/10 ^^H$, we use the ki-netic en-ergy, $\OML/cmm/m/it/10 W$\OT1/cmr/m/n/1
-0 , of a $30$ keV par- 
+0 , of a $30$ keV elec- 
  []
 
 
-Overfull \hbox (6.84671pt too wide) in paragraph at lines 189--190
-\OT1/cmr/m/n/10 ti-cle at its ini-tial mir-ror point with a mag-netic field str
-ength of $\OML/cmm/m/it/10 B[]$\OT1/cmr/m/n/10 . The ki-netic en-ergy 
+Overfull \hbox (6.87451pt too wide) in paragraph at lines 189--190
+\OT1/cmr/m/n/10 tron at its ini-tial mir-ror point with a mag-netic field stren
+gth of $\OML/cmm/m/it/10 B[]$\OT1/cmr/m/n/10 . The ki-netic en-ergy 
  []
 
 
@@ -2002,9 +2002,9 @@ ould be a sig-nif-i-cant source of en-
  []
 
 
-Overfull \hbox (12.29341pt too wide) in paragraph at lines 203--204
-\OT1/cmr/m/n/10 er-getic par-ti-cles into the at-mo-sphere. En-er-getic elec-tr
-on pre-cip-i-ta-tion gen-er-ates odd Ni- 
+Overfull \hbox (13.96007pt too wide) in paragraph at lines 203--204
+\OT1/cmr/m/n/10 er-getic elec-trons into the at-mo-sphere. En-er-getic elec-tro
+n pre-cip-i-ta-tion gen-er-ates odd Ni- 
  []
 
 
@@ -2501,7 +2501,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 506812 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 506809 bytes).
 PDF statistics:
  414 PDF objects out of 1000 (max. 8388607)
  130 compressed objects within 2 object streams
