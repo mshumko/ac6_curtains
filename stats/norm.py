@@ -432,7 +432,7 @@ if __name__ == '__main__':
     ### SCRIPT TO MAKE LAT-LON NORMALIZATION ####
     ss = Hist2D('lat', 'lon', 
                 bins=[np.arange(-90, 91, 10), np.arange(-180, 181, 10)],
-                filterDict={'dos1rate':[0, 1E6]})
+                filterDict={'dos1rate':[0, 1E6], 'flag':0})
     ss.loop_data(simultaneous=True)
     ss.save_data(os.path.join(SAVE_DIR, 'ac6_lat_lon_bins.csv'), 
                 os.path.join(SAVE_DIR, 'ac6_lat_lon_norm.csv'))
