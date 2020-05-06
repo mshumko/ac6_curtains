@@ -31,11 +31,21 @@ with open(os.path.join(dirs.NORM_DIR, 'ac6_L_MLT_norm_same_loc.csv')) as f:
 
 
 def draw_earth(ax, earth_resolution=50):
-    """ Given a subplot object, draws the Earth with its shadow and a few L shell contours"""
+    """ 
+    Given a subplot object, draws the Earth with its shadow 
+    and a few L shell contours
+    """
     # Just x,y coords for a line (to map to polar coords)
-    earth_circ = (np.linspace(0, 2*np.pi, earth_resolution), np.ones(earth_resolution)) 
+    earth_circ = (
+        np.linspace(0, 2*np.pi, earth_resolution), 
+        np.ones(earth_resolution)
+        ) 
     # x, y_lower, y_upper coords for Earth's shadow (also to map to polar).
-    earth_shadow = (np.linspace(-np.pi/2, np.pi/2, earth_resolution), 0, np.ones(earth_resolution))
+    earth_shadow = (
+        np.linspace(-np.pi/2, np.pi/2, earth_resolution), 
+        0, 
+        np.ones(earth_resolution)
+        )
     ax.plot(*earth_circ, c='k')
     ax.fill_between(*earth_shadow, color='k')
     return
@@ -71,10 +81,14 @@ cat_norm = cat_dist*scaling_factors
 
 mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 
-p0 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, cmap=COLOR_MAP)
-p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/100, cmap=COLOR_MAP, vmax=7)
-plt.colorbar(p0, ax=ax[0], label=r'Observed Number of curtains', pad=0.11, orientation='horizontal')
-plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains x 100', pad=0.11, orientation='horizontal')
+p0 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, 
+            cmap=COLOR_MAP)
+p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/100, 
+            cmap=COLOR_MAP, vmax=7)
+plt.colorbar(p0, ax=ax[0], label=r'Observed Number of curtains', 
+            pad=0.11, orientation='horizontal')
+plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains x 100', 
+            pad=0.11, orientation='horizontal')
 
 # L shell filter for the L-MLT plot
 L_lower = 0
@@ -82,7 +96,8 @@ idL = np.where(np.array(bins['Lm_OPQ']) >= L_lower)[0][0]
 p2 = ax[2].pcolormesh(np.array(bins['MLT_OPQ'])*np.pi/12, 
                     bins['Lm_OPQ'], norm/1E5, 
                     cmap=COLOR_MAP, vmax=3)
-plt.colorbar(p2, ax=ax[2], label=r'10 Hz Samples x $10^5$', pad=0.11, orientation='horizontal')
+plt.colorbar(p2, ax=ax[2], label=r'10 Hz Samples x $10^5$', 
+            pad=0.11, orientation='horizontal')
 
 # Draw Earth and shadow
 draw_earth(ax[0])
