@@ -164,6 +164,36 @@ Breneman, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Brown%
+, Barcus%
+\BCBL {}\ \BBA {} Parsons%
+}{%
+Brown%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1965}}%
+}]{%
+Brown1965_2}
+\APACinsertmetastar {%
+Brown1965_2}%
+\begin{APACrefauthors}%
+Brown, R.%
+, Barcus, J.%
+\BCBL {}\ \BBA {} Parsons, N.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1965}{6}{}.
+\newblock
+{\BBOQ}\APACrefatitle {BALLOON OBSERVATIONS OF AURORAL ZONE X RAYS IN CONJUGATE
+  REGIONS. 2. MICROBURSTS AND PULSATIONS} {Balloon observations of auroral zone
+  x rays in conjugate regions. 2. microbursts and pulsations}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research (U.S.)}{70}{}{}.
+\newblock
+\begin{APACrefDOI} \doi{10.1029/JZ070i011p02599} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Comess%
 , Smith%
 , Selesnick%
@@ -332,6 +362,37 @@ Greeley, A.%
   microbursts to global electron loss in the radiation belts}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Journal of Geophysical Research: Space Physics}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Johnson%
+\ \protect \BOthers {.}}{%
+Johnson%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2020}}%
+}]{%
+Johnson2020}
+\APACinsertmetastar {%
+Johnson2020}%
+\begin{APACrefauthors}%
+Johnson, A.%
+, Shumko, M.%
+, Griffith, B.%
+, Klumpar, D.%
+, Sample, J.%
+, Springer, L.%
+\BDBL {}others%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The FIREBIRD-II CubeSat mission: Focused investigations
+  of relativistic electron burst intensity, range, and dynamics} {The
+  firebird-ii cubesat mission: Focused investigations of relativistic electron
+  burst intensity, range, and dynamics}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Review of Scientific Instruments}{91}{3}{034503}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -558,6 +619,30 @@ Olson, W\BPBI P.%
   \end{APACrefURL}
 \newblock
 \begin{APACrefDOI} \doi{10.1029/JA087iA08p05943} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Parks%
+}{%
+Parks%
+}{%
+{\protect \APACyear {1967}}%
+}]{%
+Parks1967}
+\APACinsertmetastar {%
+Parks1967}%
+\begin{APACrefauthors}%
+Parks, G\BPBI K.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1967}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Spatial characteristics of auroral-zone {X-ray}
+  microbursts} {Spatial characteristics of auroral-zone {X-ray}
+  microbursts}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{72}{1}{215--226}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

@@ -15,45 +15,45 @@ Database file #1: /home/mike/Dropbox/0_firebird_research/A_presentations/refs.bi
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--No address in O'brien2016
 Warning--No address in O'brien2019
-You've used 23 entries,
+You've used 26 entries,
             6951 wiz_defined-function locations,
-            1451 strings with 16112 characters,
-and the built_in function-call counts, 54462 in all, are:
-= -- 6536
-> -- 545
-< -- 2784
-+ -- 3117
-- -- 48
-* -- 3726
-:= -- 10100
-add.period$ -- 93
-call.type$ -- 23
-change.case$ -- 396
+            1475 strings with 16798 characters,
+and the built_in function-call counts, 61043 in all, are:
+= -- 7300
+> -- 601
+< -- 3151
++ -- 3486
+- -- 56
+* -- 4189
+:= -- 11402
+add.period$ -- 104
+call.type$ -- 26
+change.case$ -- 449
 chr.to.int$ -- 0
-cite$ -- 48
-duplicate$ -- 1657
-empty$ -- 1946
-format.name$ -- 953
-if$ -- 9953
+cite$ -- 54
+duplicate$ -- 1839
+empty$ -- 2185
+format.name$ -- 1057
+if$ -- 11122
 int.to.chr$ -- 0
-int.to.str$ -- 69
+int.to.str$ -- 78
 missing$ -- 0
-newline$ -- 681
-num.names$ -- 184
-pop$ -- 816
+newline$ -- 759
+num.names$ -- 208
+pop$ -- 898
 preamble$ -- 1
-purify$ -- 96
+purify$ -- 110
 quote$ -- 0
-skip$ -- 3114
+skip$ -- 3508
 stack$ -- 0
-substring$ -- 3445
-swap$ -- 902
-text.length$ -- 91
+substring$ -- 3835
+swap$ -- 1010
+text.length$ -- 100
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 1904
+type$ -- 2144
 warning$ -- 2
-while$ -- 326
+while$ -- 364
 width$ -- 0
-write$ -- 905
+write$ -- 1004
 (There were 2 warnings)
