@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  6 MAY 2020 17:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  7 MAY 2020 09:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1608,7 +1608,7 @@ Overfull \hbox (11.62672pt too wide) in paragraph at lines 165--166
 the cor-re-spond-ing panel la- 
  []
 
-<figures/fig3.pdf, id=193, 650.43pt x 505.89pt>
+<figures/fig3.pdf, id=192, 650.43pt x 505.89pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 168.
@@ -2272,7 +2272,7 @@ Overfull \hbox (2.54347pt too wide) in paragraph at lines 223--224
 of the cur-tains stud-ied here 
  []
 
-<figures/a_10hz_dist.pdf, id=303, 462.52798pt x 346.89601pt>
+<figures/a_10hz_dist.pdf, id=302, 462.52798pt x 346.89601pt>
 File: figures/a_10hz_dist.pdf Graphic file (type pdf)
 <use figures/a_10hz_dist.pdf>
 Package pdftex.def Info: figures/a_10hz_dist.pdf  used on input line 226.
@@ -2679,9 +2679,9 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 521898 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 524486 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
+ 423 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)

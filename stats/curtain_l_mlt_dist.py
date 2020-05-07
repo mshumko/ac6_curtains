@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import matplotlib.colors as colors
 import numpy as np
 import pandas as pd
 import csv
@@ -83,20 +84,21 @@ mltmlt, ll = np.meshgrid(mlt_bins, lm_bins)
 
 p0 = ax[0].pcolormesh(mltmlt*np.pi/12, ll, cat_dist.T, 
             cmap=COLOR_MAP)
-p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/100, 
-            cmap=COLOR_MAP, vmax=7)
+p1 = ax[1].pcolormesh(mltmlt*np.pi/12, ll, cat_norm.T/1000, 
+            cmap=COLOR_MAP, vmax=3)
 plt.colorbar(p0, ax=ax[0], label=r'Observed Number of curtains', 
             pad=0.11, orientation='horizontal')
-plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains x 100', 
+plt.colorbar(p1, ax=ax[1], label=r'Normalized Number of curtains x 1000', 
             pad=0.11, orientation='horizontal')
 
 # L shell filter for the L-MLT plot
 L_lower = 0
 idL = np.where(np.array(bins['Lm_OPQ']) >= L_lower)[0][0]
 p2 = ax[2].pcolormesh(np.array(bins['MLT_OPQ'])*np.pi/12, 
-                    bins['Lm_OPQ'], norm/1E5, 
-                    cmap=COLOR_MAP, vmax=3)
-plt.colorbar(p2, ax=ax[2], label=r'10 Hz Samples x $10^5$', 
+                    bins['Lm_OPQ'], norm, 
+                    cmap=COLOR_MAP, norm=colors.LogNorm()
+                    )
+plt.colorbar(p2, ax=ax[2], label=r'10 Hz Samples', 
             pad=0.11, orientation='horizontal')
 
 # Draw Earth and shadow
