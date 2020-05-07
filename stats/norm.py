@@ -95,8 +95,8 @@ class Hist1D:
         ### filerDict filter ###
         for key, value in self.filterDict.items():
             if hasattr(value, '__len__'):
-                idx = np.where((self.ac6dataB[key] > np.min(value)) & 
-                                (self.ac6dataB[key] < np.max(value)))[0]
+                idx = np.where((self.ac6dataB[key] >= np.min(value)) & 
+                                (self.ac6dataB[key] <= np.max(value)))[0]
             else:
                 idx = np.where(self.ac6dataB[key] == value)[0]
             ind = np.intersect1d(ind, idx)
