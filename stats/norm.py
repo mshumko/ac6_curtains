@@ -409,12 +409,12 @@ if __name__ == '__main__':
     # print('Norm.py ran in :{} s'.format((datetime.now()-st).total_seconds()))
 
     ### SCRIPT TO MAKE L-MLT NORMALIATION ###
-    # ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
-    #                 bins=[np.arange(2, 15), np.arange(0, 25)],
-    #                 filterDict={'dos1rate':[0, 1E6]})
-    # ss2.loop_data(simultaneous=False)
-    # ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
-    #               os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
+    ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
+                     bins=[np.arange(1, 16), np.arange(0, 25)],
+                     filterDict={'dos1rate':[0, 1E6], 'flag':0})
+    ss2.loop_data(simultaneous=False)
+    ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
+                   os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
 
     ### SCRIPT TO MAKE MLT-UT NORMALIATION ###
     # ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
@@ -433,12 +433,12 @@ if __name__ == '__main__':
     #             os.path.join(SAVE_DIR, 'ac6_MLT_lon_norm_same_loc.csv'))
 
     ### SCRIPT TO MAKE LAT-LON NORMALIZATION ####
-    ss = Hist2D('lat', 'lon', 
-                bins=[np.arange(-90, 91, 10), np.arange(-180, 181, 10)],
-                filterDict={'dos1rate':[0, 1E6], 'flag':0})
-    ss.loop_data(simultaneous=True)
-    ss.save_data(os.path.join(SAVE_DIR, 'ac6_lat_lon_bins.csv'), 
-                os.path.join(SAVE_DIR, 'ac6_lat_lon_norm.csv'))
+    # ss = Hist2D('lat', 'lon', 
+    #            bins=[np.arange(-90, 91, 10), np.arange(-180, 181, 10)],
+    #            filterDict={'dos1rate':[0, 1E6], 'flag':0})
+    # ss.loop_data(simultaneous=True)
+    # ss.save_data(os.path.join(SAVE_DIR, 'ac6_lat_lon_bins.csv'), 
+    #            os.path.join(SAVE_DIR, 'ac6_lat_lon_norm.csv'))
 
     ### SCRIPT TO FIND THE EQUATORIAL NORMALIZATION ###
 #    eq = Equatorial_Hist(np.arange(0, 2000, 25), 'Lm_OPQ', np.arange(4, 8.1),
