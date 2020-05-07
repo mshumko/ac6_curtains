@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  7 MAY 2020 09:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  7 MAY 2020 10:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1469,10 +1469,10 @@ Overfull \hbox (5.37682pt too wide) in paragraph at lines 148--149
 zed ver-sion of Fig. 4[] in-sight-ful?[]  
  []
 
-<figures/fig2_2.pdf, id=83, 1011.78pt x 361.35pt>
-File: figures/fig2_2.pdf Graphic file (type pdf)
-<use figures/fig2_2.pdf>
-Package pdftex.def Info: figures/fig2_2.pdf  used on input line 151.
+<figures/fig2_3.pdf, id=83, 1011.78pt x 361.35pt>
+File: figures/fig2_3.pdf Graphic file (type pdf)
+<use figures/fig2_3.pdf>
+Package pdftex.def Info: figures/fig2_3.pdf  used on input line 151.
 (pdftex.def)             Requested size: 397.48499pt x 141.96251pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 152--152
@@ -1538,9 +1538,9 @@ dis-tri-bu-tions, nor-mal-ized by the AE
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-[7 <./figures/ac6_curtain_microburst_width_dist.pdf> <./figures/fig2_2.pdf
+[7 <./figures/ac6_curtain_microburst_width_dist.pdf> <./figures/fig2_3.pdf
 
-pdfTeX warning: pdflatex (file ./figures/fig2_2.pdf): PDF inclusion: multiple p
+pdfTeX warning: pdflatex (file ./figures/fig2_3.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
 >]
 Overfull \hbox (19.57121pt too wide) in paragraph at lines 163--164
@@ -2679,7 +2679,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 524486 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 525684 bytes).
 PDF statistics:
  423 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams
