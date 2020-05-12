@@ -142,13 +142,8 @@ class PlotCurtains:
             self.ax[0, i].get_xaxis().set_visible(False)
 
         # Set up plot labels.
-        #self.fig.text(0.5, 0.01, 'UTC', ha='center', va='center')
-        self.fig.text(0.015, 0.5, 'dos1 [counts/s]', ha='center', 
-                    va='center', rotation='vertical')
-
-        # # subplot titles
-        # for i in range(len(self.t0_times)):
-        #     self.ax[0, i].set_title(f'{self.t0_times[i].date()}')
+        self.ax[0, 0].set_ylabel(r'$\bf{Unshifted}$' + '\ndos1 [counts/s]')
+        self.ax[1, 0].set_ylabel(r'$\bf{Shifted}$' + '\ndos1 [counts/s]')
         self.fig.suptitle('Curtains Observed by AC6', y=1)
 
         # subplot labels
@@ -158,7 +153,7 @@ class PlotCurtains:
             self.ax[1, i].text(0, 0.99, f'({string.ascii_letters[2*i+1]})', va='top',
                                 transform=self.ax[1, i].transAxes, fontsize=20)
 
-        plt.subplots_adjust(left=0.07, right=0.99, hspace=0.1, bottom=0.15, top=0.92)
+        plt.subplots_adjust(left=0.08, right=0.99, hspace=0.1, bottom=0.15, top=0.92)
         return
 
     def _get_filtered_plot_data(self, row):
