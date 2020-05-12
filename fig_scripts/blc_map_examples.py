@@ -14,7 +14,7 @@ import cartopy
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import cartopy.mpl.ticker as cticker
-# from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
 sys.path.insert(0, '/home/mike/research/ac6_curtains/detect')
 import detect_daily
@@ -58,11 +58,12 @@ ax = fig.add_subplot(gs[:2, :], projection=projection)
 ax.set_extent([-60, 30, 40, 80], crs=projection)
 ax.coastlines(resolution='50m', color='black', linewidth=1)
 
-gl = ax.gridlines(crs=projection, draw_labels=True, color='black',
-                xlocs=np.arange(-60, 31, 10), ylocs=np.arange(40, 81, 10),
-                 linestyle=':', alpha=0.5)
-
-# gl = ax.gridlines(color='black', linestyle=':', alpha=0.5, draw_labels=True)
+# gl = ax.gridlines(crs=projection, draw_labels=True, color='black',
+#                 xlocs=np.arange(-60, 31, 15), ylocs=np.arange(40, 81, 10),
+#                 linestyle='--', alpha=0.5)
+# gl.xlabels_top = False
+# gl.xformatter = LONGITUDE_FORMATTER
+# gl.yformatter = LATITUDE_FORMATTER
 
 # lon_formatter = cticker.LongitudeFormatter()
 # lat_formatter = cticker.LatitudeFormatter()
