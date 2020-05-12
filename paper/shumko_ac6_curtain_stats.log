@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  12 MAY 2020 16:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  12 MAY 2020 16:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1237,84 +1237,72 @@ on-Pfitzer mag-netic field
  []
 
 
-Overfull \hbox (16.15465pt too wide) in paragraph at lines 123--124
+Overfull \hbox (18.93243pt too wide) in paragraph at lines 123--124
 \OT1/cmr/m/n/10 model []Boscher et al.[], 2012; Ol-son & Pfitzer, 1982). We de-
-fined a latitude-longitude grid 
+fined a latitude-longitude grid, 
  []
 
 
-Overfull \hbox (8.8769pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 span-ning the North At-lantic at 700 kilo-me-ter al-ti-tude (a 
-typ-i-cal al-ti-tude for AC6), and 
+Overfull \hbox (4.34904pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 (a typ-i-cal al-ti-tude for AC6), and es-ti-mated the lo-cal ma
+g-netic field strength. For each 
  []
 
 
-Overfull \hbox (10.46014pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 es-ti-mated the lo-cal mag-netic field strength. For each latit
-ude-longitude point we traced 
+Overfull \hbox (18.6546pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 latitude-longitude point we traced the mag-netic field line to 
+the south-ern hemi-sphere and 
  []
 
 
-Overfull \hbox (13.98798pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 the mag-netic field line to the south-ern hemi-sphere and found
- the con-ju-gate mir-ror point 
+Overfull \hbox (4.82133pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 found the con-ju-gate mir-ror point al-ti-tude. If the con-ju-g
+ate mir-ror point is at or be-low 
  []
 
 
-Overfull \hbox (17.68239pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 al-ti-tude. If the con-ju-gate mir-ror point is at or be-low 10
-0 kilo-me-ters, the elec-tron is likely 
+Overfull \hbox (4.29343pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 100 kilo-me-ters, the elec-tron is likely lost and the as-sosi-
+ated grid point is con-sid-ered to 
  []
 
 
-Overfull \hbox (6.87677pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 lost and the as-sosi-ated grid point is con-sid-ered to be in t
-he BLC. Fur-ther-more, a more 
+Overfull \hbox (10.09898pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 be in the BLC. Fur-ther-more, a more rig-or-ous bounce loss con
+e cri-te-rion would be if the 
  []
 
 
-Overfull \hbox (13.59903pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 rig-or-ous bounce loss cone cri-te-rion would be if the con-ju-
-gate mir-ror point al-ti-tude is be- 
+Overfull \hbox (9.40453pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 con-ju-gate mir-ror point al-ti-tude is be-low sea level. In th
+is case, the elec-tron is def-i-nitely 
  []
 
 
-Overfull \hbox (13.29333pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 low sea level. In this case, the elec-tron is def-i-nitely lost
-. Since AC6 can mea-sure locally- 
+Overfull \hbox (16.90453pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 lost. Since AC6 can mea-sure locally-mirroring elec-trons in th
+e North At-lantic, the space- 
  []
 
 
-Overfull \hbox (6.90456pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 mirroring elec-trons in the North At-lantic, the space-craft al
--ti-tude de-ter-mines the up-per 
+Overfull \hbox (6.738pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 craft al-ti-tude de-ter-mines the up-per bound con-ju-gate mir-
+ror point al-ti-tude in the SAA. 
  []
 
 
-Overfull \hbox (2.84909pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 bound con-ju-gate mir-ror point al-ti-tude in the SAA. The BLC 
-re-gion es-ti-mated by this 
+Overfull \hbox (33.07123pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 The BLC re-gion es-ti-mated by this method closely matches the 
+BLC re-gion shown in []Comess 
  []
 
 
-Overfull \hbox (36.87682pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 method closely matches the BLC re-gion shown in []Comess et al.
-[] (2013, Fig-ure 1) and []Dietrich 
- []
-
-
-Overfull \hbox (21.37683pt too wide) in paragraph at lines 123--124
-\OT1/cmr/m/n/10 et al.[] (2010, Fig-ure 3). Fur-ther-more, we re-peated the sam
-e anal-y-sis us-ing the Tsy-ga-nenko 
+Overfull \hbox (9.62689pt too wide) in paragraph at lines 123--124
+\OT1/cmr/m/n/10 the same anal-y-sis us-ing the Tsy-ga-nenko 1989 model []Tsygan
+enko, 1989), which yielded 
  []
 
 [5 <./figures/fig1.pdf>]
-Overfull \hbox (18.5156pt too wide) in paragraph at lines 126--127
-[]\OT1/cmr/m/n/10 In the spirit of brevity, we lim-ited the scope of this sta-t
-is-ti-cal study to an-swer three 
- []
-
-
 Overfull \hbox (18.4045pt too wide) in paragraph at lines 132--133
 \OT1/cmr/m/n/10 We will then com-pare some of these re-sults to the $\OML/cmm/m
 /it/10 > \OT1/cmr/m/n/10 30$ keV mi-croburst dis-tri-bu-tion from 
@@ -1345,21 +1333,21 @@ Overfull \hbox (7.26572pt too wide) in paragraph at lines 135--136
  []
 
 
-Overfull \hbox (4.76569pt too wide) in paragraph at lines 135--136
-\OT1/cmr/m/n/10 is mea-sured along AC6's or-bit track that is mostly in lat-i-t
-ude, there-fore the es-ti-mated 
+Overfull \hbox (11.71011pt too wide) in paragraph at lines 135--136
+\OT1/cmr/m/n/10 is mea-sured along AC6's or-bit track which is mostly in lat-i-
+tude, there-fore the es-ti-mated 
  []
 
 
-Overfull \hbox (8.5991pt too wide) in paragraph at lines 135--136
-\OT1/cmr/m/n/10 cur-tain widths are also ap-prox-i-mately in lat-i-tude. The di
-s-tri-bu-tion of cur-tain widths is 
+Overfull \hbox (5.62683pt too wide) in paragraph at lines 135--136
+\OT1/cmr/m/n/10 cur-tain widths are also mostly in lat-i-tude. The dis-tri-bu-t
+ion of cur-tain widths is shown 
  []
 
 
-Overfull \hbox (8.43233pt too wide) in paragraph at lines 135--136
-\OT1/cmr/m/n/10 shown in Fig. 2[] by the thick black curve. Cur-tains are very 
-nar-row. Many cur-tains are 
+Overfull \hbox (19.87679pt too wide) in paragraph at lines 135--136
+\OT1/cmr/m/n/10 in Fig. 2[] by the thick black curve. Cur-tains are very nar-ro
+w. Many cur-tains are less than 
  []
 
 
@@ -1387,9 +1375,9 @@ on. The red curve in Fig.
  []
 
 
-Overfull \hbox (9.48792pt too wide) in paragraph at lines 137--138
-\OT1/cmr/m/n/10 2[] shows the mi-croburst dis-tri-bu-tion es-ti-mated by the ra
--tio of the num-ber of con-cur-rent 
+Overfull \hbox (6.76569pt too wide) in paragraph at lines 137--138
+\OT1/cmr/m/n/10 2[] shows the mi-croburst dis-tri-bu-tion es-ti-mated as the ra
+-tio of the num-ber of si-mul-ta-ne- 
  []
 
 <figures/ac6_curtain_microburst_width_dist.pdf, id=96, 462.52798pt x 346.89601p
@@ -1631,11 +1619,11 @@ Overfull \hbox (11.62672pt too wide) in paragraph at lines 165--166
 the cor-re-spond-ing panel la- 
  []
 
-<figures/fig3.pdf, id=153, 650.43pt x 505.89pt>
+<figures/fig3.pdf, id=153, 650.43pt x 476.98201pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 168.
-(pdftex.def)             Requested size: 397.48499pt x 309.16367pt.
+(pdftex.def)             Requested size: 397.48499pt x 291.49718pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 169--169
 []\OT1/cmr/bx/n/9 Figure  5. \OT1/cmr/m/n/9 Cur-tains ob-served in the bounce l
@@ -2300,7 +2288,7 @@ of the cur-tains stud-ied here
  []
 
 [12]
-<figures/a_10hz_dist.pdf, id=320, 462.52798pt x 346.89601pt>
+<figures/a_10hz_dist.pdf, id=331, 462.52798pt x 346.89601pt>
 File: figures/a_10hz_dist.pdf Graphic file (type pdf)
 <use figures/a_10hz_dist.pdf>
 Package pdftex.def Info: figures/a_10hz_dist.pdf  used on input line 226.
@@ -2710,10 +2698,10 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 531010 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 503033 bytes).
 PDF statistics:
- 438 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
+ 449 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

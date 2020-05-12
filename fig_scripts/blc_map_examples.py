@@ -12,7 +12,9 @@ import sys
 
 import cartopy
 import cartopy.crs as ccrs
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+import cartopy.feature as cfeature
+import cartopy.mpl.ticker as cticker
+# from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
 sys.path.insert(0, '/home/mike/research/ac6_curtains/detect')
 import detect_daily
@@ -41,9 +43,10 @@ curtain_times = [
 curtain_times = [dateutil.parser.parse(t) for t in curtain_times]
 
 projection = ccrs.PlateCarree()
+# projection = ccrs.Orthographic()
 fig = plt.figure(figsize=(9, 7))
 gs = gridspec.GridSpec(nrows=3, ncols=len(curtain_times), figure=fig, 
-                        left=0.07, right=0.99, wspace=0.25, top=0.96, hspace=0)
+                        left=0.09, right=0.99, wspace=0.25, top=0.95, hspace=0)
 
 # Cartopy is stupid. The order of how ax and bx are 
 # created matters!
@@ -52,16 +55,20 @@ for i in range(len(bx)):
     bx[i] = fig.add_subplot(gs[-1, i], projection='rectilinear')
 ax = fig.add_subplot(gs[:2, :], projection=projection)
 
-# ax = plt.subplot(111, projection=projection)
-ax.set_extent([-60, 30, 40, 80], crs=ccrs.PlateCarree())
+ax.set_extent([-60, 30, 40, 80], crs=projection)
 ax.coastlines(resolution='50m', color='black', linewidth=1)
-ax.add_feature(cartopy.feature.LAND, zorder=0, edgecolor='black', facecolor='grey')
 
-# gl = ax.gridlines(color='black', linestyle=':')
+gl = ax.gridlines(crs=projection, draw_labels=True, color='black',
+                xlocs=np.arange(-60, 31, 10), ylocs=np.arange(40, 81, 10),
+                 linestyle=':', alpha=0.5)
 
-# gl.ylocator = mticker.FixedLocator([0, 30, 60, 90])
-# gl.xformatter = LONGITUDE_FORMATTER
-# gl.yformatter = LATITUDE_FORMATTER
+# gl = ax.gridlines(color='black', linestyle=':', alpha=0.5, draw_labels=True)
+
+# lon_formatter = cticker.LongitudeFormatter()
+# lat_formatter = cticker.LatitudeFormatter()
+# ax.xaxis.set_major_formatter(lon_formatter)
+# ax.yaxis.set_major_formatter(lat_formatter)
+# ax.set_yticks(np.arange(40, 80, 5), crs=projection)
 
 # Load and plot the mirror_point altitude data
 save_name = 'lat_lon_mirror_alt.csv'
@@ -139,7 +146,7 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     bx_i.xaxis.set_major_formatter(mdates.DateFormatter('%S'))
     bx_i.set_xlabel(f'AC6A seconds after\n{datetime.strftime(start_time, "%Y/%m/%d %H:%M:00")}')
 
-bx[0].set_ylabel('dos1rate [counts/s]')
+bx[0].set_ylabel(r'$\bf{Shifted}$' + '\ndos1 [counts/s]')
 
 ax.scatter(coords[:,0], coords[:,1], marker='*', c='r', s=150)
 
