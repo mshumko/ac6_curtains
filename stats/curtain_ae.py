@@ -7,6 +7,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+import uncertainties as unc  
+import uncertainties.unumpy as unp
+
 import dirs
 
 # Load the curtain catalog
@@ -35,56 +38,68 @@ for year in years:
     del year_ae['DATE_TIME']
     ae = ae.append(year_ae)
 
-# thresh = 20
 bin_width = 100
-bins = np.arange(0, 1200, bin_width)
+bins = np.arange(0, 1600, bin_width)
+
+def hist_density(dist, bin_width):
+    """ Normalize a histogram to a PDF """
+    dist = dist / (np.sum(dist)*bin_width)
+    return dist
 
 H_AE, _ = np.histogram(ae['AE'], density=False, bins=bins)
 H_AE_density, _ = np.histogram(ae['AE'], density=True, bins=bins)
 H_c, _  = np.histogram(curtain_cat['AE'], density=False, bins=bins)
 H_m, _  = np.histogram(burst_cat['AE'], density=False, bins=bins)
-H_c_density, _  = np.histogram(curtain_cat['AE'], density=True, bins=bins)
-H_m_density, _  = np.histogram(burst_cat['AE'], density=True, bins=bins)
 
-def hist_density(dist, bin_width):
-    """ Normalize a histogram to a PDF """
-    dist = dist / (np.max(dist)*bin_width)
-    return dist
+H_c = unp.uarray(H_c, np.sqrt(H_c))  
+H_m = unp.uarray(H_m, np.sqrt(H_m)) 
 
-# Scale the curtain distribution by the total AE time. In other
-# words this normalized distribution is the distribution of
-# curtains assuming any AE index is equally likeliy to occur.
-H_c_norm = H_c*(np.max(H_AE)/H_AE)
+# The microburst and curtain probability density and error
+H_c_density = hist_density(H_c, bin_width)
+H_m_density = hist_density(H_m, bin_width)
+
+# Scale the observed number of curtain and microburst distributions
+# by the AE index. This can be thought of the number of curtains
+# and microburst observed as a function of AE, assuming all AE values
+# occur equally frequently. 
+H_c_norm = H_c * (np.max(H_AE)/H_AE)
+H_m_norm = H_m * (np.max(H_AE)/H_AE)
 H_c_norm_density = hist_density(H_c_norm, bin_width)
-
-H_m_norm = H_m*(np.max(H_AE)/H_AE)
 H_m_norm_density = hist_density(H_m_norm, bin_width)
 
-#H_AE_density = hist_density(H_AE, bin_width)
-
 fig, ax = plt.subplots(1, 2, sharex=True, sharey=False, figsize=(9,5))
-ax[0].step(bins[:-1], H_AE_density, where='post', label='Index', 
+
+### Plot the raw histograms
+ae_plot = ax[0].step(bins[:-1], H_AE_density, where='post', label='Index', 
         c='k', lw=2)
-ax[0].step(bins[:-1], H_c_density, where='post', label=f'Curtains', 
-        c='b', lw=2, linestyle=':')
-ax[0].step(bins[:-1], H_m_density, where='post', label='Microbursts', 
-        c='g', lw=2, linestyle='--')
+curtain_plot = ax[0].step(bins[:-1], unp.nominal_values(H_c_density), 
+        where='post', label=f'Curtains', c='b', lw=2, linestyle='-')
+ax[0].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_c_density), 
+        yerr=unp.std_devs(H_c_density), ls='', c='b', lw=1, capsize=3)
+microburst_plot = ax[0].step(bins[:-1], unp.nominal_values(H_m_density), 
+        where='post', label='Microbursts', c='g', lw=2, linestyle='--')
+ax[0].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_m_density), 
+        yerr=unp.std_devs(H_m_density), ls='', c='g', lw=1, capsize=3)
 
-# ax[1].step(bins[:-1], H_AE_density, where='post', label='Index', 
-#         c='k', lw=2)
-ax[1].step(bins[:-1], H_c_norm_density, where='post', label=f'Curtains', 
-        c='b', lw=2, linestyle=':')
-ax[1].step(bins[:-1], H_m_norm_density, where='post', label='Microbursts', 
-        c='g', lw=2, linestyle='--')
 
-plt.suptitle('Distribution of the Auroral Electrojet index\n'
-                'for curtains, microbursts, and index')
+### Plot the normalized histograms
+ax[1].step(bins[:-1], unp.nominal_values(H_c_norm_density), where='post', label=f'Curtains', 
+        c='b', lw=2, linestyle='-')
+ax[1].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_c_norm_density), 
+        yerr=unp.std_devs(H_c_norm_density), ls='', c='b', lw=1, capsize=3)
+
+ax[1].step(bins[:-1], unp.nominal_values(H_m_norm_density), where='post', label=f'Microbursts', 
+        c='g', lw=2, linestyle='--')
+ax[1].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_m_norm_density), 
+        yerr=unp.std_devs(H_m_norm_density), ls='', c='g', lw=1, capsize=3)
+
+plt.suptitle('Distributions of the Auroral Electrojet index, curtains, and microbursts', fontsize=15)
 ax[0].set(xlabel='AE [nT]', ylabel='Probability density', 
         xlim=(0, 1000), ylim=(0, 1.1*np.max(H_AE_density)))
 ax[0].text(0.01, 0.98, '(a) Unnormalized', ha='left', va='top', 
         transform=ax[0].transAxes, fontsize=15)
-ax[1].set(xlabel='AE [nT]')
-ax[1].legend(loc=4)
+ax[1].set(xlabel='AE [nT]', ylim=(0, None))
+ax[1].legend(handles=[ae_plot[0], curtain_plot[0], microburst_plot[0]], loc=1)
 ax[1].text(0.01, 0.98, '(b) Normalized', ha='left', va='top', 
         transform=ax[1].transAxes, fontsize=15)
 
