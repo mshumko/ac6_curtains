@@ -93,7 +93,7 @@ ax[1].step(bins[:-1], unp.nominal_values(H_m_norm_density), where='post', label=
 ax[1].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_m_norm_density), 
         yerr=unp.std_devs(H_m_norm_density), ls='', c='g', lw=1, capsize=3)
 
-plt.suptitle('Distributions of the Auroral Electrojet index, curtains, and microbursts', fontsize=15)
+plt.suptitle('Distributions of the Auroral Electrojet index for curtains and microbursts', fontsize=15)
 ax[0].set(xlabel='AE [nT]', ylabel='Probability density', 
         xlim=(0, 1000), ylim=(0, 1.1*np.max(H_AE_density)))
 ax[0].text(0.01, 0.98, '(a) Unnormalized', ha='left', va='top', 
