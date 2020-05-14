@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  14 MAY 2020 16:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  14 MAY 2020 16:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2197,15 +2197,15 @@ pheric mod-els such as the widely-
  []
 
 
-Overfull \hbox (38.15465pt too wide) in paragraph at lines 202--203
-\OT1/cmr/m/n/10 used Whole At-mo-sphere Com-mu-nity Cli-mate Model us-ing Spec-
-i-fied Dy-nam-ics (SD-WACCM) 
+Overfull \hbox (26.23798pt too wide) in paragraph at lines 202--203
+\OT1/cmr/m/n/10 used Whole At-mo-sphere Com-mu-nity Cli-mate Model (WACCM) []e.
+g. Ran-dall et al.[], 2015). 
  []
 
 
-Overfull \hbox (4.87685pt too wide) in paragraph at lines 202--203
-[]\OT1/cmr/m/n/10 e.g. Ran-dall et al.[], 2015). A com-pre-hen-sive study of th
-e cur-tain im-pact on the at-mo- 
+Overfull \hbox (1.76569pt too wide) in paragraph at lines 202--203
+\OT1/cmr/m/n/10 A com-pre-hen-sive study of the cur-tain im-pact on the at-mo-s
+phere can be done with an 
  []
 
 
@@ -2720,7 +2720,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 506185 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 506153 bytes).
 PDF statistics:
  456 PDF objects out of 1000 (max. 8388607)
  142 compressed objects within 2 object streams
