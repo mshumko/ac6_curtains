@@ -10,7 +10,7 @@ import cartopy
 import cartopy.crs as ccrs
 
 # Paths that are used everywhere in the class
-import dirs
+from ac6_curtains import dirs
 
 class PlotCurtains:
     def __init__(self, catalog_version, plot_width=5, catalog_name=None,
@@ -284,8 +284,8 @@ class PlotCurtains:
 if __name__ == '__main__':
     version = 0
     plot_width = 15
-    catalog_name = f'AC6_curtains_baseline_method_sorted_v{version}.txt'
+    catalog_name = f'AC6_curtains_themis_asi_5deg.csv'
     p = PlotCurtains(version, catalog_name=catalog_name, plot_width=plot_width)
     # p.filter_catalog(filterDict={'Loss_Cone_Type':2}, defaultFilter=False)
-    p.filter_catalog(filterDict={'Lag_In_Track':[30, 100]}, defaultFilter=False)
+    #p.filter_catalog(filterDict={'Lag_In_Track':[30, 100]}, defaultFilter=False)
     p.loop(mean_subtracted=False, savefig=True)
