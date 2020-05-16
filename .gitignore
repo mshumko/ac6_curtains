@@ -7,3 +7,4 @@
 /data/ae/*
 plots/curtain_validation/good_blc_examples.zip
 .~lock.*
+*.cdf
