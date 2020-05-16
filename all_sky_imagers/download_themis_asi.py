@@ -44,6 +44,7 @@ def get_station_frames(cat, overwrite=False):
     for t, row in cat.iterrows():
         nearby_stations = [i.split(' ') for i in row.nearby_stations]
         for station in nearby_stations:
+            print(station)
             try:
                 download_asi_frames(t, station, overwrite=overwrite)
             except urllib.error.HTTPError as err:
@@ -72,6 +73,8 @@ def download_asi_calibration(station, overwrite=False):
         # Skip if overwite is false and file is already downloaded
         if not overwrite and pathlib.Path(dirs.ASI_DIR, file_name).is_file():
             print(f'Skipping {file_name}')
+        else:
+            print(f'Downloading {file_name}')
         urllib.request.urlretrieve(cal_base_url + file_name, 
                                 dirs.ASI_DIR / file_name)
     return
@@ -87,6 +90,8 @@ def download_asi_frames(time, station, overwrite=False):
     if not overwrite and pathlib.Path(dirs.ASI_DIR, file_name).is_file():
         print(f'Skipping {file_name}')
         return
+    else:
+        print(f'Downloading {file_name}')
 
     try:
         urllib.request.urlretrieve(frame_base_url + station_url + file_name, 
