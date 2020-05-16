@@ -26,7 +26,7 @@ def get_unique_stations(cat):
     stations = list(set(flattened_stations))
     return stations
 
-def get_station_calibration(cat, overwrite=False):
+def download_asi_calibration_wrapper(cat, overwrite=False):
     """ 
     Wrapper to find all unique stations in the catalog and 
     download that data. 
@@ -36,20 +36,23 @@ def get_station_calibration(cat, overwrite=False):
         download_asi_calibration(station, overwrite=overwrite)
     return
 
-def get_station_frames(cat, overwrite=False):
+def download_asi_frames_wrapper(cat, overwrite=False):
     """ 
     Loops over the curtain catalog and downloads the 
     ASI image data 
     """
     for t, row in cat.iterrows():
-        nearby_stations = [i.split(' ') for i in row.nearby_stations]
+        # Figure out if you need to loop over multiple stations that were
+        nearby_stations = row.nearby_stations.split()
+        
+        # Loop over the stations (or just one station) and download the data.
+        # Continue if the data does not exist.
         for station in nearby_stations:
-            print(station)
             try:
                 download_asi_frames(t, station, overwrite=overwrite)
             except urllib.error.HTTPError as err:
-                if '404' in str(err):
-                    raise
+                if 'HTTP Error 404: Not Found' == str(err):
+                    continue
                 else:
                     raise
     return
@@ -109,7 +112,7 @@ if __name__ == '__main__':
     cat = load_curtain_catalog(catalog_name)
 
     # Download the calibration data.
-    get_station_calibration(cat)
+    #download_asi_calibration_wrapper(cat)
 
     # Download the frame data
-    get_station_frames(cat)
+    download_asi_frames_wrapper(cat)
