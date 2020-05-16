@@ -48,7 +48,6 @@ def get_station_frames(cat, overwrite=False):
                 download_asi_frames(t, station, overwrite=overwrite)
             except urllib.error.HTTPError as err:
                 if '404' in str(err):
-                    print(frame_base_url + station_url + file_name)
                     raise
                 else:
                     raise
