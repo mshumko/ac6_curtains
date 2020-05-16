@@ -36,7 +36,18 @@ def get_station_calibration(cat):
         download_asi_calibration(station)
     return
 
-def download_asi_calibration(station):
+def get_station_frames(cat):
+    """ 
+    Loops over the curtain catalog and downloads the 
+    ASI image data 
+    """
+    for t, row in cat.iterrows():
+        nearby_stations = [i.split(' ') for i in row.nearby_stations]
+        for station in nearby_stations:
+            download_asi_frames(t, station)
+    return
+
+def download_asi_calibration(station, overwrite=False):
     """
     Scrape the ASI calibration website and download all cdf 
     calibration files from the station.
@@ -52,11 +63,14 @@ def download_asi_calibration(station):
                     if station.lower() in file_name.get('href')]
     # Download data
     for file_name in file_names:
+        # Skip if overwite is false and file is already downloaded
+        if not overwrite and pathlib.Path(dirs.ASI_DIR, file_name).is_file():
+            print(f'Skipping {file_name}')
         urllib.request.urlretrieve(cal_base_url + file_name, 
                                 dirs.ASI_DIR / file_name)
     return
 
-def download_asi_frames(time, station):
+def download_asi_frames(time, station, overwrite=False):
     """ 
     Download the ASI image data from a date + hour in the datetime 
     time object and a particular station.
@@ -64,12 +78,16 @@ def download_asi_frames(time, station):
     station_url = (f'{station.lower()}/{time.year}/{time.strftime("%m")}/')
     file_name = f'thg_l1_asf_{station.lower()}_{time.strftime("%Y%m%d%H")}_v01.cdf'
 
+    if not overwrite and pathlib.Path(dirs.ASI_DIR, file_name).is_file():
+        print(f'Skipping {file_name}')
+        return
+
     try:
         urllib.request.urlretrieve(frame_base_url + station_url + file_name, 
                                 dirs.ASI_DIR / file_name)
     except urllib.error.HTTPError as err:
         if '404' in str(err):
-            print(base_url + station_url + file_name)
+            print(frame_base_url + station_url + file_name)
             raise
         else:
             raise
@@ -81,3 +99,6 @@ if __name__ == '__main__':
 
     # Download the calibration data.
     get_station_calibration(cat)
+
+    # Download the frame data
+    get_station_frames(cat)
