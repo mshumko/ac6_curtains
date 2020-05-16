@@ -9,21 +9,40 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 import re
 
-import themisasi
-import themisasi.web
-
 from ac6_curtains import dirs
+
+frame_base_url = 'http://themis.ssl.berkeley.edu/data/themis/thg/l1/asi/'
+cal_base_url = 'http://themis.ssl.berkeley.edu/data/themis/thg/l2/asi/cal/'
 
 def load_curtain_catalog(catalog_name):
     cat_path = dirs.CATALOG_DIR / catalog_name
     cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
     return cat
 
+def get_unique_stations(cat):
+    """ Get a set of unique stations from the catalog. """
+    nearby_stations = [i.split(' ') for i in cat.nearby_stations]
+    flattened_stations = [item for sublist in nearby_stations for item in sublist]
+    stations = list(set(flattened_stations))
+    return stations
+
+def get_station_calibration(cat):
+    """ 
+    Wrapper to find all unique stations in the catalog and 
+    download that data. 
+    """
+    stations = get_unique_stations(cat)
+    for station in stations:
+        download_asi_calibration(station)
+    return
+
 def download_asi_calibration(station):
-    base_url = 'http://themis.ssl.berkeley.edu/data/themis/thg/l2/asi/cal/'
-    
+    """
+    Scrape the ASI calibration website and download all cdf 
+    calibration files from the station.
+    """
     # Find all cdf files with the station name
-    html = urllib.request.urlopen(base_url).read().decode('utf-8')
+    html = urllib.request.urlopen(cal_base_url).read().decode('utf-8')
     # Scrape the HTML
     soup = BeautifulSoup(html, 'html.parser')
     # Extract all cdf files
@@ -31,19 +50,22 @@ def download_asi_calibration(station):
     # Extract all hyperlinks (href) filenames with the station name.
     file_names = [file_name.get('href') for file_name in file_name_html 
                     if station.lower() in file_name.get('href')]
-
+    # Download data
     for file_name in file_names:
-        urllib.request.urlretrieve(base_url + file_name, 
+        urllib.request.urlretrieve(cal_base_url + file_name, 
                                 dirs.ASI_DIR / file_name)
     return
 
-def download_asi_movie(time, station):
-    base_url = 'http://themis.ssl.berkeley.edu/data/themis/thg/l1/asi/'
+def download_asi_frames(time, station):
+    """ 
+    Download the ASI image data from a date + hour in the datetime 
+    time object and a particular station.
+    """
     station_url = (f'{station.lower()}/{time.year}/{time.strftime("%m")}/')
     file_name = f'thg_l1_asf_{station.lower()}_{time.strftime("%Y%m%d%H")}_v01.cdf'
 
     try:
-        urllib.request.urlretrieve(base_url + station_url + file_name, 
+        urllib.request.urlretrieve(frame_base_url + station_url + file_name, 
                                 dirs.ASI_DIR / file_name)
     except urllib.error.HTTPError as err:
         if '404' in str(err):
@@ -56,9 +78,6 @@ def download_asi_movie(time, station):
 if __name__ == '__main__':
     catalog_name = 'AC6_curtains_themis_asi_5deg.csv'
     cat = load_curtain_catalog(catalog_name)
-    # url = 'http://themis.ssl.berkeley.edu/data/themis/thg/l1/asi/kuuj/2017/04/thg_l1_asf_kuuj_2017041705_v01.cdf'
-    # # urllib.request.urlretrieve(url, 'test.cdf')
-    # # print(cat)
-    # # themisasi.web.download(['2015-04-04T06'], ['SNAP'], pathlib.Path(dirs.BASE_DIR, 'data'), ['http://themis.ssl.berkeley.edu/data/themis/thg/l1/asi/'])
 
-    # download_asi(datetime(2017, 4, 1, 4), 'kuuj')
+    # Download the calibration data.
+    get_station_calibration(cat)
