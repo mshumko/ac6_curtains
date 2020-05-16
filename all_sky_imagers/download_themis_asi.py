@@ -26,17 +26,17 @@ def get_unique_stations(cat):
     stations = list(set(flattened_stations))
     return stations
 
-def get_station_calibration(cat):
+def get_station_calibration(cat, overwrite=False):
     """ 
     Wrapper to find all unique stations in the catalog and 
     download that data. 
     """
     stations = get_unique_stations(cat)
     for station in stations:
-        download_asi_calibration(station)
+        download_asi_calibration(station, overwrite=overwrite)
     return
 
-def get_station_frames(cat):
+def get_station_frames(cat, overwrite=False):
     """ 
     Loops over the curtain catalog and downloads the 
     ASI image data 
@@ -44,7 +44,14 @@ def get_station_frames(cat):
     for t, row in cat.iterrows():
         nearby_stations = [i.split(' ') for i in row.nearby_stations]
         for station in nearby_stations:
-            download_asi_frames(t, station)
+            try:
+                download_asi_frames(t, station, overwrite=overwrite)
+            except urllib.error.HTTPError as err:
+                if '404' in str(err):
+                    print(frame_base_url + station_url + file_name)
+                    raise
+                else:
+                    raise
     return
 
 def download_asi_calibration(station, overwrite=False):
