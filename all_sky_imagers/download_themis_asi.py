@@ -108,7 +108,7 @@ def download_asi_frames(time, station, overwrite=False):
     return
 
 if __name__ == '__main__':
-    catalog_name = 'AC6_curtains_themis_asi_5deg.csv'
+    catalog_name = 'AC6_curtains_themis_asi_10deg.csv'
     cat = load_curtain_catalog(catalog_name)
 
     # Download the calibration data.

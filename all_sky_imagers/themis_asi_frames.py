@@ -9,7 +9,7 @@ import plot_themis_asi
 from ac6_curtains import dirs
 
 # Load the curtain catalog
-catalog_name = 'AC6_curtains_themis_asi_5deg.csv'
+catalog_name = 'AC6_curtains_themis_asi_10deg.csv'
 cat_path = dirs.CATALOG_DIR / catalog_name
 cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
 
