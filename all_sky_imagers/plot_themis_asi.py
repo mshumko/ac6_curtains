@@ -55,8 +55,23 @@ class Load_ASI:
         """
         Loads the THEMIS calibration file.
         """
-        raise NotImplementedError
+        file_name = f'thg_l2_asc_{self.site}_*.cdf'
+        cdf_paths = sorted(pathlib.Path(self.asi_dir).glob(file_name))
+        cdf_path = cdf_paths[-1] # Grab the most recent cal file.
 
+        cal = cdflib.cdfread.CDF(cdf_path)
+        az = cal[f"thg_asf_{self.site}_azim"][0]
+        el = cal[f"thg_asf_{self.site}_elev"][0]
+        lat = cal[f"thg_asc_{self.site}_glat"]
+        lon = (cal[f"thg_asc_{self.site}_glon"] + 180) % 360 - 180  # [0,360] -> [-180,180]
+        alt_m = cal[f"thg_asc_{self.site}_alti"]
+        x = y = cal[f"thg_asf_{self.site}_c256"]
+        time = datetime.utcfromtimestamp(cal[f"thg_asf_{self.site}_time"][-1])
+
+        self.cal = {
+            "az":az, "el":el, 'coords':x, "lat": lat, "lon": lon, "alt_m": alt_m, 
+            "site": site, "calfilename": cdf_path.name, "caltime": time
+                }
         return
 
     def plot_themis_asi_frame(self, t0, ax=None):
@@ -64,7 +79,9 @@ class Load_ASI:
         Plot a ASI frame with a time nearest to t0.
         """
         if ax is None:
-            _, ax = plt.subplots()
+            _, self.ax = plt.subplots()
+        else:
+            self.ax = ax
 
         if isinstance(t0, str):
             # Convert to datetime object if passes a tring time
@@ -74,10 +91,27 @@ class Load_ASI:
         t0_nearest = self.time[np.argmin(dt_sec)]
 
         title_text = f'{self.site.upper()}\n{t0_nearest}'
-        self.hi = ax.imshow(self.imgs[0], cmap="gray", origin="lower", 
-                norm=matplotlib.colors.LogNorm(), interpolation="none")
-        self.ht = ax.set_title(title_text, color="k")
+        self.hi = self.ax.imshow(self.imgs[0], cmap="gray", origin="lower", 
+                    norm=matplotlib.colors.LogNorm(), interpolation="none")
+        self.ht = self.ax.set_title(title_text, color="k")
         return t0_nearest
+
+    def plot_themis_asi_azel(self, ax=None):
+        """ 
+        Superpose the azimuth and elivation contours on the ASI frame 
+        """
+        if ax is None:
+            _, self.ax = plt.subplots()
+        else:
+            self.ax = ax
+   
+        az_contours = self.ax.contour(self.cal["az"], colors='blue', linestyles='dotted', 
+                        levels=np.arange(0, 360, 90), alpha=1)
+        el_contours = self.ax.contour(self.cal["el"], colors='red', linestyles='dotted', 
+                        levels=np.arange(0, 91, 30), alpha=1)
+        plt.clabel(az_contours, inline=True, fontsize=8)
+        plt.clabel(el_contours, inline=True, fontsize=8, rightside_up=True)
+        return
 
     def keys(self):
         """
@@ -91,22 +125,11 @@ class Load_ASI:
 
 if __name__ == '__main__':
     site = 'WHIT'
-    time = '2015-04-14T08'
+    time = '2015-04-07T08'
     l = Load_ASI(site, time)
-    l.plot_themis_asi_frame(time)
+    l.load_themis_cal()
 
-# plt.show()
-# path = (f'/home/mike/research/ac6_curtains/data/asi/'
-#         f'thg_l1_asf_{site.lower()}_{time.strftime("%Y%m%d%H")}_v01.cdf')
-
-# data = cdflib.cdfread.CDF(path)
-# # Get variables via data.cdf_info()['zVariables']
-# time = cdflib.cdfepoch().to_datetime(data[f"thg_asf_{site}_epoch"][:], to_np=True)
-# imgs = data[f"thg_asf_{site}"]
-
-# fig, ax = plt.subplots()
-
-# # Initialize the first frame.
-# hi = ax.imshow(imgs[0], cmap="gray", origin="lower", 
-#                 norm=matplotlib.colors.LogNorm(), interpolation="none")
-# ht = ax.set_title('time', color="g")
+    fig, ax = plt.subplots()
+    l.plot_themis_asi_frame(time, ax=ax)
+    l.plot_themis_asi_azel(ax=ax)
+    plt.show()
