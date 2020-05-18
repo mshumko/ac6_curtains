@@ -34,10 +34,21 @@ class Load_ASI:
 
         self.asi = cdflib.cdfread.CDF(cdf_path)
         # Convert time
-        self.time = cdflib.cdfepoch().to_datetime(self.asi[f"thg_asf_{self.site}_epoch"][:], 
+        try:
+            self.time = cdflib.cdfepoch().to_datetime(self.asi[f"thg_asf_{self.site}_epoch"][:], 
                                             to_np=True)
+        except ValueError as err:
+            if 'not found' in str(err):
+                print(cdf_path, '\n', self.asi.cdf_info()['zVariables'])
+                raise
+
         # Copy images into another variable
-        self.imgs = self.asi[f"thg_asf_{self.site}"]
+        try:
+            self.imgs = self.asi[f"thg_asf_{self.site}"]
+        except ValueError as err:
+            if str(err) == 'read length must be non-negative or -1':
+                print(cdf_path, '\n', self.asi[f"thg_asf_{self.site}"].shape)
+                raise
         return self.asi, self.time, self.imgs
 
     def load_themis_cal(self):
@@ -78,15 +89,13 @@ class Load_ASI:
             raise AttributeError('The ASI CDF file is probably not loaded.')
         return
 
+if __name__ == '__main__':
+    site = 'WHIT'
+    time = '2015-04-14T08'
+    l = Load_ASI(site, time)
+    l.plot_themis_asi_frame(time)
 
-site = 'GBAY'
-time = datetime(2015, 7, 21, 3)
-
-l = Load_ASI(site, time)
-
-l.plot_themis_asi_frame(datetime(2015, 7, 21, 3, 0, 5, 65000))
-
-plt.show()
+# plt.show()
 # path = (f'/home/mike/research/ac6_curtains/data/asi/'
 #         f'thg_l1_asf_{site.lower()}_{time.strftime("%Y%m%d%H")}_v01.cdf')
 
