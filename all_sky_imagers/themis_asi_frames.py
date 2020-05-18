@@ -21,7 +21,7 @@ for t0, row in cat.iterrows():
             l = plot_themis_asi.Load_ASI(site, t0)
         except (FileNotFoundError, ValueError) as err:
             continue
-        l.plot_themis_asi_frame(t0.to_pydatetime())
+        l.plot_themis_asi_frame(t0.to_pydatetime(), ax=ax)
         plt.savefig((f'{t0.strftime("%Y%m%dT%H%M%S")}_'
                     'themis_asi_frame.png'), dpi=200)
         ax.clear()
