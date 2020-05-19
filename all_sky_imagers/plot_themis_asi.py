@@ -96,7 +96,7 @@ class Load_ASI:
         self.ht = self.ax.set_title(title_text, color="k")
         return t0_nearest
 
-    def plot_themis_asi_azel(self, ax=None):
+    def plot_azel_contours(self, ax=None):
         """ 
         Superpose the azimuth and elivation contours on the ASI frame 
         """
@@ -131,5 +131,5 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots()
     l.plot_themis_asi_frame(time, ax=ax)
-    l.plot_themis_asi_azel(ax=ax)
+    l.plot_azel_contours(ax=ax)
     plt.show()
