@@ -6,6 +6,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.dates import date2num, num2date
 from matplotlib.widgets import Button, TextBox
+import dateutil.parser 
 
 import plot_curtains
 import dirs
@@ -111,7 +112,14 @@ class Browser(plot_curtains.PlotCurtains):
         return
        
     def change_index(self, index):
-        self.index = int(index)
+        try:
+            self.index = int(index)
+        except ValueError:
+            # Assume the passed value is a time.
+            t = dateutil.parser.parse(index)
+            n_time_index = date2num(t)
+            n_time_catalog = date2num(self.catalog['dateTime'])
+            self.index = np.argmin(np.abs(n_time_index - n_time_catalog))
         self.plot()
         return
 

@@ -102,11 +102,11 @@ class PlotCurtains:
         current_date = date.min
 
         self.fig = plt.figure(figsize=(6, 8))
-        self.gs = self.fig.add_gridspec(3, 1)
+        self.gs = self.fig.add_gridspec(2, 1)
         self.ax = [self.fig.add_subplot(self.gs[0, 0]), self.fig.add_subplot(self.gs[1, 0])]
-        self.bx = self.fig.add_subplot(self.gs[2, 0], projection=ccrs.PlateCarree())
+        #self.bx = self.fig.add_subplot(self.gs[2, 0], projection=ccrs.PlateCarree())
 
-        self.make_map(self.bx)
+        # self.make_map(self.bx)
 
         for _, row in self.catalog.iterrows():
             if row.dateTime.date() != current_date:
@@ -209,7 +209,7 @@ class PlotCurtains:
         ax[1].plot(df_space_b['dateTime'], df_space_b['dos1rate'], 'b', label='AC6-B')
         # ax[1].axvline(row.dateTime, c='k')
 
-        self.star = self.bx.scatter(row.lon, row.lat, marker='*', c='r', s=150)
+        #self.star = self.bx.scatter(row.lon, row.lat, marker='*', c='r', s=150)
 
         # self.bx.set_extent([row.lon-10, row.lon+10, row.lat-10, row.lat+10], crs=ccrs.PlateCarree())
 
@@ -237,21 +237,21 @@ class PlotCurtains:
             ax[1].text(0.02, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} [s]', 
                         transform=ax[1].transAxes, va='top')
 
-        pos_str = (f'lat={round(row.lat)}, lon={round(row.lon)}, alt={round(row.alt)} [km]\n'
-                    f'Loss_Cone_Type={row.Loss_Cone_Type}\n'
-                    f'AE={row.AE} [nT]')
-        ax[1].text(0.02, 0.9, pos_str, transform=ax[1].transAxes, va='top')
+        # pos_str = (f'lat={round(row.lat)}, lon={round(row.lon)}, alt={round(row.alt)} [km]\n'
+        #             f'Loss_Cone_Type={row.Loss_Cone_Type}\n'
+        #             f'AE={row.AE} [nT]')
+        # ax[1].text(0.02, 0.9, pos_str, transform=ax[1].transAxes, va='top')
 
         ax[1].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=3))
 
-        self.gs.tight_layout(self.fig)
+        # self.gs.tight_layout(self.fig)
 
         if savefig:
             save_name = '{0:%Y%m%d_%H%M%S}_ac6_curtain_validation.png'.format(
                         row['dateTime'])
             plt.savefig(os.path.join(self.plot_save_dir, save_name))
         
-        self.star.remove()
+        # self.star.remove()
         return
 
     def _get_filtered_plot_data(self, row):
