@@ -6,6 +6,7 @@ from datetime import datetime
 import dateutil.parser
 import pathlib
 
+from skyfield.api import EarthSatellite, Topos, load
 import cdflib # https://github.com/MAVENSDC/cdflib
 
 from ac6_curtains import dirs
@@ -136,6 +137,27 @@ class Load_ASI:
         # Return the first row/col that met the deg_thresh 
         # condition (other values will be close enough).
         return idx[0][0], idx[1][0] 
+
+    def get_azel_from_lla(self, lat, lon, alt_km):
+        """
+        Get the ASI azimuth and elevation given the satellite
+        location in lat, lon, alt_km subpoint coordinates.
+        """
+        planets = load('de421.bsp')
+        earth = planets['earth']
+        station = earth + Topos(latitude_degrees=self.cal['lat'], 
+                                longitude_degrees=self.cal['lon'], 
+                                elevation_m=self.cal['alt_m'])
+        sat = earth + Topos(latitude_degrees=lat, longitude_degrees=lon, 
+                        elevation_m=alt_km*1E3)
+
+        ts = load.timescale()
+        t = ts.now()
+
+        astro = station.at(t).observe(sat)
+        app = astro.apparent()
+        alt, az, _ = app.altaz()
+        return az, alt
 
     def keys(self):
         """
