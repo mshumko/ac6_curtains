@@ -8,3 +8,7 @@
 plots/curtain_validation/good_blc_examples.zip
 .~lock.*
 *.cdf
+de421.bsp
+deltat.data
+deltat.preds
+Leap_Second.dat

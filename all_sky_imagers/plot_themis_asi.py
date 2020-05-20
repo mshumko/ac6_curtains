@@ -113,6 +113,30 @@ class Load_ASI:
         plt.clabel(el_contours, inline=True, fontsize=8, rightside_up=True)
         return
 
+    def find_nearest_azel(self, az, el):
+        """
+        Given the azimuth and elevation of the orbit track or satellite,
+        find where in the calibration arrays that point is nearest to.
+        """
+        deg_thresh = 0.1
+        deg_thresh_scale_factor = 2
+        idx = ([], [])
+
+        az_grid = self.cal['az'].copy()
+        az_grid[np.isnan(az_grid)] = -1
+
+        el_grid = self.cal['el'].copy()
+        el_grid[np.isnan(el_grid)] = -1
+        
+        while len(idx[0]) == 0:
+            # If no points were found, keep expanding the deg_thresh
+            deg_thresh *= deg_thresh_scale_factor
+            idx = np.where((np.abs(az_grid - az) < deg_thresh) & 
+                            (np.abs(el_grid - el) < deg_thresh))
+        # Return the first row/col that met the deg_thresh 
+        # condition (other values will be close enough).
+        return idx[0][0], idx[1][0] 
+
     def keys(self):
         """
         Gets the variable names from the ASI data.

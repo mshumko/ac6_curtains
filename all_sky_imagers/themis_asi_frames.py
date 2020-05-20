@@ -24,6 +24,8 @@ for t0, row in cat.iterrows():
             continue
         l.plot_themis_asi_frame(t0.to_pydatetime(), ax=ax)
         l.plot_azel_contours(ax=ax)
+        idx = l.find_nearest_azel(100, 70)
+        plt.scatter(idx[1], idx[0], s=50, c='r', marker='*')
         plt.savefig((f'{t0.strftime("%Y%m%dT%H%M%S")}_'
                     'themis_asi_frame.png'), dpi=200)
         ax.clear()
