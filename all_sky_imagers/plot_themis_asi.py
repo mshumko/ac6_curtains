@@ -70,7 +70,7 @@ class Load_ASI:
 
         self.cal = {
             "az":az, "el":el, 'coords':x, "lat": lat, "lon": lon, "alt_m": alt_m, 
-            "site": site, "calfilename": cdf_path.name, "caltime": time
+            "site": self.site, "calfilename": cdf_path.name, "caltime": time
                 }
         return
 

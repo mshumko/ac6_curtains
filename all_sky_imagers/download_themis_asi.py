@@ -112,7 +112,7 @@ if __name__ == '__main__':
     cat = load_curtain_catalog(catalog_name)
 
     # Download the calibration data.
-    #download_asi_calibration_wrapper(cat)
+    download_asi_calibration_wrapper(cat)
 
     # Download the frame data
     download_asi_frames_wrapper(cat)
