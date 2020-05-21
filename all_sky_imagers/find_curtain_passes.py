@@ -107,7 +107,7 @@ class FindPasses:
 
 
 if __name__ == '__main__':
-    deg_thresh=10
+    deg_thresh=15
     catalog_name = 'AC6_curtains_baseline_method_sorted_v0.txt'
     f = FindPasses(catalog_name, asi_array='THEMIS', deg_thresh=deg_thresh)
     f.loop()

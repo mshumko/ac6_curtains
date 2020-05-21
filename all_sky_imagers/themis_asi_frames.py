@@ -9,7 +9,7 @@ import plot_themis_asi
 from ac6_curtains import dirs
 
 # Load the curtain catalog
-catalog_name = 'AC6_curtains_themis_asi_10deg.csv'
+catalog_name = 'AC6_curtains_themis_asi_15deg.csv'
 cat_path = dirs.CATALOG_DIR / catalog_name
 cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
 
@@ -27,7 +27,7 @@ for t0, row in cat.iterrows():
         az, el = l.get_azel_from_lla(*row[['lat', 'lon', 'alt']])
         idx = l.find_nearest_azel(az.degrees, el.degrees)
         plt.scatter(idx[1], idx[0], s=50, c='r', marker='*')
-        plt.savefig((f'{t0.strftime("%Y%m%dT%H%M%S")}_'
+        plt.savefig((f'./plots/{t0.strftime("%Y%m%dT%H%M%S")}_'
                     'themis_asi_frame.png'), dpi=200)
         ax.clear()
 
