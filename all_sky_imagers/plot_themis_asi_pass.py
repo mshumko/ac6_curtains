@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import pathlib
 from datetime import datetime, timedelta
+import matplotlib.dates as mdates
 
 from skyfield.api import EarthSatellite, Topos, load
 
@@ -51,13 +52,16 @@ for t0, row in cat.iterrows():
         bx.plot(ac6_data['dateTime_shifted_B'], ac6_data.dos1rate_B, 'b', 
                 label='AC6B')
         bx.axvline(t0, c='k', ls='--')
-        ac6_location_str = (f'Curtain:\nlat={round(row.lat, 1)}\nlon={round(row.lon, 1)}'
+        ac6_location_str = (f'Curtain:'
+                            f'\ntime={t0.strftime("%H:%M:%S")}'
+                            f'\nlat={round(row.lat, 1)}'
+                            f'\nlon={round(row.lon, 1)}'
                             f'\nalt={round(row.alt, 1)} [km]')
         if row.Lag_In_Track > 0:
             bx.text(0, 1, f'AC6A ahead by {round(row.Lag_In_Track, 1)} seconds\n' + ac6_location_str, 
                     va='top', transform=bx.transAxes)
         if row.Lag_In_Track < 0:
-            bx.text(0, 1, f'AC6B ahead by {round(row.Lag_In_Track, 1)} seconds\n' + ac6_location_str, 
+            bx.text(0, 1, f'AC6B ahead by {abs(round(row.Lag_In_Track, 1))} seconds\n' + ac6_location_str, 
                     va='top', transform=bx.transAxes)       
 
         # Plot the AC6 orbit track in the ASI
@@ -74,6 +78,8 @@ for t0, row in cat.iterrows():
         az, el = l.get_azel_from_lla(*row[['lat', 'lon', 'alt']])
         idx = l.find_nearest_azel(az.degrees, el.degrees)
         ax.scatter(idx[1], idx[0], s=50, c='r', marker='*')
+        
+        bx.xaxis.set_major_locator(mdates.SecondLocator(interval=30))
 
         plt.savefig((f'./plots/{t0.strftime("%Y%m%dT%H%M%S")}_'
                     'themis_asi_frame.png'), dpi=200)
