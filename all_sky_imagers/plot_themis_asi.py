@@ -91,7 +91,13 @@ class Load_ASI:
         dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
         t0_nearest = self.time[np.argmin(dt_sec)]
 
-        title_text = f'{self.site.upper()}\n{t0_nearest}'
+        if self.cal['lon'] < 0:
+            lon_label='W'
+        else:
+            lon_label='E'
+
+        title_text = (f'{self.site.upper()} ({round(self.cal["lat"])}N, '
+                     f'{np.abs(round(self.cal["lon"]))}{lon_label})\n{t0_nearest}')
         self.hi = self.ax.imshow(self.imgs[0], cmap="gray", origin="lower", 
                     norm=matplotlib.colors.LogNorm(), interpolation="none")
         self.ht = self.ax.set_title(title_text, color="k")
