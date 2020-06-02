@@ -12,6 +12,8 @@ import uncertainties.unumpy as unp
 
 import dirs
 
+include_microbursts = False
+
 # Load the curtain catalog
 cat_name = 'AC6_curtains_baseline_method_sorted_v0.txt'
 cat_path = os.path.join(dirs.CATALOG_DIR, cat_name)
@@ -67,7 +69,7 @@ H_m_norm = H_m * (np.max(H_AE)/H_AE)
 H_c_norm_density = hist_density(H_c_norm, bin_width)
 H_m_norm_density = hist_density(H_m_norm, bin_width)
 
-fig, ax = plt.subplots(1, 2, sharex=True, sharey=False, figsize=(9,5))
+fig, ax = plt.subplots(1, 2, sharex=True, sharey=False, figsize=(9,4))
 
 ### Plot the raw histograms
 ae_plot = ax[0].step(bins[:-1], H_AE_density, where='post', label='Index', 
@@ -76,10 +78,12 @@ curtain_plot = ax[0].step(bins[:-1], unp.nominal_values(H_c_density),
         where='post', label=f'Curtains', c='b', lw=2, linestyle='-')
 ax[0].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_c_density), 
         yerr=unp.std_devs(H_c_density), ls='', c='b', lw=1, capsize=3)
-microburst_plot = ax[0].step(bins[:-1], unp.nominal_values(H_m_density), 
-        where='post', label='Microbursts', c='g', lw=2, linestyle='--')
-ax[0].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_m_density), 
-        yerr=unp.std_devs(H_m_density), ls='', c='g', lw=1, capsize=3)
+
+if include_microbursts:
+    microburst_plot = ax[0].step(bins[:-1], unp.nominal_values(H_m_density), 
+            where='post', label='Microbursts', c='g', lw=2, linestyle='--')
+    ax[0].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_m_density), 
+            yerr=unp.std_devs(H_m_density), ls='', c='g', lw=1, capsize=3)
 
 
 ### Plot the normalized histograms
@@ -88,18 +92,23 @@ ax[1].step(bins[:-1], unp.nominal_values(H_c_norm_density), where='post', label=
 ax[1].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_c_norm_density), 
         yerr=unp.std_devs(H_c_norm_density), ls='', c='b', lw=1, capsize=3)
 
-ax[1].step(bins[:-1], unp.nominal_values(H_m_norm_density), where='post', label=f'Microbursts', 
-        c='g', lw=2, linestyle='--')
-ax[1].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_m_norm_density), 
-        yerr=unp.std_devs(H_m_norm_density), ls='', c='g', lw=1, capsize=3)
+if include_microbursts:
+    ax[1].step(bins[:-1], unp.nominal_values(H_m_norm_density), where='post', label=f'Microbursts', 
+            c='g', lw=2, linestyle='--')
+    ax[1].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_m_norm_density), 
+            yerr=unp.std_devs(H_m_norm_density), ls='', c='g', lw=1, capsize=3)
 
-plt.suptitle('Distributions of the Auroral Electrojet index for curtains and microbursts', fontsize=15)
 ax[0].set(xlabel='AE [nT]', ylabel='Probability density', 
         xlim=(0, 1000), ylim=(0, 1.1*np.max(H_AE_density)))
 ax[0].text(0.01, 0.98, '(a) Unnormalized', ha='left', va='top', 
         transform=ax[0].transAxes, fontsize=15)
 ax[1].set(xlabel='AE [nT]', ylim=(0, None))
-ax[1].legend(handles=[ae_plot[0], curtain_plot[0], microburst_plot[0]], loc=1)
+if include_microbursts:
+    plt.suptitle('The distributions of the Auroral Electrojet index for curtains and microbursts', fontsize=15)
+    ax[1].legend(handles=[ae_plot[0], curtain_plot[0], microburst_plot[0]], loc=1)
+else:
+    plt.suptitle('The distribution of the Auroral Electrojet index for curtains', fontsize=15)
+    ax[1].legend(handles=[ae_plot[0], curtain_plot[0]], loc=1)
 ax[1].text(0.01, 0.98, '(b) Normalized', ha='left', va='top', 
         transform=ax[1].transAxes, fontsize=15)
 

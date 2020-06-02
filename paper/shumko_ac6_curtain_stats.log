@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  2 JUN 2020 08:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  2 JUN 2020 12:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1435,29 +1435,16 @@ Overfull \hbox (6.76569pt too wide) in paragraph at lines 141--142
 -tio of the num-ber of si-mul-ta-ne- 
  []
 
-<figures/ac6_curtain_microburst_width_dist.pdf, id=96, 462.52798pt x 346.89601p
-t>
-File: figures/ac6_curtain_microburst_width_dist.pdf Graphic file (type pdf)
-<use figures/ac6_curtain_microburst_width_dist.pdf>
-Package pdftex.def Info: figures/ac6_curtain_microburst_width_dist.pdf  used on
- input line 144.
+<figures/ac6_curtain_width_dist.pdf, id=96, 462.52798pt x 346.89601pt>
+File: figures/ac6_curtain_width_dist.pdf Graphic file (type pdf)
+<use figures/ac6_curtain_width_dist.pdf>
+Package pdftex.def Info: figures/ac6_curtain_width_dist.pdf  used on input line
+ 144.
 (pdftex.def)             Requested size: 397.48499pt x 298.12889pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 145--145
 []\OT1/cmr/bx/n/9 Figure  2. \OT1/cmr/m/n/9 The dis-tri-bu-tion of cur-tain wid
-th in lat-i-tude is shown by the thick black lines, and
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--145
-\OT1/cmr/m/n/9 the dis-tri-bu-tion of mi-croburst sizes is shown by the red lin
-es for mi-crobursts that were si-mul-ta-ne-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--145
-\OT1/cmr/m/n/9 ously ob-served by AC6. The mi-croburst dis-tri-bu-tion is adapt
-ed from []Shumko et al.[] (2019). The
+th in lat-i-tude. The er-ror bars are de-rived as-sum-ing
  []
 
 
@@ -1548,8 +1535,8 @@ m-pha-size that both cur-tains
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-[7 <./figures/ac6_curtain_microburst_width_dist.pdf>]
-<figures/fig2_3.pdf, id=151, 1011.78pt x 361.35pt>
+[7 <./figures/ac6_curtain_width_dist.pdf>]
+<figures/fig2_3.pdf, id=148, 1011.78pt x 361.35pt>
 File: figures/fig2_3.pdf Graphic file (type pdf)
 <use figures/fig2_3.pdf>
 Package pdftex.def Info: figures/fig2_3.pdf  used on input line 155.
@@ -1578,46 +1565,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 156--156
 In panel c the white bins show
  []
 
-<figures/ac6_curtain_microburst_AE_dist.pdf, id=152, 650.43pt x 361.35pt>
-File: figures/ac6_curtain_microburst_AE_dist.pdf Graphic file (type pdf)
-<use figures/ac6_curtain_microburst_AE_dist.pdf>
-Package pdftex.def Info: figures/ac6_curtain_microburst_AE_dist.pdf  used on in
-put line 161.
+<figures/ac6_curtain_AE_dist.pdf, id=149, 650.43pt x 361.35pt>
+File: figures/ac6_curtain_AE_dist.pdf Graphic file (type pdf)
+<use figures/ac6_curtain_AE_dist.pdf>
+Package pdftex.def Info: figures/ac6_curtain_AE_dist.pdf  used on input line 16
+1.
 (pdftex.def)             Requested size: 397.48499pt x 220.83119pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 162--162
-[]\OT1/cmr/bx/n/9 Figure  4. \OT1/cmr/m/n/9 Panel a shows the dis-tri-bu-tion o
-f the Au-ro-ral Elec-tro-ject (AE) in-dex when cur-tains
+[]\OT1/cmr/bx/n/9 Figure  4. \OT1/cmr/m/n/9 The dis-tri-bu-tion of the Au-ro-ra
+l Elec-tro-ject (AE) in-dex when cur-tains were ob-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 162--162
-\OT1/cmr/m/n/9 and mi-crobursts were ob-served, shown by the solid blue and das
-hed green lines, re-spec-tively. For
+\OT1/cmr/m/n/9 served. The blue line in panel a shows the dis-tri-bu-tion of AE
+ when cur-tains where ob-served,
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 162--162
-\OT1/cmr/m/n/9 ref-er-ence the dis-tri-bu-tion of the AE in-dex be-tween 2014 a
-nd 2017 is shown by the black lines.
+\OT1/cmr/m/n/9 and for ref-er-ence the black line is shows the dis-tri-bu-tion 
+of the AE in-dex it-self be-tween 2014
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 162--162
-\OT1/cmr/m/n/9 The AE dis-tri-bu-tion for mi-crobursts is adapted from []Shumko
- et al.[] (2019) and the er-ror bars rep-
+\OT1/cmr/m/n/9 and 2017. Panel b shows the cur-tain dis-tri-bu-tion nor-mal-ize
+d by the AE in-dex, and it rep-re-sents
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 162--162
-\OT1/cmr/m/n/9 re-sent the Pois-son stan-dard er-ror. Panel b shows the cur-tai
-n and mi-croburst dis-tri-bu-tions, that
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
-\OT1/cmr/m/n/9 are nor-mal-ized by the AE in-dex, and rep-re-sent the dis-tri-b
-u-tions as-sum-ing that any AE in-dex is
+\OT1/cmr/m/n/9 the dis-tri-bu-tion as-sum-ing that any AE in-dex is equally pro
+b-a-ble. The er-ror bars are de-rived
  []
 
 
@@ -1686,7 +1667,7 @@ Overfull \hbox (14.40451pt too wide) in paragraph at lines 169--170
 and the cor-re-spond-ing panel 
  []
 
-<figures/fig3.pdf, id=153, 650.43pt x 476.98201pt>
+<figures/fig3.pdf, id=150, 650.43pt x 476.98201pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 172.
@@ -1880,7 +1861,7 @@ Overfull \hbox (8.01573pt too wide) in paragraph at lines 183--184
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9 <./figures/ac6_curtain_microburst_AE_dist.pdf>] [10 <./figures/fig3.pdf>]
+ [9 <./figures/ac6_curtain_AE_dist.pdf>] [10 <./figures/fig3.pdf>]
 Overfull \hbox (3.76569pt too wide) in paragraph at lines 186--187
 []\OT1/cmr/m/n/10 Figure 3[]b shows that cur-tains likely orig-i-nate in the ou
 ter ra-di-a-tion belt and are 
@@ -2343,7 +2324,7 @@ Overfull \hbox (17.26569pt too wide) in paragraph at lines 226--227
 the cur-tains stud-ied here were 
  []
 
-<figures/a_10hz_dist.pdf, id=338, 462.52798pt x 346.89601pt>
+<figures/a_10hz_dist.pdf, id=329, 462.52798pt x 346.89601pt>
 File: figures/a_10hz_dist.pdf Graphic file (type pdf)
 <use figures/a_10hz_dist.pdf>
 Package pdftex.def Info: figures/a_10hz_dist.pdf  used on input line 229.
@@ -2725,7 +2706,7 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  3474 strings out of 492982
- 47999 string characters out of 6134897
+ 47889 string characters out of 6134897
  123491 words of memory out of 5000000
  6971 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
@@ -2750,9 +2731,9 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 506394 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 502144 bytes).
 PDF statistics:
- 456 PDF objects out of 1000 (max. 8388607)
+ 447 PDF objects out of 1000 (max. 8388607)
  142 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
