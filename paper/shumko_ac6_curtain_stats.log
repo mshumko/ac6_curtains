@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  3 JUN 2020 12:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  3 JUN 2020 17:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1370,39 +1370,39 @@ ove the low-est con-tour that
  []
 
 
-Overfull \hbox (28.1269pt too wide) in paragraph at lines 140--141
-\OT1/cmr/m/n/10 en-cir-cles the peak but con-tains no higher peak. []Ex-am-ples
- of cur-tains and their to-po-graphic 
+Overfull \hbox (5.09904pt too wide) in paragraph at lines 140--141
+\OT1/cmr/m/n/10 en-cir-cles the peak but con-tains no higher peak. Ex-am-ples o
+f cur-tains and their widths 
  []
 
 
-Overfull \hbox (6.65459pt too wide) in paragraph at lines 140--141
-\OT1/cmr/m/n/10 promi-nence are shown in Ap-pendix B.[] The spa-tial width of a
- cur-tain is then the prod- 
+Overfull \hbox (9.68237pt too wide) in paragraph at lines 140--141
+\OT1/cmr/m/n/10 are shown in Ap-pendix B. The spa-tial width of a cur-tain is t
+hen the prod-uct of the ob- 
  []
 
 
-Overfull \hbox (12.04344pt too wide) in paragraph at lines 140--141
-\OT1/cmr/m/n/10 uct of the ob-served width in time and AC6's or-bital ve-loc-it
-y. The cur-tain width is mea- 
+Overfull \hbox (2.40456pt too wide) in paragraph at lines 140--141
+\OT1/cmr/m/n/10 served width in time and AC6's or-bital ve-loc-ity. The cur-tai
+n width is mea-sured along 
  []
 
 
-Overfull \hbox (4.46008pt too wide) in paragraph at lines 140--141
-\OT1/cmr/m/n/10 sured along AC6's or-bit track which is mostly in lat-i-tude, t
-here-fore the es-ti-mated cur- 
+Overfull \hbox (13.90456pt too wide) in paragraph at lines 140--141
+\OT1/cmr/m/n/10 AC6's or-bit track which is mostly in lat-i-tude, there-fore th
+e es-ti-mated cur-tain widths are 
  []
 
 
-Overfull \hbox (3.37683pt too wide) in paragraph at lines 140--141
-\OT1/cmr/m/n/10 tain widths are also mostly in lat-i-tude. The dis-tri-bu-tion 
-of cur-tain widths is shown in 
+Overfull \hbox (8.79353pt too wide) in paragraph at lines 140--141
+\OT1/cmr/m/n/10 also mostly in lat-i-tude. The dis-tri-bu-tion of cur-tain widt
+hs is shown in Fig. 2[]. Cur-tains 
  []
 
 
-Overfull \hbox (4.54349pt too wide) in paragraph at lines 140--141
-\OT1/cmr/m/n/10 Fig. 2[]. Cur-tains are very nar-row. Many cur-tains are nar-ro
-wer than 10 km in lat-i-tude, 
+Overfull \hbox (8.54347pt too wide) in paragraph at lines 140--141
+\OT1/cmr/m/n/10 are very nar-row. Many cur-tains are nar-rower than 10 km in la
+t-i-tude, and 90% are nar- 
  []
 
 <figures/ac6_curtain_width_dist.pdf, id=96, 462.52798pt x 346.89601pt>
@@ -2205,69 +2205,114 @@ Underfull \hbox (badness 10000) in paragraph at lines 225--225
  []
 
 
-Overfull \hbox (1.48782pt too wide) in paragraph at lines 229--231
+Overfull \hbox (19.15446pt too wide) in paragraph at lines 230--231
+[]\OT1/cmr/m/n/10 We de-fined the cur-tain width in the dos1 time se-ries as th
+e width at half of the cur- 
+ []
+
+
+Overfull \hbox (4.18236pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 tain's to-po-graphic promi-nence. To-po-graphic promi-nence for
+ a time se-ries is de-fined as 
+ []
+
+
+Overfull \hbox (22.51576pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 the height of a peak rel-a-tive to the max-i-mum of two min-i-m
+ums on ei-ther side of the peak, 
+ []
+
+
+Overfull \hbox (6.01566pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 be-tween the peak of in-ter-est and any higher peak. Fig-ure B1
+[] shows 4 ex-am-ples of cur- 
+ []
+
+
+Overfull \hbox (4.23785pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 tains ob-served by AC6A in red (for clar-ity the AC6B data is n
+ot shown), and the cur- 
+ []
+
+<figures/a_topographic_prominence.pdf, id=326, 987.20822pt x 361.35pt>
+File: figures/a_topographic_prominence.pdf Graphic file (type pdf)
+<use figures/a_topographic_prominence.pdf>
+Package pdftex.def Info: figures/a_topographic_prominence.pdf  used on input li
+ne 233.
+(pdftex.def)             Requested size: 397.48499pt x 145.49132pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--234
+[]\OT1/cmr/bx/n/9 Figure  B1. \OT1/cmr/m/n/9 Four ex-am-ples of cur-tains ob-se
+rved by AC6A shown with the red curves and the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--234
+\OT1/cmr/m/n/9 cur-tain widths are shown with the hor-i-zon-tal black lines. Th
+e height of the hor-i-zon-tal black lines
+ []
+
+
+Overfull \hbox (1.48782pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
  []
 
 
-Overfull \hbox (20.73793pt too wide) in paragraph at lines 229--231
+Overfull \hbox (20.73793pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 The Aerospace Cor-po-ra-tion who de-signed, built, and op-er-at
 ed AC6. M. Shumko was sup- 
  []
 
 
-Overfull \hbox (21.65457pt too wide) in paragraph at lines 229--231
+Overfull \hbox (21.65457pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 ported by NASA Head-quar-ters un-der the NASA Earth and Space S
 ci-ence Fel-low-ship Pro- 
  []
 
 
-Overfull \hbox (5.23799pt too wide) in paragraph at lines 229--231
+Overfull \hbox (5.23799pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 gram - Grant 80NSSC18K1204 and NASA Post-doc-toral Pro-gram at 
 the NASA's God- 
  []
 
 
-Overfull \hbox (9.21007pt too wide) in paragraph at lines 229--231
+Overfull \hbox (9.21007pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 dard Space Flight Cen-ter, ad-min-is-tered by Uni-ver-si-ties S
 pace Re-search As-so-ci-a-tion un- 
  []
 
 
-Overfull \hbox (15.93239pt too wide) in paragraph at lines 229--231
+Overfull \hbox (15.93239pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 der con-tract with NASA. D.L. Turner is thank-ful for sup-port 
 from the Van Allen Probes 
  []
 
 
-Overfull \hbox (10.23796pt too wide) in paragraph at lines 229--231
+Overfull \hbox (10.23796pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 mis-sion and a NASA grant (Prime award num-ber: 80NSSC19K0280).
  The work at The 
  []
 
 
-Overfull \hbox (35.87692pt too wide) in paragraph at lines 229--231
+Overfull \hbox (35.87692pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 Aerospace Cor-po-ra-tion was sup-ported in part by RBSP-ECT fun
 d-ing pro-vided by JHU/APL 
  []
 
 
-Overfull \hbox (6.0435pt too wide) in paragraph at lines 229--231
+Overfull \hbox (6.0435pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 con-tract 967399 un-der NASA's Prime con-tract NAS501072. The A
 C6 data is avail-able 
  []
 
 
-Overfull \hbox (17.488pt too wide) in paragraph at lines 229--231
+Overfull \hbox (17.488pt too wide) in paragraph at lines 238--240
 \OT1/cmr/m/n/10 at http://rbspgway.jhuapl.edu/ac6 and the IRBEM-Lib ver-sion us
 ed for this anal-y-sis can 
  []
 
-(./shumko_ac6_curtain_stats.bbl
-Underfull \vbox (badness 3088) has occurred while \output is active []
-
- [12 <./figures/a_10hz_dist.pdf>]
+[12 <./figures/a_10hz_dist.pdf>] (./shumko_ac6_curtain_stats.bbl
 Underfull \hbox (badness 2837) in paragraph at lines 16--34
 []\OT1/cmr/m/n/10 Anderson, K. A., & Mil-ton, D. W.  (1964).  Bal-loon ob-ser-v
 a-tions of X rays in the 
@@ -2360,7 +2405,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--234
 ibrary [] .wiley [] .com / doi / abs / 
  []
 
-
+[13 <./figures/a_topographic_prominence.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 250--267
 \OT1/cmr/m/n/10 tivis-tic mi-croburst storm char-ac-ter-is-tics: Com-bined sate
 l-lite and ground-based 
@@ -2457,7 +2502,7 @@ cal Re-search Let-ters\OT1/cmr/m/n/10 , \OT1/cmr/m/it/10 28\OT1/cmr/m/n/10 (13)
 , 
  []
 
-[13]
+
 Underfull \hbox (badness 3568) in paragraph at lines 538--552
 []\OT1/cmr/m/n/10 O'Brien, T. P., Looper, M. D., & Blake, J. B.  (2019, July). 
  \OT1/cmr/m/it/10 AeroCube-6 dosime- 
@@ -2531,6 +2576,9 @@ ng the at-mo-spheric
  []
 
 
+Underfull \vbox (badness 1264) has occurred while \output is active []
+
+ [14]
 Underfull \hbox (badness 10000) in paragraph at lines 747--766
 []\OT1/cmr/m/n/10 Shumko, M., John-son, A., Sam-ple, J., Grif-fith, B. A., Turn
 er, D. L., O'Brien, T. P., 
@@ -2567,20 +2615,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 818--837
 t [] .com / science / article / pii / 
  []
 
-) [14] (./shumko_ac6_curtain_stats.aux)
+) [15] (./shumko_ac6_curtain_stats.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 3475 strings out of 492982
- 47896 string characters out of 6134897
- 122498 words of memory out of 5000000
- 6972 multiletter control sequences out of 15000+600000
+ 3481 strings out of 492982
+ 48137 string characters out of 6134897
+ 123508 words of memory out of 5000000
+ 6977 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,9n,37p,1614b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,9n,37p,1614b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2600,10 +2648,10 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (14 pages, 500828 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 520319 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
+ 498 PDF objects out of 1000 (max. 8388607)
+ 147 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
