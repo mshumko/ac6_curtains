@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  2 JUN 2020 16:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  3 JUN 2020 12:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -289,15 +289,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 58.
 
-Overfull \hbox (6.59886pt too wide) in paragraph at lines 67--68
-[]\OT1/cmr/m/n/10 We used the dual AeroCube-6 Cube-Sats []Or are used? Ac-tive 
-vs pas-sive voice[] to 
- []
-
-
-Overfull \hbox (24.57123pt too wide) in paragraph at lines 67--68
-\OT1/cmr/m/n/10 iden-tify sta-tion-ary, nar-row in lat-i-tude, and per-sis-tent
- $\OML/cmm/m/it/10 > \OT1/cmr/m/n/10 30$ keV pre-cip-i-ta-tion termed 
+Overfull \hbox (17.32124pt too wide) in paragraph at lines 67--68
+[]\OT1/cmr/m/n/10 The dual AeroCube-6 Cube-Sats are used to iden-tify sta-tion-
+ary, nar-row in lat-i-tude, 
  []
 
 
@@ -307,9 +301,9 @@ wer than 20 kilo-me-
  []
 
 
-Overfull \hbox (17.48778pt too wide) in paragraph at lines 69--70
-[][]\OT1/cmr/m/n/10 reword[] A few cur-tains were con-tin-u-ously scat-tered in
-to the at-mo-sphere for at least 
+Overfull \hbox (5.21pt too wide) in paragraph at lines 69--70
+[]\OT1/cmr/m/n/10 Some cur-tains were con-tin-u-ously scat-tered into the at-mo
+-sphere for mul-ti-ple sec- 
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
@@ -495,9 +489,9 @@ crobursts. There-fore, cur-tains
  []
 
 
-Overfull \hbox (6.4046pt too wide) in paragraph at lines 78--79
-\OT1/cmr/m/n/10 may be a sig-nif-i-cant source at-mo-spheric ion-iza-tion re-sp
-on-si-ble for the nat-u-ral de-gre-ga- 
+Overfull \hbox (7.79349pt too wide) in paragraph at lines 78--79
+\OT1/cmr/m/n/10 may be a sig-nif-i-cant source of at-mo-spheric ion-iza-tion re
+-spon-si-ble for the nat-u-ral de-gre- 
  []
 
 
@@ -2582,7 +2576,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  3475 strings out of 492982
  47896 string characters out of 6134897
- 123498 words of memory out of 5000000
+ 122498 words of memory out of 5000000
  6972 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
@@ -2606,7 +2600,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (14 pages, 500889 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (14 pages, 500828 bytes).
 PDF statistics:
  443 PDF objects out of 1000 (max. 8388607)
  139 compressed objects within 2 object streams
