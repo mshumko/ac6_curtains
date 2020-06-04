@@ -24,9 +24,10 @@ times = [
         '2016-08-12T23:10:23.900000',
         # '2016-09-26T00:11:57.400000',
         # '2017-01-22T10:00:03.400000',
-        '2017-02-02T09:36:02.300000'
+        # '2017-02-02T09:36:02.300000',
+        '2015-08-08T02:13:09.900000'
         ]
-times_obj = pd.to_datetime(times)
+times_obj = sorted(pd.to_datetime(times))
 
 # Initialize figure
 fig, ax = plt.subplots(1, len(times), figsize=(14, 5))
