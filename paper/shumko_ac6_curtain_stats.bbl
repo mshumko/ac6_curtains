@@ -34,6 +34,43 @@ Anderson, K\BPBI A.%
 
 \bibitem [\protect \citeauthoryear {%
 Blake%
+\ \protect \BOthers {.}}{%
+Blake%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1996}}%
+}]{%
+Blake1996}
+\APACinsertmetastar {%
+Blake1996}%
+\begin{APACrefauthors}%
+Blake, J\BPBI B.%
+, Looper, M\BPBI D.%
+, Baker, D\BPBI N.%
+, Nakamura, R.%
+, Klecker, B.%
+\BCBL {}\ \BBA {} Hovestadt, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1996}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {New high temporal and spatial resolution measurements by
+  SAMPEX of the precipitation of relativistic electrons} {New high temporal and
+  spatial resolution measurements by sampex of the precipitation of
+  relativistic electrons}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Advances in Space Research}{18}{8}{171 - 186}.
+\newblock
+\begin{APACrefURL}
+  \url{http://www.sciencedirect.com/science/article/pii/0273117795009698}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{http://dx.doi.org/10.1016/0273-1177(95)00969-8}
+  \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Blake%
 \ \BBA {} O'Brien%
 }{%
 Blake%
@@ -105,6 +142,36 @@ Blum, L.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Blum%
+\ \protect \BOthers {.}}{%
+Blum%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2013}}%
+}]{%
+Blum2013}
+\APACinsertmetastar {%
+Blum2013}%
+\begin{APACrefauthors}%
+Blum, L.%
+, Schiller, Q.%
+, Li, X.%
+, Millan, R.%
+, Halford, A.%
+\BCBL {}\ \BBA {} Woodger, L.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2013}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {New conjunctive CubeSat and balloon measurements to
+  quantify rapid energetic electron precipitation} {New conjunctive cubesat and
+  balloon measurements to quantify rapid energetic electron
+  precipitation}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical research letters}{40}{22}{5833--5837}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Boscher%
 , Bourdarie%
 , O'Brien%
@@ -164,11 +231,37 @@ Breneman, A.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
-Brown%
+J.~Brown%
+\ \BBA {} Stone%
+}{%
+J.~Brown%
+\ \BBA {} Stone%
+}{%
+{\protect \APACyear {1972}}%
+}]{%
+Brown1972}
+\APACinsertmetastar {%
+Brown1972}%
+\begin{APACrefauthors}%
+Brown, J.%
+\BCBT {}\ \BBA {} Stone, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1972}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {High-energy electron spikes at high latitudes}
+  {High-energy electron spikes at high latitudes}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research}{77}{19}{3384--3396}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+R.~Brown%
 , Barcus%
 \BCBL {}\ \BBA {} Parsons%
 }{%
-Brown%
+R.~Brown%
 \ \protect \BOthers {.}}{%
 {\protect \APACyear {1965}}%
 }]{%
@@ -362,6 +455,39 @@ Greeley, A.%
   microbursts to global electron loss in the radiation belts}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Journal of Geophysical Research: Space Physics}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Imhof%
+, Voss%
+, Mobilia%
+, Datlowe%
+\BCBL {}\ \BBA {} Gaines%
+}{%
+Imhof%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {1991}}%
+}]{%
+Imhof1991}
+\APACinsertmetastar {%
+Imhof1991}%
+\begin{APACrefauthors}%
+Imhof, W.%
+, Voss, H.%
+, Mobilia, J.%
+, Datlowe, D.%
+\BCBL {}\ \BBA {} Gaines, E.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1991}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {The precipitation of relativistic electrons near the
+  trapping boundary} {The precipitation of relativistic electrons near the
+  trapping boundary}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{96}{A4}{5619--5629}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
