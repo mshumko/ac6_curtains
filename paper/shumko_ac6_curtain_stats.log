@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  4 JUN 2020 07:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  4 JUN 2020 08:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2217,21 +2217,21 @@ Overfull \hbox (4.96014pt too wide) in paragraph at lines 230--231
  []
 
 
-Overfull \hbox (9.73798pt too wide) in paragraph at lines 230--231
-\OT1/cmr/m/n/10 of a peak rel-a-tive to the max-i-mum of two min-i-mums on ei-t
-her side of the peak, lo-cated 
+Overfull \hbox (6.68239pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 of a peak rel-a-tive to the max-i-mum of the two min-i-mums on 
+ei-ther side of the peak, lo- 
  []
 
 
-Overfull \hbox (9.34898pt too wide) in paragraph at lines 230--231
-\OT1/cmr/m/n/10 some-where be-tween the peak and any higher peak. Fig-ure B1[] 
-shows 4 ex-am-ples of cur- 
+Overfull \hbox (4.04343pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 cated some-where be-tween the peak and any higher peak. Fig-ure
+ B1[] shows 5 ex-am-ples 
  []
 
 
-Overfull \hbox (4.23785pt too wide) in paragraph at lines 230--231
-\OT1/cmr/m/n/10 tains ob-served by AC6A in red (for clar-ity the AC6B data is n
-ot shown), and the cur- 
+Overfull \hbox (8.96011pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 of cur-tains ob-served by AC6A in red (for clar-ity the AC6B da
+ta is not shown), and the 
  []
 
 <figures/a_topographic_prominence.pdf, id=326, 1011.78pt x 361.35pt>
@@ -2242,7 +2242,7 @@ ne 233.
 (pdftex.def)             Requested size: 397.48499pt x 141.96251pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 234--234
-[]\OT1/cmr/bx/n/9 Figure  B1. \OT1/cmr/m/n/9 Four ex-am-ples of cur-tains ob-se
+[]\OT1/cmr/bx/n/9 Figure  B1. \OT1/cmr/m/n/9 Five ex-am-ples of cur-tains ob-se
 rved by AC6A shown with the red curves and the
  []
 
@@ -2648,7 +2648,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 520444 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 521321 bytes).
 PDF statistics:
  498 PDF objects out of 1000 (max. 8388607)
  147 compressed objects within 2 object streams
