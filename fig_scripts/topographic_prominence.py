@@ -88,6 +88,8 @@ for i, (ax_i, t_i) in enumerate(zip(ax, times_obj)):
         transform=ax_i.transAxes, fontsize=15)
     # ax_i.text(1, 0.99, f'width = {round(cat.loc[t_i, "width_A"], 1)} [s]', va='top', ha='right',
     #         transform=ax_i.transAxes, fontsize=20)
+    ylims = ax_i.get_ylim()
+    ax_i.set_ylim(None, ylims[1]*1.1)
 
 ax[0].set_ylabel('dos1rate [counts/s]')
 plt.show()

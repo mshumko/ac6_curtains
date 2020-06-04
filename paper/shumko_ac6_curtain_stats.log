@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  3 JUN 2020 17:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  3 JUN 2020 17:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2211,21 +2211,21 @@ e width at half of the cur-
  []
 
 
-Overfull \hbox (4.18236pt too wide) in paragraph at lines 230--231
+Overfull \hbox (4.96014pt too wide) in paragraph at lines 230--231
 \OT1/cmr/m/n/10 tain's to-po-graphic promi-nence. To-po-graphic promi-nence for
- a time se-ries is de-fined as 
+ a time se-ries is the height 
  []
 
 
-Overfull \hbox (22.51576pt too wide) in paragraph at lines 230--231
-\OT1/cmr/m/n/10 the height of a peak rel-a-tive to the max-i-mum of two min-i-m
-ums on ei-ther side of the peak, 
+Overfull \hbox (9.73798pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 of a peak rel-a-tive to the max-i-mum of two min-i-mums on ei-t
+her side of the peak, lo-cated 
  []
 
 
-Overfull \hbox (6.01566pt too wide) in paragraph at lines 230--231
-\OT1/cmr/m/n/10 be-tween the peak of in-ter-est and any higher peak. Fig-ure B1
-[] shows 4 ex-am-ples of cur- 
+Overfull \hbox (9.34898pt too wide) in paragraph at lines 230--231
+\OT1/cmr/m/n/10 some-where be-tween the peak and any higher peak. Fig-ure B1[] 
+shows 4 ex-am-ples of cur- 
  []
 
 
@@ -2648,7 +2648,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (15 pages, 520319 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (15 pages, 520465 bytes).
 PDF statistics:
  498 PDF objects out of 1000 (max. 8388607)
  147 compressed objects within 2 object streams
