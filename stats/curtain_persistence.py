@@ -20,7 +20,7 @@ hist = pd.read_csv(pathlib.Path(dirs.NORM_DIR, 'ac6_lag_dist_10hz.csv'),
                     index_col=0)
 hist['hours'] = hist / 3600 / 24 # Normalize to hours
 
-# Renormalize to sum over n bins (n kilometers unless lag_bin_s has 
+# Sum over n bins (n kilometers unless lag_bin_s has 
 # a non-default step)
 bin_width_km = 5
 old_hist_index = hist.index.copy()
@@ -32,7 +32,7 @@ curtain_H, _ = np.histogram(cat.Lag_In_Track, bins=hist.index)
 curtain_H = unp.uarray(curtain_H, np.sqrt(curtain_H))  
 
 
-# Normalize the curtain distribution
+# Normalize the curtain distribution 
 curtain_H_norm = curtain_H*(max(hist.hours)/hist.hours[:-1])
 
 # Plot the stuff
