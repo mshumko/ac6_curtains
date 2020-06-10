@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  8 JUN 2020 12:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  10 JUN 2020 08:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -960,22 +960,22 @@ e-loc-ity was used. AC6's or-
  []
 
 
-Overfull \hbox (23.59901pt too wide) in paragraph at lines 96--97
+Overfull \hbox (14.43234pt too wide) in paragraph at lines 96--97
 \OT1/cmr/m/n/10 bital ve-loc-ity was $7\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 6$ km/
 s and var-ied by as much as $0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1$ km/s. The in
--track lag was read- 
+-track lag is read- 
  []
 
 
-Overfull \hbox (4.25183pt too wide) in paragraph at lines 96--97
-\OT1/cmr/m/n/10 ily avail-able with the Global Po-si-tion-ing Sys-tem, which ma
-kes it easy to study pre-cip- 
+Overfull \hbox (2.83516pt too wide) in paragraph at lines 96--97
+\OT1/cmr/m/n/10 ily avail-able in the data files with the Global Po-si-tion-ing
+ Sys-tem, which makes it easy 
  []
 
 
-Overfull \hbox (9.59909pt too wide) in paragraph at lines 96--97
-\OT1/cmr/m/n/10 i-ta-tion phe-nom-ena ob-served at the same time, and at the sa
-me po-si-tion by shift-ing one 
+Overfull \hbox (7.96019pt too wide) in paragraph at lines 96--97
+\OT1/cmr/m/n/10 to study pre-cip-i-ta-tion phe-nom-ena ob-served at the same ti
+me, and at the same po-si-tion 
  []
 
 
@@ -1039,21 +1039,21 @@ Overfull \hbox (2.37682pt too wide) in paragraph at lines 98--99
  []
 
 
-Overfull \hbox (6.98778pt too wide) in paragraph at lines 102--103
-[]\OT1/cmr/m/n/10 The 10 Hz data was used to iden-tify cur-tains with two cri-t
-e-ria that are de-scribed 
+Overfull \hbox (21.65453pt too wide) in paragraph at lines 102--103
+[]\OT1/cmr/m/n/10 The 10 Hz data was used to iden-tify cur-tains us-ing the fol
+-low-ing two cri-te-ria: a high 
  []
 
 
-Overfull \hbox (7.37685pt too wide) in paragraph at lines 102--103
-\OT1/cmr/m/n/10 be-low: a high spa-tial cor-re-la-tion, and promi-nently peaked
-. Be-fore we ap-plied the iden- 
+Overfull \hbox (7.71019pt too wide) in paragraph at lines 102--103
+\OT1/cmr/m/n/10 spa-tial cor-re-la-tion, and a promi-nent peak. Be-fore we ap-p
+lied the iden-ti-fi-ca-tion cri-te-ria, 
  []
 
 
-Overfull \hbox (15.93234pt too wide) in paragraph at lines 102--103
-\OT1/cmr/m/n/10 ti-fi-ca-tion cri-te-ria, the AC6-B time se-ries was shifted by
- the in-track lag to spa-tially align 
+Overfull \hbox (12.5434pt too wide) in paragraph at lines 102--103
+\OT1/cmr/m/n/10 the AC6-B time se-ries was shifted by the in-track lag to spa-t
+ially align it with the AC6- 
  []
 
 
@@ -1106,40 +1106,58 @@ Overfull \hbox (7.42535pt too wide) in paragraph at lines 104--105
  []
 
 
-Overfull \hbox (7.93231pt too wide) in paragraph at lines 106--107
-[]\OT1/cmr/m/n/10 We tuned the de-tec-tion pa-ram-e-ters to iden-tify many can-
-di-date cur-tains while be- 
+Overfull \hbox (4.87675pt too wide) in paragraph at lines 106--107
+[]\OT1/cmr/m/n/10 We tuned the au-to-mated de-tec-tion pa-ram-e-ters to iden-ti
+fy a large num-ber of cur- 
  []
 
 
-Overfull \hbox (14.54349pt too wide) in paragraph at lines 106--107
-\OT1/cmr/m/n/10 ing fea-si-ble to check ev-ery de-tec-tion. One au-thor vi-su-a
-lly in-spected 6,149 can-di-date cur- 
+Overfull \hbox (3.2934pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 tains while re-duc-ing the num-ber of false pos-i-tive de-tec-t
+ions. Once cur-tains were au-to- 
  []
 
 
-Overfull \hbox (18.57129pt too wide) in paragraph at lines 106--107
-\OT1/cmr/m/n/10 tains and 1,634 qual-ity cur-tains were con-firmed. Four cur-ta
-in ex-am-ples are shown in Fig. 
+Overfull \hbox (13.09914pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 mat-i-cally iden-ti-fied, one au-thor vi-su-ally in-spected []6
+,149 (TMI?)[] ev-ery can-di-date cur-tain 
  []
 
 
-Overfull \hbox (17.68233pt too wide) in paragraph at lines 106--107
-\OT1/cmr/m/n/10 1[]. In each ex-am-ple, the un-mod-i-fied time se-ries is shown
- in the top row and the spatially- 
+Overfull \hbox (0.32123pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 and ver-i-fied 1,634 cur-tains. The vi-sual in-spec-tion was pe
+r-formed to re-move false pos- 
  []
 
 
-Overfull \hbox (13.29343pt too wide) in paragraph at lines 106--107
-\OT1/cmr/m/n/10 aligned time se-ries the bot-tom row. The in-track lag used to 
-shift the bot-tom row is an- 
+Overfull \hbox (12.7379pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 i-tive de-tec-tions that were trig-gered by: count rate shoul-d
+ers, low back-grounds, and high 
  []
 
 
-Overfull \hbox (2.46362pt too wide) in paragraph at lines 106--107
-\OT1/cmr/m/n/10 no-tated by $\OML/cmm/m/it/10 dt$\OT1/cmr/m/n/10 , cor-re-spond
--ing to an AC6 in-track sep-a-ra-tion an-no-tated by $\OML/cmm/m/it/10 s$\OT1/c
-mr/m/n/10 . The bot- 
+Overfull \hbox (13.07126pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 cor-re-la-tions re-sult-ing from Pois-son noise. Four cur-tain 
+ex-am-ples are shown in Fig. 1[]. In 
+ []
+
+
+Overfull \hbox (24.07126pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 each ex-am-ple, the un-mod-i-fied time se-ries is shown in the 
+top row and the spatially-aligned 
+ []
+
+
+Overfull \hbox (8.849pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 time se-ries the bot-tom row. The in-track lag used to shift th
+e bot-tom row is an-no-tated 
+ []
+
+
+Overfull \hbox (27.60252pt too wide) in paragraph at lines 106--107
+\OT1/cmr/m/n/10 by $\OML/cmm/m/it/10 dt$\OT1/cmr/m/n/10 , cor-re-spond-ing to a
+n AC6 in-track sep-a-ra-tion an-no-tated by $\OML/cmm/m/it/10 s$\OT1/cmr/m/n/10
+ . The bot-tom row shows 
  []
 
 
@@ -1341,7 +1359,7 @@ ns ob-served in the BLC re-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4291) has occurred while \output is active []
 
  [5 <./figures/fig1.pdf>]
 Overfull \hbox (11.09898pt too wide) in paragraph at lines 124--125
@@ -2784,7 +2802,7 @@ Here is how much of TeX's memory you used:
  7001 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1630b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1647b,336s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2804,7 +2822,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (16 pages, 524005 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (16 pages, 524220 bytes).
 PDF statistics:
  502 PDF objects out of 1000 (max. 8388607)
  150 compressed objects within 2 object streams
