@@ -897,6 +897,41 @@ Randall, C\BPBI E.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Selesnick%
+, Blake%
+\BCBL {}\ \BBA {} Mewaldt%
+}{%
+Selesnick%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2003}}%
+}]{%
+Selesnick2003}
+\APACinsertmetastar {%
+Selesnick2003}%
+\begin{APACrefauthors}%
+Selesnick, R\BPBI S.%
+, Blake, J\BPBI B.%
+\BCBL {}\ \BBA {} Mewaldt, R\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2003}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Atmospheric losses of radiation belt electrons}
+  {Atmospheric losses of radiation belt electrons}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{108}{A12}{}.
+\newblock
+\begin{APACrefURL} \url{http://dx.doi.org/10.1029/2003JA010160}
+  \end{APACrefURL}
+\newblock
+\APACrefnote{1468}
+\newblock
+\begin{APACrefDOI} \doi{10.1029/2003JA010160} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Sepp{\"a}l{\"a}%
 \ \protect \BOthers {.}}{%
 Sepp{\"a}l{\"a}%
