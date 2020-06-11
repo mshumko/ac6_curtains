@@ -5,7 +5,8 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import os
+# import os
+import pathlib
 
 import uncertainties as unc  
 import uncertainties.unumpy as unp
@@ -13,43 +14,58 @@ import uncertainties.unumpy as unp
 import dirs
 
 include_microbursts = False
+load_AE_norm = True
+
+bin_width = 100
+bins = np.arange(0, 1600, bin_width)
 
 # Load the curtain catalog
 cat_name = 'AC6_curtains_baseline_method_sorted_v0.txt'
-cat_path = os.path.join(dirs.CATALOG_DIR, cat_name)
+cat_path = pathlib.Path(dirs.CATALOG_DIR, cat_name)
 curtain_cat = pd.read_csv(cat_path)
 curtain_cat['dateTime'] = pd.to_datetime(curtain_cat['dateTime'])
 
 # Load the microburst catalog
 burst_name = 'AC6_microbursts_sorted_v6.txt'
-burst_path = os.path.join(dirs.CATALOG_DIR, burst_name)
+burst_path = pathlib.Path(dirs.CATALOG_DIR, burst_name)
 burst_cat = pd.read_csv(burst_path)
 
-# Load the AE index for all of the years that curtains 
-# were observed
-ae_dir = os.path.join(dirs.BASE_DIR, 'data', 'ae')
-years = sorted(set(curtain_cat['dateTime'].dt.year))
-ae = pd.DataFrame(data=np.zeros((0, 1)), columns=['AE'])
 
-for year in years:
-    ae_path = os.path.join(ae_dir, f'{year}_ae.txt')
-    year_ae = pd.read_csv(ae_path, delim_whitespace=True, 
-                    usecols=[0, 1, 3], skiprows=14, 
-                    parse_dates=[['DATE', 'TIME']])
-    year_ae.index=year_ae.DATE_TIME
-    del year_ae['DATE_TIME']
-    ae = ae.append(year_ae)
+if load_AE_norm:
+    # Load the AE normalization
+    ae = pd.read_csv(pathlib.Path(dirs.NORM_DIR, 'AE_10Hz_AE.csv'), index_col=0)
+    # ae = ae.loc[bins[0]:bins[:-1]]
+    H_AE = ae.groupby(ae.index//bin_width).sum()
+    H_AE.index = H_AE.index*bin_width
+    # Filter to the bin extent
+    H_AE = H_AE.loc[bins[0]:bins[-2]]
+    H_AE = H_AE['10Hz_samples'].values
+    H_AE_density = H_AE/(sum(H_AE)*bin_width)
 
-bin_width = 100
-bins = np.arange(0, 1600, bin_width)
+else:
+    # Load the AE index for all of the years that curtains 
+    # were observed
+    ae_dir = pathlib.Path(dirs.BASE_DIR, 'data', 'ae')
+    years = sorted(set(curtain_cat['dateTime'].dt.year))
+    ae = pd.DataFrame(data=np.zeros((0, 1)), columns=['AE'])
+
+    for year in years:
+        ae_path = pathlib.Path(ae_dir, f'{year}_ae.txt')
+        year_ae = pd.read_csv(ae_path, delim_whitespace=True, 
+                        usecols=[0, 1, 3], skiprows=14, 
+                        parse_dates=[['DATE', 'TIME']])
+        year_ae.index=year_ae.DATE_TIME
+        del year_ae['DATE_TIME']
+        ae = ae.append(year_ae)
+
+    H_AE, _ = np.histogram(ae['AE'], density=False, bins=bins)
+    H_AE_density, _ = np.histogram(ae['AE'], density=True, bins=bins)
 
 def hist_density(dist, bin_width):
     """ Normalize a histogram to a PDF """
     dist = dist / (np.sum(dist)*bin_width)
     return dist
 
-H_AE, _ = np.histogram(ae['AE'], density=False, bins=bins)
-H_AE_density, _ = np.histogram(ae['AE'], density=True, bins=bins)
 H_c, _  = np.histogram(curtain_cat['AE'], density=False, bins=bins)
 H_m, _  = np.histogram(burst_cat['AE'], density=False, bins=bins)
 
@@ -102,7 +118,7 @@ ax[0].set(xlabel='AE [nT]', ylabel='Probability density',
         xlim=(0, 1000), ylim=(0, 1.1*np.max(H_AE_density)))
 ax[0].text(0.01, 0.98, '(a) Unnormalized', ha='left', va='top', 
         transform=ax[0].transAxes, fontsize=15)
-ax[1].set(xlabel='AE [nT]', ylim=(0, None))
+ax[1].set(xlabel='AE [nT]', ylim=(0, 1.1*np.max(unp.nominal_values(H_m_norm_density))))
 if include_microbursts:
     plt.suptitle('The distributions of the Auroral Electrojet index for curtains and microbursts', fontsize=15)
     ax[1].legend(handles=[ae_plot[0], curtain_plot[0], microburst_plot[0]], loc=1)
