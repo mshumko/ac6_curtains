@@ -12,7 +12,7 @@ Script to calculate the curtain width statistics.
 similar_thresh = 0.25
 include_microbursts = False
 
-curtain_catalog_name='AC6_curtains_baseline_method_sorted_v0.txt'
+curtain_catalog_name='AC6_curtains_baseline_method_sorted_v0.csv'
 curtain_catalog_path = os.path.join(dirs.CATALOG_DIR, curtain_catalog_name)
 curtain_cat = pd.read_csv(curtain_catalog_path)
 

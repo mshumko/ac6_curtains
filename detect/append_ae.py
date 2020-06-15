@@ -69,4 +69,4 @@ class Append_AE:
         return
 
 if __name__ == '__main__':
-    a = Append_AE('AC6_curtains_baseline_method_sorted_v0.txt')
+    a = Append_AE('AC6_curtains_baseline_method_sorted_v0.csv')

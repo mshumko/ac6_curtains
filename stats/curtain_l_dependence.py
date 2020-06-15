@@ -6,7 +6,7 @@ import numpy as np
 import dirs
 
 df = pd.read_csv(os.path.join(dirs.CATALOG_DIR, 
-'AC6_curtains_baseline_method_sorted_v0.txt'))
+'AC6_curtains_baseline_method_sorted_v0.csv'))
 
 df_morning = df[(df.MLT_OPQ > 7) & (df.MLT_OPQ < 13)]
 df_night = df[(df.MLT_OPQ > 18) & (df.MLT_OPQ < 24)]

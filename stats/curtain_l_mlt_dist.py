@@ -10,7 +10,7 @@ plt.rcParams.update({'font.size':13})
 
 import dirs
 
-CATALOG_NAME = 'AC6_curtains_baseline_method_sorted_v0.txt'
+CATALOG_NAME = 'AC6_curtains_baseline_method_sorted_v0.csv'
 CATALOG_PATH = os.path.join(dirs.CATALOG_DIR, CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
 NORM_FLAG = False

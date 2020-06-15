@@ -6,7 +6,7 @@ import numpy as np
 import dirs
 
 cat_path = pathlib.Path(dirs.CATALOG_DIR, 
-        'AC6_curtains_baseline_method_sorted_v0.txt')
+        'AC6_curtains_baseline_method_sorted_v0.csv')
 cat = pd.read_csv(cat_path)
 
 # Load normalization file

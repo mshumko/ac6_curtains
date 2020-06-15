@@ -10,7 +10,7 @@ import string
 import dirs
 
 # Load the curtain catalog
-cat_name = 'AC6_curtains_baseline_method_sorted_v0.txt'
+cat_name = 'AC6_curtains_baseline_method_sorted_v0.csv'
 cat_path = os.path.join(dirs.CATALOG_DIR, cat_name)
 cat = pd.read_csv(cat_path)
 cat['dateTime'] = pd.to_datetime(cat['dateTime'])

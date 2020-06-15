@@ -136,6 +136,6 @@ class Curtain_Width(detect_daily.DetectDailyCurtains):
 
 
 if __name__ == '__main__':
-    c = Curtain_Width('AC6_curtains_baseline_method_sorted_v0.txt')
+    c = Curtain_Width('AC6_curtains_baseline_method_sorted_v0.csv')
     c.loop(test_plots=False)
     c.save_catalog()

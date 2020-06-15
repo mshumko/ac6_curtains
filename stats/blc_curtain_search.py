@@ -4,7 +4,7 @@ import pandas as pd
 import os
 
 BASE_DIR = '/home/mike/research/ac6_curtains/'
-CATALOG_NAME = 'AC6_curtains_baseline_method_sorted_v0.txt'
+CATALOG_NAME = 'AC6_curtains_baseline_method_sorted_v0.csv'
 CATALOG_PATH = os.path.join(BASE_DIR, 'data/catalogs', CATALOG_NAME)
 cat = pd.read_csv(CATALOG_PATH)
 

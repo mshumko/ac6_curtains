@@ -94,7 +94,7 @@ plt.clabel(CS, inline=1, fontsize=10, fmt='%d')
 
 # Load the curtain catalog.
 df_cat = pd.read_csv(os.path.join(dirs.CATALOG_DIR, 
-                    'AC6_curtains_baseline_method_sorted_v0.txt'), index_col=0)
+                    'AC6_curtains_baseline_method_sorted_v0.csv'), index_col=0)
 df_cat.index = pd.to_datetime(df_cat.index)
 coords = np.nan*np.zeros((len(curtain_times), 2))
 

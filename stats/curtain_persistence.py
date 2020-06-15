@@ -11,7 +11,7 @@ import uncertainties.unumpy as unp
 import dirs
 
 # Load the curtain catalog
-cat_name = 'AC6_curtains_baseline_method_sorted_v0.txt'
+cat_name = 'AC6_curtains_baseline_method_sorted_v0.csv'
 cat_path = pathlib.Path(dirs.CATALOG_DIR, cat_name)
 cat = pd.read_csv(cat_path)
 

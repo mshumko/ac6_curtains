@@ -20,7 +20,7 @@ bin_width = 100
 bins = np.arange(0, 1600, bin_width)
 
 # Load the curtain catalog
-cat_name = 'AC6_curtains_baseline_method_sorted_v0.txt'
+cat_name = 'AC6_curtains_baseline_method_sorted_v0.csv'
 cat_path = pathlib.Path(dirs.CATALOG_DIR, cat_name)
 curtain_cat = pd.read_csv(cat_path)
 curtain_cat['dateTime'] = pd.to_datetime(curtain_cat['dateTime'])
