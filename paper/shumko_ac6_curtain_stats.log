@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  16 JUN 2020 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  17 JUN 2020 12:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -368,8 +368,8 @@ Overfull \hbox (10.04355pt too wide) in paragraph at lines 73--75
 
 
 Overfull \hbox (7.599pt too wide) in paragraph at lines 73--75
-\OT1/cmr/m/n/10 and cur-tains are ob-served more of-ten dur-ing []times of en-h
-anced Au-ro-ral Elec-tro-jet[]. We 
+\OT1/cmr/m/n/10 and cur-tains are ob-served more of-ten dur-ing times of en-han
+ced Au-ro-ral Elec-tro-jet. We 
  []
 
 
@@ -717,21 +717,21 @@ c-tion, if any, be-tween mi-crobursts
  []
 
 
-Overfull \hbox (0.46011pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 and cur-tains. []Delete? $\OMS/cmsy/m/n/10 !$[] \OT1/cmr/m/n/10
- Cur-tains and mi-crobursts can be eas-ily misiden-ti-fied from a 
+Overfull \hbox (8.21013pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 and cur-tains. Cur-tains and mi-crobursts can be eas-ily miside
+n-ti-fied from a sin-gle space- 
  []
 
 
-Overfull \hbox (13.48781pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 sin-gle space-craft so we may need to reeval-u-ate single-satel
-lite mi-croburst stud-ies. If cur- 
+Overfull \hbox (14.29338pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 craft so we may need to reeval-u-ate single-satellite mi-crobur
+st stud-ies. If cur-tains are nu- 
  []
 
 
-Overfull \hbox (3.07126pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 tains are nu-mer-ous, then the at-mo-spheric and mag-ne-to-sphe
-ric im-pact as-so-ci-ated with 
+Overfull \hbox (1.71016pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 mer-ous, then the at-mo-spheric and mag-ne-to-spheric im-pact a
+s-so-ci-ated with mi-croburst 
  []
 
 
@@ -1100,21 +1100,15 @@ e $\OML/cmm/m/it/10 B[]$\OT1/cmr/m/n/10 , in other words
  []
 
 
-Overfull \hbox (10.57127pt too wide) in paragraph at lines 104--105
-\OT1/cmr/m/n/10 ment.[] One bias in-her-ent to this de-tec-tion al-go-rithm, an
-d sim-i-lar al-go-rithms such as the 
+Overfull \hbox (12.68242pt too wide) in paragraph at lines 104--105
+\OT1/cmr/m/n/10 de-tec-tion al-go-rithm, and sim-i-lar al-go-rithms such as the
+ burst pa-ram-e-ter []O'Brien et al.[], 
  []
 
 
-Overfull \hbox (13.15457pt too wide) in paragraph at lines 104--105
-\OT1/cmr/m/n/10 burst pa-ram-e-ter []O'Brien et al.[], 2003), is a re-duced sen
--si-tiv-ity for wider peaks. For cur- 
- []
-
-
-Overfull \hbox (11.40637pt too wide) in paragraph at lines 104--105
-\OT1/cmr/m/n/10 tains with a width sim-i-lar to $\OML/cmm/m/it/10 B[]$\OT1/cmr/
-m/n/10 , the base-line will be el-e-vated mak-ing the cur-tain peak 
+Overfull \hbox (13.76746pt too wide) in paragraph at lines 104--105
+\OT1/cmr/m/n/10 2003), is a re-duced sen-si-tiv-ity for wider peaks. For cur-ta
+ins with a width sim-i-lar to $\OML/cmm/m/it/10 B[]$\OT1/cmr/m/n/10 , 
  []
 
 
@@ -1836,19 +1830,19 @@ o the mag-netic equa-tor, these
 
 Overfull \hbox (9.5156pt too wide) in paragraph at lines 168--169
 \OT1/cmr/m/n/10 widths cor-re-spond to a source with a ra-dial scale size of a 
-few hun-dred kilo-me-ters. []The 
+few hun-dred kilo-me-ters. The 
  []
 
 
-Overfull \hbox (2.71014pt too wide) in paragraph at lines 168--169
-\OT1/cmr/m/n/10 re-duced sen-si-tiv-ity of the de-tec-tion al-go-rithm de-scrib
-ed in Sec-tion 4.1[] does not sig-nif- 
+Overfull \hbox (10.21016pt too wide) in paragraph at lines 168--169
+\OT1/cmr/m/n/10 re-duced sen-si-tiv-ity of the de-tec-tion al-go-rithm, as de-s
+cribed in Sec-tion 4.1[], is un-likely to 
  []
 
 
-Overfull \hbox (6.93236pt too wide) in paragraph at lines 168--169
-\OT1/cmr/m/n/10 i-cantly un-der-es-ti-mate the cur-tain width dis-tri-bu-tion b
-e-cause most cur-tain widths were 
+Overfull \hbox (6.12686pt too wide) in paragraph at lines 168--169
+\OT1/cmr/m/n/10 sig-nif-i-cantly un-der-es-ti-mate the cur-tain width dis-tri-b
+u-tion be-cause most cur-tains had a 
  []
 
 
@@ -1858,15 +1852,15 @@ main-tain a fine and nar-
  []
 
 
-Overfull \hbox (9.04338pt too wide) in paragraph at lines 170--171
+Overfull \hbox (19.82117pt too wide) in paragraph at lines 170--171
 \OT1/cmr/m/n/10 row struc-ture af-ter mul-ti-ple sec-onds with lit-tle ob-serv-
-able dif-fer-ence. []Dou-ble check this 
+able dif-fer-ence. How-ever, some-times 
  []
 
 
-Overfull \hbox (0.7657pt too wide) in paragraph at lines 170--171
-\OT1/cmr/m/n/10 and maybe in-clude plot?[] How-ever, some cur-tains ap-pear to 
-be slightly and sys-tem-at- 
+Overfull \hbox (5.73804pt too wide) in paragraph at lines 170--171
+\OT1/cmr/m/n/10 cur-tains ap-pear to be slightly and sys-tem-at-i-cally shifted
+ in lat-i-tude, while main-tain-ing 
  []
 
 
@@ -2802,7 +2796,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (16 pages, 526443 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (16 pages, 526090 bytes).
 PDF statistics:
  501 PDF objects out of 1000 (max. 8388607)
  149 compressed objects within 2 object streams
