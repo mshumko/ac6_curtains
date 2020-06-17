@@ -228,23 +228,44 @@ class PlotCurtains:
                 f'peak_width_B = {round(row["peak_width_B"], 2)} s\n'
                 f'AE = {row["AE"]}, L = {round(row["Lm_OPQ"], 1)}, L = {round(row["MLT_OPQ"], 1)}')
             ax[0].text(0.02, 1, s, transform=ax[0].transAxes, va='top')
-            
-        # Print the time shift seconds
+
         if row.Lag_In_Track > 0:
-            ax[1].text(0.02, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} [s]', 
-                        transform=ax[1].transAxes, va='top')
+            leading_unit = 'A'
         else:
-            ax[1].text(0.02, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} [s]', 
+            leading_unit = 'B'
+            
+        annotate_str = (f'L = {round(row.Lm_OPQ, 1)}\n'
+                        f'MLT = {round(row.MLT_OPQ, 1)}\n'
+                        f'lat = {round(row.lat, 1)} [deg]\n'
+                        f'lon = {round(row.lon, 1)} [deg]\n'
+                        f'alt = {round(row.alt, 1)} [km]\n'
+                        f'dt = {round(row.Lag_In_Track, 1)} [s] (AC6-{leading_unit} ahead)\n'
+                        f'AE = {row.AE} [nT]'
+                        )
+        ax[1].text(0.02, 0.98, annotate_str, 
                         transform=ax[1].transAxes, va='top')
+        # # Print the time shift seconds
+        # if row.Lag_In_Track > 0:
+        #     ax[1].text(0.02, 0.98, f'AC6A ahead by = {round(row.Lag_In_Track, 1)} [s]', 
+        #                 transform=ax[1].transAxes, va='top')
+        # else:
+        #     ax[1].text(0.02, 0.98, f'AC6B ahead by = {abs(round(row.Lag_In_Track, 1))} [s]', 
+        #                 transform=ax[1].transAxes, va='top')
 
         # pos_str = (f'lat={round(row.lat)}, lon={round(row.lon)}, alt={round(row.alt)} [km]\n'
         #             f'Loss_Cone_Type={row.Loss_Cone_Type}\n'
         #             f'AE={row.AE} [nT]')
         # ax[1].text(0.02, 0.9, pos_str, transform=ax[1].transAxes, va='top')
 
-        ax[1].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=3))
+        # ax[1].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=3))
 
-        # self.gs.tight_layout(self.fig)
+        ax[1].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%S'))
+        ax[1].xaxis.set_minor_locator(matplotlib.dates.SecondLocator(interval=1))
+        formatted_start_time = datetime.strftime(row.dateTime-self.plot_width/2, "%Y/%m/%d %H:%M:00")
+        xlabel = (f'AC6A seconds after\n{formatted_start_time}')
+        ax[1].set_xlabel(xlabel)
+
+        self.gs.tight_layout(self.fig)
 
         if savefig:
             save_name = '{0:%Y%m%d_%H%M%S}_ac6_curtain_validation.png'.format(
@@ -283,8 +304,9 @@ class PlotCurtains:
 
 if __name__ == '__main__':
     version = 0
-    plot_width = 15
-    catalog_name = f'AC6_curtains_themis_asi_5deg.csv'
+    plot_width = 20
+    #catalog_name = f'AC6_curtains_themis_asi_5deg.csv'
+    catalog_name = f'AC6_curtains_baseline_method_sorted_v0.csv'
     p = PlotCurtains(version, catalog_name=catalog_name, plot_width=plot_width)
     # p.filter_catalog(filterDict={'Loss_Cone_Type':2}, defaultFilter=False)
     #p.filter_catalog(filterDict={'Lag_In_Track':[30, 100]}, defaultFilter=False)
