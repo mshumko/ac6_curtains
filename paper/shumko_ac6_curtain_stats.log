@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  19 JUN 2020 12:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  19 JUN 2020 13:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1498,11 +1498,10 @@ Overfull \hbox (16.21017pt too wide) in paragraph at lines 130--131
 -rower than 10 km in lat-i-tude, 
  []
 
-<figures/ac6_curtain_width_dist.pdf, id=96, 462.52798pt x 346.89601pt>
-File: figures/ac6_curtain_width_dist.pdf Graphic file (type pdf)
-<use figures/ac6_curtain_width_dist.pdf>
-Package pdftex.def Info: figures/ac6_curtain_width_dist.pdf  used on input line
- 133.
+<figures/fig2.pdf, id=96, 462.52798pt x 346.89601pt>
+File: figures/fig2.pdf Graphic file (type pdf)
+<use figures/fig2.pdf>
+Package pdftex.def Info: figures/fig2.pdf  used on input line 133.
 (pdftex.def)             Requested size: 397.48499pt x 298.12889pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 134--134
@@ -1544,7 +1543,7 @@ ows an en-hanced cur-tain oc-cur-rence
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-[7 <./figures/ac6_curtain_width_dist.pdf>]
+[7 <./figures/fig2.pdf>]
 Overfull \hbox (19.93236pt too wide) in paragraph at lines 141--142
 []\OT1/cmr/m/n/10 We also ex-am-ine the ge-o-mag-netic con-di-tions fa-vor-able
  for cur-tains. Fig-ure 4[]a shows 
@@ -1598,10 +1597,10 @@ Overfull \hbox (16.7934pt too wide) in paragraph at lines 141--142
 -rence fre-quency in-creases with 
  []
 
-<figures/fig2_3.pdf, id=148, 1011.78pt x 361.35pt>
-File: figures/fig2_3.pdf Graphic file (type pdf)
-<use figures/fig2_3.pdf>
-Package pdftex.def Info: figures/fig2_3.pdf  used on input line 144.
+<figures/fig3_v3.pdf, id=148, 1011.78pt x 361.35pt>
+File: figures/fig3_v3.pdf Graphic file (type pdf)
+<use figures/fig3_v3.pdf>
+Package pdftex.def Info: figures/fig3_v3.pdf  used on input line 144.
 (pdftex.def)             Requested size: 397.48499pt x 141.96251pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 145--145
@@ -1627,11 +1626,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 145--145
 In panel c the white bins show
  []
 
-<figures/ac6_curtain_AE_dist.pdf, id=149, 650.43pt x 331.71931pt>
-File: figures/ac6_curtain_AE_dist.pdf Graphic file (type pdf)
-<use figures/ac6_curtain_AE_dist.pdf>
-Package pdftex.def Info: figures/ac6_curtain_AE_dist.pdf  used on input line 15
-0.
+<figures/fig4.pdf, id=149, 650.43pt x 331.71931pt>
+File: figures/fig4.pdf Graphic file (type pdf)
+<use figures/fig4.pdf>
+Package pdftex.def Info: figures/fig4.pdf  used on input line 150.
 (pdftex.def)             Requested size: 397.48499pt x 202.72304pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 151--151
@@ -1741,10 +1739,10 @@ Overfull \hbox (20.01555pt too wide) in paragraph at lines 158--159
 in Fig. 5[]a with the red stars 
  []
 
-<figures/fig3.pdf, id=150, 650.43pt x 505.89pt>
-File: figures/fig3.pdf Graphic file (type pdf)
-<use figures/fig3.pdf>
-Package pdftex.def Info: figures/fig3.pdf  used on input line 161.
+<figures/fig5.pdf, id=150, 650.43pt x 505.89pt>
+File: figures/fig5.pdf Graphic file (type pdf)
+<use figures/fig5.pdf>
+Package pdftex.def Info: figures/fig5.pdf  used on input line 161.
 (pdftex.def)             Requested size: 397.48499pt x 309.16367pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 162--162
@@ -1803,7 +1801,7 @@ nd MLT rounded to the near-est in-te-ger. AC6-A was ahead in all
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./figures/fig2_3.pdf>]
+ [8 <./figures/fig3_v3.pdf>]
 Overfull \hbox (1.65453pt too wide) in paragraph at lines 168--169
 []\OT1/cmr/m/n/10 Curtains are nar-row in lat-i-tude. Fig-ure 2[] shows that th
 e width of most cur-tains 
@@ -1890,7 +1888,7 @@ Overfull \hbox (7.09903pt too wide) in paragraph at lines 173--174
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9 <./figures/ac6_curtain_AE_dist.pdf>] [10 <./figures/fig3.pdf>]
+ [9 <./figures/fig4.pdf>] [10 <./figures/fig5.pdf>]
 Overfull \hbox (15.15456pt too wide) in paragraph at lines 176--177
 []\OT1/cmr/m/n/10 The hand-ful of cur-tains ob-served in the bounce loss cone, 
 and shown in Fig. 5[], put 
@@ -2759,7 +2757,7 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  3510 strings out of 492982
- 48543 string characters out of 6134897
+ 48383 string characters out of 6134897
  124262 words of memory out of 5000000
  7006 multiletter control sequences out of 15000+600000
  9949 words of font info for 36 fonts, out of 8000000 for 9000
@@ -2784,7 +2782,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (16 pages, 526511 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (16 pages, 526467 bytes).
 PDF statistics:
  501 PDF objects out of 1000 (max. 8388607)
  149 compressed objects within 2 object streams
