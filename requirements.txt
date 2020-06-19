@@ -1,3 +1,7 @@
+# Install with these two steps:
+# python3.8 -m venv env
+# pip3.8 install -r requirements.txt
+
 astropy==4.0.1.post1
 Cartopy==0.17.0
 cdflib==0.3.18
