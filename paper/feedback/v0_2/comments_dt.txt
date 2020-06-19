@@ -1,46 +1,75 @@
-Hi Mike,
+﻿Hi Mike,
 
 So very sorry for the late response here. Somehow, I've become more busy now that we are locked down in pandemic mode.  The joys of having no boundary between work and home, I guess.  My comments are below.  Mostly just easy stuff except for the last bit.  I don't agree with your interpretation of the curtains in the BLC... we can chat over the phone or zoom about all that if you want.  Just let me know.  Thanks for including me on this... once finalized, it is going to be a really impactful set of papers combined with the microburst flashes work.
 
 Notes for Mike on the curtain precipitation with AC6 study:
 
- 
 
 Line#: Comment
 
 Key Point 2: “20 km in latitude” doesn’t work (units mismatch); I would say “20km in the latitudinal direction” or “north-south direction”
+
 Key Point 3: 6 seconds needs to be compared with the drft time scales on that L-shell… drift periods are much longer (>10 mins), so curtains lasting 6-seconds aren’t too hard to swallow. You sure you want to make that a key point?  For example, in the abstract, you then say they can be observed up to 65 seconds later… that is a lot more than 6 seconds (and more interesting); maybe you mean 6-sec is interesting cuz that is longer than the BLC and thus they are definitely electrons drifting in the DLC???  This whole BLC vs. DLC picture needs to be cleaned up and presented more coherently throughout (see more comments below)
+
 16: “Precipitation curtains of energetic electrons are…” : “curtains” are not yet well enough established terminology to just throw out loosely here
+
 17-19: you use the word “observed” here twice in the same sentence… consider rewording: “Curtains are observed i) over sequential passes…., ii) over a variety…. , and iii) by the following spacecraft…”
+
 23: again, “km in latitude” has a units mismatch; see point above for fix here
+
 28: “region OVER the North Atlantic, whose…” change “in” to “over” and remove “Ocean” here
+
 30: “source of >30 keV electrons into the atmosphere” strongly suggest rewording this. Precipitation is a loss process for electrons, so using the word source (while I get what you’re trying to say…) is quite misleading here. “…curtains may represent a significant loss of >30 keV electrons from the outer radiation belt and source of energy input into the ionosphere/thermosphere system.”
+
 45: “degradation” misspelled here
-31: “Plain Language Summary” shouldn’t be section 1
+
+NOT DONE 31: “Plain Language Summary” shouldn’t be section 1
+
 48: same thing with “curtain electron precipitation” you need to explain why they are called curtains in the first place! The intro here has to be overhauled completely for clarity… start with what precipitation is in the radiation belts in general then go to microbursts, then the Blake and O’Brien results and how only with 2 s/c can you tell the difference between narrow, spatial “curtains” of precipitation vs. fast, temporal “flashes” of precipitation (classic interpretation of microbursts).  Put it all into context walking through the history of the topic with adequate referencing.  This first version needs to give a lot more credit to where it is due on the early works on microbursts with SAMPEX…
 Introduction: this needs to be overhauled and reordered as suggested above.
-115: add “actively” to “able to actively maintain a separation” or somehow otherwise imply that the separation was controlled using the differential drag.  You should say that phrase explicitly as well, “separation controlled using differential drag”
+
+115: add “actively” to “able to actively maintain a separation” or somehow otherwise imply that the separation was controlled using the differential drag. You should say that phrase explicitly as well, “separation controlled using differential drag”
+
 122-124: that last sentence can be improved.  Basically, say something along the lines of “With two spacecraft separated along the same orbit, spatiotemporal ambiguity can be removed in the time series data.” Or something like that
+
 138: “data were used” -> data is a plural word
+
 149: Why is “B” used for “B10”?  for Baseline? That might confuse or mislead some people that just always think of B as magnetic field.  Could you make it “b10” (lower case) instead?
+
 150: is that equation correct?  The sqrt(B10) part assumes those are just counts, not count rates… the data are neither.  The data are dose rates. The actual sigma should be used there, not the sqrt(B10) approximation.
+
 152-153: this means that the algorithm didn’t work well?  As written, it seems like ¾ of the data were falsely identified by the algorithm…
+
 161: instead of “drifting and precipitating” I would say “between drift loss cone and bounce loss cone”; technically, the electrons in the drift loss cone are BOTH drifting AND precipitating… they just take a longer time to precipitate than the bounce loss cone electrons
+
 163: same thing… don’t just say “precipitating” and “drifting” … it is technically incorrect.  Say electrons in the drift loss cone or bounce loss cone
+
 162-164: this sentence confuses me… distinguishing requires an accurate field model (like IGRF) and is very much location dependent (Lat, Lon, and Alt)
+
 173: “quasi-trapped” is not good here.  DLC electrons WILL be lost… they are in the act of precipitation, just at slower time scales than BLC electrons; consider rewording
+
 Results: I really like how you organized the results section!
+
 215: so this definition means that multiple curtains can “add up” and smear out the width in the time-series, right? 
+
 220: again “in the latitudinal direction”
-222: your reference is 2020 (not 2019): Shumko, M., Johnson, A. T., Sample, J. G., Griffith, B. A.,
+
+DONE 222: your reference is 2020 (not 2019): Shumko, M., Johnson, A. T., Sample, J. G., Griffith, B. A.,
 Turner, D. L., O'Brien, T. P., et al. (2020). Electron microburst size distribution derived with AeroCube-6. Journal of Geophysical Research: Space Physics, 125, e2019JA027651.
+
 224: “Thus the…” this makes no sense.  You’ve not proven any point in the sentence before that, so starting this one with “thus” is really confusing.  You’re missing a sentence here that actually quantifies the comparison between the flashes and the curtains…
+
 Around 224: you need more here… could these curtains just be the DLC component of the microburst flashes?  Basically, are they all just microbursts but the flashes are just in the BLC while the curtains are in the DLC?  Which type is observed more often by AC6?
+
 Figure 3: indicate which bins on there were NEVER observed by AC6.  Basically, distinguish somehow between bins that AC6 had observations in but no curtains were observed from bins (in L and MLT) in which AC6 just never went due to the orbit limitations
+
 Around 296: Concerning relationship to AE, you should cite stats from Meredith et al., W. Li et al., and I think Crew et al. (and maybe O’Brien?) showing chorus activity and microbursts are statistically correlated with AE activity
 307-309: I’m confused by your argument here.  If those electrons are just at the very end of the curtain (i.e., where those in the DLC curtain ultimately enter the BLC) then why is it any problem that those persist there?  The DLC electrons in the curtain keep wrapping into the BLC somewhere, why not there too?  You might want to rethink/reword this part… they were precipitating there for 6-seconds, but that just means that the electrons precipitation there kept drifting into that region for 6-seconds.  A curtain in the DLC NEEDS to do that somewhere… any particular curtain will dump its electrons into the BLC, at the longitude where the curtain ultimately ends, for as long in seconds as it takes for the length of curtain to drift into the BLC there. This whole section needs to be re-evaluated and reworked. This drastically affects your conclusions too…
-365: Odd reactive nitrogen is "NOx" , not "HOx" (HOx is odd reactive hydrogen).  Note too, “nitrogen” isn’t capitalized
+
+365: Odd reactive nitrogen is "NOx" , not "HOx" (HOx is odd reactive hydrogen). Note too, “nitrogen” isn’t capitalized
+
 Acknowledgements: please add the following for me: “DLT is thankful for funding from a NASA grant (prime award #: 80NSSC19K0280).”
+
  Thanks again, Mike!  Let me know if you have any questions on any of these comments/suggestions
 
 

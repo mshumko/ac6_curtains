@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  19 JUN 2020 10:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  19 JUN 2020 12:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1017,7 +1017,7 @@ s it pos-si-ble to study tran-
 
 Overfull \hbox (2.37682pt too wide) in paragraph at lines 98--99
 \OT1/cmr/m/n/10 sient elec-tron mi-croburst pre-cip-i-ta-tion []Shumko et al.[]
-, 2019) and now sta-tion-ary elec- 
+, 2020) and now sta-tion-ary elec- 
  []
 
 
@@ -1741,11 +1741,11 @@ Overfull \hbox (20.01555pt too wide) in paragraph at lines 158--159
 in Fig. 5[]a with the red stars 
  []
 
-<figures/fig3.pdf, id=150, 650.43pt x 484.9317pt>
+<figures/fig3.pdf, id=150, 650.43pt x 505.89pt>
 File: figures/fig3.pdf Graphic file (type pdf)
 <use figures/fig3.pdf>
 Package pdftex.def Info: figures/fig3.pdf  used on input line 161.
-(pdftex.def)             Requested size: 397.48499pt x 296.35545pt.
+(pdftex.def)             Requested size: 397.48499pt x 309.16367pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 162--162
 []\OT1/cmr/bx/n/9 Figure  5. \OT1/cmr/m/n/9 Cur-tains ob-served in the bounce l
@@ -2722,7 +2722,7 @@ er, D. L., O'Brien, T. P.,
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 974--993
-\OT1/cmr/m/n/10 ... Claude-pierre, S. G.  (2019).  Elec-tron mi-croburst size d
+\OT1/cmr/m/n/10 ... Claude-pierre, S. G.  (2020).  Elec-tron mi-croburst size d
 is-tri-bu-tion de- 
  []
 
@@ -2784,7 +2784,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (16 pages, 525957 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (16 pages, 526511 bytes).
 PDF statistics:
  501 PDF objects out of 1000 (max. 8388607)
  149 compressed objects within 2 object streams
