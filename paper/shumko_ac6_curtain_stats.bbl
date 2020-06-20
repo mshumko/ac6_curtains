@@ -579,10 +579,10 @@ Johnson, A.%
 \newblock
 \APACrefYearMonthDay{2020}{}{}.
 \newblock
-{\BBOQ}\APACrefatitle {The FIREBIRD-II CubeSat mission: Focused investigations
-  of relativistic electron burst intensity, range, and dynamics} {The
-  firebird-ii cubesat mission: Focused investigations of relativistic electron
-  burst intensity, range, and dynamics}.{\BBCQ}
+{\BBOQ}\APACrefatitle {The {FIREBIRD-II} {CubeSat} mission: Focused
+  investigations of relativistic electron burst intensity, range, and dynamics}
+  {The {FIREBIRD-II} {CubeSat} mission: Focused investigations of relativistic
+  electron burst intensity, range, and dynamics}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Review of Scientific Instruments}{91}{3}{034503}.
 \PrintBackRefs{\CurrentBib}
@@ -685,6 +685,39 @@ Lorentzen, K\BPBI R.%
   \end{APACrefURL}
 \newblock
 \begin{APACrefDOI} \doi{10.1029/2001GL012926} \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Marklund%
+\ \protect \BOthers {.}}{%
+Marklund%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2011}}%
+}]{%
+Marklund2011}
+\APACinsertmetastar {%
+Marklund2011}%
+\begin{APACrefauthors}%
+Marklund, G\BPBI T.%
+, Sadeghi, S.%
+, Cumnock, J\BPBI A.%
+, Karlsson, T.%
+, Lindqvist, P\BHBI A.%
+, Nilsson, H.%
+\BDBL {}others%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Evolution in space and time of the quasi-static
+  acceleration potential of inverted-V aurora and its interaction with
+  Alfv{\'e}nic boundary processes} {Evolution in space and time of the
+  quasi-static acceleration potential of inverted-v aurora and its interaction
+  with alfv{\'e}nic boundary processes}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{116}{A1}{}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
@@ -984,11 +1017,39 @@ Shumko, M.%
 \APACrefYearMonthDay{2020}{}{}.
 \newblock
 {\BBOQ}\APACrefatitle {Electron Microburst Size Distribution Derived with
-  AeroCube-6} {Electron microburst size distribution derived with
-  aerocube-6}.{\BBCQ}
+  {AeroCube-6}} {Electron microburst size distribution derived with
+  {AeroCube-6}}.{\BBCQ}
 \newblock
 \APACjournalVolNumPages{Journal of Geophysical Research: Space
   Physics}{}{}{e2019JA027651}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Thieman%
+\ \BBA {} Hoffman%
+}{%
+Thieman%
+\ \BBA {} Hoffman%
+}{%
+{\protect \APACyear {1985}}%
+}]{%
+Thieman1985}
+\APACinsertmetastar {%
+Thieman1985}%
+\begin{APACrefauthors}%
+Thieman, J\BPBI R.%
+\BCBT {}\ \BBA {} Hoffman, R\BPBI A.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1985}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Determination of inverted-V stability from Dynamics
+  Explorer satellite data} {Determination of inverted-v stability from dynamics
+  explorer satellite data}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space
+  Physics}{90}{A4}{3511--3516}.
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
