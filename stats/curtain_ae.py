@@ -89,7 +89,7 @@ fig, ax = plt.subplots(1, 2, sharex=True, sharey=False, figsize=(9,4))
 
 ### Plot the raw histograms
 ae_plot = ax[0].step(bins[:-1], H_AE_density, where='post', label='Index', 
-        c='k', lw=2)
+        c='k', lw=4)
 curtain_plot = ax[0].step(bins[:-1], unp.nominal_values(H_c_density), 
         where='post', label=f'Curtains', c='b', lw=2, linestyle='-')
 ax[0].errorbar(bins[:-1]+bin_width/2, unp.nominal_values(H_c_density), 
@@ -118,7 +118,7 @@ ax[0].set(xlabel='AE [nT]', ylabel='Probability density',
         xlim=(0, 1000), ylim=(0, 1.1*np.max(H_AE_density)))
 ax[0].text(0.01, 0.98, '(a) Unnormalized', ha='left', va='top', 
         transform=ax[0].transAxes, fontsize=15)
-ax[1].set(xlabel='AE [nT]', ylim=(0, 1.1*np.max(unp.nominal_values(H_m_norm_density))))
+ax[1].set(xlabel='AE [nT]', ylim=(0, 0.8*np.max(unp.nominal_values(H_m_norm_density))))
 if include_microbursts:
     plt.suptitle('The distributions of the Auroral Electrojet index for curtains and microbursts', fontsize=15)
     ax[1].legend(handles=[ae_plot[0], curtain_plot[0], microburst_plot[0]], loc=1)

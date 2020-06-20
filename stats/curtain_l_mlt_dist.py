@@ -16,7 +16,7 @@ cat = pd.read_csv(CATALOG_PATH)
 NORM_FLAG = False
 low_exposure_thresh = 10000
 
-COLOR_MAP = 'jet' # Try Reds, plasma, 
+COLOR_MAP = 'jet' # Try 'jet', Reds, plasma, 
 
 # Load the L-MLT normalization files.
 with open(os.path.join(dirs.NORM_DIR, 'ac6_L_MLT_bins_same_loc.csv')) as f:
