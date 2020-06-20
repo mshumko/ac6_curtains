@@ -721,6 +721,40 @@ Marklund, G\BPBI T.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Millan%
+\ \BBA {} Thorne%
+}{%
+Millan%
+\ \BBA {} Thorne%
+}{%
+{\protect \APACyear {2007}}%
+}]{%
+Millan2007}
+\APACinsertmetastar {%
+Millan2007}%
+\begin{APACrefauthors}%
+Millan, R.%
+\BCBT {}\ \BBA {} Thorne, R.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2007}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Review of radiation belt relativistic electron losses}
+  {Review of radiation belt relativistic electron losses}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Atmospheric and Solar-Terrestrial
+  Physics}{69}{3}{362 - 377}.
+\newblock
+\begin{APACrefURL}
+  \url{//www.sciencedirect.com/science/article/pii/S1364682606002768}
+  \end{APACrefURL}
+\newblock
+\begin{APACrefDOI} \doi{http://dx.doi.org/10.1016/j.jastp.2006.06.019}
+  \end{APACrefDOI}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 O'Brien%
 , Blake%
 \BCBL {}\ \BBA {} W.%
