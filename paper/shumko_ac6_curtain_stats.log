@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  20 JUN 2020 10:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  6 JUL 2020 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -301,9 +301,9 @@ wer than 20 kilo-me-
  []
 
 
-Overfull \hbox (14.04335pt too wide) in paragraph at lines 68--69
-[]\OT1/cmr/m/n/10 Some cur-tains were con-tin-u-ously ac-cel-er-ated into the a
-t-mo-sphere for mul-ti-ple sec- 
+Overfull \hbox (14.34901pt too wide) in paragraph at lines 68--69
+[]\OT1/cmr/m/n/10 Some cur-tains con-tin-u-ously pre-cip-i-tated into the at-mo
+-sphere for mul-ti-ple sec-onds.  
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
@@ -427,9 +427,9 @@ well un-der-stood. There-fore,
  []
 
 
-Overfull \hbox (11.15457pt too wide) in paragraph at lines 75--77
-\OT1/cmr/m/n/10 we used the AeroCube-6 mis-sion that took data to-gether for th
-ree years, to sta-tis-ti-cally 
+Overfull \hbox (13.93236pt too wide) in paragraph at lines 75--77
+\OT1/cmr/m/n/10 we used the AeroCube-6 mis-sion, that took data to-gether for t
+hree years, to sta-tis-ti-cally 
  []
 
 
@@ -489,9 +489,9 @@ ere plays a fun-da-men-tal role
  []
 
 
-Overfull \hbox (3.26582pt too wide) in paragraph at lines 81--82
-\OT1/cmr/m/n/10 in con-trol-ling the dy-nam-ics of Earth's ra-di-a-tion belts, 
-and ion-iza-tion of Earth's up-per 
+Overfull \hbox (0.48804pt too wide) in paragraph at lines 81--82
+\OT1/cmr/m/n/10 in con-trol-ling the dy-nam-ics of Earth's ra-di-a-tion belts a
+nd ion-iza-tion of Earth's up-per 
  []
 
 
@@ -525,51 +525,57 @@ enon ob-served in low Earth
  []
 
 
-Overfull \hbox (18.59903pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 or-bit (LEO). Cur-tains are nar-row in lat-i-tude and per-sist 
-for up to a minute be-tween sub- 
+Overfull \hbox (5.73792pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 or-bit (LEO). Cur-tains were re-cently dis-cov-ered by []Blake 
+and O'Brien (2016) us-ing the 
  []
 
 
-Overfull \hbox (11.46002pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 se-quent satel-lite passes. They were re-cently dis-cov-ered by
- []Blake and O'Brien (2016) us- 
+Overfull \hbox (2.9045pt too wide) in paragraph at lines 83--84
+\OML/cmm/m/it/10 > \OT1/cmr/m/n/10 30$ keV elec-tron dosime-ters on-board the d
+ual AeroCube-6 (AC6) Cube-Sats that op- 
  []
 
 
-Overfull \hbox (27.48792pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 that op-er-ated to-gether be-tween 2014 and 2017. This dis-cov-
-ery was made pos-si-ble by AC6's 
+Overfull \hbox (8.21013pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 er-ated to-gether be-tween 2014 and 2017. They are nar-row in l
+at-i-tude and per-sist for up 
  []
 
 
-Overfull \hbox (5.09903pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 ac-tively main-tained in-track sep-a-ra-tion that var-ied be-tw
-een a few hun-dred me-ters and 
+Overfull \hbox (2.15443pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 to a minute be-tween sub-se-quent satel-lite passes. This dis-c
+ov-ery was made pos-si-ble by 
  []
 
 
-Overfull \hbox (25.0713pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 a few hun-dred kilo-me-ters. Be-sides the []Blake and O'Brien (
-2016) study, not much is known 
+Overfull \hbox (2.29344pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 AC6's ac-tively main-tained in-track sep-a-ra-tion that var-ied
+ be-tween a few hun-dred me- 
  []
 
 
-Overfull \hbox (16.71019pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 about cur-tains in-clud-ing what they are, how are they gen-er-
-ated, and their im-pact on the 
+Overfull \hbox (22.32129pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 ters and a few hun-dred kilo-me-ters. Be-sides the []Blake and 
+O'Brien (2016) study, not much 
  []
 
 
-Overfull \hbox (1.34888pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 at-mo-sphere. An-swer-ing these ques-tions is an es-sen-tial ne
-xt step to-wards a more com- 
+Overfull \hbox (11.76572pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 is known about cur-tains in-clud-ing what they are, how are the
+y gen-er-ated, and their im- 
  []
 
 
-Overfull \hbox (19.26575pt too wide) in paragraph at lines 83--84
-\OT1/cmr/m/n/10 plete un-der-stand-ing of how cur-tains, and par-ti-cle pre-cip
--i-ta-tion in gen-eral, af-fect the mag- 
+Overfull \hbox (5.21pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 pact on the at-mo-sphere. An-swer-ing these ques-tions is an es
+-sen-tial next step to-wards a 
+ []
+
+
+Overfull \hbox (7.62685pt too wide) in paragraph at lines 83--84
+\OT1/cmr/m/n/10 more com-plete un-der-stand-ing of how cur-tains, and par-ti-cl
+e pre-cip-i-ta-tion in gen-eral, af- 
  []
 
 
@@ -666,39 +672,39 @@ Overfull \hbox (4.738pt too wide) in paragraph at lines 87--88
  []
 
 
-Overfull \hbox (7.84906pt too wide) in paragraph at lines 87--88
+Overfull \hbox (5.71016pt too wide) in paragraph at lines 87--88
 \OT1/cmr/m/n/10 from a sin-gle LEO satel-lite is ambiguous---it can be tran-sie
-nt or sta-tion-ary and nar-row 
+nt or per-sis-tant, sta-tion-ary, 
  []
 
 
-Overfull \hbox (3.48784pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 in lat-i-tude. Thus, multi-spacecraft mis-sions such as the Fo-
-cused In-ves-ti-ga-tions of Rel- 
+Overfull \hbox (6.12674pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 and nar-row in lat-i-tude. Thus, multi-spacecraft mis-sions suc
+h as the Fo-cused In-ves-ti-ga- 
  []
 
 
-Overfull \hbox (2.37677pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 a-tivis-tic Elec-tron Burst In-ten-sity, Range, and Dy-nam-ics 
-(FIREBIRD-II) []Crew et al.[], 
+Overfull \hbox (24.5157pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 tions of Rel-a-tivis-tic Elec-tron Burst In-ten-sity, Range, an
+d Dy-nam-ics (FIREBIRD-II) []Crew 
  []
 
 
-Overfull \hbox (5.2658pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 2016; John-son et al.[], 2020) and AC6 []Blake & O'Brien, 2016;
- O'Brien et al.[], 2016) are 
+Overfull \hbox (16.90471pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 et al.[], 2016; John-son et al.[], 2020) and AC6 []Blake & O'Br
+ien, 2016; O'Brien et al.[], 2016) 
  []
 
 
-Overfull \hbox (15.73792pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 nec-es-sary to re-solve the tem-po-ral vs. spa-tial am-bi-gu-it
-y. While this study fo-cuses on cur- 
+Overfull \hbox (11.84903pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 are nec-es-sary to re-solve the tem-po-ral vs. spa-tial am-bi-g
+u-ity. While this study fo-cuses on 
  []
 
 
-Overfull \hbox (8.5435pt too wide) in paragraph at lines 87--88
-\OT1/cmr/m/n/10 tain pre-cip-i-ta-tion, mi-croburst pre-cip-i-ta-tion ob-served
- by AC6 was stud-ied in []Shumko et 
+Overfull \hbox (8.96011pt too wide) in paragraph at lines 87--88
+\OT1/cmr/m/n/10 cur-tain pre-cip-i-ta-tion, mi-croburst pre-cip-i-ta-tion ob-se
+rved across the dawn sec-tor by AC6 
  []
 
 
@@ -750,99 +756,99 @@ t as-so-ci-ated with mi-croburst
  []
 
 
-Overfull \hbox (19.57133pt too wide) in paragraph at lines 91--92
-[][]\OT1/cmr/m/n/10 Blake and O'Brien (2016) pro-posed a hy-poth-e-sis that cur
--tains are drift-ing rem-nants 
- []
-
-
-Overfull \hbox (9.32121pt too wide) in paragraph at lines 91--92
-\OT1/cmr/m/n/10 tial scat-ter, the re-main-ing mi-croburst elec-trons will spre
-ad out (bounce phase dis-perse) 
- []
-
-
-Overfull \hbox (8.43227pt too wide) in paragraph at lines 91--92
-\OT1/cmr/m/n/10 along the en-tire mag-netic field line over a few bounce pe-ri-
-ods. Con-cur-rently these elec- 
- []
-
-
-Overfull \hbox (5.68234pt too wide) in paragraph at lines 91--92
-\OT1/cmr/m/n/10 trons drift to the east, with higher en-ergy elec-trons drift-i
-ng at a faster rate. As-sum-ing 
- []
-
-
-Overfull \hbox (13.09909pt too wide) in paragraph at lines 91--92
-\OT1/cmr/m/n/10 this hy-poth-e-sis, the ini-tially lo-cal-ized mi-croburst is a
-lso spread out in lon-gi-tude into the 
- []
-
-
-Overfull \hbox (18.04352pt too wide) in paragraph at lines 91--92
-\OT1/cmr/m/n/10 shape of a cur-tain. A sim-i-lar phe-nom-ena was hy-poth-e-size
-d by []Lehtinen et al.[] (2000) who 
- []
-
-
-Overfull \hbox (1.54344pt too wide) in paragraph at lines 91--92
-\OT1/cmr/m/n/10 pre-dicted that drift-ing cur-tains can be cre-ated by en-er-ge
-tic run-away beams driven by 
- []
-
-
-Overfull \hbox (8.65454pt too wide) in paragraph at lines 93--94
+Overfull \hbox (8.65454pt too wide) in paragraph at lines 91--92
 []\OT1/cmr/m/n/10 Precipitation bands, some-times also re-ferred to as spikes [
 ]e.g. Imhof et al.[], 1991), 
  []
 
 
-Overfull \hbox (1.12686pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 are an-other form of pre-cip-i-ta-tion that can be re-lated to 
-cur-tains. Pre-cip-i-ta-tion bands 
+Overfull \hbox (9.46022pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 are an-other form of pre-cip-i-ta-tion that could be re-lated t
+o cur-tains. Pre-cip-i-ta-tion bands 
  []
 
 
-Overfull \hbox (8.98788pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 are sta-tion-ary and were ob-served to per-sist from an hour to
- as much as half a day []e.g. 
+Overfull \hbox (26.15465pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 and can per-sist from an hour to as much as half a day []e.g. J
+. Brown & Stone, 1972; Blake 
  []
 
 
-Overfull \hbox (0.73795pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 J. Brown & Stone, 1972; Blake et al.[], 1996). []Blum et al.[] 
-(2013) iden-ti-fied two pre-cip- 
+Overfull \hbox (3.46022pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 et al.[], 1996). []Blum et al.[] (2013) iden-ti-fied two pre-ci
+p-i-ta-tion bands and es-ti-mated that 
  []
 
 
-Overfull \hbox (15.6269pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 i-ta-tion bands and es-ti-mated that only 20 pre-cip-i-ta-tion 
-bands can de-plete all of the outer 
+Overfull \hbox (26.18239pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 only 20 pre-cip-i-ta-tion bands can de-plete all of the outer r
+a-di-a-tion belt elec-trons. The mech- 
  []
 
 
-Overfull \hbox (0.84904pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 ra-di-a-tion belt elec-trons. The mech-a-nism re-spon-si-ble fo
-r scat-ter-ing pre-cip-i-ta-tion band 
+Overfull \hbox (9.34903pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 a-nism re-spon-si-ble for scat-ter-ing pre-cip-i-ta-tion band e
+lec-trons at high L is be-lieved to be 
  []
 
 
-Overfull \hbox (28.68231pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 elec-trons at high L is be-lieved to be field line cur-va-ture 
-scat-ter-ing, but the scat-ter-ing mech- 
+Overfull \hbox (11.09898pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 field line cur-va-ture scat-ter-ing, but the scat-ter-ing mech-
+a-nism for band elec-trons at lower 
  []
 
 
-Overfull \hbox (12.46005pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 a-nism for band elec-trons at lower L shells is un-known. A few
- pro-posed scat-ter-ing mech- 
+Overfull \hbox (11.32115pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 L shells is un-known. A few pro-posed scat-ter-ing mech-a-nisms
+ in-clude wave-particle in-ter- 
  []
 
 
-Overfull \hbox (9.65451pt too wide) in paragraph at lines 93--94
-\OT1/cmr/m/n/10 a-nisms in-clude wave-particle in-ter-ac-tions and ac-cel-er-a-
-tion due to par-al-lel di-rect cur-rent 
+Overfull \hbox (25.29356pt too wide) in paragraph at lines 91--92
+\OT1/cmr/m/n/10 ac-tions and ac-cel-er-a-tion due to par-al-lel di-rect cur-ren
+t po-ten-tials []Hoffman & Evans, 1968).  
+ []
+
+
+Overfull \hbox (19.57133pt too wide) in paragraph at lines 93--94
+[][]\OT1/cmr/m/n/10 Blake and O'Brien (2016) pro-posed a hy-poth-e-sis that cur
+-tains are drift-ing rem-nants 
+ []
+
+
+Overfull \hbox (9.32121pt too wide) in paragraph at lines 93--94
+\OT1/cmr/m/n/10 tial scat-ter, the re-main-ing mi-croburst elec-trons will spre
+ad out (bounce phase dis-perse) 
+ []
+
+
+Overfull \hbox (8.43227pt too wide) in paragraph at lines 93--94
+\OT1/cmr/m/n/10 along the en-tire mag-netic field line over a few bounce pe-ri-
+ods. Con-cur-rently these elec- 
+ []
+
+
+Overfull \hbox (5.68234pt too wide) in paragraph at lines 93--94
+\OT1/cmr/m/n/10 trons drift to the east, with higher en-ergy elec-trons drift-i
+ng at a faster rate. As-sum-ing 
+ []
+
+
+Overfull \hbox (21.15466pt too wide) in paragraph at lines 93--94
+\OT1/cmr/m/n/10 this hy-poth-e-sis, the ini-tially lo-cal-ized mi-croburst is s
+pread out in lon-gi-tude into the shape 
+ []
+
+
+Overfull \hbox (10.5157pt too wide) in paragraph at lines 93--94
+\OT1/cmr/m/n/10 of a cur-tain. A sim-i-lar phe-nom-ena was hy-poth-e-sized by [
+]Lehtinen et al.[] (2000) who pre- 
+ []
+
+
+Overfull \hbox (14.01569pt too wide) in paragraph at lines 93--94
+\OT1/cmr/m/n/10 dicted that drift-ing cur-tains can be cre-ated by en-er-getic 
+run-away beams driven by light- 
  []
 
 
@@ -2868,7 +2874,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (17 pages, 529128 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (17 pages, 529158 bytes).
 PDF statistics:
  505 PDF objects out of 1000 (max. 8388607)
  152 compressed objects within 2 object streams
