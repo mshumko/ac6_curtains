@@ -121,10 +121,10 @@ ax[0].text(0.01, 0.98, '(a) Unnormalized', ha='left', va='top',
 ax[1].set(xlabel='AE [nT]', ylim=(0, 0.8*np.max(unp.nominal_values(H_m_norm_density))))
 if include_microbursts:
     plt.suptitle('The distributions of the Auroral Electrojet index for curtains and microbursts', fontsize=15)
-    ax[1].legend(handles=[ae_plot[0], curtain_plot[0], microburst_plot[0]], loc=1)
+    ax[0].legend(handles=[ae_plot[0], curtain_plot[0], microburst_plot[0]], loc=1)
 else:
     plt.suptitle('The distribution of the Auroral Electrojet index for curtains', fontsize=15)
-    ax[1].legend(handles=[ae_plot[0], curtain_plot[0]], loc=1)
+    ax[0].legend(handles=[ae_plot[0], curtain_plot[0]], loc=1)
 ax[1].text(0.01, 0.98, '(b) Normalized', ha='left', va='top', 
         transform=ax[1].transAxes, fontsize=15)
 
