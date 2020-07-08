@@ -55,8 +55,6 @@ class PlotCurtains:
             self.ax[1, i].text(0.99, 0.99, f'dt = {abs(int(round(row.Lag_In_Track)))} s',
                             transform=self.ax[1, i].transAxes, va='top', ha='right', fontsize=15)
             
-            # self.ax[1, i].xaxis.set_major_locator(matplotlib.dates.SecondLocator(interval=7))
-            # self.ax[1, i].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%H:%M:%S'))
             self.ax[1, i].xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%S'))
             self.ax[1, i].xaxis.set_minor_locator(matplotlib.dates.SecondLocator(interval=1))
             xlabel = f'AC6A seconds after\n{datetime.strftime(t0-self.plot_width, "%Y/%m/%d %H:%M:00")}'
