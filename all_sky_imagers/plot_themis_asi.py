@@ -75,7 +75,7 @@ class Load_ASI:
                 }
         return
 
-    def plot_themis_asi_frame(self, t0, ax=None):
+    def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1):
         """
         Plot a ASI frame with a time nearest to t0.
         """
@@ -90,6 +90,9 @@ class Load_ASI:
         dt = self.time-t0
         dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
         t0_nearest = self.time[np.argmin(dt_sec)]
+
+        if np.abs((t0_nearest - t0).total_seconds()) > 60*max_tdiff_m:
+            raise ValueError(f'No THEMIS ASI image found within {max_tdiff_m} minutes.')
 
         if self.cal['lon'] < 0:
             lon_label='W'
