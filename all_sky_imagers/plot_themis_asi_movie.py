@@ -1,4 +1,4 @@
-# Plot single ASI frames during curtain passes
+# Make a gif of the ASI frames during curtain passes
 
 import pandas as pd
 import matplotlib.pyplot as plt
