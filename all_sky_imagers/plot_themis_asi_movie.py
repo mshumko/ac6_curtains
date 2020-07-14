@@ -158,6 +158,15 @@ if __name__ == '__main__':
     cat_path = dirs.CATALOG_DIR / catalog_name
     cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
 
+    # Only keep the dates in cat that are in the keep_dates array.
+    keep_dates = pd.to_datetime([
+        '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
+        '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
+    ])
+    for t0, row in cat.iterrows():
+        if not t0.date() in keep_dates:
+            cat.drop(index=t0, inplace=True)
+
     # Loop over each curtain and try to open the ASI data and 
     # calibration from that date.
     for t0, row in cat.iterrows():
@@ -167,9 +176,8 @@ if __name__ == '__main__':
             # Try to load the ASI station data from that file, if it exists.
             try:
                 a = ASI_Movie(site, t0, pass_duration_min=3)
-                
             except (FileNotFoundError, ValueError) as err:
                 continue
-            a.make_animation(imshow_vmax=None, imshow_norm='log')
-            del(a.fig)
+            a.make_animation(imshow_vmax=1E4, imshow_norm='log')
+            del(a)
             

@@ -10,6 +10,7 @@ from skyfield.api import EarthSatellite, Topos, load
 import cdflib # https://github.com/MAVENSDC/cdflib
 
 from ac6_curtains import dirs
+import IRBEM
 
 class Load_ASI:
     def __init__(self, site, time):
@@ -76,7 +77,7 @@ class Load_ASI:
         return
 
     def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1, imshow_vmin=None, 
-                            imshow_vmax=None, imshow_norm='linear'):
+                            imshow_vmax=None, imshow_norm='linear', colorbar=True):
         """
         Plot a ASI frame with a time nearest to t0.
         """
@@ -114,7 +115,8 @@ class Load_ASI:
         self.hi = self.ax.imshow(self.imgs[idt_nearest, :, :], cmap="gray", 
                                 origin="lower", interpolation="none",
                                 vmin=imshow_vmin, vmax=imshow_vmax, norm=norm)
-        # norm=matplotlib.colors.LogNorm()
+        if colorbar:
+            plt.colorbar(self.hi, ax=self.ax, orientation='horizontal')
         self.ht = self.ax.set_title(title_text, color="k")
         self.ax.axis('off')
         return t0_nearest
@@ -160,16 +162,27 @@ class Load_ASI:
         # condition (other values will be close enough).
         return idx[0][0], idx[1][0] 
 
-    def get_azel_from_lla(self, lat, lon, alt_km):
+    def get_azel_from_lla(self, lat, lon, alt_km, find_footpoint_alt_km=100):
         """
         Get the ASI azimuth and elevation given the satellite
         location in lat, lon, alt_km subpoint coordinates.
+
+        if find_footpoint_alt_km is not False, will map the 
+        lat, lon, alt coordinates along the magnetic field line to the
+        find_footpoint_alt_km altitude value.
         """
         planets = load('de421.bsp')
         earth = planets['earth']
         station = earth + Topos(latitude_degrees=self.cal['lat'], 
                                 longitude_degrees=self.cal['lon'], 
                                 elevation_m=self.cal['alt_m'])
+        if find_footpoint_alt_km: # If not explicity false
+            model = IRBEM.MagFields(kext='OPQ77')
+            model.find_foot_point(
+                {'x1':alt_km, 'x2':lat, 'x3':lon, 'dateTime':self.time[0]},
+                None, stopAlt=find_footpoint_alt_km, hemiFlag=0
+                )
+            alt_km, lat, lon = model.find_foot_point_output['XFOOT']
         sat = earth + Topos(latitude_degrees=lat, longitude_degrees=lon, 
                         elevation_m=alt_km*1E3)
 
