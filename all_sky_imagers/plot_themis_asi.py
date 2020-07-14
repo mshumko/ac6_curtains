@@ -104,7 +104,7 @@ class Load_ASI:
                      f'{np.abs(round(self.cal["lon"]))}{lon_label})\n{t0_nearest}')
         self.hi = self.ax.imshow(self.imgs[idt_nearest, :, :], cmap="gray", 
                                 origin="lower", interpolation="none",
-                                vmin=vmin, vmax=vmax)
+                                vmin=vmin, vmax=vmax, norm=matplotlib.colors.LogNorm())
         # norm=matplotlib.colors.LogNorm()
         self.ht = self.ax.set_title(title_text, color="k")
         return t0_nearest
