@@ -75,7 +75,8 @@ class Load_ASI:
                 }
         return
 
-    def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1, vmin=None, vmax=None):
+    def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1, imshow_vmin=None, 
+                            imshow_vmax=None, imshow_norm='linear'):
         """
         Plot a ASI frame with a time nearest to t0.
         """
@@ -100,13 +101,22 @@ class Load_ASI:
         else:
             lon_label='E'
 
+        if imshow_norm == 'linear':
+            norm = None
+        elif imshow_norm == 'log':
+            norm = matplotlib.colors.LogNorm()
+        else:
+            raise ValueError('The imshow_norm kwarg must be "linear" or "log".')
+        
+
         title_text = (f'{self.site.upper()} ({round(self.cal["lat"])}N, '
                      f'{np.abs(round(self.cal["lon"]))}{lon_label})\n{t0_nearest}')
         self.hi = self.ax.imshow(self.imgs[idt_nearest, :, :], cmap="gray", 
                                 origin="lower", interpolation="none",
-                                vmin=vmin, vmax=vmax, norm=matplotlib.colors.LogNorm())
+                                vmin=imshow_vmin, vmax=imshow_vmax, norm=norm)
         # norm=matplotlib.colors.LogNorm()
         self.ht = self.ax.set_title(title_text, color="k")
+        self.ax.axis('off')
         return t0_nearest
 
     def plot_azel_contours(self, ax=None):

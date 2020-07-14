@@ -62,7 +62,8 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         self._get_azel_coords()
         return
 
-    def plot_frame(self, i, azel_contours=False, vmax=None):
+    def plot_frame(self, i, azel_contours=False, imshow_vmax=None, 
+                    imshow_norm='linear', individual_movie_dirs=True):
         """
 
         """
@@ -73,7 +74,9 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         t_i = self.time[i]
 
         # Plot the THEMIS ASI image and azel contours.
-        self.plot_themis_asi_frame(t_i, ax=self.ax, vmin=None, vmax=None)
+        self.plot_themis_asi_frame(t_i, ax=self.ax, imshow_vmin=None, 
+                                    imshow_vmax=imshow_vmax, 
+                                    imshow_norm=imshow_norm)
         if azel_contours: self.plot_azel_contours(ax=self.ax)
 
         # Plot the AC6 location
@@ -88,13 +91,21 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         save_name = (f'{t_i.strftime("%Y%m%d")}_'
                     f'{t_i.strftime("%H%M%S")}_'
                     'themis_asi_frame.png')
-        save_path = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
-                                'movies', save_name)
+        if individual_movie_dirs:
+            save_dir = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
+                                    'movies', imshow_norm, 
+                                    t_i.strftime("%Y%m%d"))
+            # Make dir if does not exist
+            save_dir.mkdir(parents=True, exist_ok=True)
+            save_path = save_dir / save_name
+        else:
+            save_path = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
+                                    'movies', imshow_norm, save_name)
         plt.savefig(save_path)
         print(f'Saved frame: {save_name}')
         return
 
-    def make_animation(self, vmax=None):
+    def make_animation(self, imshow_vmax=None, imshow_norm='linear', individual_movie_dirs=True):
         """ 
         Call plot_frame for all the times in the filtered 
         ASI time series. 
@@ -104,8 +115,8 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         #                                 self.time, blit=True)
         animation_frames = []
         for i in range(len(self.time)):
-            self.plot_frame(i, vmax=vmax)
-        #     animation_frames.append([self.hi, self.ht])
+            self.plot_frame(i, imshow_vmax=imshow_vmax, imshow_norm=imshow_norm, 
+                            individual_movie_dirs=individual_movie_dirs)
 
         # save_name = (f'{self.time[0].strftime("%Y%m%d")}_'
         #             f'{self.time[0].strftime("%H%M%S")}_'
@@ -155,10 +166,10 @@ if __name__ == '__main__':
         for site in row['nearby_stations'].split():
             # Try to load the ASI station data from that file, if it exists.
             try:
-                a = ASI_Movie(site, t0)
+                a = ASI_Movie(site, t0, pass_duration_min=3)
                 
             except (FileNotFoundError, ValueError) as err:
                 continue
-            a.make_animation(vmax=1000)
+            a.make_animation(imshow_vmax=None, imshow_norm='log')
             del(a.fig)
             
