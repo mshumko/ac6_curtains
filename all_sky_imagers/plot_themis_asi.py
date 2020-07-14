@@ -75,7 +75,7 @@ class Load_ASI:
                 }
         return
 
-    def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1):
+    def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1, vmin=None, vmax=None):
         """
         Plot a ASI frame with a time nearest to t0.
         """
@@ -89,7 +89,8 @@ class Load_ASI:
             t0 = dateutil.parser.parse(t0) 
         dt = self.time-t0
         dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
-        t0_nearest = self.time[np.argmin(dt_sec)]
+        idt_nearest = np.argmin(dt_sec)
+        t0_nearest = self.time[idt_nearest]
 
         if np.abs((t0_nearest - t0).total_seconds()) > 60*max_tdiff_m:
             raise ValueError(f'No THEMIS ASI image found within {max_tdiff_m} minutes.')
@@ -101,8 +102,10 @@ class Load_ASI:
 
         title_text = (f'{self.site.upper()} ({round(self.cal["lat"])}N, '
                      f'{np.abs(round(self.cal["lon"]))}{lon_label})\n{t0_nearest}')
-        self.hi = self.ax.imshow(self.imgs[0], cmap="gray", origin="lower", 
-                    norm=matplotlib.colors.LogNorm(), interpolation="none")
+        self.hi = self.ax.imshow(self.imgs[idt_nearest, :, :], cmap="gray", 
+                                origin="lower", interpolation="none",
+                                vmin=vmin, vmax=vmax)
+        # norm=matplotlib.colors.LogNorm()
         self.ht = self.ax.set_title(title_text, color="k")
         return t0_nearest
 
