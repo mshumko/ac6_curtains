@@ -6,7 +6,7 @@ import imageio
 import pygifsicle
 
 # BASE_DIR  = '/home/mike/research/ac6_curtains/all_sky_imagers/plots/movies/log/ac6_alt'
-BASE_DIR  = '/home/mike/research/ac6_curtains/all_sky_imagers/plots/movies/log/100km_alt'
+BASE_DIR  = '/home/mike/research/ac6_curtains/all_sky_imagers/plots/movies/log/'
 
 
 # List off all the date folders (rglob will recursively return the png files inside.)

@@ -16,3 +16,5 @@ skyfield==1.20
 spacepy==0.2.1
 -e git+https://github.com/space-physics/themisasi@bdd0c0841bbcd864d988d549173f09415bf9b336#egg=themisasi
 uncertainties==3.1.2
+imageio==2.9.0
+pygifsicle==1.0.1 # May need to also run "sudo apt-get install gifsicle"

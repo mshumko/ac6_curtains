@@ -80,7 +80,10 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         if azel_contours: self.plot_azel_contours(ax=self.ax)
 
         # Plot the AC6 location
-        self.ax.scatter(*self.azel_index[i, :], s=50, c='r', marker='x')
+        self.ax.scatter(*self.azel_index_ac6[i, :], s=50, c='r', marker='x', 
+                        label='AC6')
+        self.ax.scatter(*self.azel_index_100km[i, :], s=50, c='g', marker='x', 
+                        label='100 km footprint')
 
         # Plot the AC6 time series
         self.bx.plot(self.ac6_data.index, self.ac6_data.dos1rate, 'r', label='AC6A')
@@ -110,23 +113,11 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         Call plot_frame for all the times in the filtered 
         ASI time series. 
         """
-        # self.frame_obj = self.ax.imshow(self.imgs[0, :, :])
-        # line_ani = animation.FuncAnimation(self.fig, self.plot_frame, 
-        #                                 self.time, blit=True)
         animation_frames = []
         for i in range(len(self.time)):
             self.plot_frame(i, imshow_vmax=imshow_vmax, imshow_norm=imshow_norm, 
                             individual_movie_dirs=individual_movie_dirs)
 
-        # save_name = (f'{self.time[0].strftime("%Y%m%d")}_'
-        #             f'{self.time[0].strftime("%H%M%S")}_'
-        #             f'{self.time[-1].strftime("%H%M%S")}_'
-        #             'themis_asi_movie.mp4')
-        # save_path = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
-        #                         'movies', save_name)
-        # line_ani = animation.ArtistAnimation(self.fig, animation_frames)
-        # line_ani.save(save_path)
-        # print(f'Made movie: {save_name}')
         return
 
     def _get_azel_coords(self, alt=False, down_sample=30):
@@ -135,8 +126,10 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         If alt=False, the AC6 elevation will be used. Otherwise AC6's 100 km
         footprint will be calculated and the azel calculated from that.
         """
-        self.azel = np.nan*np.zeros((self.time.shape[0], 2), dtype=float)
-        self.azel_index = np.nan*np.zeros((self.time.shape[0], 2), dtype=int)
+        self.azel_ac6 = np.nan*np.zeros((self.time.shape[0], 2), dtype=float)
+        self.azel_index_ac6 = np.nan*np.zeros((self.time.shape[0], 2), dtype=int)
+        self.azel_100km = np.nan*np.zeros((self.time.shape[0], 2), dtype=float)
+        self.azel_index_100km = np.nan*np.zeros((self.time.shape[0], 2), dtype=int)
 
         
         for i, t_i in enumerate(self.time):
@@ -146,10 +139,18 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
             ac6_ti_nearest = self.ac6_data.index[np.argmin(dt_sec)]
             nearest_lla = self.ac6_data.loc[ac6_ti_nearest, ['lat', 'lon', 'alt']]
 
-            az, el = self.get_azel_from_lla(*nearest_lla)
-            self.azel[i, :] = [az.degrees, el.degrees]
-            self.azel_index[i, :] = self.find_nearest_azel(self.azel[i, 0], 
-                                                        self.azel[i, 1])
+            az, el = self.get_azel_from_lla(*nearest_lla, find_footpoint_alt_km=False)
+            self.azel_ac6[i, :] = [az.degrees, el.degrees]
+            self.azel_index_ac6[i, :] = self.find_nearest_azel(
+                                                        self.azel_ac6[i, 0], 
+                                                        self.azel_ac6[i, 1]
+                                                        )
+            az, el = self.get_azel_from_lla(*nearest_lla, find_footpoint_alt_km=100)
+            self.azel_100km[i, :] = [az.degrees, el.degrees]
+            self.azel_index_100km[i, :] = self.find_nearest_azel(
+                                                        self.azel_100km[i, 0], 
+                                                        self.azel_100km[i, 1]
+                                                        )
         return
 
 if __name__ == '__main__':
