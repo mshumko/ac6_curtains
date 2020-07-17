@@ -96,12 +96,12 @@ if include_microbursts:
         where='post', label='microburst', lw=2)
     ax.errorbar(size_bins+size_bin_width_km/2, np.append(microburst_fraction_mid, np.nan), 
                 yerr=np.append(microburst_fraction_err, np.nan), ls='', color='r', capsize=3, lw=1)
-    ax.set(title='Distribution of > 30 keV curtain and microburst sizes',
+    ax.set(title='Width Distribution of > 30 keV curtain and microburst sizes',
             ylabel='Probability density', xlim=(0, size_bins[-1]), 
             xlabel='In-track size [km]')
     ax.legend()
 else:
-    ax.set(title='Distribution of > 30 keV curtains',
+    ax.set(title='Width Distribution of > 30 keV curtains',
             ylabel='Probability density', xlim=(0, size_bins[-1]), 
             xlabel='In-track size [km]')
 
