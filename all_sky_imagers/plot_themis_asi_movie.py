@@ -27,10 +27,11 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
 
         # Initialize the figure to plot the ASI and AC6 10 Hz 
         # spatial time series.
-        self.fig = plt.figure(constrained_layout=True, figsize=(6,8))
-        gs = self.fig.add_gridspec(4, 1)
-        self.ax = self.fig.add_subplot(gs[:-1, 0])
-        self.bx = self.fig.add_subplot(gs[-1, 0])
+        self.fig = plt.figure(constrained_layout=True, figsize=(8,6))
+        gs = self.fig.add_gridspec(3, 3)
+        self.ax = self.fig.add_subplot(gs[:, 0:2])
+        self.bx = [self.fig.add_subplot(gs[i, -1]) for i in range(3)]
+        #self.bx = self.fig.add_subplot(gs[0, 1])
 
         # Filter the ASI and load the AC6 data
         self.filter_asi()
@@ -69,7 +70,8 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         """
         # Clear the axes before plotting the current frame.
         self.ax.clear()
-        self.bx.clear()
+        for bx_i in self.bx:
+            bx_i.clear()
 
         t_i = self.time[i]
 
@@ -86,10 +88,10 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
                         label='100 km footprint')
 
         # Plot the AC6 time series
-        self.bx.plot(self.ac6_data.index, self.ac6_data.dos1rate, 'r', label='AC6A')
-        self.bx.plot(self.ac6_data['dateTime_shifted_B'], self.ac6_data.dos1rate_B, 'b', 
+        self.bx[0].plot(self.ac6_data.index, self.ac6_data.dos1rate, 'r', label='AC6A')
+        self.bx[0].plot(self.ac6_data['dateTime_shifted_B'], self.ac6_data.dos1rate_B, 'b', 
                     label='AC6B')
-        self.bx.axvline(t_i, c='k', ls='--')
+        self.bx[0].axvline(t_i, c='k', ls='--')
 
         save_name = (f'{t_i.strftime("%Y%m%d")}_'
                     f'{t_i.strftime("%H%M%S")}_'
