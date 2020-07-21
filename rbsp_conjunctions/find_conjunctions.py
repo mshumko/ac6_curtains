@@ -39,12 +39,12 @@ class RBSP_AC6_Conjunctions:
             # Load the current_date RBSP MagEIS data 
             if current_date != row.date:
                 current_date = row.date
-                self.mageis_a = self.load_mageis('a', row.date)
-                self.mageis_b = self.load_mageis('b', row.date)
+                self.mageis_a = self._load_mageis('a', row.date)
+                self.mageis_b = self._load_mageis('b', row.date)
 
             # Find the closest MagEIS time to the curtain time.
-            mageis_a_idx = self.closest_time_index(t_i, self.mageis_a['Epoch'][...])
-            mageis_b_idx = self.closest_time_index(t_i, self.mageis_b['Epoch'][...])
+            mageis_a_idx = self._closest_time_index(t_i, self.mageis_a['Epoch'][...])
+            mageis_b_idx = self._closest_time_index(t_i, self.mageis_b['Epoch'][...])
             # Load the values into the self.cat DataFrame
             self.cat.loc[t_i, 'rbspa_L'] = self.mageis_a['L'][mageis_a_idx]
             self.cat.loc[t_i, 'rbspb_L'] = self.mageis_b['L'][mageis_b_idx]
@@ -52,7 +52,22 @@ class RBSP_AC6_Conjunctions:
             self.cat.loc[t_i, 'rbspb_MLT'] = self.mageis_b['MLT'][mageis_b_idx]
         return
 
-    def load_mageis(self, sc_id, current_date):
+    def calc_dL_dMLT(self, thresh=1):
+        """
+
+        """
+        self.dL_A = np.abs(self.cat['Lm_OPQ'] - self.cat['rbspa_L'])
+        self.dL_B = np.abs(self.cat['Lm_OPQ'] - self.cat['rbspb_L'])
+        self.dMLT_A = self._dmlt(self.cat['Lm_OPQ'], self.cat['rbspa_MLT'])
+        self.dMLT_B = self._dmlt(self.cat['Lm_OPQ'], self.cat['rbspb_MLT'])
+
+        self.rbspa_close_conjunctions = np.where((self.dL_A < thresh) & 
+                                                (self.dMLT_A < thresh))[0]
+        self.rbspb_close_conjunctions = np.where((self.dL_B < thresh) & 
+                                                (self.dMLT_B < thresh))[0]
+        return
+
+    def _load_mageis(self, sc_id, current_date):
         """
         Loads the MagEIS data for RBSP-{sc_id} on date.
         """
@@ -74,7 +89,7 @@ class RBSP_AC6_Conjunctions:
             mageis = spacepy.pycdf.CDF(mageis_path)
         return mageis
 
-    def closest_time_index(self, curtain_time, mageis_times, thresh_minute=1):
+    def _closest_time_index(self, curtain_time, mageis_times, thresh_minute=1):
         """
         Given the curtain time and mageis_times array, find the closest time
         within thresh_minute. If no close time found, return np.nan.
@@ -97,12 +112,33 @@ class RBSP_AC6_Conjunctions:
         self.cat.to_csv(cat_path, index_label='dateTime')
         return
 
+    def _dmlt(self, a, b):
+        """
+        NAME:    dmlt(a, b)
+        USE:     Finds the absolute value of the difference
+                of two MLT arrays a and b. This function
+                correctly maps the differences over midnight
+                Example: MLTa = 23, MLTb = 2 => dMLT = 3, NOT
+                21!
+        INPUT:   Two integers, or arrays to be differenced
+        RETURNS: difference in MLT. 
+        AUTHOR:  Mykhaylo Shumko
+        MOD:     2017-04-30
+        """
+        # Convert the difference to spduo-angle.
+        arg = 2*np.pi*np.abs(a - b)/24 
+        # Utilize the even symmetry of cos to get 
+        # the correct dmlt.
+        return 24/(2*np.pi)*np.arccos(np.cos(arg))
+
 if __name__ == "__main__":
-    load_catalog_name = 'AC6_curtains_baseline_method_sorted_v0.csv'
+    # load_catalog_name = 'AC6_curtains_baseline_method_sorted_v0.csv'
+    load_catalog_name = 'AC6_curtains_baseline_method_conjunctions_v0.csv'
     save_catalog_name = 'AC6_curtains_baseline_method_conjunctions_v0.csv'
 
     con = RBSP_AC6_Conjunctions(load_catalog_name)
-    try:
-        con.loop()
-    finally:
-        con.save_curtain_catalog(save_catalog_name)
+    # try:
+    #     con.loop()
+    # finally:
+    #     con.save_curtain_catalog(save_catalog_name)
+    con.calc_dL_dMLT()
