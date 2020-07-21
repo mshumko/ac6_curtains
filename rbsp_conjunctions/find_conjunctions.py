@@ -52,7 +52,7 @@ class RBSP_AC6_Conjunctions:
             self.cat.loc[t_i, 'rbspb_MLT'] = self.mageis_b['MLT'][mageis_b_idx]
         return
 
-    def calc_dL_dMLT(self, thresh=1):
+    def calc_dL_dMLT(self, L_thresh=1, MLT_thresh=2):
         """
 
         """
@@ -61,10 +61,10 @@ class RBSP_AC6_Conjunctions:
         self.dMLT_A = self._dmlt(self.cat['Lm_OPQ'], self.cat['rbspa_MLT'])
         self.dMLT_B = self._dmlt(self.cat['Lm_OPQ'], self.cat['rbspb_MLT'])
 
-        self.rbspa_close_conjunctions = np.where((self.dL_A < thresh) & 
-                                                (self.dMLT_A < thresh))[0]
-        self.rbspb_close_conjunctions = np.where((self.dL_B < thresh) & 
-                                                (self.dMLT_B < thresh))[0]
+        self.rbspa_close_conjunctions = np.where((self.dL_A < L_thresh) & 
+                                                (self.dMLT_A < MLT_thresh))[0]
+        self.rbspb_close_conjunctions = np.where((self.dL_B < L_thresh) & 
+                                                (self.dMLT_B < MLT_thresh))[0]
         return
 
     def _load_mageis(self, sc_id, current_date):
