@@ -132,6 +132,22 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
 
         return
 
+    def get_mean_asi_intensity(self, grid_width=10):
+        """
+
+        """
+        current_img = self.imgs[self.idt_nearest, :, :]
+        mean_intensity = np.nan*np.ones(self.azel_index.shape[1]) # Number of altitude points
+
+        for alt_index in range(self.azel_index.shape[1]):
+            mean_intensity[alt_index] = np.mean(self.imgs[self.idt_nearest, :, :])
+            for az_el in self.azel_index[:, alt_index, :]:
+                self.azel_index
+                pass
+
+        return mean_intensity
+        
+
     def _get_azel_coords(self, ac6_alt=True, footprint_alt=np.arange(100, 700, 100), down_sample=30):
         """
         Make a list of azimuth and elevation indicies for AC6 above the ASI. 
