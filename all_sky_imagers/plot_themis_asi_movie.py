@@ -140,11 +140,11 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         mean_intensity = np.nan*np.ones(self.azel_index.shape[1]) # Number of altitude points
 
         for alt_index in range(self.azel_index.shape[1]):
-            mean_intensity[alt_index] = np.mean(self.imgs[self.idt_nearest, :, :])
-            for az_el in self.azel_index[:, alt_index, :]:
-                self.azel_index
-                pass
-
+            start_x = self.azel_index[alt_index, 0]-grid_width//2
+            end_x = self.azel_index[alt_index, 0]+grid_width//2
+            start_y = self.azel_index[alt_index, 1]-grid_width//2
+            end_y = self.azel_index[alt_index, 1]+grid_width//2
+            mean_intensity[alt_index] = np.mean(self.imgs[self.idt_nearest, start_x:end_x, start_y:end_y])
         return mean_intensity
         
 
