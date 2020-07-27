@@ -162,7 +162,7 @@ class Load_ASI:
         # condition (other values will be close enough).
         return idx[0][0], idx[1][0] 
 
-    def get_azel_from_lla(self, lat, lon, alt_km, find_footpoint_alt_km=100):
+    def get_azel_from_lla(self, lat, lon, alt_km, footpoint_alt_km=None):
         """
         Get the ASI azimuth and elevation given the satellite
         location in lat, lon, alt_km subpoint coordinates.
@@ -176,11 +176,11 @@ class Load_ASI:
         station = earth + Topos(latitude_degrees=self.cal['lat'], 
                                 longitude_degrees=self.cal['lon'], 
                                 elevation_m=self.cal['alt_m'])
-        if find_footpoint_alt_km: # If not explicity false
+        if footpoint_alt_km: # If not explicity None or False
             model = IRBEM.MagFields(kext='OPQ77')
             model.find_foot_point(
                 {'x1':alt_km, 'x2':lat, 'x3':lon, 'dateTime':self.time[0]},
-                None, stopAlt=find_footpoint_alt_km, hemiFlag=0
+                None, stopAlt=footpoint_alt_km, hemiFlag=0
                 )
             alt_km, lat, lon = model.find_foot_point_output['XFOOT']
         sat = earth + Topos(latitude_degrees=lat, longitude_degrees=lon, 
