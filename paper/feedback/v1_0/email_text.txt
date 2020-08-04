@@ -1,0 +1,163 @@
+Dear Dr. Shumko,
+
+Thank you for submitting "Statistical Properties of Electron Curtain Precipitation Estimated with AeroCube-6" [Paper #2020JA028462] to Journal of Geophysical Research - Space Physics. I have received 2 reviews of your manuscript, which are included below and/or attached. As you can see, the reviews indicate that major revisions are needed before we can consider proceeding with your paper. I am therefore returning the paper to you so that you can make the necessary changes.
+
+
+
+Please submit a revised manuscript that addresses the reviews and any editorial comments by October 3, 2020.
+
+**I realize that you are not in a normal work situation during the present ongoing Covid-19 pandemic and that it may be difficult to complete your revision on schedule. Safety and social distancing must come first and AGU Publications has relaxed previously established deadlines. We are happy to work with you and offer the time you need. Please email the journal inbox with a schedule that you are most comfortable with.
+
+In your revision, please follow our Checklist and use our Templates for the main file and any supplements. Please provide the following:
+
+1. A response to reviewer file that lists each major comment and describes how the manuscript has/has not been modified in response to those comments.
+
+2. A copy of the manuscript with the changes noted (e.g., highlighted, "track changes," italics or bold changes).
+
+3. The final revised manuscript with changes incorporated and separate final figure files (figure parts should be combined into a single file), which will be used for publication if the manuscript is accepted. If final figures are already uploaded, they can be easily copied over to the next revision version.
+
+4. If any, supporting information text, figures, captions, and small tables in single PDF file using AGU's template. Large data tables and multimedia should be uploaded separately.
+
+AGU requires that data needed to understand and build upon the published research be available in public repositories following best practices. This includes an explicit statement in the Acknowledgments section on where users can access or find the data for this paper. Citations to archived data should be included in your reference list. All references, including those cited in supporting information, should be included in the main reference list and cited in-text. All listed references must be available to the general reader by the time of acceptance. AGU requires the corresponding author, and encourages all authors, to register for an ORCID.
+
+Please check and verify authorship, and that all authors are included, have approved the revisions, and agreed to be listed in the order given. Authorship is final with publication. Responsibilities of the corresponding author are given here.
+
+
+When you are ready to submit your revision, please login to your account (https://jgr-spacephysics-submit.agu.org/cgi-bin/main.plex) and click "Revise 2020JA028462."
+
+I look forward to receiving your revised manuscript. If you have any questions, or need additional time to complete your revisions, please contact us at jgr-spacephysics@agu.org.
+
+Yours sincerely,
+
+Viviane Pierrard
+
+------------IMPORTANT INFORMATION------------------------
+Additional information on text preparation, formatting, acceptable file formats, supporting information, graphics preparation, and AGU style, is here.
+
+Sharing your work is an important part of the research process, and AGU leverages and shares published research to promote the broader importance of Earth and space science. Learn how you can promote your paper, including how your paper can be considered for additional publicity or for the issue cover if it is accepted.
+----------------------------------------------------------------------
+Reviewer #1 Evaluations:
+Recommendation (Required): Return to author for major revisions
+Significant: The paper has some unclear or incomplete reasoning but will likely be a significant contribution with revision and clarification.
+Supported: Mostly yes, but some further information and/or data are needed.
+Referencing: Yes
+Quality: Yes, it is well-written, logically organized, and the figures and tables are appropriate.
+Data: Yes
+Accurate Key Points: Yes
+
+Reviewer #1 (Formal Review for Authors (shown to authors)):
+
+Overview
+
+This paper presents a statistical analysis of precipitation "curtains", which are defined as narrow regions of electron precipitation that persist for many seconds but are narrowly constrained in latitude or L-shell. A dataset of over 1600 curtains is analyzed for their spatial, temporal, and geographic properties. The study finds that these events are narrow in latitude (mostly < 20 km), occur at outer radiation belt L-shells and pre-midnight MLT, and occur more frequently with increasing AE index. Moreover, the study calls into question the previous attribution of these events to drifting electrons, and provides an analysis suggesting a mechanism driven by parallel electric fields, thereby associating curtains with inverted-V discrete aurora. However, the paper rightly points out that a clear connection between the two will require a more comprehensive data set that includes energy resolution.
+
+Impression
+
+This is a nice study that improves on our knowledge of these precipitation events, which are relatively new and poorly understood. The study is an important contribution to the field of energetic particle precipitation. The paper calls into question the previous association of curtains with drift loss cone electrons, and I think that association does indeed require more data and analysis, so it is important to highlight; I will expand on this below. I see nothing in this paper to prevent its eventual publication in JGR, but there are some comments below that should be addressed. In particular, the paper requires some further analysis to make the argument for or against the curtain mechanism.
+
+Major Comments
+
+I have a couple of "major" comments here, but they are major only in that I think they are especially important; the actual effort required to revise the paper should not be cumbersome.
+
+1. The term "curtains" is problematic. It has been established and so is likely to stick, but it's worth considering the term and its implications. Blake and O'Brien [2016] estimate the longitudinal extent of their events to be >= 60 km based solely on the drift time between the passes of the two spacecraft (and Earth rotation? it is not mentioned.). That still assumes the electrons are drifting, which may or may not be the defining signature of these events. The precipitation may have been scattered locally, and AC6 is actually measuring electrons in the local BLC. The fact that the event persists simply means the scattering mechanism persists, as mentioned later in the paper. There are a few comments below on this question; the paper needs to be very careful about what conclusions can really be drawn from this data.
+
+2. Are these really radiation belt electrons? The paper points to this fact, though it does not overemphasize it. But the L-shell locations and energies suggest something more related to auroral precipitation, as the authors go on to suggest in Section 5.3. The connection with radiation belts in the motivation, introduction, and earlier parts of the paper should be revisited. I say more about this in the comments below.
+
+3. I also say more about this below, but the event distribution in MLT (Figure 3) requires more discussion. Alone, the MLT distribution is interesting and a valuable piece of information, but I am not sure it is being analyzed accurately. The fact that these events are constrained to specified MLT regions is indicative of a specific source mechanism occurring at those locations in geospace; the paper does not say much about this. But it also argues against the "curtain" hypothesis. If the spacecraft were indeed measuring drifting curtains, one would expect the distribution in MLT to be roughly uniform, because the spacecraft would be measuring the curtains irrespective of whether or not the source region is "overhead". On the other hand, the distribution in geographic longitude would be much more interesting. Drifting curtains would be observed increasingly as one progressed eastward from SAA, after which the events would disappear (since they all precipitated there). But this idea has not been investigated.
+
+One could argue that such analysis could be left for future work. However, because the paper works hard to assess the curtain mechanism, I think this more analysis is important. As it is, the paper does not present a strong argument one way or another, for or against the curtain mechanism.
+
+Minor Comments
+
+Line 30-31: because there is no evidence for the parallel electric field mechanism, I suggest rewording to something like: "we investigate the possibility that this precipitation is driven by parallel electric fields and show that this mechanism is consistent with observed signatures."
+
+Line 35-36: "remaining unchanged for seconds to a minute" - is there evidence for an upper limit on their duration? We really don't know, do we? The lower limit is given by the spacecraft separation, but they could persist for much longer; we don't have data to say when the event ends. One could look at the subsequent orbit, but the next orbit crossing likely happens at a different MLT and/or geographic longitude. I suggest rewording to note that any estimated durations are a lower limit.
+
+Line 51: the introduction talks about radiation belts, but are these really radiation belt electrons? The L-shells observed (figure 3, L = 5-9) are consistent with the outer belt but tending towards the outer edge and the auroral region. AC6 data are likely dominated by the lower energies (30-100 keV). Most would not strictly categorize these as radiation belt electrons.
+
+Line 57: define "stationary" - in time, space, or both?
+
+Line 58: see my major comment above about curtains and their longitudinal extent.
+
+Same paragraph: Is there any evidence in the literature of similar "curtains" in FIREBIRD data?
+
+Line 99: what is the spatial extent of bands / spikes referred to in this paragraph? This paragraph should also differentiate between bands / spikes and the curtains under study here. Are you saying they might be the same thing?
+
+Line 167: It's great that the authors identify the bias inherent in their windowing method. One possible solution to this could be to filter with multiple windows of different duration; perhaps a comment could be added on this or other methods to investigate / eliminate the bias. However, given the distribution in Figure 2, I don't think the bias is a major concern.
+
+Line 171: Elaborate on the "visual inspection". Visual inspection / classification can be very unreliable. How was the visual inspection method controlled?
+
+Line 183: Again, I do not see strong evidence that these curtain events are "drifting" at all; it's likely but there isn't evidence, unless I am missing something?
+
+Line 246: I would argue that the distribution in L-shell from Figure 3 is more like L = 6-9, possibly even L = 5-10 on the night side. The large number of events at L > 7 suggests this is a signature occurring largely outside the radiation belts.
+
+Suggestion: one way to look at this in more detail would be a joint distribution in L-shell and geomagnetic activity (such as AE index).
+
+Figure 3: The clear regions of higher observations in MLT are interesting, given the argument that these curtains are drifting electrons. If the signatures are primarily drifting electrons, wouldn't we expect to see near uniformity in MLT? The events would be created at preferential locations, but would be observed just about everywhere due to the drift. Could the authors comment on this, and its consistency with the observed MLT dependence?
+
+In a similar vein, if these are curtains of drifting electrons, then we would expect a clear dependence with geographic longitude; in particular, we'd see the occurrence rate near zero just east of the SAA, and increasing linearly around the globe to a maximum just before the SAA. This dependence should show up regardless of where the events are created in MLT, thanks to statistics (i.e. random combination of MLT and geographic longitude at any given time).
+
+On the other hand, if the events are being observed where they are created, the geographic dependence would be roughly uniform (random) in longitude, while the MLT dependence would show some preference (as in Figure 3).
+
+Line 248: Authors should explain why they chose AE index as a potential correlator with these events. Are there other indices that could be relevant, such as Kp or Dst?
+
+Line 272: This section is left hanging without any conclusion; I suggest a few sentences to explain the findings and implications of what is seen in Figure 5. The statement at the beginning of the section says the goal is to determine if the electrons are drifting or locally precipitating, but the conclusions based on Figure 5 are not clear.
+
+Showing events in the SAA (conjugate) region does not really give any insight. As mentioned above, it is the distribution of events geographically which will really answer the question posed in this section.
+
+Line 290: outer radiation belt → really the outer edge of the outer radiation belt, or just outside.
+
+Figure 5: I suggest showing the AC6 trajectories on this figure, as line segments or arrows, showing where the spacecraft are going.
+
+Line 301-302: It is not clear how the events on Figure 5 "call into question" the hypothesis of B&O 2016. It is simply luck that those particular events were created right above the SAA and will immediately precipitate. Other events (almost 1600) that were not observed over the SAA can still drift.
+
+Line 313: May I suggest starting a new subsection here? The subsection 5.3 heading doesn't really make sense for the rest of this subsection.
+
+Line 336: what altitude is chosen for B_f? Sea level? In actuality, electrons with mirror points just above 100 km would not have to be scattered that far; lowering the mirror point to ~90 km would probably be sufficient to precipitate them. (Marshall and Bortnik 2018 show that the loss cone altitude is reasonably sharp.) In that scenario, wouldn't this process require a much lower potential, just a few hundred volts? The conclusion that is drawn of a 1-4 kV potential is largely dependent on those assumptions of initial and final mirroring altitudes, which are not known.
+
+Paragraphs starting at line 341: Does this reasoning suggest that curtains are the source of inverted-V discrete aurora? Making this connection solely on the basis of the potential seems spurious at best.
+
+Line 368: just to reiterate that the duration may in fact be much longer than seconds; we would need a true "string of pearls", with >> 2 satellites, to determine the true duration!
+
+Figure A1: caption says "kilometers" but I think you mean "seconds"
+
+Figure B1: for the 3rd and 5th event: how do you distinguish between individual curtains and clusters / groups of curtains shown here? Are they counted individually, or is a cluster considered a single event?
+
+
+Reviewer #2 Evaluations:
+Recommendation (Required): Return to author for minor revisions
+Significant: Yes, the paper is a significant contribution and worthy of prompt publication.
+Supported: Yes
+Referencing: Yes
+Quality: Yes, it is well-written, logically organized, and the figures and tables are appropriate.
+Data: Yes
+Accurate Key Points: Yes
+
+Reviewer #2 (Formal Review for Authors (shown to authors)):
+
+Summary:
+The manuscript further qualifies and characterizes a newly identified form of electron precipitation reported by Blake and O'Brien (2016) called curtains. The authors use the AC-6 dual CubeSat observations to identify over 1000 curtains defined as electron precipitation that is stationary with spatial structure that is on the order of seconds. The precipitation is identified using the dosimeter >30keV integral count rate data such that there are prominent peaks with high spatial correlation. The findings of this work show curtains are narrow in width latitudinal wise with 90% narrower than 20km. Curtains are observed by AC-6 predominately in the pre-midnight MLT region during active geomagnetic times.
+The manuscript is well organized and well written. The comments I have are minor comments. The authors do a good job to build upon the work from Blake and O'Brien (2106) to further characterize this newly described precipitation that previously could not be identified by single spacecraft or balloon observations. The study does not try to do more than seems reasonable drawing conclusions which stay within the bounds of what can be concluded from the data. Very nice paper!
+
+Comments:
+1. The authors describe the instrument energy sensitivity as > 30keV. Blake and O'Brien report the instrument > 35keV. Perhaps the authors can use a consistent value for the instrument or describe why they are reporting a slightly different number.
+
+2. Blake and O'Brien show curtains that occur in back to back orbits. How many identified curtains occur in back to back orbits and are those events counted individually or as one continuous event?
+
+3. The authors do not mention the study by Anderson et al., 2017 which utilizes balloon observations from BARREL in conjunction with FIREBIRD II and AC-6. The Anderson study suggests curtains can occur along with microburst activity and could be caused by similar phenomena. This paper does not address the Anderson study though reports microburst activity can be hard to distinguish from curtains. The manuscript gave me the impression that one could be mistaken for the other but didn't necessarily occur at the same time or was a separate type of precipitation. This understanding might be driven by the fact the events presented in the paper are all separated in time as shown in Figure 1 with time stamps in April, May, and October of 2015 and January of 2017. The event shown in Blake and O'Brien (2016) show time evolution with curtain observations over sequential orbit passes. It seems to me there is a temporal development of these events that is not captured in this study with a focus purely on the spatial structure. It seems coincident balloon observations would be valuable to gain temporal information for these events. Even though peaks align with high correlation it is clear that the lagging spacecraft observes lower counts/s which also seems like a temporal feature (Figure 1d). I recommend include the Anderson study in the introduction.
+
+Anderson, B. R., S. Shekhar,R. M. Millan, A. B. Crew, H. E. Spence,D. M. Klumpar, J. B. Blake, T. P. O'Brien, and D. L. Turner (2017), Spatial scale and duration of one microburst region on 13 August 2015, J. Geophys. Res. Space Physics, 122, 5949-5964,doi:10.1002/2016JA023752
+
+4. The authors draw conclusions about the correlation of curtains with geomagnetic activity using AE index. I did not see any reference to the data source for these values in the acknowledgments. Please include the data source for AE index.
+
+5. The statement on line 294 about curtains near midnight MLT is rather suggestive for the paper, with language like "hints" and "possibly". I would encourage the author to make a more concrete statement here. I'm not sure L of 10 on the night side with a stretched tail during geomagnetic times would qualify as outside the outer radiation belts.
+
+
+6. Line 335 states the authors used the IRBEM-Lib again for analysis pertaining to curtains in the bounce loss cone. I find it more valuable to state the magnetic field model used in the study verses the tool used to run the model.
+
+7. The authors report that curtains occur predominantly in the pre-midnight local time sector though figure 3 shows that the AC-6 mission does not cover all local times with a sizeable gap post-midnight to 6 MLT and low statistics in the dayside dusk MLT sector. I agree that the data shows a preference for pre-midnight but that is based on the AC-6 orbit and should be qualified as such.
+
+
+
+
+If any reviewers made annotations to the pdf, there will be a link to the pdf.
