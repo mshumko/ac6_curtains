@@ -4,6 +4,7 @@ import matplotlib.colors
 import numpy as np
 from datetime import datetime
 import dateutil.parser
+import scipy.spatial
 import pathlib
 
 from skyfield.api import EarthSatellite, Topos, load
@@ -144,7 +145,7 @@ class THEMIS_ASI:
         plt.clabel(el_contours, inline=True, fontsize=8, rightside_up=True)
         return
 
-class Location_ASI(THEMIS_ASI):
+class THEMIS_ASI_map_azel(THEMIS_ASI):
     def __init__(self, site, time):
         """
         This class uses the THEMIS_ASI class to map the lat-lon-alt location
@@ -154,76 +155,114 @@ class Location_ASI(THEMIS_ASI):
         super().__init__(site, time)
         return
 
-    def find_nearest_azel(self, az, el, deg_thresh=1, deg_thresh_scale_factor=2):
+    def find_nearest_azel(self, az, el, deg_thresh=1, debug=False):
         """
         Given the azimuth and elevation of the satellite, locate the THEMIS ASI 
-        calibration pixel (value and index) that is closest to az and el.
+        calibration pixel (value and index) that is closest to az and el. Use
+        scipy.spatial.KDTree() to find the nearest values.
 
         deg_thresh is the starting degree threshold between az, el and the 
         calibration file. If no matches are found during the first pass,
         the deg_thresh is scaled by deg_thresh_scale_factor to expand the search
         to a wider range of calibration pixels. 
         """
-        #idx = ([], [])
-
-        az_grid = self.cal['az'].copy()
-        az_grid[np.isnan(az_grid)] = -10000
-
-        el_grid = self.cal['el'].copy()
+        az_grid = self.cal['az'].copy().ravel()
+        el_grid = self.cal['el'].copy().ravel()
+        # An extreme dummy value that won't match any real AzEl value
+        az_grid[np.isnan(az_grid)] = -10000 
         el_grid[np.isnan(el_grid)] = -10000
 
-        
-        
-        # while len(idx[0]) == 0:
-        #     # If no points were found, keep expanding the deg_thresh
-        #     deg_thresh *= deg_thresh_scale_factor
-        #     idx = np.where((np.abs(az_grid - az) < deg_thresh) & 
-        #                     (np.abs(el_grid - el) < deg_thresh))
-        # # Return the first row/col that met the deg_thresh 
-        # # condition (other values will be close enough).
-        # return idx[0][0], idx[1][0] 
+        # Set up the KDtree.
+        print(np.array(list(zip(az_grid, el_grid))))
+        tree = scipy.spatial.KDTree(np.array(list(zip(az_grid, el_grid))))
+        dist_to_neighbor, idx_neighbor = tree.query(np.array([az, el]).T, 
+                                                    distance_upper_bound=deg_thresh)
 
-    def get_azel_from_lla(self, lat, lon, alt_km, footpoint_alt_km=None):
+        # The idx_neighbor indicies are for the flattened array. 
+        # Az coordinate in the non-flattened array is idx % self.cal['az'].shape[1]
+        # El coorinate in the non-flattened array is idx // self.cal['az'].shape[1]
+        self.asi_azel = np.empty((len(idx_neighbor), 2), dtype=np.uint8)
+        self.asi_azel[:, 0] = np.remainder(idx_neighbor, self.cal['az'].shape[1])
+        self.asi_azel[:, 1] = np.floor_divide(idx_neighbor, self.cal['az'].shape[1])
+
+        if debug:
+            for az_i, el_i, asi_idx, dist in zip(az, el, idx_neighbor, dist_to_neighbor):
+                print(f'The point ({az_i}, {el_i}) is nearest the grid location '
+                      f'({az_grid[asi_idx]}, {el_grid[asi_idx]}) and is {round(dist, 1)} degrees away.')
+        return self.asi_azel
+
+    def sat_lla2sat_azel(self, lat, lon, alt_km):
         """
-        Get the ASI azimuth and elevation given the satellite
-        location in lat, lon, alt_km subpoint coordinates.
-
-        if find_footpoint_alt_km is not False, will map the 
-        lat, lon, alt coordinates along the magnetic field line to the
-        find_footpoint_alt_km altitude value.
+        Get the satellite's azimuth and elevation given the satellite's
+        lat, lon, and alt_km coordinates.
         """
         planets = load('de421.bsp')
         earth = planets['earth']
         station = earth + Topos(latitude_degrees=self.cal['lat'], 
                                 longitude_degrees=self.cal['lon'], 
                                 elevation_m=self.cal['alt_m'])
-        if footpoint_alt_km: # If not explicity None or False
-            model = IRBEM.MagFields(kext='OPQ77')
-            model.find_foot_point(
-                {'x1':alt_km, 'x2':lat, 'x3':lon, 'dateTime':self.time[0]},
-                None, stopAlt=footpoint_alt_km, hemiFlag=0
-                )
-            alt_km, lat, lon = model.find_foot_point_output['XFOOT']
-        sat = earth + Topos(latitude_degrees=lat, longitude_degrees=lon, 
-                        elevation_m=alt_km*1E3)
-
         ts = load.timescale()
         t = ts.now()
 
-        astro = station.at(t).observe(sat)
-        app = astro.apparent()
-        alt, az, _ = app.altaz()
-        return az, alt
+        # If the user did not provide LLA arrays turn them into arrays.
+        if not hasattr(lat, '__len__'):
+            lat = [lat]
+            lon = [lon]
+            alt_km = [alt_km]
 
+        sat_azel = np.zeros((len(lat), 2))
+
+        for i, lat_i, lon_i, alt_km_i in enumerate(zip(lat, lon, alt_km)):
+            sat_i = earth + Topos(
+                                latitude_degrees=lat_i, 
+                                longitude_degrees=lon_i, 
+                                elevation_m=1E3*alt_km_i
+                                )
+            astro = station.at(t).observe(sat_i)
+            app = astro.apparent()
+            sat_azel[i, 1], sat_azel[i, 0], _ = app.altaz()
+        return sat_azel
+
+    def map_lla_to_footprint(self, lat, lon, alt_km, map_alt_km):
+        """
+        Use IRBEM to map the sattelites lat, lon, and alt_km coodinates 
+        to map_alt_km and return the footprint's mapped_lat, mapped_lon, 
+        and mapped_alt_km coordinates.
+        """
+        model = IRBEM.MagFields(kext='OPQ77')
+        model.find_foot_point(
+            {'x1':alt_km, 'x2':lat, 'x3':lon, 'dateTime':self.time[0]},
+            None, stopAlt=map_alt_km, hemiFlag=0
+            )
+        mapped_alt_km, mapped_lat, mapped_lon = model.find_foot_point_output['XFOOT']
+        return mapped_lat, mapped_lon, mapped_alt_km
    
 if __name__ == '__main__':
+    ### TEST SCRIPT FOR THEMIS_ASI() CLASS ###
+    # site = 'WHIT'
+    # time = '2015-04-16T09:09:00'
+    # l = THEMIS_ASI(site, time)
+    # l.load_themis_cal()
+
+    # fig, ax = plt.subplots(figsize=(6,8))
+    # l.plot_themis_asi_frame(time, ax=ax)
+    # l.plot_azel_contours(ax=ax)
+    # plt.tight_layout()
+    # plt.show()
+
+    ### TEST SCRIPT FOR THEMIS_ASI_map_azel() CLASS ###
     site = 'WHIT'
     time = '2015-04-16T09:09:00'
-    l = THEMIS_ASI(site, time)
+    trajectory=[np.linspace(0, 90), np.linspace(0, 45)]
+    l = THEMIS_ASI_map_azel(site, time)
     l.load_themis_cal()
+
+    asi_azel = l.find_nearest_azel(trajectory[0], trajectory[1])
 
     fig, ax = plt.subplots(figsize=(6,8))
     l.plot_themis_asi_frame(time, ax=ax)
     l.plot_azel_contours(ax=ax)
+
+    ax.scatter(asi_azel[:, 0], asi_azel[:, 1])
     plt.tight_layout()
     plt.show()
