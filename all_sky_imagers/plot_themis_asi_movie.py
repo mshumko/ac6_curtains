@@ -103,6 +103,13 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
                     label='AC6B')
         self.bx[0].axvline(t_i, c='k', ls='--')
 
+        # Plot the ASI time series
+        self.bx[1].plot(self.time, self.ac6_data.dos1rate, 'r', label='AC6A')
+        self.bx[1].plot(self.ac6_data['dateTime_shifted_B'], self.ac6_data.dos1rate_B, 'b', 
+                    label='AC6B')
+        self.bx[1].axvline(t_i, c='k', ls='--')
+
+
         save_name = (f'{t_i.strftime("%Y%m%d")}_'
                     f'{t_i.strftime("%H%M%S")}_'
                     'themis_asi_frame.png')
@@ -125,28 +132,11 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         Call plot_frame for all the times in the filtered 
         ASI time series. 
         """
-        animation_frames = []
         for i in range(len(self.time)):
             self.plot_frame(i, imshow_vmax=imshow_vmax, imshow_norm=imshow_norm, 
                             individual_movie_dirs=individual_movie_dirs)
 
-        return
-
-    def get_mean_asi_intensity(self, grid_width=10):
-        """
-
-        """
-        current_img = self.imgs[self.idt_nearest, :, :]
-        mean_intensity = np.nan*np.ones(self.azel_index.shape[1]) # Number of altitude points
-
-        for alt_index in range(self.azel_index.shape[1]):
-            start_x = self.azel_index[alt_index, 0]-grid_width//2
-            end_x = self.azel_index[alt_index, 0]+grid_width//2
-            start_y = self.azel_index[alt_index, 1]-grid_width//2
-            end_y = self.azel_index[alt_index, 1]+grid_width//2
-            mean_intensity[alt_index] = np.mean(self.imgs[self.idt_nearest, start_x:end_x, start_y:end_y])
-        return mean_intensity
-        
+        return        
 
     def _get_azel_coords(self, ac6_alt=True, footprint_alt=np.arange(100, 700, 100), down_sample=30):
         """
@@ -169,6 +159,10 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
             self.azel_index = np.nan*np.zeros((self.time.shape[0], 1, 2), dtype=int)
         else:
             raise ValueError('The ac6_alt needs to be true, or footprint_alt needs to be an array. Or both.')
+
+        # print(self.azel_index.shape[:-1])
+        self.asi_timeseries = np.nan*np.ones(self.azel_index.shape[:-1], dtype=float)
+        
         
         for i, t_i in enumerate(self.time):
             # for each frame in self.time, find the nearest ac6_data (unit A) time 
@@ -195,7 +189,35 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
                                                                 self.azel[i, j, 0], 
                                                                 self.azel[i, j, 1]
                                                                 )
+            
+            # Get the ASI intensities 
+            for i, t_i in enumerate(self.time):
+                self.asi_timeseries[i, :] = self.get_mean_asi_intensity(t_i, self.azel_index[i, :, :])
         return
+
+    def get_mean_asi_intensity(self, t0, azel_index, grid_width=10):
+        """
+
+        """
+
+        dt = self.time-t0
+        dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
+        idt_nearest = np.argmin(dt_sec)
+
+        # current_img = self.imgs[idt_nearest, :, :]
+        mean_intensity = np.nan*np.ones(azel_index.shape[0]) # Number of altitude points
+
+        for alt_index in range(azel_index.shape[0]):
+            start_x = azel_index[alt_index, 0]-grid_width//2
+            end_x = azel_index[alt_index, 0]+grid_width//2
+            start_y = azel_index[alt_index, 1]-grid_width//2
+            end_y = azel_index[alt_index, 1]+grid_width//2
+            if not (np.isnan(start_x) or np.isnan(end_x) or 
+                    np.isnan(start_y) or np.isnan(end_y)):
+                mean_intensity[alt_index] = np.mean(
+                    self.imgs[idt_nearest, int(start_x):int(end_x), int(start_y):int(end_y)]
+                    )
+        return mean_intensity
 
 if __name__ == '__main__':
     # Load the curtain catalog

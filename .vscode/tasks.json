@@ -7,27 +7,20 @@
             "label": "python3.8",
             "type": "shell",
             "command": "python3.8",
-            "args": [
-                "${file}"
-            ],
-            "problemMatcher": [],
+            "args": ["${file}"],
+
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
-        },
-        {
-            "label": "python3.8 venv",
-            "type": "shell",
-            "command": "${python.pythonPath}",
-            "args": [
-                "-i",
-                "${file}"
-            ],
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
+            },
+
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
             }
         },
         {
@@ -43,7 +36,7 @@
                 "kind": "build",
                 "isDefault": true
             }
-        }
+        },
     ]
   }
 

@@ -92,7 +92,7 @@ class Load_ASI:
         dt = self.time-t0
         dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
         self.idt_nearest = np.argmin(dt_sec)
-        t0_nearest = self.time[idt_nearest]
+        t0_nearest = self.time[self.idt_nearest]
 
         if np.abs((t0_nearest - t0).total_seconds()) > 60*max_tdiff_m:
             raise ValueError(f'No THEMIS ASI image found within {max_tdiff_m} minutes.')
