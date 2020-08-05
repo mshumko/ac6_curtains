@@ -19,7 +19,7 @@ fig, ax = plt.subplots()
 for t0, row in cat.iterrows():
     for site in row['nearby_stations'].split():
         try:
-            l = plot_themis_asi.Load_ASI(site, t0)
+            l = plot_themis_asi.Load_THEMIS_ASI(site, t0)
             l.load_themis_cal()
         except (FileNotFoundError, ValueError) as err:
             continue

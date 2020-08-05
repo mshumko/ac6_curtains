@@ -12,7 +12,7 @@ import cdflib # https://github.com/MAVENSDC/cdflib
 from ac6_curtains import dirs
 import IRBEM
 
-class Load_ASI:
+class THEMIS_ASI:
     def __init__(self, site, time):
         """
         Loads the All-Sky Imager images and calibration.
@@ -31,10 +31,17 @@ class Load_ASI:
         """
         Load the THEMIS ASF data and convert the time keys to datetime objects
         """
-        file_name = f'thg_l1_asf_{self.site}_{self.time.strftime("%Y%m%d%H")}_v01.cdf'
-        cdf_path = pathlib.Path(self.asi_dir, file_name)
+        file_glob_str = f'*{self.site}_{self.time.strftime("%Y%m%d%H")}_v*.cdf'
+        # file_name = f'thg_l1_asf_{self.site}_{self.time.strftime("%Y%m%d%H")}_v01.cdf'
+        cdf_paths = list(pathlib.Path(self.asi_dir).rglob(file_glob_str))
+
+        assert len(cdf_paths) == 1, (f'{len(cdf_paths)} THEMIS ASI paths found'
+            f' for search string {file_glob_str} at {self.asi_dir}')
+        cdf_path = cdf_paths[0]
 
         self.asi = cdflib.cdfread.CDF(cdf_path)
+        self.keys = self.asi.cdf_info()['zVariables'] # Key variables.
+
         # Convert time
         try:
             self.time = cdflib.cdfepoch().to_datetime(self.asi[f"thg_asf_{self.site}_epoch"][:], 
@@ -77,7 +84,7 @@ class Load_ASI:
         return
 
     def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1, imshow_vmin=None, 
-                            imshow_vmax=None, imshow_norm='linear', colorbar=True):
+                            imshow_vmax=None, imshow_norm='log', colorbar=True):
         """
         Plot a ASI frame with a time nearest to t0.
         """
@@ -109,7 +116,6 @@ class Load_ASI:
         else:
             raise ValueError('The imshow_norm kwarg must be "linear" or "log".')
         
-
         title_text = (f'{self.site.upper()} ({round(self.cal["lat"])}N, '
                      f'{np.abs(round(self.cal["lon"]))}{lon_label})\n{t0_nearest}')
         self.hi = self.ax.imshow(self.imgs[self.idt_nearest, :, :], cmap="gray", 
@@ -138,29 +144,44 @@ class Load_ASI:
         plt.clabel(el_contours, inline=True, fontsize=8, rightside_up=True)
         return
 
-    def find_nearest_azel(self, az, el):
+class Location_ASI(THEMIS_ASI):
+    def __init__(self, site, time):
         """
-        Given the azimuth and elevation of the orbit track or satellite,
-        find where in the calibration arrays that point is nearest to.
+        This class uses the THEMIS_ASI class to map the lat-lon-alt location
+        of a satellite, ballon, etc. to AzEl coordinates using the THEMIS
+        ASI calibration data and the Skyfield library. 
         """
-        deg_thresh = 0.1
-        deg_thresh_scale_factor = 2
-        idx = ([], [])
+        super().__init__(site, time)
+        return
+
+    def find_nearest_azel(self, az, el, deg_thresh=1, deg_thresh_scale_factor=2):
+        """
+        Given the azimuth and elevation of the satellite, locate the THEMIS ASI 
+        calibration pixel (value and index) that is closest to az and el.
+
+        deg_thresh is the starting degree threshold between az, el and the 
+        calibration file. If no matches are found during the first pass,
+        the deg_thresh is scaled by deg_thresh_scale_factor to expand the search
+        to a wider range of calibration pixels. 
+        """
+        #idx = ([], [])
 
         az_grid = self.cal['az'].copy()
-        az_grid[np.isnan(az_grid)] = -1
+        az_grid[np.isnan(az_grid)] = -10000
 
         el_grid = self.cal['el'].copy()
-        el_grid[np.isnan(el_grid)] = -1
+        el_grid[np.isnan(el_grid)] = -10000
+
         
-        while len(idx[0]) == 0:
-            # If no points were found, keep expanding the deg_thresh
-            deg_thresh *= deg_thresh_scale_factor
-            idx = np.where((np.abs(az_grid - az) < deg_thresh) & 
-                            (np.abs(el_grid - el) < deg_thresh))
-        # Return the first row/col that met the deg_thresh 
-        # condition (other values will be close enough).
-        return idx[0][0], idx[1][0] 
+        
+        # while len(idx[0]) == 0:
+        #     # If no points were found, keep expanding the deg_thresh
+        #     deg_thresh *= deg_thresh_scale_factor
+        #     idx = np.where((np.abs(az_grid - az) < deg_thresh) & 
+        #                     (np.abs(el_grid - el) < deg_thresh))
+        # # Return the first row/col that met the deg_thresh 
+        # # condition (other values will be close enough).
+        # return idx[0][0], idx[1][0] 
 
     def get_azel_from_lla(self, lat, lon, alt_km, footpoint_alt_km=None):
         """
@@ -194,23 +215,15 @@ class Load_ASI:
         alt, az, _ = app.altaz()
         return az, alt
 
-    def keys(self):
-        """
-        Gets the variable names from the ASI data.
-        """
-        if hasattr(self, self.asi):
-            return self.asi.cdf_info()['zVariables']
-        else:
-            raise AttributeError('The ASI CDF file is probably not loaded.')
-        return
-
+   
 if __name__ == '__main__':
     site = 'WHIT'
-    time = '2015-04-07T08'
-    l = Load_ASI(site, time)
+    time = '2015-04-16T09:09:00'
+    l = THEMIS_ASI(site, time)
     l.load_themis_cal()
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(6,8))
     l.plot_themis_asi_frame(time, ax=ax)
     l.plot_azel_contours(ax=ax)
+    plt.tight_layout()
     plt.show()
