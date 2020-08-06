@@ -193,7 +193,6 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         el_grid[np.isnan(el_grid)] = -10000
 
         # Set up the KDtree.
-        print(np.array(list(zip(az_grid, el_grid))))
         tree = scipy.spatial.KDTree(np.array(list(zip(az_grid, el_grid))))
         dist_to_neighbor, idx_neighbor = tree.query(np.array([az, el]).T, 
                                                     distance_upper_bound=deg_thresh)
@@ -259,30 +258,30 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
    
 if __name__ == '__main__':
     ### TEST SCRIPT FOR THEMIS_ASI() CLASS ###
-    site = 'WHIT'
-    time = '2015-04-16T09:09:00'
-    l = THEMIS_ASI(site, time)
-    l.load_themis_cal()
-
-    fig, ax = plt.subplots(figsize=(6,8))
-    l.plot_themis_asi_frame(time, ax=ax)
-    l.plot_azel_contours(ax=ax)
-    plt.tight_layout()
-    plt.show()
-
-    ### TEST SCRIPT FOR THEMIS_ASI_map_azel() CLASS ###
     # site = 'WHIT'
     # time = '2015-04-16T09:09:00'
-    # trajectory=[np.linspace(0, 90), np.linspace(0, 45)]
-    # l = THEMIS_ASI_map_azel(site, time)
+    # l = THEMIS_ASI(site, time)
     # l.load_themis_cal()
-
-    # asi_azel = l.find_nearest_azel(trajectory[0], trajectory[1])
 
     # fig, ax = plt.subplots(figsize=(6,8))
     # l.plot_themis_asi_frame(time, ax=ax)
     # l.plot_azel_contours(ax=ax)
-
-    # ax.scatter(asi_azel[:, 0], asi_azel[:, 1])
     # plt.tight_layout()
     # plt.show()
+
+    ### TEST SCRIPT FOR THEMIS_ASI_map_azel() CLASS ###
+    site = 'WHIT'
+    time = '2015-04-16T09:09:00'
+    trajectory=[np.linspace(0, 90), np.linspace(0, 45)]
+    l = THEMIS_ASI_map_azel(site, time)
+    l.load_themis_cal()
+
+    asi_azel = l.find_nearest_azel(trajectory[0], trajectory[1])
+
+    fig, ax = plt.subplots(figsize=(6,8))
+    l.plot_themis_asi_frame(time, ax=ax)
+    l.plot_azel_contours(ax=ax)
+
+    ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
+    plt.tight_layout()
+    plt.show()
