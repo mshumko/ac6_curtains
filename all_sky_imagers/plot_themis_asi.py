@@ -327,7 +327,9 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         Wrapper for map_satazel_to_asiazel() and map_lla_to_sat_azel().
         """
         self.sat_azel = self.map_lla_to_sat_azel(lla)
+        print(self.sat_azel)
         self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel)
+        print(self.asi_azel)
         return self.asi_azel
 
     def map_satazel_to_asiazel(self, azel, deg_thresh=1, debug=False):
@@ -494,15 +496,22 @@ if __name__ == '__main__':
     l = THEMIS_ASI_map_azel(site, time)
     l.load_themis_cal()
 
-    lla = np.array([55.01, -140, 500])
+    # lla = np.array([
+    #     [55.01, -140, 500],
+    #     [61.01, -135.22, 500]
+    # ])
+    print(l.cal)
+    lla = np.array([61.01, -135.22, 500])
+    asi_azel1 = l.map_lla_to_asiazel(lla)
 
-    asi_azel = l.map_lla_to_asiazel(lla)
+    lla = np.array([61.01, -135, 500])
+    asi_azel2 = l.map_lla_to_asiazel(lla)
 
-    fig, ax = plt.subplots(figsize=(6,8))
-    l.plot_themis_asi_frame(time, ax=ax)
-    l.plot_azel_contours(ax=ax)
+    # fig, ax = plt.subplots(figsize=(6,8))
+    # l.plot_themis_asi_frame(time, ax=ax)
+    # l.plot_azel_contours(ax=ax)
 
-    ax.scatter(*asi_azel, c='g', marker='x')
-    # ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
-    plt.tight_layout()
-    plt.show()
+    # ax.scatter(*asi_azel, c='g', marker='x')
+    # # ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
+    # plt.tight_layout()
+    # plt.show()
