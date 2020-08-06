@@ -65,7 +65,26 @@ class THEMIS_ASI:
 
     def load_themis_asi(self):
         """
-        Load the THEMIS ASF data and convert the time keys to datetime objects
+        Load the THEMIS ASI data and convert the time array to a 
+        datetime array. The data is searched in self.asi_dir with
+        the following glob string: 
+        f'*{self.site}_{self.t.strftime("%Y%m%d%H")}_v*.cdf'.
+        The frame times are converted to datetime objects in 
+        self.time and self.imgs is the 3D ASI data cube.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        self.asi : cdflib.cdfread.CDF object
+            The ASI object with the data.
+        self.time : datetime.datetime array
+            The array of ASI frame time stamps.
+        self.imgs : 3D array
+            A THEMIS ASI frame image cube with the first axis indexes 
+            frames at times corrsponding to self.time.
         """
         file_glob_str = f'*{self.site}_{self.t.strftime("%Y%m%d%H")}_v*.cdf'
         cdf_paths = list(pathlib.Path(self.asi_dir).rglob(file_glob_str))
@@ -102,17 +121,24 @@ class THEMIS_ASI:
 
         Parameters
         ----------
-        cal_file_name : str (optional)
-            The exact calibration filename to overwrite the default glob
-            search string: cal_file_name = f'thg_l2_asc_{self.site}_*.cdf'.
+        t : datetime.datetime
+            A datetime.datetime object or an array of datetime.datetime 
+            objects that is used to find the nearest ASI frames and 
+            frame times.
+        max_diff_s : float (optional)
+            Maximum differnece between t and the ASI frame time array.
 
         Returns
         -------
-        self.cal : dict
-            A calibration dictionary inluding: the az and el 
-            calibration data, as well as the station lat, lon, 
-            alt_m, site name, calibration filename, and 
-            calibration epoch.
+        frames: 2D or 3D array
+            The ASI frames. If t is a single time, the frames will be
+            one 2D ASI frame. If t is an array of times, frames will 
+            be a 3D ASI frame cube with the first axis time.        
+        frame_times : datetime.datetime or an array of datetime.datetimes
+            The ASI frame times closest to each time in t. If t is a 
+            single time, the frame_times will be one time stamp. If t 
+            is an array of times, the frame_times will also be an array 
+            of times.
         """
         if not hasattr(t, '__len__'):
             t = [t]
