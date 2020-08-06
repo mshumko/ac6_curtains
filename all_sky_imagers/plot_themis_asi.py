@@ -16,15 +16,50 @@ import IRBEM
 class THEMIS_ASI:
     def __init__(self, site, time):
         """
-        Loads the All-Sky Imager images and calibration.
+        This class handles finding and loading the All-Sky Imager images and 
+        calibration files. Once loaded, the 
+
+        Attributes
+        ----------
+        asi_dir : str
+            The ASI directory
+        site : str
+            Shorthand ASI site name
+        t : datetime.datetime
+            The time used to lookup and load the ASI data.
+        asi : cdflib.cdfread.CDF object
+            The all sky imager object.
+        keys : list
+            List of ASI data keys
+        cal : dict
+            Once load_themis_cal() is called, cal will be avaliable and it 
+            contains the metadata about the ground station such as lat, lon,
+            alt, and the mapping between image pixel indicies to AzEl.
+
+        Methods
+        -------
+        load_themis_asi()
+            Looks for and loads a THEMIS ASI file that contains self.site
+            and the date + hour from self.t (the time argument for __init__)
+        get_asi_frames()
+            Given a time, or an array of times, return the closest ASI image
+            frames and time(s) within the max_diff_s time threshold.
+        load_themis_cal()
+            Looks for, and loads the THEMIS ASI azimuth and elevation (AzEl)
+            calibration files.
+        plot_themis_asi_frame()
+            Plots one ASI frame given a time.
+        plot_azel_contours()
+            Plots the AzEl contours on top of the ASI frame, useful for developing
+            and debugging.
         """
         self.asi_dir = dirs.ASI_DIR
         self.site = site.lower()
-        self.time = time
+        self.t = time
 
-        if isinstance(self.time, str):
+        if isinstance(self.t, str):
             # Convert to datetime object if passes a tring time
-            self.time = dateutil.parser.parse(self.time)
+            self.t = dateutil.parser.parse(self.t)
         self.load_themis_asi()
         return
 
@@ -32,10 +67,8 @@ class THEMIS_ASI:
         """
         Load the THEMIS ASF data and convert the time keys to datetime objects
         """
-        file_glob_str = f'*{self.site}_{self.time.strftime("%Y%m%d%H")}_v*.cdf'
-        # file_name = f'thg_l1_asf_{self.site}_{self.time.strftime("%Y%m%d%H")}_v01.cdf'
+        file_glob_str = f'*{self.site}_{self.t.strftime("%Y%m%d%H")}_v*.cdf'
         cdf_paths = list(pathlib.Path(self.asi_dir).rglob(file_glob_str))
-
         assert len(cdf_paths) == 1, (f'{len(cdf_paths)} THEMIS ASI paths found'
             f' for search string {file_glob_str} at {self.asi_dir}')
         cdf_path = cdf_paths[0]
@@ -63,9 +96,23 @@ class THEMIS_ASI:
 
     def get_asi_frames(self, t, max_diff_s=5):
         """ 
-        Given the array of times, t, return an image cube of ASI images
-        near those times, as well as the ASI times that correpond to 
-        each image.
+        Given the array of times, t, return an image cube (or 2D array) 
+        of ASI images near those times, as well as the ASI times that 
+        correpond to each image.
+
+        Parameters
+        ----------
+        cal_file_name : str (optional)
+            The exact calibration filename to overwrite the default glob
+            search string: cal_file_name = f'thg_l2_asc_{self.site}_*.cdf'.
+
+        Returns
+        -------
+        self.cal : dict
+            A calibration dictionary inluding: the az and el 
+            calibration data, as well as the station lat, lon, 
+            alt_m, site name, calibration filename, and 
+            calibration epoch.
         """
         if not hasattr(t, '__len__'):
             t = [t]
@@ -86,15 +133,35 @@ class THEMIS_ASI:
         else:
             return self.imgs[frame_idx, :, :], frame_times
 
-    def load_themis_cal(self):
+    def load_themis_cal(self, cal_file_name=None):
         """
-        Loads the THEMIS calibration file.
-        """
-        file_name = f'thg_l2_asc_{self.site}_*.cdf'
-        cdf_paths = sorted(pathlib.Path(self.asi_dir).glob(file_name))
-        cdf_path = cdf_paths[-1] # Grab the most recent cal file.
+        Loads the THEMIS ASI calibration file. This is a simple program
+        that loads only the most recent calibration file, if multiple
+        files exist. Otherwise if cal_file_name is specified, that exact 
+        file name will be searched for.
 
-        cal = cdflib.cdfread.CDF(cdf_path)
+        Parameters
+        ----------
+        cal_file_name : str (optional)
+            The exact calibration filename to overwrite the default glob
+            search string: cal_file_name = f'thg_l2_asc_{self.site}_*.cdf'.
+
+        Returns
+        -------
+        self.cal : dict
+            A calibration dictionary inluding: the az and el 
+            calibration data, as well as the station lat, lon, 
+            alt_m, site name, calibration filename, and 
+            calibration epoch.
+        """
+        if cal_file_name is None:
+            cal_file_name = f'thg_l2_asc_{self.site}_*.cdf'
+        else:
+            cal_paths = sorted(pathlib.Path(self.asi_dir).glob(cal_file_name))
+            cal_path = cal_paths[-1] # Grab the most recent cal file.
+        
+
+        cal = cdflib.cdfread.CDF(cal_path)
         az = cal[f"thg_asf_{self.site}_azim"][0]
         el = cal[f"thg_asf_{self.site}_elev"][0]
         lat = cal[f"thg_asc_{self.site}_glat"]
@@ -107,12 +174,37 @@ class THEMIS_ASI:
             "az":az, "el":el, 'coords':x, "lat": lat, "lon": lon, "alt_m": alt_m, 
             "site": self.site, "calfilename": cdf_path.name, "caltime": time
                 }
-        return
+        return self.cal
 
     def plot_themis_asi_frame(self, t0, ax=None, max_diff_s=60, imshow_vmin=None, 
                             imshow_vmax=None, imshow_norm='log', colorbar=True):
         """
-        Plot a ASI frame with a time nearest to t0.
+        Plot a ASI frame with a time nearest to t0. The subplot and the image
+        are set as class attributes.
+
+        Parameters
+        ----------
+        t0 : str or datetime.datetime
+            The time to plot the ASI frame for.
+        ax : plt.subplot (optional)
+            The subplot object to plot the ASI frame.
+        max_diff_s : float (optional)
+            Maximum differnece between t0 and the ASI frame time array.
+        imshow_vmin : float (optional)
+            The pixel intensity value corresponding to the maximum color 
+            value for the ASI frame.
+        imshow_vmin : float (optional)
+            The pixel intensity value corresponding to the minimum color 
+            value for the ASI frame.
+        imshow_norm : str
+            The color normalization. Can be either linear or log.
+        colorbar : bool
+            Flag to plot the horizontal colorbar.
+
+        Returns
+        -------
+        frame_time : datetime.datetime
+            The time of the plotted frame. 
         """
         if ax is None:
             _, self.ax = plt.subplots()
@@ -150,7 +242,16 @@ class THEMIS_ASI:
 
     def plot_azel_contours(self, ax=None):
         """ 
-        Superpose the azimuth and elivation contours on the ASI frame 
+        Superpose the azimuth and elivation contours on the ASI frame,
+        on the self.ax subplot.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
         """
         if ax is None:
             _, self.ax = plt.subplots()
@@ -171,11 +272,30 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         This class uses the THEMIS_ASI class to map the lat-lon-alt location
         of a satellite, ballon, etc. to AzEl coordinates using the THEMIS
         ASI calibration data and the Skyfield library. 
+
+        Attributes
+        ----------
+        asi_dir : str
+            The ASI directory
+        site : str
+            Shorthand ASI site name
+        time : datetime.datetime
+            The time used to lookup and load the ASI data.
+
+        Methods
+        -------
+        map_satazel_to_asiazel()
+            Maps from the satellite azimuth and elevation (azel) coordimates
+            and finds the nearest all sky imager (ASI) azel calibration pixel. 
+        map_lla_to_sat_azel()
+            Maps the satellite lat, lon, and alt (km) coorinates to azel 
+            coordinates for the ground station. The Skyfield library is used
+            for this mapping.
         """
         super().__init__(site, time)
         return
 
-    def find_nearest_azel(self, az, el, deg_thresh=1, debug=False):
+    def map_satazel_to_asiazel(self, az, el, deg_thresh=1, debug=False):
         """
         Given the azimuth and elevation of the satellite, locate the THEMIS ASI 
         calibration pixel (value and index) that is closest to az and el. Use
@@ -185,6 +305,18 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         calibration file. If no matches are found during the first pass,
         the deg_thresh is scaled by deg_thresh_scale_factor to expand the search
         to a wider range of calibration pixels. 
+
+        Parameters
+        ----------
+        param1
+            The first parameter.
+        param2
+            The second parameter.
+
+        Returns
+        -------
+        bool
+            True if successful, False otherwise.
         """
         az_grid = self.cal['az'].copy().ravel()
         el_grid = self.cal['el'].copy().ravel()
@@ -210,10 +342,22 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
                       f'({az_grid[asi_idx]}, {el_grid[asi_idx]}) and is {round(dist, 1)} degrees away.')
         return self.asi_azel
 
-    def sat_lla2sat_azel(self, lat, lon, alt_km):
+    def map_lla_to_sat_azel(self, lat, lon, alt_km):
         """
         Get the satellite's azimuth and elevation given the satellite's
         lat, lon, and alt_km coordinates.
+
+        Parameters
+        ----------
+        param1
+            The first parameter.
+        param2
+            The second parameter.
+
+        Returns
+        -------
+        bool
+            True if successful, False otherwise.
         """
         planets = load('de421.bsp')
         earth = planets['earth']
@@ -247,6 +391,18 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         Use IRBEM to map the sattelites lat, lon, and alt_km coodinates 
         to map_alt_km and return the footprint's mapped_lat, mapped_lon, 
         and mapped_alt_km coordinates.
+
+        Parameters
+        ----------
+        param1
+            The first parameter.
+        param2
+            The second parameter.
+
+        Returns
+        -------
+        bool
+            True if successful, False otherwise.
         """
         model = IRBEM.MagFields(kext='OPQ77')
         model.find_foot_point(
