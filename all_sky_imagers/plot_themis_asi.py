@@ -7,7 +7,7 @@ import dateutil.parser
 import scipy.spatial
 import pathlib
 
-from skyfield.api import EarthSatellite, Topos, load
+import skyfield.api
 import cdflib # https://github.com/MAVENSDC/cdflib
 
 from ac6_curtains import dirs
@@ -182,10 +182,11 @@ class THEMIS_ASI:
         """
         if cal_file_name is None:
             cal_file_name = f'thg_l2_asc_{self.site}_*.cdf'
-        else:
             cal_paths = sorted(pathlib.Path(self.asi_dir).glob(cal_file_name))
             cal_path = cal_paths[-1] # Grab the most recent cal file.
-        
+        else:
+            cal_path = pathlib.Path(self.asi_dir, cal_file_name)
+            
 
         cal = cdflib.cdfread.CDF(cal_path)
         az = cal[f"thg_asf_{self.site}_azim"][0]
@@ -198,7 +199,7 @@ class THEMIS_ASI:
 
         self.cal = {
             "az":az, "el":el, 'coords':x, "lat": lat, "lon": lon, "alt_m": alt_m, 
-            "site": self.site, "calfilename": cdf_path.name, "caltime": time
+            "site": self.site, "calfilename": cal_path.name, "caltime": time
                 }
         return self.cal
 
@@ -327,6 +328,7 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         """
         lat, lon, alt_km = lla
         self.sat_azel = self.map_lla_to_sat_azel(lla)
+        print(self.sat_azel.shape)
         self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel[:, 0], 
                                                     self.sat_azel[:, 1])
         return self.asi_azel
@@ -395,12 +397,12 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
             An array of shape lla.shape[0] x 2 with the satellite azimuth 
             and elevation columns.
         """
-        planets = load('de421.bsp')
+        planets = skyfield.api.load('de421.bsp')
         earth = planets['earth']
-        station = earth + Topos(latitude_degrees=self.cal['lat'], 
+        station = earth + skyfield.api.Topos(latitude_degrees=self.cal['lat'], 
                                 longitude_degrees=self.cal['lon'], 
                                 elevation_m=self.cal['alt_m'])
-        ts = load.timescale()
+        ts = skyfield.api.load.timescale()
         t = ts.now()
 
         # Check if the user passed in one set of LLA values or a 2d array. 
@@ -410,17 +412,18 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         if n_dims == 1:
             lla = np.array([lla])
 
-        sat_azel = np.zeros((len(lat), 2))
+        sat_azel = np.zeros((lla.shape[0], 2))
 
-        for i, lat_i, lon_i, alt_km_i in enumerate(lla):
-            sat_i = earth + Topos(
+        for i, (lat_i, lon_i, alt_km_i) in enumerate(lla):
+            sat_i = earth + skyfield.api.Topos(
                                 latitude_degrees=lat_i, 
                                 longitude_degrees=lon_i, 
                                 elevation_m=1E3*alt_km_i
                                 )
             astro = station.at(t).observe(sat_i)
             app = astro.apparent()
-            sat_azel[i, 1], sat_azel[i, 0], _ = app.altaz()
+            el_i, az_i, _ = app.altaz()
+            sat_azel[i, 1], sat_azel[i, 0] = el_i.degrees, az_i.degrees
         # Remove the extra dimension if user fed in one set of LLA values.
         if n_dims == 1:
             sat_azel = sat_azel[0, :]
@@ -487,12 +490,14 @@ if __name__ == '__main__':
     l = THEMIS_ASI_map_azel(site, time)
     l.load_themis_cal()
 
-    asi_azel = l.find_nearest_azel(trajectory[0], trajectory[1])
+    lla = np.array([61.01, -135, 500])
 
-    fig, ax = plt.subplots(figsize=(6,8))
-    l.plot_themis_asi_frame(time, ax=ax)
-    l.plot_azel_contours(ax=ax)
+    asi_azel = l.map_lla_to_asiazel(lla)
 
-    ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
-    plt.tight_layout()
-    plt.show()
+    # fig, ax = plt.subplots(figsize=(6,8))
+    # l.plot_themis_asi_frame(time, ax=ax)
+    # l.plot_azel_contours(ax=ax)
+
+    # ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
+    # plt.tight_layout()
+    # plt.show()
