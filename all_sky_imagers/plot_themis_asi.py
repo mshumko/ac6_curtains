@@ -4,7 +4,6 @@ import matplotlib.colors
 import numpy as np
 from datetime import datetime
 import dateutil.parser
-import scipy.spatial
 import pathlib
 
 import skyfield.api
@@ -332,11 +331,14 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         print(self.asi_azel)
         return self.asi_azel
 
-    def map_satazel_to_asiazel(self, azel, deg_thresh=1, debug=False):
+    def map_satazel_to_asiazel(self, sat_azel, deg_thresh=0.1,
+                            deg_thresh_scale_factor=2):
         """
-        Given the azimuth and elevation of the satellite, locate the THEMIS ASI 
-        calibration pixel (value and index) that is closest to az and el. Use
-        scipy.spatial.KDTree() to find the nearest values.
+        Given the azimuth and elevation of the satellite, sat_azel, locate 
+        the THEMIS ASI calibration pixel index that is closest to the 
+        satellite az and el. Note that the old scipy.spatial.KDTree() 
+        implementation does not work because the calibration values are 
+        in polar coorinates.
 
         deg_thresh is the starting degree threshold between az, el and the 
         calibration file. If no matches are found during the first pass,
@@ -345,45 +347,51 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
 
         Parameters
         ----------
-        param1
-            The first parameter.
-        param2
-            The second parameter.
+        sat_azel : array
+            A 1d or 2d array of satelite azimuth and elevation points.
+            If 2d, the rows correspons to time.
+        deg_thresh : float (optional)
+            The degree threshold first used to find the ASI calibration pixel.
+        deg_thresh_scale_factor : float (optional)
+            If no ASI pixel is found using the deg_thresh, the deg_thresh
+            is scaled by deg_thresh_scale_factor until a pixel value is found.
 
         Returns
         -------
-        bool
-            True if successful, False otherwise.
+        self.asi_azel : array
+            An array with the same shape as sat_azel, but representing the
+            indicies in the ASI calibration file (and image).
         """
-        n_dims = len(azel.shape)
-        
-        az_grid = self.cal['az'].copy().ravel()
-        el_grid = self.cal['el'].copy().ravel()
-        # An extreme dummy value that won't match any real AzEl value
-        az_grid[np.isnan(az_grid)] = -10000 
-        el_grid[np.isnan(el_grid)] = -10000
-
-        # Set up the KDtree.
-        tree = scipy.spatial.KDTree(np.array(list(zip(az_grid, el_grid))))
-        dist_to_neighbor, idx_neighbor = tree.query(azel, 
-                                                    distance_upper_bound=deg_thresh)
-
-        # The idx_neighbor indicies are for the flattened array. 
-        # Az coordinate in the non-flattened array is idx % self.cal['az'].shape[1]
-        # El coorinate in the non-flattened array is idx // self.cal['az'].shape[1]
+        n_dims = len(sat_azel.shape)
         if n_dims == 2:
-            self.asi_azel = np.empty((len(idx_neighbor), 2), dtype=np.uint8)
-            self.asi_azel[:, 0] = np.remainder(idx_neighbor, self.cal['az'].shape[1])
-            self.asi_azel[:, 1] = np.floor_divide(idx_neighbor, self.cal['az'].shape[1])
+            self.asi_azel = np.zeros(sat_azel.shape, dtype=np.uint8)
         elif n_dims == 1:
-            self.asi_azel = np.empty(2, dtype=np.uint8)
-            self.asi_azel[0] = np.remainder(idx_neighbor, self.cal['az'].shape[1])
-            self.asi_azel[1] = np.floor_divide(idx_neighbor, self.cal['az'].shape[1])
+            self.asi_azel = np.zeros((1, sat_azel.shape[0]), dtype=np.uint8)
+            sat_azel = np.array([sat_azel])
 
-        if debug:
-            for azel_i, asi_idx, dist in zip(azel, idx_neighbor, dist_to_neighbor):
-                print(f'The point {azel_i} is nearest the grid location '
-                      f'({az_grid[asi_idx]}, {el_grid[asi_idx]}) and is {round(dist, 1)} degrees away.')
+        az_grid = self.cal['az'].copy()
+        az_grid[np.isnan(az_grid)] = -10000
+
+        el_grid = self.cal['el'].copy()
+        el_grid[np.isnan(el_grid)] = -10000
+        
+        for i, (az, el) in enumerate(sat_azel):
+            while True:
+                idx = np.where((np.abs(az_grid - az) < deg_thresh) & 
+                                (np.abs(el_grid - el) < deg_thresh))
+                # Save the first row/col that met the deg_thresh 
+                # condition (other values will be close enough).
+                if len(idx[0]) > 0:
+                    self.asi_azel[i, :] = idx[0][0], idx[1][0] 
+                    break
+                else:
+                    # If no points were found, keep expanding 
+                    # the deg_thresh
+                    deg_thresh *= deg_thresh_scale_factor
+        # Collapse the 2d asi_azel to 1d if the user specifed a
+        # a 1d array argument.            
+        if n_dims == 1:
+            self.asi_azel = self.asi_azel[0, :]
         return self.asi_azel
 
     def map_lla_to_sat_azel(self, lla):
@@ -507,11 +515,12 @@ if __name__ == '__main__':
     lla = np.array([61.01, -135, 500])
     asi_azel2 = l.map_lla_to_asiazel(lla)
 
-    # fig, ax = plt.subplots(figsize=(6,8))
-    # l.plot_themis_asi_frame(time, ax=ax)
-    # l.plot_azel_contours(ax=ax)
+    fig, ax = plt.subplots(figsize=(6,8))
+    l.plot_themis_asi_frame(time, ax=ax)
+    l.plot_azel_contours(ax=ax)
 
-    # ax.scatter(*asi_azel, c='g', marker='x')
-    # # ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
-    # plt.tight_layout()
-    # plt.show()
+    ax.scatter(*asi_azel1, c='g', marker='x')
+    ax.scatter(*asi_azel2, c='g', marker='x')
+    # ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
+    plt.tight_layout()
+    plt.show()
