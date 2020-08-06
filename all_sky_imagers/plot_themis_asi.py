@@ -25,10 +25,10 @@ class THEMIS_ASI:
         if isinstance(self.time, str):
             # Convert to datetime object if passes a tring time
             self.time = dateutil.parser.parse(self.time)
-        self.load_themis_asf()
+        self.load_themis_asi()
         return
 
-    def load_themis_asf(self):
+    def load_themis_asi(self):
         """
         Load the THEMIS ASF data and convert the time keys to datetime objects
         """
@@ -61,6 +61,31 @@ class THEMIS_ASI:
                 raise
         return self.asi, self.time, self.imgs
 
+    def get_asi_frames(self, t, max_diff_s=5):
+        """ 
+        Given the array of times, t, return an image cube of ASI images
+        near those times, as well as the ASI times that correpond to 
+        each image.
+        """
+        if not hasattr(t, '__len__'):
+            t = [t]
+
+        frame_idx = -10000*np.ones(len(t), dtype=int)
+        frame_times = np.nan*np.ones(len(t), dtype=object)
+
+        for i, t_i in enumerate(t):
+            dt = self.time-t_i
+            dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
+            frame_idx[i] = np.argmin(dt_sec)
+            frame_times[i] = self.time[frame_idx[i]]
+
+            if np.abs((frame_times[i] - t_i).total_seconds()) > max_diff_s:
+                raise ValueError(f'No THEMIS ASI image found within {max_diff_s} seconds.')
+        if len(t) == 1:
+            return self.imgs[frame_idx[0], :, :], frame_times[0]
+        else:
+            return self.imgs[frame_idx, :, :], frame_times
+
     def load_themis_cal(self):
         """
         Loads the THEMIS calibration file.
@@ -84,7 +109,7 @@ class THEMIS_ASI:
                 }
         return
 
-    def plot_themis_asi_frame(self, t0, ax=None, max_tdiff_m=1, imshow_vmin=None, 
+    def plot_themis_asi_frame(self, t0, ax=None, max_diff_s=60, imshow_vmin=None, 
                             imshow_vmax=None, imshow_norm='log', colorbar=True):
         """
         Plot a ASI frame with a time nearest to t0.
@@ -97,13 +122,8 @@ class THEMIS_ASI:
         if isinstance(t0, str):
             # Convert to datetime object if passes a tring time
             t0 = dateutil.parser.parse(t0) 
-        dt = self.time-t0
-        dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
-        self.idt_nearest = np.argmin(dt_sec)
-        t0_nearest = self.time[self.idt_nearest]
 
-        if np.abs((t0_nearest - t0).total_seconds()) > 60*max_tdiff_m:
-            raise ValueError(f'No THEMIS ASI image found within {max_tdiff_m} minutes.')
+        frame, frame_time = self.get_asi_frames(t0, max_diff_s=max_diff_s)
 
         if self.cal['lon'] < 0:
             lon_label='W'
@@ -118,15 +138,15 @@ class THEMIS_ASI:
             raise ValueError('The imshow_norm kwarg must be "linear" or "log".')
         
         title_text = (f'{self.site.upper()} ({round(self.cal["lat"])}N, '
-                     f'{np.abs(round(self.cal["lon"]))}{lon_label})\n{t0_nearest}')
-        self.hi = self.ax.imshow(self.imgs[self.idt_nearest, :, :], cmap="gray", 
+                     f'{np.abs(round(self.cal["lon"]))}{lon_label})\n{frame_time}')
+        self.hi = self.ax.imshow(frame, cmap="gray", 
                                 origin="lower", interpolation="none",
                                 vmin=imshow_vmin, vmax=imshow_vmax, norm=norm)
         if colorbar:
             plt.colorbar(self.hi, ax=self.ax, orientation='horizontal')
         self.ht = self.ax.set_title(title_text, color="k")
         self.ax.axis('off')
-        return t0_nearest
+        return frame_time
 
     def plot_azel_contours(self, ax=None):
         """ 
@@ -239,30 +259,30 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
    
 if __name__ == '__main__':
     ### TEST SCRIPT FOR THEMIS_ASI() CLASS ###
-    # site = 'WHIT'
-    # time = '2015-04-16T09:09:00'
-    # l = THEMIS_ASI(site, time)
-    # l.load_themis_cal()
-
-    # fig, ax = plt.subplots(figsize=(6,8))
-    # l.plot_themis_asi_frame(time, ax=ax)
-    # l.plot_azel_contours(ax=ax)
-    # plt.tight_layout()
-    # plt.show()
-
-    ### TEST SCRIPT FOR THEMIS_ASI_map_azel() CLASS ###
     site = 'WHIT'
     time = '2015-04-16T09:09:00'
-    trajectory=[np.linspace(0, 90), np.linspace(0, 45)]
-    l = THEMIS_ASI_map_azel(site, time)
+    l = THEMIS_ASI(site, time)
     l.load_themis_cal()
-
-    asi_azel = l.find_nearest_azel(trajectory[0], trajectory[1])
 
     fig, ax = plt.subplots(figsize=(6,8))
     l.plot_themis_asi_frame(time, ax=ax)
     l.plot_azel_contours(ax=ax)
-
-    ax.scatter(asi_azel[:, 0], asi_azel[:, 1])
     plt.tight_layout()
     plt.show()
+
+    ### TEST SCRIPT FOR THEMIS_ASI_map_azel() CLASS ###
+    # site = 'WHIT'
+    # time = '2015-04-16T09:09:00'
+    # trajectory=[np.linspace(0, 90), np.linspace(0, 45)]
+    # l = THEMIS_ASI_map_azel(site, time)
+    # l.load_themis_cal()
+
+    # asi_azel = l.find_nearest_azel(trajectory[0], trajectory[1])
+
+    # fig, ax = plt.subplots(figsize=(6,8))
+    # l.plot_themis_asi_frame(time, ax=ax)
+    # l.plot_azel_contours(ax=ax)
+
+    # ax.scatter(asi_azel[:, 0], asi_azel[:, 1])
+    # plt.tight_layout()
+    # plt.show()
