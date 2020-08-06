@@ -321,6 +321,16 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         super().__init__(site, time)
         return
 
+    def map_lla_to_asiazel(self, lla):
+        """
+        Wrapper for map_satazel_to_asiazel() and map_lla_to_sat_azel wrappers.
+        """
+        lat, lon, alt_km = lla
+        self.sat_azel = self.map_lla_to_sat_azel(lla)
+        self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel[:, 0], 
+                                                    self.sat_azel[:, 1])
+        return self.asi_azel
+
     def map_satazel_to_asiazel(self, az, el, deg_thresh=1, debug=False):
         """
         Given the azimuth and elevation of the satellite, locate the THEMIS ASI 
@@ -368,22 +378,22 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
                       f'({az_grid[asi_idx]}, {el_grid[asi_idx]}) and is {round(dist, 1)} degrees away.')
         return self.asi_azel
 
-    def map_lla_to_sat_azel(self, lat, lon, alt_km):
+    def map_lla_to_sat_azel(self, lla):
         """
         Get the satellite's azimuth and elevation given the satellite's
         lat, lon, and alt_km coordinates.
 
         Parameters
         ----------
-        param1
-            The first parameter.
-        param2
-            The second parameter.
+        lla : 1d or 2d array of floats
+            The lat, lon, and alt_km values of the satellite. If 2d, 
+            the rows correspond to time.
 
         Returns
         -------
-        bool
-            True if successful, False otherwise.
+        sat_azel : array
+            An array of shape lla.shape[0] x 2 with the satellite azimuth 
+            and elevation columns.
         """
         planets = load('de421.bsp')
         earth = planets['earth']
@@ -393,15 +403,16 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         ts = load.timescale()
         t = ts.now()
 
-        # If the user did not provide LLA arrays turn them into arrays.
-        if not hasattr(lat, '__len__'):
-            lat = [lat]
-            lon = [lon]
-            alt_km = [alt_km]
+        # Check if the user passed in one set of LLA values or a 2d array. 
+        # Save the number of dimensions and if is 1D, turn into a 2D array of
+        # shape 1 x 3. 
+        n_dims = len(lla.shape)
+        if n_dims == 1:
+            lla = np.array([lla])
 
         sat_azel = np.zeros((len(lat), 2))
 
-        for i, lat_i, lon_i, alt_km_i in enumerate(zip(lat, lon, alt_km)):
+        for i, lat_i, lon_i, alt_km_i in enumerate(lla):
             sat_i = earth + Topos(
                                 latitude_degrees=lat_i, 
                                 longitude_degrees=lon_i, 
@@ -410,33 +421,51 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
             astro = station.at(t).observe(sat_i)
             app = astro.apparent()
             sat_azel[i, 1], sat_azel[i, 0], _ = app.altaz()
+        # Remove the extra dimension if user fed in one set of LLA values.
+        if n_dims == 1:
+            sat_azel = sat_azel[0, :]
         return sat_azel
 
-    def map_lla_to_footprint(self, lat, lon, alt_km, map_alt_km):
+    def map_lla_to_footprint(self, lla, map_alt_km):
         """
-        Use IRBEM to map the sattelites lat, lon, and alt_km coodinates 
+        Use IRBEM to map the satelite's lat, lon, and alt_km coodinates 
         to map_alt_km and return the footprint's mapped_lat, mapped_lon, 
         and mapped_alt_km coordinates.
 
         Parameters
         ----------
-        param1
-            The first parameter.
-        param2
-            The second parameter.
+        lla : array
+            An nTime x 3 array of latitude, longitude, altitude_km values.
+        map_alt_km : float
+            The footprint altitude to map to.
 
         Returns
         -------
-        bool
-            True if successful, False otherwise.
+        mapped_lla : array
+            Same shape as lla.
         """
-        model = IRBEM.MagFields(kext='OPQ77')
-        model.find_foot_point(
-            {'x1':alt_km, 'x2':lat, 'x3':lon, 'dateTime':self.time[0]},
-            None, stopAlt=map_alt_km, hemiFlag=0
-            )
-        mapped_alt_km, mapped_lat, mapped_lon = model.find_foot_point_output['XFOOT']
-        return mapped_lat, mapped_lon, mapped_alt_km
+        mapped_lla = np.zeros_like(lla)
+        
+        # Check if the user passed in one set of LLA values or a 2d array. 
+        # Save the number of dimensions and if is 1D, turn into a 2D array of
+        # shape 1 x 3. 
+        n_dims = len(lla.shape)
+        if n_dims == 1:
+            lla = np.array([lla])
+
+        for i, (lat_i, lon_i, alt_km_i) in enumerate(lla):
+            model = IRBEM.MagFields(kext='OPQ77')
+            model.find_foot_point(
+                {'x1':alt_km_i, 'x2':lat_i, 'x3':lon_i, 'dateTime':self.time[0]},
+                None, stopAlt=map_alt_km, hemiFlag=0
+                )
+            mapped_alt_km, mapped_lat, mapped_lon = model.find_foot_point_output['XFOOT']
+            mapped_lla[i, :] = [mapped_lat, mapped_lon, mapped_alt_km]
+        
+        # Remove the extra dimension if user fed in one set of LLA values.
+        if n_dims == 1:
+            mapped_lla = mapped_lla[0, :]
+        return mapped_lla
    
 if __name__ == '__main__':
     ### TEST SCRIPT FOR THEMIS_ASI() CLASS ###
