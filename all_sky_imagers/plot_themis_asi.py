@@ -324,16 +324,13 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
 
     def map_lla_to_asiazel(self, lla):
         """
-        Wrapper for map_satazel_to_asiazel() and map_lla_to_sat_azel wrappers.
+        Wrapper for map_satazel_to_asiazel() and map_lla_to_sat_azel().
         """
-        lat, lon, alt_km = lla
         self.sat_azel = self.map_lla_to_sat_azel(lla)
-        print(self.sat_azel.shape)
-        self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel[:, 0], 
-                                                    self.sat_azel[:, 1])
+        self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel)
         return self.asi_azel
 
-    def map_satazel_to_asiazel(self, az, el, deg_thresh=1, debug=False):
+    def map_satazel_to_asiazel(self, azel, deg_thresh=1, debug=False):
         """
         Given the azimuth and elevation of the satellite, locate the THEMIS ASI 
         calibration pixel (value and index) that is closest to az and el. Use
@@ -356,6 +353,8 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         bool
             True if successful, False otherwise.
         """
+        n_dims = len(azel.shape)
+        
         az_grid = self.cal['az'].copy().ravel()
         el_grid = self.cal['el'].copy().ravel()
         # An extreme dummy value that won't match any real AzEl value
@@ -364,19 +363,24 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
 
         # Set up the KDtree.
         tree = scipy.spatial.KDTree(np.array(list(zip(az_grid, el_grid))))
-        dist_to_neighbor, idx_neighbor = tree.query(np.array([az, el]).T, 
+        dist_to_neighbor, idx_neighbor = tree.query(azel, 
                                                     distance_upper_bound=deg_thresh)
 
         # The idx_neighbor indicies are for the flattened array. 
         # Az coordinate in the non-flattened array is idx % self.cal['az'].shape[1]
         # El coorinate in the non-flattened array is idx // self.cal['az'].shape[1]
-        self.asi_azel = np.empty((len(idx_neighbor), 2), dtype=np.uint8)
-        self.asi_azel[:, 0] = np.remainder(idx_neighbor, self.cal['az'].shape[1])
-        self.asi_azel[:, 1] = np.floor_divide(idx_neighbor, self.cal['az'].shape[1])
+        if n_dims == 2:
+            self.asi_azel = np.empty((len(idx_neighbor), 2), dtype=np.uint8)
+            self.asi_azel[:, 0] = np.remainder(idx_neighbor, self.cal['az'].shape[1])
+            self.asi_azel[:, 1] = np.floor_divide(idx_neighbor, self.cal['az'].shape[1])
+        elif n_dims == 1:
+            self.asi_azel = np.empty(2, dtype=np.uint8)
+            self.asi_azel[0] = np.remainder(idx_neighbor, self.cal['az'].shape[1])
+            self.asi_azel[1] = np.floor_divide(idx_neighbor, self.cal['az'].shape[1])
 
         if debug:
-            for az_i, el_i, asi_idx, dist in zip(az, el, idx_neighbor, dist_to_neighbor):
-                print(f'The point ({az_i}, {el_i}) is nearest the grid location '
+            for azel_i, asi_idx, dist in zip(azel, idx_neighbor, dist_to_neighbor):
+                print(f'The point {azel_i} is nearest the grid location '
                       f'({az_grid[asi_idx]}, {el_grid[asi_idx]}) and is {round(dist, 1)} degrees away.')
         return self.asi_azel
 
@@ -490,14 +494,15 @@ if __name__ == '__main__':
     l = THEMIS_ASI_map_azel(site, time)
     l.load_themis_cal()
 
-    lla = np.array([61.01, -135, 500])
+    lla = np.array([55.01, -140, 500])
 
     asi_azel = l.map_lla_to_asiazel(lla)
 
-    # fig, ax = plt.subplots(figsize=(6,8))
-    # l.plot_themis_asi_frame(time, ax=ax)
-    # l.plot_azel_contours(ax=ax)
+    fig, ax = plt.subplots(figsize=(6,8))
+    l.plot_themis_asi_frame(time, ax=ax)
+    l.plot_azel_contours(ax=ax)
 
+    ax.scatter(*asi_azel, c='g', marker='x')
     # ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
-    # plt.tight_layout()
-    # plt.show()
+    plt.tight_layout()
+    plt.show()
