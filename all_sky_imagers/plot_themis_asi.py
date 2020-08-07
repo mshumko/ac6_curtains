@@ -5,6 +5,7 @@ import numpy as np
 from datetime import datetime
 import dateutil.parser
 import pathlib
+import scipy.spatial
 
 import skyfield.api
 import cdflib # https://github.com/MAVENSDC/cdflib
@@ -328,7 +329,8 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         self.sat_azel = self.map_lla_to_sat_azel(lla)
         print(self.sat_azel)
         self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel)
-        print(self.asi_azel)
+        print(self.asi_azel, ',', self.cal['az'][self.asi_azel[0], self.asi_azel[1]], 
+                                self.cal['el'][self.asi_azel[0], self.asi_azel[1]])
         return self.asi_azel
 
     def map_satazel_to_asiazel(self, sat_azel, deg_thresh=0.1,
@@ -369,25 +371,26 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
             self.asi_azel = np.zeros((1, sat_azel.shape[0]), dtype=np.uint8)
             sat_azel = np.array([sat_azel])
 
-        az_grid = self.cal['az'].copy()
-        az_grid[np.isnan(az_grid)] = -10000
-
-        el_grid = self.cal['el'].copy()
-        el_grid[np.isnan(el_grid)] = -10000
+        az_coords = self.cal['az'].copy().ravel()
+        az_coords[np.isnan(az_coords)] = -10000
+        el_coords = self.cal['el'].copy().ravel()
+        el_coords[np.isnan(el_coords)] = -10000
+        asi_azel_cal = np.stack((az_coords, el_coords), axis=-1)
         
-        for i, (az, el) in enumerate(sat_azel):
-            while True:
-                idx = np.where((np.abs(az_grid - az) < deg_thresh) & 
-                                (np.abs(el_grid - el) < deg_thresh))
-                # Save the first row/col that met the deg_thresh 
-                # condition (other values will be close enough).
-                if len(idx[0]) > 0:
-                    self.asi_azel[i, :] = idx[0][0], idx[1][0] 
-                    break
-                else:
-                    # If no points were found, keep expanding 
-                    # the deg_thresh
-                    deg_thresh *= deg_thresh_scale_factor
+        # Find the distance between the sattelite azel points and
+        # the asi_azel points. dist_matrix[i,j] is the distance 
+        # between ith asi_azel_cal value and jth sat_azel. 
+        dist_matrix = scipy.spatial.distance.cdist(asi_azel_cal, sat_azel,
+                                                metric='euclidean')
+        # Now find the minimum distance for each sat_azel.
+        idx_min_dist = np.argmin(dist_matrix, axis=0)
+        # For use the 1D index for the flattened ASI calibration
+        # to get out the azimuth and elevation pixels.
+        self.asi_azel[:, 0] = np.remainder(idx_min_dist, 
+                                        self.cal['az'].shape[1])
+        self.asi_azel[:, 1] = np.floor_divide(idx_min_dist, 
+                                        self.cal['az'].shape[1])
+        
         # Collapse the 2d asi_azel to 1d if the user specifed a
         # a 1d array argument.            
         if n_dims == 1:
@@ -512,7 +515,7 @@ if __name__ == '__main__':
         [61.01, -135.22, 500]
     )
     asi_azel = l.map_lla_to_asiazel(lla)
-    # print(l.cal)
+    print(asi_azel)
     # lla = np.array([61.01, -135.22, 500])
     # asi_azel1 = l.map_lla_to_asiazel(lla)
 
