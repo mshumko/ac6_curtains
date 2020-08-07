@@ -293,7 +293,7 @@ class THEMIS_ASI:
         plt.clabel(el_contours, inline=True, fontsize=8, rightside_up=True)
         return
 
-class THEMIS_ASI_map_azel(THEMIS_ASI):
+class Map_THEMIS_ASI(THEMIS_ASI):
     def __init__(self, site, time):
         """
         This class uses the THEMIS_ASI class to map the lat-lon-alt location
@@ -327,10 +327,7 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         Wrapper for map_satazel_to_asiazel() and map_lla_to_sat_azel().
         """
         self.sat_azel = self.map_lla_to_sat_azel(lla)
-        # print(self.sat_azel)
         self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel)
-        # print(self.asi_azel, ',', self.cal['az'][self.asi_azel[0], self.asi_azel[1]], 
-        #                         self.cal['el'][self.asi_azel[0], self.asi_azel[1]])
         return self.asi_azel
 
     def map_satazel_to_asiazel(self, sat_azel, deg_thresh=0.1,
@@ -455,16 +452,17 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         Parameters
         ----------
         lla : array
-            An nTime x 3 array of latitude, longitude, altitude_km values.
+            An (nTime x 3) or (3) array of latitude, longitude, 
+            altitude_km values.
         map_alt_km : float
             The footprint altitude to map to.
 
         Returns
         -------
         mapped_lla : array
-            Same shape as lla.
+            Same shape as lla but for the footprint lat, lon, and alt 
+            coordinates.
         """
-        mapped_lla = np.zeros_like(lla)
         
         # Check if the user passed in one set of LLA values or a 2d array. 
         # Save the number of dimensions and if is 1D, turn into a 2D array of
@@ -472,6 +470,11 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         n_dims = len(lla.shape)
         if n_dims == 1:
             lla = np.array([lla])
+            mapped_lla = np.zeros((1, 3), dtype=float)
+        elif n_dims == 2:
+            mapped_lla = np.zeros((lla.shape[0], 3), dtype=float)
+        else:
+            raise ValueError('lla must be a 1d or 2d array of dimensions (3) or (nx3).')
 
         for i, (lat_i, lon_i, alt_km_i) in enumerate(lla):
             model = IRBEM.MagFields(kext='OPQ77')
@@ -488,22 +491,22 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         return mapped_lla
    
 if __name__ == '__main__':
-    ### TEST SCRIPT FOR THEMIS_ASI() CLASS ###
-    # site = 'WHIT'
-    # time = '2015-04-16T09:09:00'
-    # l = THEMIS_ASI(site, time)
-    # l.load_themis_cal()
+    ## TEST SCRIPT FOR THEMIS_ASI() CLASS ###
+    site = 'WHIT'
+    time = '2015-04-16T09:09:00'
+    l = THEMIS_ASI(site, time)
+    l.load_themis_cal()
 
-    # fig, ax = plt.subplots(figsize=(6,8))
-    # l.plot_themis_asi_frame(time, ax=ax)
-    # l.plot_azel_contours(ax=ax)
-    # plt.tight_layout()
-    # plt.show()
+    fig, ax = plt.subplots(figsize=(6,8))
+    l.plot_themis_asi_frame(time, ax=ax)
+    l.plot_azel_contours(ax=ax)
+    plt.tight_layout()
+    plt.show()
 
     ### TEST SCRIPT FOR THEMIS_ASI_map_azel() CLASS ###
     site = 'WHIT'
     time = '2015-04-16T09:06:00'
-    l = THEMIS_ASI_map_azel(site, time)
+    l = Map_THEMIS_ASI(site, time)
     l.load_themis_cal()
 
     lla = np.array([
@@ -513,10 +516,13 @@ if __name__ == '__main__':
     ])
     asi_azel = l.map_lla_to_asiazel(lla)
 
+    # Now test the mapping.
+    mapped_lla = l.map_lla_to_footprint(lla, 200)
+    print(mapped_lla)
+
     fig, ax = plt.subplots(figsize=(6,8))
     l.plot_themis_asi_frame(time, ax=ax)
     l.plot_azel_contours(ax=ax)
-
     ax.scatter(asi_azel[:, 0], asi_azel[:,1], c='g', marker='x')
     plt.tight_layout()
     plt.show()
