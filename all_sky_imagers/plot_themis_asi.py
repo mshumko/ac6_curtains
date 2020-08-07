@@ -499,28 +499,31 @@ if __name__ == '__main__':
 
     ### TEST SCRIPT FOR THEMIS_ASI_map_azel() CLASS ###
     site = 'WHIT'
-    time = '2015-04-16T09:09:00'
-    trajectory=[np.linspace(0, 90), np.linspace(0, 45)]
+    time = '2015-04-16T09:06:00'
     l = THEMIS_ASI_map_azel(site, time)
     l.load_themis_cal()
 
     # lla = np.array([
-    #     [55.01, -140, 500],
+    #     # [65.01, -135.22, 500],
     #     [61.01, -135.22, 500]
     # ])
-    print(l.cal)
-    lla = np.array([61.01, -135.22, 500])
-    asi_azel1 = l.map_lla_to_asiazel(lla)
+    lla = np.array(
+        # [65.01, -135.22, 500],
+        [61.01, -135.22, 500]
+    )
+    asi_azel = l.map_lla_to_asiazel(lla)
+    # print(l.cal)
+    # lla = np.array([61.01, -135.22, 500])
+    # asi_azel1 = l.map_lla_to_asiazel(lla)
 
-    lla = np.array([61.01, -135, 500])
-    asi_azel2 = l.map_lla_to_asiazel(lla)
+    # lla = np.array([61.01, -135, 500])
+    # asi_azel2 = l.map_lla_to_asiazel(lla)
 
     fig, ax = plt.subplots(figsize=(6,8))
     l.plot_themis_asi_frame(time, ax=ax)
     l.plot_azel_contours(ax=ax)
 
-    ax.scatter(*asi_azel1, c='g', marker='x')
-    ax.scatter(*asi_azel2, c='g', marker='x')
-    # ax.plot(asi_azel[:, 0], asi_azel[:, 1], c='g')
+    ax.scatter(*asi_azel, c='g')
+    # ax.scatter(asi_azel[:, 0], asi_azel[:, 1], c='g')
     plt.tight_layout()
     plt.show()
