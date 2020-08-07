@@ -327,10 +327,10 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         Wrapper for map_satazel_to_asiazel() and map_lla_to_sat_azel().
         """
         self.sat_azel = self.map_lla_to_sat_azel(lla)
-        print(self.sat_azel)
+        # print(self.sat_azel)
         self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel)
-        print(self.asi_azel, ',', self.cal['az'][self.asi_azel[0], self.asi_azel[1]], 
-                                self.cal['el'][self.asi_azel[0], self.asi_azel[1]])
+        # print(self.asi_azel, ',', self.cal['az'][self.asi_azel[0], self.asi_azel[1]], 
+        #                         self.cal['el'][self.asi_azel[0], self.asi_azel[1]])
         return self.asi_azel
 
     def map_satazel_to_asiazel(self, sat_azel, deg_thresh=0.1,
@@ -376,7 +376,7 @@ class THEMIS_ASI_map_azel(THEMIS_ASI):
         el_coords = self.cal['el'].copy().ravel()
         el_coords[np.isnan(el_coords)] = -10000
         asi_azel_cal = np.stack((az_coords, el_coords), axis=-1)
-        
+
         # Find the distance between the sattelite azel points and
         # the asi_azel points. dist_matrix[i,j] is the distance 
         # between ith asi_azel_cal value and jth sat_azel. 
@@ -506,27 +506,17 @@ if __name__ == '__main__':
     l = THEMIS_ASI_map_azel(site, time)
     l.load_themis_cal()
 
-    # lla = np.array([
-    #     # [65.01, -135.22, 500],
-    #     [61.01, -135.22, 500]
-    # ])
-    lla = np.array(
-        # [65.01, -135.22, 500],
-        [61.01, -135.22, 500]
-    )
+    lla = np.array([
+        [65.01, -135.22, 500],
+        [61.01, -135.22, 500],
+        [50.01, -135.22, 500]
+    ])
     asi_azel = l.map_lla_to_asiazel(lla)
-    print(asi_azel)
-    # lla = np.array([61.01, -135.22, 500])
-    # asi_azel1 = l.map_lla_to_asiazel(lla)
-
-    # lla = np.array([61.01, -135, 500])
-    # asi_azel2 = l.map_lla_to_asiazel(lla)
 
     fig, ax = plt.subplots(figsize=(6,8))
     l.plot_themis_asi_frame(time, ax=ax)
     l.plot_azel_contours(ax=ax)
 
-    ax.scatter(*asi_azel, c='g')
-    # ax.scatter(asi_azel[:, 0], asi_azel[:, 1], c='g')
+    ax.scatter(asi_azel[:, 0], asi_azel[:,1], c='g', marker='x')
     plt.tight_layout()
     plt.show()
