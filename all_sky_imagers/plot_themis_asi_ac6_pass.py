@@ -8,6 +8,7 @@ import matplotlib.dates as mdates
 import pathlib
 import matplotlib.animation as animation
 import numpy as np
+import itertools
 
 from skyfield.api import EarthSatellite, Topos, load
 
@@ -15,7 +16,7 @@ import plot_themis_asi
 from ac6_curtains import dirs
 
 
-class ASI_Movie(plot_themis_asi.Load_ASI):
+class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
     def __init__(self, site, t0, pass_duration_min=1, footprint_alt=np.arange(100, 700, 100)):
         self.t0 = t0#.copy() # plot_themis_asi.Load_ASI may modify this variable later so copy it.
         self.footprint_alt = footprint_alt
@@ -30,39 +31,74 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
         # Initialize the figure to plot the ASI and AC6 10 Hz 
         # spatial time series.
         self.fig = plt.figure(constrained_layout=True, figsize=(10,6))
-        gs = self.fig.add_gridspec(2, 3)
-        self.ax = self.fig.add_subplot(gs[:, 0:2])
+        gs = self.fig.add_gridspec(2, 2)
+        self.ax = self.fig.add_subplot(gs[:, 0])
         self.bx = [self.fig.add_subplot(gs[i, -1]) for i in range(2)]
         #self.bx = self.fig.add_subplot(gs[0, 1])
 
-        # Filter the ASI and load the AC6 data
-        self.filter_asi()
+        # Load the ASI frames and the AC6 data
+        self.filter_asi_frames(self.time_range)
         self.load_ac6_10hz()
+        self.get_ac6_track()
         return
 
-    def filter_asi(self):
+    def filter_asi_frames(self, time_range):
         """
-        Filter the ASI time series to self.time_range.
+        Filteres the ASI time and image arrays to the time_range.
         """
-        asi_idt = np.where(
-            (self.time >= self.time_range[0]) & 
-            (self.time <= self.time_range[1])
-            )[0]
-        self.time = self.time[asi_idt]
-        self.imgs = self.imgs[asi_idt, : , :]
+        asi_idx = np.where(
+                        (self.time > time_range[0]) & 
+                        (self.time <= time_range[1])
+                        )[0]
+        self.time = self.time[asi_idx]
+        self.imgs = self.imgs[asi_idx, :, :]
         return
 
     def load_ac6_10hz(self):
-        """ Load and time filter the AC6 data. """
+        """ 
+        Load and filter the AC6 data by time. 
+        """
         ac6_data_path = pathlib.Path(dirs.AC6_MERGED_DATA_DIR, 
                             f'AC6_{self.t0.strftime("%Y%m%d")}_L2_10Hz_V03_merged.csv')
         self.ac6_data = pd.read_csv(ac6_data_path, index_col=0, parse_dates=True)
         self.ac6_data['dateTime_shifted_B'] = pd.to_datetime(self.ac6_data['dateTime_shifted_B'])
-        
-        self.ac6_data = self.ac6_data[self.time_range[0]:self.time_range[1]]
+        self.ac6_data = self.ac6_data.loc[self.time_range[0]:self.time_range[1], :]
 
-        # Find AC6's AzEl coordinataes for the ASI
-        self._get_azel_coords(footprint_alt=self.footprint_alt)
+        # Now find the nearest AC6 data points to the ASI times.
+        asi_times_df = pd.DataFrame(index=self.time)
+        self.ac6_data_downsampled = pd.merge_asof(asi_times_df, self.ac6_data, 
+                                                left_index=True, right_index=True, 
+                                                direction='nearest', 
+                                                tolerance=pd.Timedelta(seconds=0.1))
+
+        return self.ac6_data, self.ac6_data_downsampled
+
+    def get_ac6_track(self, footprint_altitudes=np.arange(100, 501, 100)):
+        """
+
+        """
+        lla_ac6 = self.ac6_data_downsampled.loc[:, ('lat', 'lon', 'alt')].to_numpy()
+        self.asi_azel_index_dict = {'ac6':self.map_lla_to_asiazel(lla_ac6)}
+
+        for footprint_altitude in footprint_altitudes:  
+            lla = self.map_lla_to_footprint(lla_ac6, footprint_altitude)
+            self.asi_azel_index_dict[footprint_altitude] = self.map_lla_to_asiazel(lla)
+        return
+
+    def calc_asi_intensity(self, width_px=10):
+        """
+        Loops over the self.asi_azel_index_dict and calculates the mean 
+        ASI intensity around the AC6 location +/- width_px//2
+        """
+        self.mean_asi_intensity = {}
+        # Loop over each altitude.
+        for key, val in self.asi_azel_index_dict.items():
+            self.mean_asi_intensity[key] = np.zeros(val.shape[0])
+            # Loop over each time stamp.
+            for i, (az, el) in enumerate(val):
+                self.mean_asi_intensity[key][i] = np.mean(
+                    self.imgs[i, az-width_px//2:az+width_px//2, el-width_px//2:el+width_px//2]
+                    )
         return
 
     def plot_frame(self, i, azel_contours=False, imshow_vmax=None, 
@@ -83,32 +119,33 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
                                     imshow_norm=imshow_norm)
         if azel_contours: self.plot_azel_contours(ax=self.ax)
 
-        
-        # Plot the footpoints for other mapping altitudes.
-        for j_alt in range(self.azel_index.shape[1]-1):
-            self.ax.scatter(*self.azel_index[i, j_alt, :], s=50, c='g', marker='x')
-
-        self.ax.text(self.azel_index[i, 0, 0]+10, self.azel_index[i, 0, 1], 
-                    f'{self.footprint_alt[0]} km', c='g', va='top')
-
         # Plot the AC6 location
-        self.ax.scatter(*self.azel_index[i, -1, :], s=50, c='r', marker='x', 
-                        label='AC6')
-        self.ax.text(self.azel_index[i, -1, 0]+10, self.azel_index[i, -1, 1], 
-                    f'AC6 alt', c='r', va='top')
+        # self.ax.plot(self.asi_azel_index_dict['ac6'][:, 0], self.asi_azel_index_dict['ac6'][:, 1], 
+        #             c='r', lw=1, label='AC6 altitude')
+        # self.ax.scatter(self.asi_azel_index_dict['ac6'][i, 0], self.asi_azel_index_dict['ac6'][i, 1], 
+        #             c='r', marker='x', s=20)
+        ac6_colors, asi_colors = itertools.tee(itertools.cycle(['r', 'g', 'b', 'c', 'y', 'grey']))
 
-        # Plot the AC6 time series
+        # Plot the footprint locations.
+        for j, (key, val) in enumerate(self.asi_azel_index_dict.items()):
+            color = next(ac6_colors)
+            self.ax.plot(val[:, 0], val[:, 1], 
+                        c=color, lw=1, label=f'{key} km')
+            self.ax.scatter(val[i, 0], val[i, 1], 
+                        c=color, marker='x', s=20)
+            self.ax.text(val[-1, 0], val[-1, 1], key, color=color, va='top', ha='right')
+
+        ### Plot the AC6 time series
         self.bx[0].plot(self.ac6_data.index, self.ac6_data.dos1rate, 'r', label='AC6A')
         self.bx[0].plot(self.ac6_data['dateTime_shifted_B'], self.ac6_data.dos1rate_B, 'b', 
                     label='AC6B')
         self.bx[0].axvline(t_i, c='k', ls='--')
 
-        # Plot the ASI time series
-        self.bx[1].plot(self.time, self.ac6_data.dos1rate, 'r', label='AC6A')
-        self.bx[1].plot(self.ac6_data['dateTime_shifted_B'], self.ac6_data.dos1rate_B, 'b', 
-                    label='AC6B')
+        ### Plot the ASI time series
+        for (key, val) in self.mean_asi_intensity.items():
+            color = next(asi_colors)
+            self.bx[1].plot(self.time, val, label=key, color=color)
         self.bx[1].axvline(t_i, c='k', ls='--')
-
 
         save_name = (f'{t_i.strftime("%Y%m%d")}_'
                     f'{t_i.strftime("%H%M%S")}_'
@@ -137,63 +174,6 @@ class ASI_Movie(plot_themis_asi.Load_ASI):
                             individual_movie_dirs=individual_movie_dirs)
 
         return        
-
-    def _get_azel_coords(self, ac6_alt=True, footprint_alt=np.arange(100, 700, 100), down_sample=30):
-        """
-        Make a list of azimuth and elevation indicies for AC6 above the ASI. 
-        If alt=False, the AC6 elevation will be used. Otherwise AC6's 100 km
-        footprint will be calculated and the azel calculated from that.
-        """
-        # If the ac6_alt is True and footprint_alt is an array, make the self.azel 
-        # and self.azel_index arrays with the 2nd index of length len(footprint_alt)+1.
-        if len(footprint_alt) and ac6_alt:
-            self.azel = np.nan*np.zeros((self.time.shape[0], len(footprint_alt)+1, 2), dtype=float)
-            self.azel_index = np.nan*np.zeros((self.time.shape[0], len(footprint_alt)+1, 2), dtype=int)
-        # If the footprint_alt is an array, make the self.azel and self.azel_index
-        # arrays with the 2nd index of length len(footprint_alt).
-        elif len(footprint_alt):
-            self.azel = np.nan*np.zeros((self.time.shape[0], len(footprint_alt), 2), dtype=float)
-            self.azel_index = np.nan*np.zeros((self.time.shape[0], len(footprint_alt), 2), dtype=int)
-        elif ac6_alt:
-            self.azel = np.nan*np.zeros((self.time.shape[0], 1, 2), dtype=float)
-            self.azel_index = np.nan*np.zeros((self.time.shape[0], 1, 2), dtype=int)
-        else:
-            raise ValueError('The ac6_alt needs to be true, or footprint_alt needs to be an array. Or both.')
-
-        # print(self.azel_index.shape[:-1])
-        self.asi_timeseries = np.nan*np.ones(self.azel_index.shape[:-1], dtype=float)
-        
-        
-        for i, t_i in enumerate(self.time):
-            # for each frame in self.time, find the nearest ac6_data (unit A) time 
-            dt = self.ac6_data.index-t_i
-            dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
-            ac6_ti_nearest = self.ac6_data.index[np.argmin(dt_sec)]
-            nearest_lla = self.ac6_data.loc[ac6_ti_nearest, ['lat', 'lon', 'alt']]
-
-            # Find the AzEl location of AC6 and save it as the last index in the 2nd dim.
-            if ac6_alt:
-                az, el = self.get_azel_from_lla(*nearest_lla)
-                self.azel[i, -1, :] = [az.degrees, el.degrees]
-                self.azel_index[i, -1, :] = self.find_nearest_azel(
-                                                            self.azel[i, -1, 0], 
-                                                            self.azel[i, -1, 1]
-                                                            )
-            # Find the AzEl location of the footprints connected to AC6 at altitudes and 
-            # save it as the index in the 2nd dim.
-            if len(footprint_alt):
-                for j, alt_j in enumerate(footprint_alt):
-                    az, el = self.get_azel_from_lla(*nearest_lla, footpoint_alt_km=alt_j)
-                    self.azel[i, j, :] = [az.degrees, el.degrees]
-                    self.azel_index[i, j, :] = self.find_nearest_azel(
-                                                                self.azel[i, j, 0], 
-                                                                self.azel[i, j, 1]
-                                                                )
-            
-            # Get the ASI intensities 
-            for i, t_i in enumerate(self.time):
-                self.asi_timeseries[i, :] = self.get_mean_asi_intensity(t_i, self.azel_index[i, :, :])
-        return
 
     def get_mean_asi_intensity(self, t0, azel_index, grid_width=10):
         """
@@ -242,10 +222,12 @@ if __name__ == '__main__':
         for site in row['nearby_stations'].split():
             # Try to load the ASI station data from that file, if it exists.
             try:
-                a = ASI_Movie(site, t0, pass_duration_min=3)
-            except (FileNotFoundError) as err: #ValueError
-                if ('not found' in str(err)):
+                a = Plot_ASI_AC6_Pass_Frame(site, t0.to_pydatetime(), pass_duration_min=3)
+            except (FileNotFoundError, AssertionError) as err: #ValueError
+                if (('not found' in str(err)) or 
+                    ('0 THEMIS ASI paths found for search string' in str(err))):
                     continue
+            a.calc_asi_intensity()
             a.make_animation(imshow_vmax=1E4, imshow_norm='log')
-            del(a)
+            # del(a)
             

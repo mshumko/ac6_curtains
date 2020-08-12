@@ -327,8 +327,8 @@ class Map_THEMIS_ASI(THEMIS_ASI):
         Wrapper for map_satazel_to_asiazel() and map_lla_to_sat_azel().
         """
         self.sat_azel = self.map_lla_to_sat_azel(lla)
-        self.asi_azel = self.map_satazel_to_asiazel(self.sat_azel)
-        return self.asi_azel
+        self.asi_azel_index = self.map_satazel_to_asiazel(self.sat_azel)
+        return self.asi_azel_index
 
     def map_satazel_to_asiazel(self, sat_azel, deg_thresh=0.1,
                             deg_thresh_scale_factor=2):
@@ -357,15 +357,15 @@ class Map_THEMIS_ASI(THEMIS_ASI):
 
         Returns
         -------
-        self.asi_azel : array
+        self.asi_azel_index : array
             An array with the same shape as sat_azel, but representing the
             indicies in the ASI calibration file (and image).
         """
         n_dims = len(sat_azel.shape)
         if n_dims == 2:
-            self.asi_azel = np.zeros(sat_azel.shape, dtype=np.uint8)
+            self.asi_azel_index = np.zeros(sat_azel.shape, dtype=np.uint8)
         elif n_dims == 1:
-            self.asi_azel = np.zeros((1, sat_azel.shape[0]), dtype=np.uint8)
+            self.asi_azel_index = np.zeros((1, sat_azel.shape[0]), dtype=np.uint8)
             sat_azel = np.array([sat_azel])
 
         az_coords = self.cal['az'].copy().ravel()
@@ -383,16 +383,16 @@ class Map_THEMIS_ASI(THEMIS_ASI):
         idx_min_dist = np.argmin(dist_matrix, axis=0)
         # For use the 1D index for the flattened ASI calibration
         # to get out the azimuth and elevation pixels.
-        self.asi_azel[:, 0] = np.remainder(idx_min_dist, 
+        self.asi_azel_index[:, 0] = np.remainder(idx_min_dist, 
                                         self.cal['az'].shape[1])
-        self.asi_azel[:, 1] = np.floor_divide(idx_min_dist, 
+        self.asi_azel_index[:, 1] = np.floor_divide(idx_min_dist, 
                                         self.cal['az'].shape[1])
         
         # Collapse the 2d asi_azel to 1d if the user specifed a
         # a 1d array argument.            
         if n_dims == 1:
-            self.asi_azel = self.asi_azel[0, :]
-        return self.asi_azel
+            self.asi_azel_index = self.asi_azel_index[0, :]
+        return self.asi_azel_index
 
     def map_lla_to_sat_azel(self, lla):
         """
@@ -417,7 +417,7 @@ class Map_THEMIS_ASI(THEMIS_ASI):
                                 longitude_degrees=self.cal['lon'], 
                                 elevation_m=self.cal['alt_m'])
         ts = skyfield.api.load.timescale()
-        t = ts.now()
+        t = ts.utc(2020) #.now()
 
         # Check if the user passed in one set of LLA values or a 2d array. 
         # Save the number of dimensions and if is 1D, turn into a 2D array of
@@ -426,9 +426,16 @@ class Map_THEMIS_ASI(THEMIS_ASI):
         if n_dims == 1:
             lla = np.array([lla])
 
-        sat_azel = np.zeros((lla.shape[0], 2))
+        sat_azel = np.nan*np.zeros((lla.shape[0], 2))
 
         for i, (lat_i, lon_i, alt_km_i) in enumerate(lla):
+            # Check if lat, lon, or alt is nan (happens when there is no 
+            # corresponding AC6 data point close to an ASI image).
+            if (
+                any(np.isnan([lat_i, lon_i, alt_km_i])) or
+                (np.min([lat_i, lon_i, alt_km_i]) == -1E31)
+                ):
+                continue
             sat_i = earth + skyfield.api.Topos(
                                 latitude_degrees=lat_i, 
                                 longitude_degrees=lon_i, 
@@ -514,7 +521,7 @@ if __name__ == '__main__':
         [61.01, -135.22, 500],
         [50.01, -135.22, 500]
     ])
-    asi_azel = l.map_lla_to_asiazel(lla)
+    asi_azel_index = l.map_lla_to_asiazel(lla)
 
     # Now test the mapping.
     mapped_lla = l.map_lla_to_footprint(lla, 200)
@@ -523,6 +530,6 @@ if __name__ == '__main__':
     fig, ax = plt.subplots(figsize=(6,8))
     l.plot_themis_asi_frame(time, ax=ax)
     l.plot_azel_contours(ax=ax)
-    ax.scatter(asi_azel[:, 0], asi_azel[:,1], c='g', marker='x')
+    ax.scatter(asi_azel_index[:, 0], asi_azel_index[:,1], c='g', marker='x')
     plt.tight_layout()
     plt.show()
