@@ -17,9 +17,9 @@ from ac6_curtains import dirs
 
 
 class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
-    def __init__(self, site, t0, pass_duration_min=1, footprint_alt=np.arange(100, 700, 100)):
+    def __init__(self, site, t0, pass_duration_min=1, footprint_altitudes=np.arange(100, 700, 100)):
         self.t0 = t0#.copy() # plot_themis_asi.Load_ASI may modify this variable later so copy it.
-        self.footprint_alt = footprint_alt
+        self.footprint_altitudes = footprint_altitudes
 
         super().__init__(site, t0)
         self.load_themis_cal()
@@ -69,18 +69,18 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         self.ac6_data_downsampled = pd.merge_asof(asi_times_df, self.ac6_data, 
                                                 left_index=True, right_index=True, 
                                                 direction='nearest', 
-                                                tolerance=pd.Timedelta(seconds=0.1))
+                                                tolerance=pd.Timedelta(seconds=0.2))
 
         return self.ac6_data, self.ac6_data_downsampled
 
-    def get_ac6_track(self, footprint_altitudes=np.arange(100, 501, 100)):
+    def get_ac6_track(self):
         """
 
         """
         lla_ac6 = self.ac6_data_downsampled.loc[:, ('lat', 'lon', 'alt')].to_numpy()
         self.asi_azel_index_dict = {'ac6':self.map_lla_to_asiazel(lla_ac6)}
 
-        for footprint_altitude in footprint_altitudes:  
+        for footprint_altitude in self.footprint_altitudes:  
             lla = self.map_lla_to_footprint(lla_ac6, footprint_altitude)
             self.asi_azel_index_dict[footprint_altitude] = self.map_lla_to_asiazel(lla)
         return
@@ -93,11 +93,16 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         self.mean_asi_intensity = {}
         # Loop over each altitude.
         for key, val in self.asi_azel_index_dict.items():
-            self.mean_asi_intensity[key] = np.zeros(val.shape[0])
+            self.mean_asi_intensity[key] = np.nan*np.zeros(val.shape[0])
             # Loop over each time stamp.
             for i, (az, el) in enumerate(val):
+                if any(np.isnan([az, el])):
+                    continue
                 self.mean_asi_intensity[key][i] = np.mean(
-                    self.imgs[i, az-width_px//2:az+width_px//2, el-width_px//2:el+width_px//2]
+                    self.imgs[
+                        i, int(az)-width_px//2:int(az)+width_px//2, 
+                        int(el)-width_px//2:int(el)+width_px//2
+                        ]
                     )
         return
 
@@ -111,6 +116,8 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         for bx_i in self.bx:
             bx_i.clear()
 
+        self.plot_azel_contours(ax=self.ax)
+
         t_i = self.time[i]
 
         # Plot the THEMIS ASI image and azel contours.
@@ -119,14 +126,9 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
                                     imshow_norm=imshow_norm)
         if azel_contours: self.plot_azel_contours(ax=self.ax)
 
-        # Plot the AC6 location
-        # self.ax.plot(self.asi_azel_index_dict['ac6'][:, 0], self.asi_azel_index_dict['ac6'][:, 1], 
-        #             c='r', lw=1, label='AC6 altitude')
-        # self.ax.scatter(self.asi_azel_index_dict['ac6'][i, 0], self.asi_azel_index_dict['ac6'][i, 1], 
-        #             c='r', marker='x', s=20)
         ac6_colors, asi_colors = itertools.tee(itertools.cycle(['r', 'g', 'b', 'c', 'y', 'grey']))
 
-        # Plot the footprint locations.
+        # Plot the footprint and AC6 locations.
         for j, (key, val) in enumerate(self.asi_azel_index_dict.items()):
             color = next(ac6_colors)
             self.ax.plot(val[:, 0], val[:, 1], 
@@ -134,6 +136,16 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
             self.ax.scatter(val[i, 0], val[i, 1], 
                         c=color, marker='x', s=20)
             self.ax.text(val[-1, 0], val[-1, 1], key, color=color, va='top', ha='right')
+
+        ### TESTING ###
+        # Annotate the AC6 location 
+        ac6_lat_lon = self.ac6_data_downsampled.loc[t_i, ["lat", "lon"]].to_numpy(dtype=float)
+        if not any(np.isnan(ac6_lat_lon)):
+            ac6_lat_lon = np.around(ac6_lat_lon, 1)
+
+        self.ax.text(0, 0, 
+                     f'AC6 at:\nlat={ac6_lat_lon[[0]]}\nlon={ac6_lat_lon[[1]]}', 
+                     color='r', va='bottom', ha='left', transform=self.ax.transAxes)
 
         ### Plot the AC6 time series
         self.bx[0].plot(self.ac6_data.index, self.ac6_data.dos1rate, 'r', label='AC6A')
@@ -147,9 +159,10 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
             self.bx[1].plot(self.time, val, label=key, color=color)
         self.bx[1].axvline(t_i, c='k', ls='--')
 
-        save_name = (f'{t_i.strftime("%Y%m%d")}_'
-                    f'{t_i.strftime("%H%M%S")}_'
-                    'themis_asi_frame.png')
+        save_name = (
+                    f'{self.site}_{t_i.strftime("%Y%m%d")}_'
+                    f'{t_i.strftime("%H%M%S")}_themis_asi_frame.png'
+                    )
         if individual_movie_dirs:
             save_dir = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
                                     'movies', imshow_norm, 
@@ -206,9 +219,12 @@ if __name__ == '__main__':
     cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
 
     # Only keep the dates in cat that are in the keep_dates array.
+    # keep_dates = pd.to_datetime([
+    #     '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
+    #     '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
+    # ])
     keep_dates = pd.to_datetime([
-        '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
-        '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
+        '2016-10-24',
     ])
     for t0, row in cat.iterrows():
         if not t0.date() in keep_dates:
@@ -222,12 +238,15 @@ if __name__ == '__main__':
         for site in row['nearby_stations'].split():
             # Try to load the ASI station data from that file, if it exists.
             try:
-                a = Plot_ASI_AC6_Pass_Frame(site, t0.to_pydatetime(), pass_duration_min=3)
+                a = Plot_ASI_AC6_Pass_Frame(
+                    site, t0.to_pydatetime(), pass_duration_min=3,
+                    footprint_altitudes=[100, 200, 300, 400, 500]
+                    )
             except (FileNotFoundError, AssertionError) as err: #ValueError
                 if (('not found' in str(err)) or 
                     ('0 THEMIS ASI paths found for search string' in str(err))):
                     continue
             a.calc_asi_intensity()
             a.make_animation(imshow_vmax=1E4, imshow_norm='log')
-            # del(a)
+            del(a)
             

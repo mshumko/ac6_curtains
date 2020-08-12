@@ -363,9 +363,9 @@ class Map_THEMIS_ASI(THEMIS_ASI):
         """
         n_dims = len(sat_azel.shape)
         if n_dims == 2:
-            self.asi_azel_index = np.zeros(sat_azel.shape, dtype=np.uint8)
+            self.asi_azel_index = np.nan*np.zeros(sat_azel.shape)
         elif n_dims == 1:
-            self.asi_azel_index = np.zeros((1, sat_azel.shape[0]), dtype=np.uint8)
+            self.asi_azel_index = np.nan*np.zeros((1, sat_azel.shape[0]))
             sat_azel = np.array([sat_azel])
 
         az_coords = self.cal['az'].copy().ravel()
@@ -381,6 +381,12 @@ class Map_THEMIS_ASI(THEMIS_ASI):
                                                 metric='euclidean')
         # Now find the minimum distance for each sat_azel.
         idx_min_dist = np.argmin(dist_matrix, axis=0)
+        # if idx_min_dist == 0, it is very likely to be a NaN value
+        # beacause np.argmin returns 0 if a row has a NaN.
+        # NaN's arise in the first place if there is an ASI image without
+        # an AC6 data point nearby in time.
+        idx_min_dist = np.array(idx_min_dist, dtype=object)
+        idx_min_dist[idx_min_dist==0] = np.nan
         # For use the 1D index for the flattened ASI calibration
         # to get out the azimuth and elevation pixels.
         self.asi_azel_index[:, 0] = np.remainder(idx_min_dist, 

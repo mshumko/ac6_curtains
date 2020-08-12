@@ -6,11 +6,11 @@ import imageio
 import pygifsicle
 
 # BASE_DIR  = '/home/mike/research/ac6_curtains/all_sky_imagers/plots/movies/log/ac6_alt'
-BASE_DIR  = '/home/mike/research/ac6_curtains/all_sky_imagers/plots/movies/log/'
+BASE_DIR  = '/home/mike/research/ac6_curtains/all_sky_imagers/movies/log/'
 
 
 # List off all the date folders (rglob will recursively return the png files inside.)
-day_dirs_generator = pathlib.Path(BASE_DIR).glob('*') 
+day_dirs_generator = pathlib.Path(BASE_DIR).glob('*[!.gif]') 
 day_dirs = sorted(list(day_dirs_generator))
 
 for day_dir in day_dirs:
