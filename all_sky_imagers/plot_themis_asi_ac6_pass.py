@@ -276,7 +276,7 @@ if __name__ == '__main__':
                     site, t0.to_pydatetime(), pass_duration_min=3,
                     footprint_altitudes=[100, 200, 300, 400, 500, 600, 700]
                     )
-            except (FileNotFoundError, AssertionError) as err: #ValueError
+            except (FileNotFoundError, AssertionError, ValueError) as err: #ValueError
                 if (('not found' in str(err)) or 
                     ('0 THEMIS ASI paths found for search string' in str(err))):
                     continue
