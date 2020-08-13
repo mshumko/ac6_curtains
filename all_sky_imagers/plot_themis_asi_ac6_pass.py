@@ -98,6 +98,8 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
             for i, (az, el) in enumerate(val):
                 if any(np.isnan([az, el])):
                     continue
+                if int(az)-width_px//2 < 0 or int(el)-width_px//2 < 0:
+                    print(f'Less than 0! {int(az)-width_px//2}, {int(el)-width_px//2}')
                 self.mean_asi_intensity[key][i] = np.mean(
                     self.imgs[
                         i, int(az)-width_px//2:int(az)+width_px//2, 
@@ -142,7 +144,6 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         ac6_lat_lon = self.ac6_data_downsampled.loc[t_i, ["lat", "lon"]].to_numpy(dtype=float)
         if not any(np.isnan(ac6_lat_lon)):
             ac6_lat_lon = np.around(ac6_lat_lon, 1)
-
         self.ax.text(0, 0, 
                      f'AC6 at:\nlat={ac6_lat_lon[[0]]}\nlon={ac6_lat_lon[[1]]}', 
                      color='r', va='bottom', ha='left', transform=self.ax.transAxes)
@@ -188,30 +189,6 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
 
         return        
 
-    def get_mean_asi_intensity(self, t0, azel_index, grid_width=10):
-        """
-
-        """
-
-        dt = self.time-t0
-        dt_sec = np.abs([dt_i.total_seconds() for dt_i in dt])
-        idt_nearest = np.argmin(dt_sec)
-
-        # current_img = self.imgs[idt_nearest, :, :]
-        mean_intensity = np.nan*np.ones(azel_index.shape[0]) # Number of altitude points
-
-        for alt_index in range(azel_index.shape[0]):
-            start_x = azel_index[alt_index, 0]-grid_width//2
-            end_x = azel_index[alt_index, 0]+grid_width//2
-            start_y = azel_index[alt_index, 1]-grid_width//2
-            end_y = azel_index[alt_index, 1]+grid_width//2
-            if not (np.isnan(start_x) or np.isnan(end_x) or 
-                    np.isnan(start_y) or np.isnan(end_y)):
-                mean_intensity[alt_index] = np.mean(
-                    self.imgs[idt_nearest, int(start_x):int(end_x), int(start_y):int(end_y)]
-                    )
-        return mean_intensity
-
 if __name__ == '__main__':
     # Load the curtain catalog
     catalog_name = 'AC6_curtains_themis_asi_15deg.csv'
@@ -219,13 +196,13 @@ if __name__ == '__main__':
     cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
 
     # Only keep the dates in cat that are in the keep_dates array.
-    # keep_dates = pd.to_datetime([
-    #     '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
-    #     '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
-    # ])
     keep_dates = pd.to_datetime([
-        '2016-10-24',
+        '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
+        '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
     ])
+    # keep_dates = pd.to_datetime([
+    #     '2016-10-24',
+    # ])
     for t0, row in cat.iterrows():
         if not t0.date() in keep_dates:
             cat.drop(index=t0, inplace=True)
