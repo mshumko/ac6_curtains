@@ -37,7 +37,9 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         n_rows = 3
         gs = self.fig.add_gridspec(n_rows, 2)
         self.ax = self.fig.add_subplot(gs[:, 0])
-        self.bx = [self.fig.add_subplot(gs[i, -1]) for i in range(n_rows)]
+        self.bx = n_rows*[None]
+        self.bx[0] = self.fig.add_subplot(gs[0, -1])
+        self.bx[1:] = [self.fig.add_subplot(gs[i, -1], sharex=self.bx[0]) for i in range(1, n_rows)]
 
         # Load the ASI frames and the AC6 data
         self.filter_asi_frames(self.time_range)
@@ -192,8 +194,19 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
             self.bx[1].plot(self.time, val, label=key, color=color)
         self.bx[1].axvline(t_i, c='k', ls='--')
 
-        # Plot the ASI time series in pcolormesh format.
-        
+        # Plot the ASI time series in the pcolormesh format.
+        # footprint_altitudes
+        intensity = np.zeros((self.mean_asi_intensity['ac6'].shape[0], 
+                            len(self.footprint_altitudes)))
+        j=0
+        for i, (key, val) in enumerate(self.mean_asi_intensity.items()):
+            if key == 'ac6': 
+                continue
+            intensity[:, j] = val
+            j+=1
+        tt, aa = np.meshgrid(self.time, self.footprint_altitudes)
+        self.bx[2].pcolormesh(tt, aa, intensity.T, shading='nearest')
+        self.bx[2].axvline(t_i, c='k', ls='--')
 
         self.save_plot(t_i, individual_movie_dirs, imshow_norm)
         self.asi_colorbar.remove()
@@ -240,16 +253,16 @@ if __name__ == '__main__':
     cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
 
     # Only keep the dates in cat that are in the keep_dates array.
-    keep_dates = pd.to_datetime([
-        '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
-        '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
-    ])
     # keep_dates = pd.to_datetime([
-    #     '2016-12-18',
+    #     '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
+    #     '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
     # ])
-    for t0, row in cat.iterrows():
-        if not t0.date() in keep_dates:
-            cat.drop(index=t0, inplace=True)
+    # # keep_dates = pd.to_datetime([
+    # #     '2016-12-18',
+    # # ])
+    # for t0, row in cat.iterrows():
+    #     if not t0.date() in keep_dates:
+    #         cat.drop(index=t0, inplace=True)
 
     # Loop over each curtain and try to open the ASI data and 
     # calibration from that date.
@@ -261,13 +274,13 @@ if __name__ == '__main__':
             try:
                 a = Plot_ASI_AC6_Pass_Frame(
                     site, t0.to_pydatetime(), pass_duration_min=3,
-                    footprint_altitudes=[100, 200, 300, 400, 500]
+                    footprint_altitudes=[100, 200, 300, 400, 500, 600, 700]
                     )
             except (FileNotFoundError, AssertionError) as err: #ValueError
                 if (('not found' in str(err)) or 
                     ('0 THEMIS ASI paths found for search string' in str(err))):
                     continue
             a.calc_asi_intensity(width_px=10)
-            a.make_animation(imshow_vmax=None, imshow_norm='linear')
+            a.make_animation(imshow_vmax=None, imshow_norm='log')
             # del(a)
             
