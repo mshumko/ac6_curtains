@@ -17,9 +17,12 @@ from ac6_curtains import dirs
 
 
 class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
-    def __init__(self, site, t0, pass_duration_min=1, footprint_altitudes=np.arange(100, 700, 100)):
+    def __init__(self, site, t0, pass_duration_min=1, 
+                footprint_altitudes=np.arange(100, 700, 100),
+                debug=True):
         self.t0 = t0#.copy() # plot_themis_asi.Load_ASI may modify this variable later so copy it.
         self.footprint_altitudes = footprint_altitudes
+        self.debug = debug
 
         super().__init__(site, t0)
         self.load_themis_cal()
@@ -31,10 +34,10 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         # Initialize the figure to plot the ASI and AC6 10 Hz 
         # spatial time series.
         self.fig = plt.figure(constrained_layout=True, figsize=(10,6))
-        gs = self.fig.add_gridspec(2, 2)
+        n_rows = 3
+        gs = self.fig.add_gridspec(n_rows, 2)
         self.ax = self.fig.add_subplot(gs[:, 0])
-        self.bx = [self.fig.add_subplot(gs[i, -1]) for i in range(2)]
-        #self.bx = self.fig.add_subplot(gs[0, 1])
+        self.bx = [self.fig.add_subplot(gs[i, -1]) for i in range(n_rows)]
 
         # Load the ASI frames and the AC6 data
         self.filter_asi_frames(self.time_range)
@@ -90,21 +93,32 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         Loops over the self.asi_azel_index_dict and calculates the mean 
         ASI intensity around the AC6 location +/- width_px//2
         """
-        self.mean_asi_intensity = {}
+        self.mean_asi_intensity = pd.DataFrame(
+            data={key:np.nan*np.zeros(self.asi_azel_index_dict[key].shape[0]) 
+                for key in self.asi_azel_index_dict.keys()},
+            index=self.time
+            )
+        if self.debug:
+            self.mean_asi_box_indicies = {key:pd.DataFrame(
+                data=np.nan*np.ones((self.asi_azel_index_dict['ac6'].shape[0], 4)),
+                columns=['start_x', 'end_x', 'start_y', 'end_y']
+                ) for key in self.asi_azel_index_dict.keys()}
         # Loop over each altitude.
         for key, val in self.asi_azel_index_dict.items():
-            self.mean_asi_intensity[key] = np.nan*np.zeros(val.shape[0])
+            #self.mean_asi_intensity[key] = np.nan*np.zeros(val.shape[0])
             # Loop over each time stamp.
             for i, (az, el) in enumerate(val):
                 if any(np.isnan([az, el])):
                     continue
-                if int(az)-width_px//2 < 0 or int(el)-width_px//2 < 0:
-                    print(f'Less than 0! {int(az)-width_px//2}, {int(el)-width_px//2}')
-                self.mean_asi_intensity[key][i] = np.mean(
-                    self.imgs[
-                        i, int(az)-width_px//2:int(az)+width_px//2, 
-                        int(el)-width_px//2:int(el)+width_px//2
-                        ]
+                start_x, end_x = int(az)-width_px//2, int(az)+width_px//2
+                start_y, end_y = int(el)-width_px//2, int(el)+width_px//2
+                if self.debug:
+                    self.mean_asi_box_indicies[key].loc[i] = [start_x, end_x, start_y, end_y]
+
+                img, _ = self.get_asi_frames(self.time[i])
+
+                self.mean_asi_intensity.loc[self.time[i], key] = np.median(
+                    img[start_x:end_x, start_y:end_y]
                     )
         return
 
@@ -118,13 +132,21 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
         for bx_i in self.bx:
             bx_i.clear()
 
-        self.plot_azel_contours(ax=self.ax)
+        if self.debug: self.plot_azel_contours(ax=self.ax)
 
         t_i = self.time[i]
 
         # Plot the THEMIS ASI image and azel contours.
-        self.plot_themis_asi_frame(t_i, ax=self.ax, imshow_vmin=None, 
+        if imshow_vmax is None:
+            imshow_vmax = 0
+            imshow_vmin = 65E3
+            for key, vals in self.mean_asi_intensity.items():
+                imshow_vmax = np.nanmax(np.append(vals, imshow_vmax))
+                imshow_vmin = np.nanmin(np.append(vals, imshow_vmin))
+
+        self.plot_themis_asi_frame(t_i, ax=self.ax, 
                                     imshow_vmax=imshow_vmax, 
+                                    imshow_vmin=imshow_vmin,
                                     imshow_norm=imshow_norm)
         if azel_contours: self.plot_azel_contours(ax=self.ax)
 
@@ -139,14 +161,24 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
                         c=color, marker='x', s=20)
             self.ax.text(val[-1, 0], val[-1, 1], key, color=color, va='top', ha='right')
 
-        ### TESTING ###
-        # Annotate the AC6 location 
-        ac6_lat_lon = self.ac6_data_downsampled.loc[t_i, ["lat", "lon"]].to_numpy(dtype=float)
-        if not any(np.isnan(ac6_lat_lon)):
-            ac6_lat_lon = np.around(ac6_lat_lon, 1)
-        self.ax.text(0, 0, 
-                     f'AC6 at:\nlat={ac6_lat_lon[[0]]}\nlon={ac6_lat_lon[[1]]}', 
-                     color='r', va='bottom', ha='left', transform=self.ax.transAxes)
+            if self.debug:
+                ### DRAW THE BOX WHERE THE MEAN ASI VALUE IS CALCULATED FROM.
+                self.ax.plot(self.mean_asi_box_indicies[key].loc[i, ['start_x', 'end_x']],
+                            self.mean_asi_box_indicies[key].loc[i, ['start_y', 'start_y']], c=color)
+                self.ax.plot(self.mean_asi_box_indicies[key].loc[i, ['start_x', 'end_x']],
+                            self.mean_asi_box_indicies[key].loc[i, ['end_y', 'end_y']], c=color)
+                self.ax.plot(self.mean_asi_box_indicies[key].loc[i, ['start_x', 'start_x']],
+                            self.mean_asi_box_indicies[key].loc[i, ['start_y', 'end_y']], c=color)
+                self.ax.plot(self.mean_asi_box_indicies[key].loc[i, ['end_x', 'end_x']],
+                            self.mean_asi_box_indicies[key].loc[i, ['start_y', 'end_y']], c=color)
+        if self.debug:
+            # Annotate the AC6 lat/lon in the lower-left corner. 
+            ac6_lat_lon = self.ac6_data_downsampled.loc[t_i, ["lat", "lon"]].to_numpy(dtype=float)
+            if not any(np.isnan(ac6_lat_lon)):
+                ac6_lat_lon = np.around(ac6_lat_lon, 1)
+            self.ax.text(0, 0, 
+                        f'AC6 at:\nlat={ac6_lat_lon[[0]]}\nlon={ac6_lat_lon[[1]]}', 
+                        color='r', va='bottom', ha='left', transform=self.ax.transAxes)
 
         ### Plot the AC6 time series
         self.bx[0].plot(self.ac6_data.index, self.ac6_data.dos1rate, 'r', label='AC6A')
@@ -160,22 +192,11 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
             self.bx[1].plot(self.time, val, label=key, color=color)
         self.bx[1].axvline(t_i, c='k', ls='--')
 
-        save_name = (
-                    f'{self.site}_{t_i.strftime("%Y%m%d")}_'
-                    f'{t_i.strftime("%H%M%S")}_themis_asi_frame.png'
-                    )
-        if individual_movie_dirs:
-            save_dir = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
-                                    'movies', imshow_norm, 
-                                    t_i.strftime("%Y%m%d"))
-            # Make dir if does not exist
-            save_dir.mkdir(parents=True, exist_ok=True)
-            save_path = save_dir / save_name
-        else:
-            save_path = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
-                                    'movies', imshow_norm, save_name)
-        plt.savefig(save_path)
-        print(f'Saved frame: {save_name}')
+        # Plot the ASI time series in pcolormesh format.
+        
+
+        self.save_plot(t_i, individual_movie_dirs, imshow_norm)
+        self.asi_colorbar.remove()
         return
 
     def make_animation(self, imshow_vmax=None, imshow_norm='linear', individual_movie_dirs=True):
@@ -187,7 +208,30 @@ class Plot_ASI_AC6_Pass_Frame(plot_themis_asi.Map_THEMIS_ASI):
             self.plot_frame(i, imshow_vmax=imshow_vmax, imshow_norm=imshow_norm, 
                             individual_movie_dirs=individual_movie_dirs)
 
-        return        
+        return      
+
+    def save_plot(self, time, individual_movie_dirs, imshow_norm):
+        """
+        Handles the plot saving logic (location, diretories etc.)
+        """
+        save_name = (
+                f'{self.site}_{time.strftime("%Y%m%d")}_'
+                f'{time.strftime("%H%M%S")}_themis_asi_frame.png'
+                )
+        if individual_movie_dirs:
+            save_dir = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
+                                    'movies', imshow_norm, 
+                                    time.strftime("%Y%m%d"))
+            # Make dir if does not exist
+            save_dir.mkdir(parents=True, exist_ok=True)
+            save_path = save_dir / save_name
+        else:
+            save_path = pathlib.Path(dirs.BASE_DIR, 'all_sky_imagers', 
+                                    'movies', imshow_norm, save_name)
+        plt.savefig(save_path)
+        print(f'Saved frame: {save_name}')
+        return
+
 
 if __name__ == '__main__':
     # Load the curtain catalog
@@ -201,7 +245,7 @@ if __name__ == '__main__':
         '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
     ])
     # keep_dates = pd.to_datetime([
-    #     '2016-10-24',
+    #     '2016-12-18',
     # ])
     for t0, row in cat.iterrows():
         if not t0.date() in keep_dates:
@@ -223,7 +267,7 @@ if __name__ == '__main__':
                 if (('not found' in str(err)) or 
                     ('0 THEMIS ASI paths found for search string' in str(err))):
                     continue
-            a.calc_asi_intensity()
-            a.make_animation(imshow_vmax=1E4, imshow_norm='log')
-            del(a)
+            a.calc_asi_intensity(width_px=10)
+            a.make_animation(imshow_vmax=None, imshow_norm='linear')
+            # del(a)
             

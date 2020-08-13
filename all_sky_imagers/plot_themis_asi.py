@@ -262,7 +262,7 @@ class THEMIS_ASI:
                                 origin="lower", interpolation="none",
                                 vmin=imshow_vmin, vmax=imshow_vmax, norm=norm)
         if colorbar:
-            plt.colorbar(self.hi, ax=self.ax, orientation='horizontal')
+            self.asi_colorbar = plt.colorbar(self.hi, ax=self.ax, orientation='horizontal')
         self.ht = self.ax.set_title(title_text, color="k")
         self.ax.axis('off')
         return frame_time
