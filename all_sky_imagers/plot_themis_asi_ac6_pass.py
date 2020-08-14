@@ -1,13 +1,12 @@
 # Make a gif of the ASI frames during curtain passes
 
 import pandas as pd
-import matplotlib.pyplot as plt
-import pathlib
-from datetime import datetime, timedelta
-import matplotlib.dates as mdates
-import pathlib
-import matplotlib.animation as animation
 import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg') 
+from datetime import datetime, timedelta
+import pathlib
 import itertools
 
 from skyfield.api import EarthSatellite, Topos, load
@@ -253,16 +252,16 @@ if __name__ == '__main__':
     cat = pd.read_csv(cat_path, index_col=0, parse_dates=True)
 
     # Only keep the dates in cat that are in the keep_dates array.
-    # keep_dates = pd.to_datetime([
-    #     '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
-    #     '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
-    # ])
+    keep_dates = pd.to_datetime([
+        '2015-04-16', '2015-08-12', '2015-09-09', '2016-10-24',
+        '2016-10-27', '2016-12-08', '2016-12-18', '2017-05-01'
+    ])
     # # keep_dates = pd.to_datetime([
     # #     '2016-12-18',
     # # ])
-    # for t0, row in cat.iterrows():
-    #     if not t0.date() in keep_dates:
-    #         cat.drop(index=t0, inplace=True)
+    for t0, row in cat.iterrows():
+        if not t0.date() in keep_dates:
+            cat.drop(index=t0, inplace=True)
 
     # Loop over each curtain and try to open the ASI data and 
     # calibration from that date.
