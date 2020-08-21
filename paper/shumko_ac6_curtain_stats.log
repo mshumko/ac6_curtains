@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  7 JUL 2020 15:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  21 AUG 2020 10:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -307,15 +307,15 @@ Overfull \hbox (14.34901pt too wide) in paragraph at lines 68--69
  []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (4.71019pt too wide) in paragraph at lines 72--74
-\OT1/cmr/m/n/10 Curtain pre-cip-i-ta-tion are a re-cently dis-cov-ered sta-tion
--ary, per-sis-tent, and lat-i-tu-di-nally 
+Overfull \hbox (19.2102pt too wide) in paragraph at lines 72--74
+\OT1/cmr/m/n/10 Curtain pre-cip-i-ta-tion is a re-cently dis-cov-ered sta-tion-
+ary, per-sis-tent, and lat-i-tu-di-nally nar- 
  []
 
 
-Overfull \hbox (18.98793pt too wide) in paragraph at lines 72--74
-\OT1/cmr/m/n/10 nar-row elec-tron pre-cip-i-ta-tion phe-nomenon in low Earth or
--bit. Cur-tains are ob-served over 
+Overfull \hbox (4.51567pt too wide) in paragraph at lines 72--74
+\OT1/cmr/m/n/10 row elec-tron pre-cip-i-ta-tion phe-nomenon in low Earth or-bit
+. Cur-tains are ob-served over 
  []
 
 
@@ -864,6 +864,15 @@ run-away beams driven by light-
  []
 
 
+Overfull \hbox (17.64067pt too wide) in paragraph at lines 93--94
+\OT1/cmr/m/n/10 ning, but these cur-tains would be ob-served at rel-a-tively lo
+w L shells. [][][]The[] [][][]cur[]-[]tain[] [][][]shape[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3]
 Overfull \hbox (17.51578pt too wide) in paragraph at lines 95--96
 []\OT1/cmr/m/n/10 This study ex-pands on []Blake and O'Brien (2016) by ex-am-in
 -ing the sta-tis-ti-cal prop- 
@@ -894,9 +903,6 @@ e bounce loss cone (BLC) re-gion.
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
 Overfull \hbox (22.79344pt too wide) in paragraph at lines 98--99
 []\OT1/cmr/m/n/10 The AC6 mis-sion was a pair of 0.5U (10x10x5 cm) Cube-Sats bu
 ilt by The Aerospace 
@@ -1311,6 +1317,9 @@ Overfull \hbox (11.6268pt too wide) in paragraph at lines 120--121
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./figures/fig1.pdf>]
 Overfull \hbox (20.5156pt too wide) in paragraph at lines 122--123
 []\OT1/cmr/m/n/10 Particles that are quasi-trapped have pitch an-gles in the dr
 ift loss cone and will pre- 
@@ -1335,9 +1344,6 @@ Overfull \hbox (1.84903pt too wide) in paragraph at lines 122--123
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./figures/fig1.pdf>]
 Overfull \hbox (9.40457pt too wide) in paragraph at lines 124--125
 []\OT1/cmr/m/n/10 In most re-gions out-side of the SAA and its con-ju-gate poin
 t in the North At-lantic, 
@@ -1523,7 +1529,11 @@ Overfull \hbox (8.849pt too wide) in paragraph at lines 132--133
 -row. Many cur-tains are nar- 
  []
 
-<figures/fig2.pdf, id=96, 462.52798pt x 346.89601pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
+<figures/fig2.pdf, id=100, 462.52798pt x 346.89601pt>
 File: figures/fig2.pdf Graphic file (type pdf)
 <use figures/fig2.pdf>
 Package pdftex.def Info: figures/fig2.pdf  used on input line 135.
@@ -1577,10 +1587,6 @@ Overfull \hbox (1.71013pt too wide) in paragraph at lines 141--142
  []
 
 
-Underfull \vbox (badness 1552) has occurred while \output is active []
-
- [6]
-[7 <./figures/fig2.pdf>]
 Overfull \hbox (19.93236pt too wide) in paragraph at lines 143--144
 []\OT1/cmr/m/n/10 We also ex-am-ine the ge-o-mag-netic con-di-tions fa-vor-able
  for cur-tains. Fig-ure 4[]a shows 
@@ -1628,7 +1634,7 @@ Overfull \hbox (8.93231pt too wide) in paragraph at lines 143--144
 tain oc-cur-rence fre-quency in- 
  []
 
-<figures/fig3_v3.pdf, id=148, 1011.78pt x 361.35pt>
+<figures/fig3_v3.pdf, id=101, 1011.78pt x 361.35pt>
 File: figures/fig3_v3.pdf Graphic file (type pdf)
 <use figures/fig3_v3.pdf>
 Package pdftex.def Info: figures/fig3_v3.pdf  used on input line 146.
@@ -1657,7 +1663,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 147--147
 while in panel c the white bins
  []
 
-<figures/fig4.pdf, id=149, 650.43pt x 289.08pt>
+<figures/fig4.pdf, id=102, 650.43pt x 289.08pt>
 File: figures/fig4.pdf Graphic file (type pdf)
 <use figures/fig4.pdf>
 Package pdftex.def Info: figures/fig4.pdf  used on input line 152.
@@ -1698,7 +1704,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 153--153
 -rived as-sum-ing the Pois-son stan-dard
  []
 
+[7 <./figures/fig2.pdf>] [8 <./figures/fig3_v3.pdf> <./figures/fig4.pdf
 
+pdfTeX warning: pdflatex (file ./figures/fig4.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>]
 Overfull \hbox (24.57126pt too wide) in paragraph at lines 158--159
 []\OT1/cmr/m/n/10 Lastly, we in-ves-ti-gate if cur-tains are drift-ing or lo-ca
 lly pre-cip-i-tat-ing. Fig-ure 5[]a shows 
@@ -1770,7 +1780,7 @@ Overfull \hbox (20.01555pt too wide) in paragraph at lines 160--161
 in Fig. 5[]a with the red stars 
  []
 
-<figures/fig5.pdf, id=150, 650.43pt x 505.89pt>
+<figures/fig5.pdf, id=261, 650.43pt x 505.89pt>
 File: figures/fig5.pdf Graphic file (type pdf)
 <use figures/fig5.pdf>
 Package pdftex.def Info: figures/fig5.pdf  used on input line 163.
@@ -1830,9 +1840,6 @@ nd MLT rounded to the near-est in-te-ger. AC6-A was lead-ing in all
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8 <./figures/fig3_v3.pdf>]
 Overfull \hbox (1.65453pt too wide) in paragraph at lines 170--171
 []\OT1/cmr/m/n/10 Curtains are nar-row in lat-i-tude. Fig-ure 2[] shows that th
 e width of most cur-tains 
@@ -1952,7 +1959,7 @@ Overfull \hbox (8.12675pt too wide) in paragraph at lines 175--176
 creases with in-creas-ing 
  []
 
-[9 <./figures/fig4.pdf>] [10 <./figures/fig5.pdf>]
+
 Overfull \hbox (15.15456pt too wide) in paragraph at lines 178--179
 []\OT1/cmr/m/n/10 The hand-ful of cur-tains ob-served in the bounce loss cone, 
 and shown in Fig. 5[], put 
@@ -2013,6 +2020,10 @@ Overfull \hbox (2.90453pt too wide) in paragraph at lines 178--179
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9]
+[10 <./figures/fig5.pdf>]
 Overfull \hbox (26.3767pt too wide) in paragraph at lines 180--181
 []\OT1/cmr/m/n/10 One can-di-date mech-a-nism is a di-rect cur-rent elec-tric f
 ield that is par-al-lel to the back- 
@@ -2352,7 +2363,7 @@ Overfull \hbox (12.76561pt too wide) in paragraph at lines 215--216
 our abil-ity to ex-plore the ex- 
  []
 
-<figures/a_10hz_dist.pdf, id=326, 462.52798pt x 346.89601pt>
+<figures/a_10hz_dist.pdf, id=328, 462.52798pt x 346.89601pt>
 File: figures/a_10hz_dist.pdf Graphic file (type pdf)
 <use figures/a_10hz_dist.pdf>
 Package pdftex.def Info: figures/a_10hz_dist.pdf  used on input line 218.
@@ -2399,12 +2410,7 @@ Overfull \hbox (13.93231pt too wide) in paragraph at lines 224--225
 e cur-tain width is shown 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12]
-[13 <./figures/a_10hz_dist.pdf>]
-<figures/a_topographic_prominence.pdf, id=375, 1011.78pt x 361.35pt>
+<figures/a_topographic_prominence.pdf, id=329, 1011.78pt x 361.35pt>
 File: figures/a_topographic_prominence.pdf Graphic file (type pdf)
 <use figures/a_topographic_prominence.pdf>
 Package pdftex.def Info: figures/a_topographic_prominence.pdf  used on input li
@@ -2423,6 +2429,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 228--228
  []
 
 
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [12]
+[13 <./figures/a_10hz_dist.pdf> <./figures/a_topographic_prominence.pdf
+
+pdfTeX warning: pdflatex (file ./figures/a_topographic_prominence.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>]
 Overfull \hbox (1.48782pt too wide) in paragraph at lines 232--233
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
@@ -2528,9 +2542,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--106
  []
 
 
-Underfull \vbox (badness 2644) has occurred while \output is active []
-
- [14 <./figures/a_topographic_prominence.pdf>]
 Underfull \hbox (badness 2635) in paragraph at lines 120--143
 []\OT1/cmr/m/n/10 Blum, L., Li, X., & Den-ton, M.  (2015).  Rapid MeV elec-tron
  pre-cip-i-ta-tion as ob- 
@@ -2627,7 +2638,7 @@ Underfull \hbox (badness 6542) in paragraph at lines 339--366
 2 / 2016JA022485$   \OT1/cmr/m/n/10 (2016JA022485)  doi: 
  []
 
-
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 382--399
 \OT1/cmr/m/n/10 tivis-tic mi-croburst storm char-ac-ter-is-tics: Com-bined sate
 l-lite and ground-based 
@@ -2688,9 +2699,6 @@ ics.  \OT1/cmr/m/it/10 Re-view of Sci-en-tific
  []
 
 
-Underfull \vbox (badness 1264) has occurred while \output is active []
-
- [15]
 Underfull \hbox (badness 10000) in paragraph at lines 603--618
 []\OT1/cmr/m/n/10 Lehtinen, N. G., Inan, U. S., & Bell, T. F.  (2000).  Trapped
  en-er-getic elec-tron 
@@ -2801,6 +2809,9 @@ Underfull \hbox (badness 3029) in paragraph at lines 823--849
  []
 
 
+Underfull \vbox (badness 1264) has occurred while \output is active []
+
+ [15]
 Underfull \hbox (badness 4739) in paragraph at lines 863--882
 []\OT1/cmr/m/n/10 Olson, W. P., & Pfitzer, K. A.  (1982).  A dy-namic model of 
 the mag-ne-to-spheric 
@@ -2856,9 +2867,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 1041--1060
  []
 
 
-Underfull \vbox (badness 1264) has occurred while \output is active []
-
- [16]
 Underfull \hbox (badness 3989) in paragraph at lines 1074--1088
 []\OT1/cmr/m/n/10 Thieman, J. R., & Hoff-man, R. A.  (1985).  De-ter-mi-na-tion
  of inverted-v sta-bil-ity 
@@ -2883,20 +2891,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 1140--1159
 t [] .com / science / article / pii / 
  []
 
-) [17] (./shumko_ac6_curtain_stats.aux)
+) [16] (./shumko_ac6_curtain_stats.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.45pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 3523 strings out of 492982
- 48577 string characters out of 6134897
- 124569 words of memory out of 5000000
- 7019 multiletter control sequences out of 15000+600000
- 9949 words of font info for 36 fonts, out of 8000000 for 9000
+ 3526 strings out of 492982
+ 48612 string characters out of 6134897
+ 128569 words of memory out of 5000000
+ 7021 multiletter control sequences out of 15000+600000
+ 10301 words of font info for 37 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1600b,353s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1600b,344s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2913,13 +2924,14 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (17 pages, 529609 bytes).
+type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmtt9.pfb>
+Output written on shumko_ac6_curtain_stats.pdf (16 pages, 540669 bytes).
 PDF statistics:
- 505 PDF objects out of 1000 (max. 8388607)
- 152 compressed objects within 2 object streams
+ 506 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
