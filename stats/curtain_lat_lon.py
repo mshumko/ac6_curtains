@@ -1,35 +1,48 @@
 """
-This scipt plots the lat-lon distribution of curtains and normalizes 
-it.
+This scipt plots the original and the normalized lat-lon 
+curtain distributions.
 """
+import pathlib
+import string
 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import pathlib
-import numpy as np
 
 import dirs
 
+cmap='Blues'
+# projection = ccrs.PlateCarree()
+L_levels = [4,10]
+
+# Load the curtain catalog.
 cat_path = pathlib.Path(dirs.CATALOG_DIR, 
         'AC6_curtains_baseline_method_sorted_v0.csv')
 cat = pd.read_csv(cat_path)
 
-# Load normalization file
+# Load the lat-lon normalization files.
 norm_bin_path = pathlib.Path(dirs.NORM_DIR, 
         'ac6_lat_lon_bins.csv')
 norm_path = pathlib.Path(dirs.NORM_DIR, 
         'ac6_lat_lon_norm.csv')
-
-# Load the L-MLT normalization files.
+# Load the bins
 with open(norm_bin_path) as f:
     keys = next(f).rstrip().split(',')
     bins = {}
     for key in keys:
         bins[key] = next(f).rstrip().split(',')
         bins[key] = list(map(float, bins[key]))
-
+# Load the normalization file.
 norm = pd.read_csv(norm_path, skiprows=1, names=bins['lon'])
 norm.index = bins['lat'][:-1]
+
+# Load the L shell distribution to overlay on the map
+L_lons = np.load('/home/mike/research/mission_tools'
+                '/misc/irbem_l_lons.npy')
+L_lats = np.load('/home/mike/research/mission_tools'
+                '/misc/irbem_l_lats.npy')
+L = np.load('/home/mike/research/mission_tools'
+                '/misc/irbem_l_l.npy')
 
 def rebin(df, deg, coord):
     # Group by latitude into deg degree chucks
@@ -49,46 +62,52 @@ def rebin(df, deg, coord):
 
 # norm = rebin(norm, 10, 'lon')
 
+# Calculate the curtain histogram and the normalized curtain histogram.
 curtain_hist, _, _ = np.histogram2d(x=cat.loc[:, 'lon'], y=cat.loc[:, 'lat'], 
                 bins=[bins['lon'], bins['lat']])
-                # bins=[norm.columns, norm.index])
 curtain_hist = curtain_hist.T
 curtain_hist_norm = curtain_hist*(np.nanmax(norm.values)/norm.values[:, :-1])
-curtain_hist_norm[np.where(np.isinf(curtain_hist_norm))] = np.nan
+curtain_hist_norm[np.where(np.isinf(curtain_hist_norm))] = 0
+curtain_hist_norm[np.where(np.isnan(curtain_hist_norm))] = 0
 
-fig, ax = plt.subplots(3, figsize=(8, 10), 
-                        sharex=True, sharey=True)
-curtain_hist_plt = ax[0].pcolormesh(norm.columns[:-1], norm.index, curtain_hist)
+### PLOTS ###
+fig, ax = plt.subplots(3, figsize=(5, 8))#, 
+                        # sharex=True, sharey=True)
+curtain_hist_plt = ax[0].pcolormesh(bins['lon'], bins['lat'], 
+                                    curtain_hist,
+                                    cmap=cmap)
 plt.colorbar(curtain_hist_plt, label='Number of curtains', ax=ax[0])
-ax[0].set(ylabel='lat', title='Lat-Lon Curtain Distribution')
+ax[0].set(ylabel='latitude', title='Latitude-Longitude Curtain Distribution')
 
-curtain_hist_norm_plt = ax[1].pcolormesh(norm.columns[:-1], norm.index, curtain_hist_norm)
+curtain_hist_norm_plt = ax[1].pcolormesh(bins['lon'], bins['lat'], 
+                                        curtain_hist_norm, 
+                                        cmap=cmap)
 plt.colorbar(curtain_hist_norm_plt, label='Normalized\nNumber of curtains', ax=ax[1])
-ax[1].set(ylabel='lat', title='Normalized Lat-Lon Curtain Distribution')
+ax[1].set(ylabel='latitude')
 
-norm_hist = ax[-1].pcolormesh(norm.columns, norm.index, norm)
+norm_hist = ax[-1].pcolormesh(bins['lon'], bins['lat'], norm,
+                            cmap=cmap)
 plt.colorbar(norm_hist, label='Number of 10 Hz seconds', ax=ax[-1])
-ax[-1].set(xlabel='lon', ylabel='lat', title='Normalization')
+ax[-1].set(xlabel='longitude', ylabel='latitude')
 
-# Overlay BLC boundary
-mirror_point_df = pd.read_csv(pathlib.Path(dirs.BASE_DIR, 'data', 'lat_lon_mirror_alt.csv'),
-                                    index_col=0, header=0)
-lons = np.array(mirror_point_df.columns, dtype=float)
-lats = mirror_point_df.index.values.astype(float)   
+# # Overlay BLC boundary
+# mirror_point_df = pd.read_csv(pathlib.Path(dirs.BASE_DIR, 'data', 'lat_lon_mirror_alt.csv'),
+#                                     index_col=0, header=0)
+# lons = np.array(mirror_point_df.columns, dtype=float)
+# lats = mirror_point_df.index.values.astype(float)   
 
-# # Overlay rad belt L contours
-# L_lons = np.load('/home/mike/research/mission_tools'
-#                 '/misc/irbem_l_lons.npy')
-# L_lats = np.load('/home/mike/research/mission_tools'
-#                 '/misc/irbem_l_lats.npy')
-# L = np.load('/home/mike/research/mission_tools'
-#                 '/misc/irbem_l_l.npy')
-# levels = [4,8]
+subplot_titles=['Unnormalized', 'Normalized', 'Normalization']
 
-for a in ax:
-    a.contour(lons, lats, mirror_point_df.values,
-            levels=[0, 100], colors=['r', 'r'], linestyles=['dashed', 'solid'], alpha=0.4)
-    # a.contour(L_lons, L_lats, L, levels=levels, colors='k', linestyles='dotted')
+for i, a in enumerate(ax):
+#     a.contour(lons, lats, mirror_point_df.values,
+#             levels=[0, 100], colors=['r', 'r'], linestyles=['dashed', 'solid'], alpha=0.4)
+    # Overlay rad belt L contours  
+    a.contour(L_lons, L_lats, L, levels=L_levels, colors='k', linestyles='dotted')
+    # a.set_aspect('equal', 'datalim')
+    a.set_xlim(-180, 180)
+    a.set_ylim(-90, 90)
+    a.text(0, 1, f'({string.ascii_letters[i]}) {subplot_titles[i]}', va='top', ha='left', 
+            transform=a.transAxes, fontsize=15)
 
 plt.tight_layout()
 plt.show()

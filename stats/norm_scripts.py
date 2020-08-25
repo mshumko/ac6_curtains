@@ -74,7 +74,7 @@ import dirs
 
 ### SCRIPT TO MAKE LAT-LON NORMALIZATION ####
 ss = norm.Hist2D('lat', 'lon', 
-            bins=[np.arange(-90, 91, 10), np.arange(-180, 181, 20)],
+            bins=[np.arange(-90, 91, 15), np.arange(-180, 181, 15)],
             filterDict={'flag':0})
 ss.loop_data(simultaneous=True)
 ss.save_data(os.path.join(dirs.NORM_DIR, 'ac6_lat_lon_bins.csv'), 
