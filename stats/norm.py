@@ -2,15 +2,15 @@
 # micorburst scale size distributions.
 
 from datetime import datetime, timedelta
-from matplotlib.dates import date2num, num2date
 import csv
-import numpy as np
 import sys
 import os
 
+from matplotlib.dates import date2num, num2date
+import numpy as np
 import pandas as pd
+import progressbar
 
-# Import personal libraries
 import mission_tools.ac6.read_ac_data as read_ac_data
 import IRBEM
 
@@ -39,7 +39,7 @@ class Hist1D:
         Loop over every day and for each day try to open the 10 Hz data
         from both units. If data exists, filter it by time, and hisogram it. 
         """
-        for day in self.dates:
+        for day in progressbar.progressbar(self.dates, redirect_stdout=True):
             #if day != datetime(2016, 10, 31): continue
             self.load_day_data(day)
             if (self.ac6dataA is None) or (self.ac6dataB is None):
@@ -299,7 +299,7 @@ class Equatorial_Hist(Hist1D):
         Loops over all of the days between startDate and endDate, loads the 10 Hz
         data, filters it, maps to equator, and bins the resulting scale sizes.
         """
-        for day in self.dates:
+        for day in progressbar.progressbar(self.dates, redirect_stdout=True):
             self.load_day_data(day)
             if (self.ac6dataA is None) or (self.ac6dataB is None):
                 continue # If one (or both) of the data files is empty
@@ -370,82 +370,3 @@ class Equatorial_Hist(Hist1D):
         else:
             # Calculate separation in units of km.
             return Re*np.linalg.norm(X1_equator-X2_equator)
-
-if __name__ == '__main__':
-    SAVE_DIR = '/home/mike/research/ac6_curtains/data/norm'
-
-    ### SCRIPT TO MAKE "Dst_Total" NORMALIZATION ###
-    #import time
-    #start_time = time.time()
-    # s=Hist1D(d=np.arange(0, 501, 1), 
-    #             filterDict={'dos1rate':[0, 1E6], 
-    #                         'Lm_OPQ':[4, 8]})
-    # s.loop_data()
-    # s.save_data(os.path.join(SAVE_DIR, 'ac6_norm_all_1km_bins.csv'))
-    
-    # bin_width = 5
-    # bin_offset = 0
-    # L_array = [4, 5, 6, 7, 8] #[4, 8]
-    # for L_lower, L_upper in zip(L_array[:-1], L_array[1:]):
-    #     ss2=Hist1D(d=np.arange(bin_offset, 501, bin_width), 
-    #                 filterDict={'dos1rate':[0, 1E6], 
-    #                             'Lm_OPQ':[L_lower, L_upper]})
-    #     ss2.loop_data()
-    #     SAVE_DIR = '/home/mike/research/ac6_microburst_scale_sizes/data/norm'
-    #     ss2.save_data(os.path.join(SAVE_DIR, 
-    #             f'ac6_norm_{L_lower}_L_{L_upper}'
-    #             f'_{bin_width}km_bins_offset.csv'))
-    #     print('Run time =', time.time()-start_time, 's')
-    # print('Norm.py ran in :{} s'.format((datetime.now()-st).total_seconds()))
-
-    ### SCRIPT TO MAKE L-dependent "Dst_Total" NORMALIZATION ###
-    # st = datetime.now()
-    # L = [3, 4, 5, 6, 7]
-    # for (lL, uL) in zip(L[:-1], L[1:]):
-    #     ss=Hist1D(filterDict={'Lm_OPQ':[lL, uL]})
-    #     ss.loop_data()
-    #     SAVE_DIR = '/home/mike/research/ac6-microburst-scale-sizes/data/norm/'
-    #     ss.save_data(os.path.join(SAVE_DIR, 'ac6_norm_{}_L_{}.csv'.format(lL, uL)))
-    # print('Norm.py ran in :{} s'.format((datetime.now()-st).total_seconds()))
-
-    ### SCRIPT TO MAKE L-MLT NORMALIATION ###
-    ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
-                     bins=[np.arange(1, 16), np.arange(0, 25)],
-                     filterDict={'flag':0})
-    ss2.loop_data(simultaneous=False)
-    ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
-                   os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
-
-    ### SCRIPT TO MAKE MLT-UT NORMALIATION ###
-    # ss2 = Hist2D('Lm_OPQ', 'MLT_OPQ', 
-    #                 bins=[np.arange(2, 15), np.arange(0, 25)],
-    #                 filterDict={'dos1rate':[0, 1E6]})
-    # ss2.loop_data(simultaneous=False)
-    # ss2.save_data(os.path.join(SAVE_DIR, 'ac6_L_MLT_bins_same_loc.csv'), 
-    #               os.path.join(SAVE_DIR, 'ac6_L_MLT_norm_same_loc.csv'))
-
-    # ### SCRIPT TO MAKE MLT-LON NORMALIZATION ####
-    # ss = Hist2D('MLT_OPQ', 'lon', 
-    #             bins=[np.arange(0, 25, 1), np.arange(-180, 181, 10)],
-    #             filterDict={'dos1rate':[0, 1E6]})
-    # ss.loop_data(simultaneous=False)
-    # ss.save_data(os.path.join(SAVE_DIR, 'ac6_MLT_lon_bins_same_loc.csv'), 
-    #             os.path.join(SAVE_DIR, 'ac6_MLT_lon_norm_same_loc.csv'))
-
-    ### SCRIPT TO MAKE LAT-LON NORMALIZATION ####
-    ss = Hist2D('lat', 'lon', 
-               bins=[np.arange(-90, 91, 10), np.arange(-180, 181, 10)],
-               filterDict={'flag':0})
-    ss.loop_data(simultaneous=True)
-    ss.save_data(os.path.join(SAVE_DIR, 'ac6_lat_lon_bins.csv'), 
-               os.path.join(SAVE_DIR, 'ac6_lat_lon_norm.csv'))
-
-    ### SCRIPT TO FIND THE EQUATORIAL NORMALIZATION ###
-#    eq = Equatorial_Hist(np.arange(0, 2000, 25), 'Lm_OPQ', np.arange(4, 8.1),
-#                        filterDict={'dos1rate':[0, 1E6]})
-#                        # startDate=datetime(2015, 5, 26)
-#    eq.loop_data()
-#    eq.save_data('equatorial_test_norm.csv')
-
-#    #eq.loop_data()
-#    print(f'Run time = {time.time()-start_time} s')
