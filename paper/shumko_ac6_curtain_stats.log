@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  23 AUG 2020 20:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  24 AUG 2020 17:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1146,7 +1146,10 @@ Overfull \hbox (16.44632pt too wide) in paragraph at lines 106--107
 e base-line will be sig-nif-i-cantly el-e-vated mak-ing the cur-tain peak 
  []
 
-[4]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
 Overfull \hbox (4.87675pt too wide) in paragraph at lines 108--109
 []\OT1/cmr/m/n/10 We tuned the au-to-mated de-tec-tion pa-ram-e-ters to iden-ti
 fy a large num-ber of cur- 
@@ -1275,6 +1278,9 @@ ions with re-spect to the lo-ca-tion of
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./figures/fig1.pdf>]
 Overfull \hbox (6.8212pt too wide) in paragraph at lines 120--121
 []\OT1/cmr/m/n/10 Earth's mag-netic field is asym-met-ric and has a re-gion of 
 weaker mag-netic field in 
@@ -1317,9 +1323,6 @@ Overfull \hbox (11.6268pt too wide) in paragraph at lines 120--121
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./figures/fig1.pdf>]
 Overfull \hbox (20.5156pt too wide) in paragraph at lines 122--123
 []\OT1/cmr/m/n/10 Particles that are quasi-trapped have pitch an-gles in the dr
 ift loss cone and will pre- 
@@ -1587,6 +1590,9 @@ Overfull \hbox (1.71013pt too wide) in paragraph at lines 141--142
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./figures/fig2.pdf>]
 Overfull \hbox (19.93236pt too wide) in paragraph at lines 143--144
 []\OT1/cmr/m/n/10 We also ex-am-ine the ge-o-mag-netic con-di-tions fa-vor-able
  for cur-tains. Fig-ure 4[]a shows 
@@ -1634,10 +1640,6 @@ Overfull \hbox (8.93231pt too wide) in paragraph at lines 143--144
 tain oc-cur-rence fre-quency in- 
  []
 
-
-Underfull \vbox (badness 1460) has occurred while \output is active []
-
- [7 <./figures/fig2.pdf>]
 <figures/fig3_v3.pdf, id=151, 1011.78pt x 361.35pt>
 File: figures/fig3_v3.pdf Graphic file (type pdf)
 <use figures/fig3_v3.pdf>
@@ -1840,6 +1842,9 @@ nd MLT rounded to the near-est in-te-ger. AC6-A was lead-ing in all
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./figures/fig3_v3.pdf>]
 Overfull \hbox (1.65453pt too wide) in paragraph at lines 170--171
 []\OT1/cmr/m/n/10 Curtains are nar-row in lat-i-tude. Fig-ure 2[] shows that th
 e width of most cur-tains 
@@ -1888,9 +1893,6 @@ nd the ra-di-a-tion belt is over-
  []
 
 
-Underfull \vbox (badness 1152) has occurred while \output is active []
-
- [8 <./figures/fig3_v3.pdf>]
 Overfull \hbox (5.29341pt too wide) in paragraph at lines 172--173
 []\OT1/cmr/m/n/10 As shown in Fig. 1[], it is re-mark-able that some cur-tains 
 main-tain a fine struc-ture 
@@ -1962,7 +1964,7 @@ Overfull \hbox (8.12675pt too wide) in paragraph at lines 175--176
 creases with in-creas-ing 
  []
 
-
+[9 <./figures/fig4.pdf>] [10 <./figures/fig5.pdf>]
 Overfull \hbox (15.15456pt too wide) in paragraph at lines 178--179
 []\OT1/cmr/m/n/10 The hand-ful of cur-tains ob-served in the bounce loss cone, 
 and shown in Fig. 5[], put 
@@ -2023,9 +2025,6 @@ Overfull \hbox (2.90453pt too wide) in paragraph at lines 178--179
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9 <./figures/fig4.pdf>] [10 <./figures/fig5.pdf>]
 Overfull \hbox (26.3767pt too wide) in paragraph at lines 180--181
 []\OT1/cmr/m/n/10 One can-di-date mech-a-nism is a di-rect cur-rent elec-tric f
 ield that is par-al-lel to the back- 
@@ -2412,7 +2411,11 @@ Overfull \hbox (13.93231pt too wide) in paragraph at lines 224--225
 e cur-tain width is shown 
  []
 
-[12] [13 <./figures/a_10hz_dist.pdf>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
+[13 <./figures/a_10hz_dist.pdf>]
 <figures/a_topographic_prominence.pdf, id=378, 1011.78pt x 361.35pt>
 File: figures/a_topographic_prominence.pdf Graphic file (type pdf)
 <use figures/a_topographic_prominence.pdf>
@@ -2537,6 +2540,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--106
  []
 
 
+Underfull \vbox (badness 2644) has occurred while \output is active []
+
+ [14 <./figures/a_topographic_prominence.pdf>]
 Underfull \hbox (badness 2635) in paragraph at lines 120--143
 []\OT1/cmr/m/n/10 Blum, L., Li, X., & Den-ton, M.  (2015).  Rapid MeV elec-tron
  pre-cip-i-ta-tion as ob- 
@@ -2560,7 +2566,7 @@ Underfull \hbox (badness 6542) in paragraph at lines 120--143
 2 / 2014JA020633$   \OT1/cmr/m/n/10 (2014JA020633)  doi: 
  []
 
-[14 <./figures/a_topographic_prominence.pdf>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 155--173
 \OT1/cmr/m/n/10 con-junc-tive cube-sat and bal-loon mea-sure-ments to quan-tify
  rapid en-er-getic 
@@ -2694,6 +2700,9 @@ ics.  \OT1/cmr/m/it/10 Re-view of Sci-en-tific
  []
 
 
+Underfull \vbox (badness 1264) has occurred while \output is active []
+
+ [15]
 Underfull \hbox (badness 10000) in paragraph at lines 603--618
 []\OT1/cmr/m/n/10 Lehtinen, N. G., Inan, U. S., & Bell, T. F.  (2000).  Trapped
  en-er-getic elec-tron 
@@ -2718,9 +2727,6 @@ cmr/m/it/10 106\OT1/cmr/m/n/10 (A4), 6017--6027.  Re-trieved from
  []
 
 
-Underfull \vbox (badness 1043) has occurred while \output is active []
-
- [15]
 Underfull \hbox (badness 2150) in paragraph at lines 671--689
 []\OT1/cmr/m/n/10 Lorentzen, K. R., Looper, M. D., & Blake, J. B.  (2001).  Rel
 -a-tivis-tic elec-tron mi- 
@@ -2862,15 +2868,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 1041--1060
  []
 
 
+Underfull \vbox (badness 1264) has occurred while \output is active []
+
+ [16]
 Underfull \hbox (badness 3989) in paragraph at lines 1074--1088
 []\OT1/cmr/m/n/10 Thieman, J. R., & Hoff-man, R. A.  (1985).  De-ter-mi-na-tion
  of inverted-v sta-bil-ity 
  []
 
 
-Underfull \vbox (badness 1264) has occurred while \output is active []
-
- [16]
 Underfull \hbox (badness 10000) in paragraph at lines 1140--1159
 []\OT1/cmr/m/n/10 Tsyganenko, N.  (1989).  A so-lu-tion of the chapman-ferraro 
 prob-lem for an el- 
@@ -2902,7 +2908,7 @@ Here is how much of TeX's memory you used:
  7021 multiletter control sequences out of 15000+600000
  10301 words of font info for 37 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1600b,355s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,8n,37p,1600b,353s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2923,7 +2929,7 @@ type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (17 pages, 543978 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (17 pages, 544577 bytes).
 PDF statistics:
  511 PDF objects out of 1000 (max. 8388607)
  155 compressed objects within 2 object streams
