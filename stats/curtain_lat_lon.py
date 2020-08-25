@@ -72,7 +72,7 @@ curtain_hist_norm[np.where(np.isinf(curtain_hist_norm))] = 0
 curtain_hist_norm[np.where(np.isnan(curtain_hist_norm))] = 0
 
 ### PLOTS ###
-fig = plt.figure(figsize=(5, 8))
+fig = plt.figure(figsize=(6, 8))
 # fig, ax = plt.subplots(3, figsize=(5, 8))#, 
                         # sharex=True, sharey=True)
 n_panels = 3
@@ -109,7 +109,7 @@ for i, a in enumerate(ax):
 #     a.contour(lons, lats, mirror_point_df.values,
 #             levels=[0, 100], colors=['r', 'r'], linestyles=['dashed', 'solid'], alpha=0.4)
     # Overlay rad belt L contours  
-    a.contour(L_lons, L_lats, L, levels=L_levels, colors='k', linestyles='dotted', projection=projection)
+    a.contour(L_lons, L_lats, L, levels=L_levels, colors='k', linestyles='dotted', linewidths=2)
     # a.set_aspect('equal', 'datalim')
     a.set_xlim(-180, 180)
     a.set_ylim(-90, 90)
