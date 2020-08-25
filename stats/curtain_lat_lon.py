@@ -8,11 +8,12 @@ import string
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
 
 import dirs
 
 cmap='Blues'
-# projection = ccrs.PlateCarree()
+projection = ccrs.PlateCarree()
 L_levels = [4,10]
 
 # Load the curtain catalog.
@@ -71,8 +72,14 @@ curtain_hist_norm[np.where(np.isinf(curtain_hist_norm))] = 0
 curtain_hist_norm[np.where(np.isnan(curtain_hist_norm))] = 0
 
 ### PLOTS ###
-fig, ax = plt.subplots(3, figsize=(5, 8))#, 
+fig = plt.figure(figsize=(5, 8))
+# fig, ax = plt.subplots(3, figsize=(5, 8))#, 
                         # sharex=True, sharey=True)
+n_panels = 3
+ax = [fig.add_subplot(n_panels, 1, i+1, projection=projection) 
+    for i in range(n_panels)]
+[a.coastlines(zorder=10) for a in ax]
+
 curtain_hist_plt = ax[0].pcolormesh(bins['lon'], bins['lat'], 
                                     curtain_hist,
                                     cmap=cmap)
@@ -102,12 +109,15 @@ for i, a in enumerate(ax):
 #     a.contour(lons, lats, mirror_point_df.values,
 #             levels=[0, 100], colors=['r', 'r'], linestyles=['dashed', 'solid'], alpha=0.4)
     # Overlay rad belt L contours  
-    a.contour(L_lons, L_lats, L, levels=L_levels, colors='k', linestyles='dotted')
+    a.contour(L_lons, L_lats, L, levels=L_levels, colors='k', linestyles='dotted', projection=projection)
     # a.set_aspect('equal', 'datalim')
     a.set_xlim(-180, 180)
     a.set_ylim(-90, 90)
-    a.text(0, 1, f'({string.ascii_letters[i]}) {subplot_titles[i]}', va='top', ha='left', 
-            transform=a.transAxes, fontsize=15)
+    a.text(0, 1, f'({string.ascii_letters[i]})', va='top', ha='left', 
+            transform=a.transAxes, fontsize=15, color='purple', weight='bold')
+    a.text(1, 0, f'{subplot_titles[i]}', va='bottom', ha='right', 
+            transform=a.transAxes, fontsize=15, color='purple', weight='bold')
+    a.set_ylabel(subplot_titles[i])
 
 plt.tight_layout()
 plt.show()
