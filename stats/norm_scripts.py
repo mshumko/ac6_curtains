@@ -19,7 +19,7 @@ import dirs
 
 ### SCRIPT TO MAKE "Dist_Total" NORMALIZATION ###
 # start_time = time.time()
-# s=Hist1D(d=np.arange(0, 501, 1), 
+# s=Hist1D("Dst_Total", bins=np.arange(0, 501, 1), 
 #             filterDict={'dos1rate':[0, 1E6], 
 #                         'Lm_OPQ':[4, 8]})
 # s.loop_data()
@@ -29,7 +29,7 @@ import dirs
 # bin_offset = 0
 # L_array = [4, 5, 6, 7, 8] #[4, 8]
 # for L_lower, L_upper in zip(L_array[:-1], L_array[1:]):
-#     ss2=Hist1D(d=np.arange(bin_offset, 501, bin_width), 
+#     ss2=Hist1D("Dst_Total", bins=np.arange(bin_offset, 501, bin_width), 
 #                 filterDict={'dos1rate':[0, 1E6], 
 #                             'Lm_OPQ':[L_lower, L_upper]})
 #     ss2.loop_data()
@@ -43,7 +43,7 @@ import dirs
 # st = datetime.now()
 # L = [3, 4, 5, 6, 7]
 # for (lL, uL) in zip(L[:-1], L[1:]):
-#     ss=hist.Hist1D(filterDict={'Lm_OPQ':[lL, uL]})
+#     ss=hist.Hist1D("Dst_Total", filterDict={'Lm_OPQ':[lL, uL]})
 #     ss.loop_data()
 #     ss.save_data(os.path.join(dirs.NORM_DIR, 'ac6_norm_{}_L_{}.csv'.format(lL, uL)))
 # print('Norm.py ran in :{} s'.format((datetime.now()-st).total_seconds()))
@@ -73,12 +73,26 @@ import dirs
 #             os.path.join(dirs.NORM_DIR, 'ac6_MLT_lon_norm_same_loc.csv'))
 
 ### SCRIPT TO MAKE LAT-LON NORMALIZATION ####
-ss = norm.Hist2D('lat', 'lon', 
-            bins=[np.arange(-90, 91, 10), np.arange(-180, 181, 10)],
+# ss = norm.Hist2D('lat', 'lon', 
+#             bins=[np.arange(-90, 91, 10), np.arange(-180, 181, 10)],
+#             filterDict={'flag':0})
+# ss.loop_data(simultaneous=True)
+# ss.save_data(os.path.join(dirs.NORM_DIR, 'ac6_lat_lon_bins.csv'), 
+#             os.path.join(dirs.NORM_DIR, 'ac6_lat_lon_norm.csv'))
+
+### SCRIPT TO MAKE LON NORMALIZATION ####
+ss = norm.Hist1D('lon', 
+            bins=np.arange(-180, 181, 30),
             filterDict={'flag':0})
 ss.loop_data(simultaneous=True)
-ss.save_data(os.path.join(dirs.NORM_DIR, 'ac6_lat_lon_bins.csv'), 
-            os.path.join(dirs.NORM_DIR, 'ac6_lat_lon_norm.csv'))
+ss.save_data(os.path.join(dirs.NORM_DIR, 'ac6_lon_norm.csv'))
+
+### SCRIPT TO MAKE LAT NORMALIZATION ####
+ss = norm.Hist1D('lat', 
+            bins=np.arange(-90, 91, 10),
+            filterDict={'flag':0})
+ss.loop_data(simultaneous=True)
+ss.save_data(os.path.join(dirs.NORM_DIR, 'ac6_lat_norm.csv'))
 
 ### SCRIPT TO FIND THE EQUATORIAL NORMALIZATION ###
 # eq = norm.Equatorial_Hist(np.arange(0, 2000, 25), 'Lm_OPQ', np.arange(4, 8.1),

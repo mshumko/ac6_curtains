@@ -15,23 +15,22 @@ import mission_tools.ac6.read_ac_data as read_ac_data
 import IRBEM
 
 class Hist1D:
-    def __init__(self, d=None, startDate=datetime(2014, 1, 1),
+    def __init__(self, hist_key, bins=None, startDate=datetime(2014, 1, 1),
                  endDate=datetime.now(), filterDict={}, flag=True):
         """
         This class calculates the 1D histograms as a function of distance
         for the various filter parameters. 
-
-        d is the distance bin edges
         """
-        if d is None:
-            self.d = np.arange(0, 501, 10)
+        if bins is None:
+            self.bins = np.arange(0, 501, 10)
         else:
-            self.d = d
-        self.count = np.zeros(len(self.d)-1) # Number of days at that separation.
+            self.bins = bins
+        self.count = np.zeros(len(self.bins)-1) # Number of days at that separation.
         dDays = (endDate - startDate).days
         self.dates = [startDate + timedelta(days=i) for i in range(dDays)] 
         self.filterDict = filterDict
         self.flag = flag
+        self.hist_key = hist_key
         return
 
     def loop_data(self, simultaneous=False, verbose=False):
@@ -109,7 +108,7 @@ class Hist1D:
         """
         This method will histrogram the total distance data.
         """
-        H, _ = np.histogram(self.ac6dataB['Dist_Total'][ind], bins=self.d)
+        H, _ = np.histogram(self.ac6dataB[self.hist_key][ind], bins=self.bins)
         self.count += H/10
         return
 
@@ -119,9 +118,9 @@ class Hist1D:
         """
         with open(fPath, 'w', newline='') as f:
             w = csv.writer(f)
-            w.writerow(['Separation [km]', 'Seconds'])
+            w.writerow([self.hist_key, 'Seconds'])
 
-            for (d, s) in zip(self.d, self.count):
+            for (d, s) in zip(self.bins, self.count):
                 w.writerow([d, s])
         print('Saved data to {}'.format(os.path.basename(fPath)))
         return
