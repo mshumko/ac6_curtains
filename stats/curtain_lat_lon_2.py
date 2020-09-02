@@ -23,6 +23,9 @@ cat_path = pathlib.Path(dirs.CATALOG_DIR,
         'AC6_curtains_baseline_method_sorted_v0.csv')
 cat = pd.read_csv(cat_path)
 
+# Filter by longitudes outside of the BLC and the SAA
+# cat = cat[(cat.lon > 15) | (cat.lon < -60)]
+
 ### LOAD THE THREE NORMALIZATION FILES ###
 # The Lon and lat normalization files.
 lon_norm_path = pathlib.Path(dirs.NORM_DIR, 'ac6_lon_norm.csv')
@@ -78,7 +81,7 @@ lon_ax = fig.add_subplot(gs[-2:, :size-2], sharex=map_ax)
 lat_ax = fig.add_subplot(gs[:size-2, -2:], sharey=map_ax)
 norm_ax = fig.add_subplot(gs[size-2:, -2:], projection=projection)
 map_ax.xaxis.set_visible(False)
-lat_ax.yaxis.set_visible(False)
+# lat_ax.yaxis.set_visible(False)
 
 
 ### MAKE THE MAP PLOT ###
