@@ -13,7 +13,7 @@ import uncertainties.unumpy as unp
 
 import dirs
 
-cmap='Blues'
+cmap='Greens'
 projection = ccrs.PlateCarree()
 L_levels = [4,10]
 
@@ -24,7 +24,7 @@ cat_path = pathlib.Path(dirs.CATALOG_DIR,
 cat = pd.read_csv(cat_path)
 
 # Filter by longitudes outside of the BLC and the SAA
-# cat = cat[(cat.lon > 15) | (cat.lon < -60)]
+cat_no_blc = cat[(cat.lon > 30) | (cat.lon < -60)]
 
 ### LOAD THE THREE NORMALIZATION FILES ###
 # The Lon and lat normalization files.
@@ -73,26 +73,27 @@ curtain_hist_norm[np.where(np.isinf(curtain_hist_norm))] = 0
 curtain_hist_norm[np.where(np.isnan(curtain_hist_norm))] = 0
 
 ### MAKE PLOTS ###
-fig = plt.figure(constrained_layout=True, figsize=[8.5, 4.8])
-size=4
-gs = fig.add_gridspec(size,size)
-map_ax = fig.add_subplot(gs[:size-2, :size-2], projection=projection)
-lon_ax = fig.add_subplot(gs[-2:, :size-2], sharex=map_ax)
-lat_ax = fig.add_subplot(gs[:size-2, -2:], sharey=map_ax)
-norm_ax = fig.add_subplot(gs[size-2:, -2:], projection=projection)
+fig = plt.figure(figsize=[9, 5.1])
+gs = fig.add_gridspec(2, 2, width_ratios=(4, 2), height_ratios=(4, 2))
+map_ax = fig.add_subplot(gs[0, 0], projection=projection)
+lon_ax = fig.add_subplot(gs[1, 0])
+lat_ax = fig.add_subplot(gs[0, 1])
+norm_ax = fig.add_subplot(gs[1,1], projection=projection)
 map_ax.xaxis.set_visible(False)
-# lat_ax.yaxis.set_visible(False)
+lat_ax.yaxis.set_label_position("right")
+lat_ax.yaxis.tick_right()
+
+plt.suptitle('AC6 curtain latitude-longitude distribution', fontsize=15)
 
 
 ### MAKE THE MAP PLOT ###
 map_ax.coastlines(zorder=10)
+# map_ax.gridlines(color='lightgrey', linestyle='-', draw_labels=True)
 curtain_hist_plt = map_ax.pcolormesh(bins['lon'], bins['lat'], 
                                     curtain_hist_norm,
                                     cmap=cmap)
 map_ax.contour(L_lons, L_lats, L, levels=L_levels, colors='k', 
                 linestyles='dotted', linewidths=2)
-# plt.colorbar(curtain_hist_plt, label='Number of curtains', ax=ax[0])
-# map_ax.set(ylabel='latitude') #title='Latitude-Longitude Curtain Distribution')
 
 ### MAKE THE LON DISTRIBUTION PLOT ###
 lon_hist, _ = np.histogram(cat['lon'].to_numpy(), bins=lon_bins)
@@ -103,26 +104,43 @@ lon_ax.step(lon_bins,
 lon_ax.errorbar(lon_bins[:-1]+(lon_bins[1]-lon_bins[0])/2,
                 unp.nominal_values(normalized_lon_hist),
                 yerr=2*unp.std_devs(normalized_lon_hist), ls='None', c='k')
+lon_ax.fill_between(lon_bins, 0, np.append(unp.nominal_values(normalized_lon_hist), 0), 
+                color='green', step='post', alpha=0.7)
 # lon_ax.set_title('Longitude marginal distribution')
 lon_ax.set_ylim(0, None)
+lon_ax.set_xlim(-180, 180)
+lon_ax.set_xlabel('Longitude')
 
 ### MAKE THE LAT DISTRIBUTION PLOT ###
 lat_hist, _ = np.histogram(cat['lat'].to_numpy(), bins=lat_bins)
 lat_hist = unp.uarray(lat_hist, np.sqrt(lat_hist))
 normalized_lat_hist = lat_hist*(lat_norm['Seconds'].max()/lat_norm['Seconds'])
-lat_ax.step(unp.nominal_values(normalized_lat_hist), lat_bins[:-1], where='post', c='k')
+
+lat_hist_no_blc, _ = np.histogram(cat_no_blc['lat'].to_numpy(), bins=lat_bins)
+lat_hist_no_blc = unp.uarray(lat_hist_no_blc, np.sqrt(lat_hist_no_blc))
+normalized_lat_hist_no_blc = lat_hist_no_blc*(lat_norm['Seconds'].max()/lat_norm['Seconds'])
+
+# Plot all curtains in the marginalized lat plot
+lat_ax.step(np.append(unp.nominal_values(normalized_lat_hist), 0), lat_bins, where='pre',
+             c='k', label='All')
 lat_ax.errorbar(unp.nominal_values(normalized_lat_hist), 
-                lat_bins[:-1]-(lat_bins[1]-lat_bins[0])/2,
-                xerr=2*unp.std_devs(normalized_lat_hist), ls='None', c='k')
-# lat_ax.set_title('Latitude marginal distribution')
+                lat_bins[:-1]+(lat_bins[1]-lat_bins[0])/2,
+                xerr=2*unp.std_devs(normalized_lat_hist), 
+                ls='None', c='k')
+lat_ax.fill_betweenx(lat_bins, 0, np.append(unp.nominal_values(normalized_lat_hist), 0), 
+                color='green', step='post', alpha=0.7)
+lat_ax.set_ylim(-90, 90)
+lat_ax.set_xlim(0, None)
+lat_ax.set_ylabel('Latitude')
 
 ### Make the full lat-lon normalization plot.
 norm_ax.coastlines(zorder=10)
 norm_ax.pcolormesh(bins['lon'], bins['lat'], lat_lon_norm,
                                 cmap=cmap)
 
-map_ax.text(0.9, 0, f'Normalized', va='bottom', ha='right', 
-            transform=map_ax.transAxes, fontsize=15, color='purple', weight='bold')
-norm_ax.text(0.9, 0, f'Normalization', va='bottom', ha='right', 
-            transform=norm_ax.transAxes, fontsize=15, color='purple', weight='bold')
+map_ax.text(1, 0, f'Normalized', va='bottom', ha='right', 
+            transform=map_ax.transAxes, fontsize=15, color='red', weight='bold')
+norm_ax.text(1, 0, f'Normalization', va='bottom', ha='right', 
+            transform=norm_ax.transAxes, fontsize=15, color='red', weight='bold')
+gs.tight_layout(fig, rect=(0, 0, 1, 0.95))
 plt.show()
