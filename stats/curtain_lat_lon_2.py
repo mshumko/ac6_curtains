@@ -134,13 +134,18 @@ lat_ax.set_xlim(0, None)
 lat_ax.set_ylabel('Latitude')
 
 ### Make the full lat-lon normalization plot.
-norm_ax.coastlines(zorder=10)
+norm_ax.coastlines(zorder=5)
 norm_ax.pcolormesh(bins['lon'], bins['lat'], lat_lon_norm,
                                 cmap=cmap)
 
+fontsize=13
 map_ax.text(1, 0, f'Normalized', va='bottom', ha='right', 
-            transform=map_ax.transAxes, fontsize=15, color='red', weight='bold')
+            transform=map_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
 norm_ax.text(1, 0, f'Normalization', va='bottom', ha='right', 
-            transform=norm_ax.transAxes, fontsize=15, color='red', weight='bold')
+            transform=norm_ax.transAxes, fontsize=fontsize, color='red', weight='bold', zorder=10)
+lon_ax.text(0, 0, f'Marginalized in longitude', va='bottom', ha='left', 
+            transform=lon_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
+lat_ax.text(0, 1, f'Marginalized in latitude', va='top', ha='left', 
+            transform=lat_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
 gs.tight_layout(fig, rect=(0, 0, 1, 0.95))
 plt.show()
