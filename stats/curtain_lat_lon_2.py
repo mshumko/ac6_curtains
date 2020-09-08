@@ -146,9 +146,9 @@ map_ax.text(1, 0, f'Normalized', va='bottom', ha='right',
             transform=map_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
 norm_ax.text(0, 0.5, f'Normalization', va='bottom', ha='left', 
             transform=norm_ax.transAxes, fontsize=fontsize, color='red', weight='bold', zorder=10)
-lon_ax.text(0, 0, f'Number of curtains\nmarginalized in longitude', va='bottom', ha='left', 
+lon_ax.text(0, 0, f'Number of curtains\nlatitude marginalized out', va='bottom', ha='left', 
             transform=lon_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
-lat_ax.text(0, 0.5, f'Number of curtains\nmarginalized latitude', va='bottom', ha='left', 
+lat_ax.text(0, 0.5, f'Number of curtains\nlongitude marginalized\nout', va='center', ha='left', 
             transform=lat_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
 
 # Add panel labels
