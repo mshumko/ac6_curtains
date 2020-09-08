@@ -82,6 +82,7 @@ norm_ax = fig.add_subplot(gs[1,1], projection=projection)
 map_ax.xaxis.set_visible(False)
 lat_ax.yaxis.set_label_position("right")
 lat_ax.yaxis.tick_right()
+# lat_ax.set_xlabel('# of curtains')
 
 plt.suptitle('AC6 curtain latitude-longitude distribution', fontsize=15)
 
@@ -103,13 +104,14 @@ lon_ax.step(lon_bins,
             np.append(unp.nominal_values(normalized_lon_hist), np.nan), where='post', c='k')
 lon_ax.errorbar(lon_bins[:-1]+(lon_bins[1]-lon_bins[0])/2,
                 unp.nominal_values(normalized_lon_hist),
-                yerr=2*unp.std_devs(normalized_lon_hist), ls='None', c='k')
+                yerr=unp.std_devs(normalized_lon_hist), ls='None', c='k')
 lon_ax.fill_between(lon_bins, 0, np.append(unp.nominal_values(normalized_lon_hist), 0), 
                 color='green', step='post', alpha=0.7)
 # lon_ax.set_title('Longitude marginal distribution')
 lon_ax.set_ylim(0, None)
 lon_ax.set_xlim(-180, 180)
 lon_ax.set_xlabel('Longitude')
+# lon_ax.set_ylabel('# of curtains')
 
 ### MAKE THE LAT DISTRIBUTION PLOT ###
 lat_hist, _ = np.histogram(cat['lat'].to_numpy(), bins=lat_bins)
@@ -125,7 +127,7 @@ lat_ax.step(np.append(unp.nominal_values(normalized_lat_hist), 0), lat_bins, whe
              c='k', label='All')
 lat_ax.errorbar(unp.nominal_values(normalized_lat_hist), 
                 lat_bins[:-1]+(lat_bins[1]-lat_bins[0])/2,
-                xerr=2*unp.std_devs(normalized_lat_hist), 
+                xerr=unp.std_devs(normalized_lat_hist), 
                 ls='None', c='k')
 lat_ax.fill_betweenx(lat_bins, 0, np.append(unp.nominal_values(normalized_lat_hist), 0), 
                 color='green', step='post', alpha=0.7)
@@ -139,13 +141,24 @@ norm_ax.pcolormesh(bins['lon'], bins['lat'], lat_lon_norm,
                                 cmap=cmap)
 
 fontsize=13
+# Add panel titles
 map_ax.text(1, 0, f'Normalized', va='bottom', ha='right', 
             transform=map_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
-norm_ax.text(1, 0, f'Normalization', va='bottom', ha='right', 
+norm_ax.text(0, 0.5, f'Normalization', va='bottom', ha='left', 
             transform=norm_ax.transAxes, fontsize=fontsize, color='red', weight='bold', zorder=10)
-lon_ax.text(0, 0, f'Marginalized in longitude', va='bottom', ha='left', 
+lon_ax.text(0, 0, f'Number of curtains\nmarginalized in longitude', va='bottom', ha='left', 
             transform=lon_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
-lat_ax.text(0, 1, f'Marginalized in latitude', va='top', ha='left', 
+lat_ax.text(0, 0.5, f'Number of curtains\nmarginalized latitude', va='bottom', ha='left', 
             transform=lat_ax.transAxes, fontsize=fontsize, color='red', weight='bold')
+
+# Add panel labels
+map_ax.text(0, 1, '(a)', va='top', ha='left', 
+            fontsize=fontsize, color='red', weight='bold', transform=map_ax.transAxes)
+lat_ax.text(0, 1, '(b)', va='top', ha='left', 
+            fontsize=fontsize, color='red', weight='bold', transform=lat_ax.transAxes)
+lon_ax.text(0, 1, '(c)', va='top', ha='left', 
+            fontsize=fontsize, color='red', weight='bold', transform=lon_ax.transAxes)
+norm_ax.text(0, 1, '(d)', va='top', ha='left', 
+            fontsize=fontsize, color='red', weight='bold', transform=norm_ax.transAxes)
 gs.tight_layout(fig, rect=(0, 0, 1, 0.95))
 plt.show()
