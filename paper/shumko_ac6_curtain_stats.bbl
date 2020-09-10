@@ -1,10 +1,40 @@
 \begin{thebibliography}{}
 
 \bibitem [\protect \citeauthoryear {%
-Anderson%
+B.~Anderson%
+\ \protect \BOthers {.}}{%
+B.~Anderson%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2017}}%
+}]{%
+Anderson2017}
+\APACinsertmetastar {%
+Anderson2017}%
+\begin{APACrefauthors}%
+Anderson, B.%
+, Shekhar, S.%
+, Millan, R.%
+, Crew, A.%
+, Spence, H.%
+, Klumpar, D.%
+\BDBL {}Turner, D.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Spatial Scale and Duration of One Microburst Region on
+  13 {August} 2015} {Spatial scale and duration of one microburst region on 13
+  {August} 2015}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Journal of Geophysical Research: Space Physics}{}{}{}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+K\BPBI A.~Anderson%
 \ \BBA {} Milton%
 }{%
-Anderson%
+K\BPBI A.~Anderson%
 \ \BBA {} Milton%
 }{%
 {\protect \APACyear {1964}}%
