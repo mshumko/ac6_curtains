@@ -58,19 +58,6 @@ ax = fig.add_subplot(gs[:2, :], projection=projection)
 ax.set_extent([-60, 30, 40, 80], crs=projection)
 ax.coastlines(resolution='50m', color='black', linewidth=1)
 
-# gl = ax.gridlines(crs=projection, draw_labels=True, color='black',
-#                 xlocs=np.arange(-60, 31, 15), ylocs=np.arange(40, 81, 10),
-#                 linestyle='--', alpha=0.5)
-# gl.xlabels_top = False
-# gl.xformatter = LONGITUDE_FORMATTER
-# gl.yformatter = LATITUDE_FORMATTER
-
-# lon_formatter = cticker.LongitudeFormatter()
-# lat_formatter = cticker.LatitudeFormatter()
-# ax.xaxis.set_major_formatter(lon_formatter)
-# ax.yaxis.set_major_formatter(lat_formatter)
-# ax.set_yticks(np.arange(40, 80, 5), crs=projection)
-
 # Load and plot the mirror_point altitude data
 save_name = 'lat_lon_mirror_alt.csv'
 mirror_point_df = pd.read_csv(os.path.join(dirs.BASE_DIR, 'data', save_name),
@@ -99,6 +86,7 @@ df_cat.index = pd.to_datetime(df_cat.index)
 coords = np.nan*np.zeros((len(curtain_times), 2))
 
 plot_width_s = 10
+track_width_s = 60
 
 for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     coords[i] = df_cat.loc[time, ['lon', 'lat']]
@@ -108,23 +96,42 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     data_df.shift_time()
     data_df.align_space_time_stamps()
     # Filter the dataframes to only the plot time range.
-    start_time = time - timedelta(seconds=plot_width_s/2)
-    end_time = time + timedelta(seconds=plot_width_s/2)
+    start_time_cts = time - timedelta(seconds=plot_width_s/2)
+    end_time_cts = time + timedelta(seconds=plot_width_s/2)
+    # Now filter by a longer time period
+    start_time_track = time - timedelta(seconds=track_width_s/2)
+    end_time_track = time + timedelta(seconds=track_width_s/2)
+
     df_a_flt = data_df.df_a[
-        (data_df.df_a['dateTime'] > start_time) &
-        (data_df.df_a['dateTime'] < end_time)
+        (data_df.df_a['dateTime'] > start_time_cts) &
+        (data_df.df_a['dateTime'] < end_time_cts)
         ]
     df_b_flt = data_df.df_b[
-        (data_df.df_b['dateTime_shifted'] > start_time) &
-        (data_df.df_b['dateTime_shifted'] < end_time)
+        (data_df.df_b['dateTime_shifted'] > start_time_cts) &
+        (data_df.df_b['dateTime_shifted'] < end_time_cts)
+        ]
+
+    df_a_flt_track = data_df.df_a[
+        (data_df.df_a['dateTime'] > start_time_track) &
+        (data_df.df_a['dateTime'] < end_time_track)
+        ]
+    df_b_flt_track = data_df.df_b[
+        (data_df.df_b['dateTime_shifted'] > start_time_track) &
+        (data_df.df_b['dateTime_shifted'] < end_time_track)
         ]
     
     bx_i.plot(df_a_flt['dateTime'], df_a_flt['dos1rate'], 'r', ls='-', label='AC6-A')
     bx_i.plot(df_b_flt['dateTime_shifted'], df_b_flt['dos1rate'], 'b', ls='-', label='AC6-B')
-    # bx_i.axvline(time, c='r')
-    # bx_twin_i = bx_i.twinx()
-    # bx_twin_i.plot(df_a_flt['dateTime'], df_a_flt['Loss_Cone_Type'], 'g', ls='--')
-    # bx_twin_i.tick_params(axis='y', labelcolor='g')
+    
+    # Plot the AC6 tracks
+    ax.plot(df_a_flt_track['lon'], df_a_flt_track['lat'], 'k', zorder=3)
+    # Draw the track arrow.
+    ax.arrow(df_a_flt_track['lon'].iloc[-1], 
+            df_a_flt_track['lat'].iloc[-1],
+            (df_a_flt_track['lon'].iloc[-1] - df_a_flt_track['lon'].iloc[-2]),
+            (df_a_flt_track['lat'].iloc[-1] - df_a_flt_track['lat'].iloc[-2]),
+            width=0.25, color='k', zorder=3
+            )
 
     # Add a subplot label.
     bx_i.text(0, 0.98, f'({string.ascii_letters[i+1]})',
@@ -145,11 +152,11 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     # Format time
     bx_i.xaxis.set_major_locator(mdates.SecondLocator(interval=3))
     bx_i.xaxis.set_major_formatter(mdates.DateFormatter('%S'))
-    bx_i.set_xlabel(f'AC6A seconds after\n{datetime.strftime(start_time, "%Y/%m/%d %H:%M:00")}')
+    bx_i.set_xlabel(f'AC6A seconds after\n{datetime.strftime(start_time_cts, "%Y/%m/%d %H:%M:00")}')
 
 bx[0].set_ylabel(r'$\bf{Shifted}$' + '\ndos1 [counts/s]')
 
-ax.scatter(coords[:,0], coords[:,1], marker='*', c='r', s=150)
+ax.scatter(coords[:,0], coords[:,1], marker='*', c='r', s=150, zorder=4)
 
 ### How far does AC6 travel in interval_s on the map?
 # interval_s = 30
