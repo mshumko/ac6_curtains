@@ -751,6 +751,38 @@ Marklund, G\BPBI T.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+Meredith%
+, Horne%
+, Shen%
+, Li%
+\BCBL {}\ \BBA {} Bortnik%
+}{%
+Meredith%
+\ \protect \BOthers {.}}{%
+{\protect \APACyear {2020}}%
+}]{%
+Meredith2020}
+\APACinsertmetastar {%
+Meredith2020}%
+\begin{APACrefauthors}%
+Meredith, N\BPBI P.%
+, Horne, R\BPBI B.%
+, Shen, X\BHBI C.%
+, Li, W.%
+\BCBL {}\ \BBA {} Bortnik, J.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2020}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {Global Model of Whistler Mode Chorus in the
+  Near-Equatorial Region $(|\lambda_m|< 18^\circ)$} {Global model of whistler
+  mode chorus in the near-equatorial region $(|\lambda_m|< 18^\circ)$}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{Geophysical Research Letters}{47}{11}{e2020GL087311}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Millan%
 \ \BBA {} Thorne%
 }{%
