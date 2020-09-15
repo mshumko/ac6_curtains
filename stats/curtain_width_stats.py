@@ -101,7 +101,7 @@ if include_microbursts:
             xlabel='In-track size [km]')
     ax.legend()
 else:
-    ax.set(title='Width Distribution of > 30 keV curtains',
+    ax.set(title='Width Distribution of > 35 keV curtains',
             ylabel='Probability density', xlim=(0, size_bins[-1]), 
             xlabel='In-track size [km]')
 
