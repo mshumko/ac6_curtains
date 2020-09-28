@@ -1,0 +1,41 @@
+Reviewer 1 responses:
+
+-'suggestion' after line 246: You explain that curtain L is weakly anti-correlated with AE as a reason to not add this to the manuscript. This sounds like you're not including it due to it being anti-correlated which is simply bad science. I would guess you intend to say you're not including it because the effect isn't statistically significant or something like that, this should be cleared up.
+
+DONE
+
+-Line 248: John frequently says that microburst activity is more closely correlated with AE than with other indices. I don't know of any references that show this off the top of my head, but if we can find one it might be worth mentioning here too as a point of comparison between microbursts and curtains.
+
+DONE
+
+
+-Line 301-302: I don't follow your response here. What do you mean these examples are the exception, not the rule? We don't know the rule, so how can we possibly know that. You say some of these curtains could be drifting, do you mean the ones in the BLC? Are you referring to the idea in the text that we could be seeing the very end of the drift, because otherwise I don't see how they could be drifting. In figure 6 point b could maybe be explained as the end of a drift, points c and d are a stretch, but point e is not drifting. As for the relative size of the BLC region, are you saying here that the number of BLC microbursts is roughly what you'd expect if they were evenly distributed across the precipiation region? It's not clear what you mean.
+
+DONE
+
+
+I think the reviewer comment that this doesn't call into question B&O 2016 is correct. It's true that B&O cannot explain this handful of curtains, but that just suggests that B&O might not be the only mechanism. I think this section would address the reviewer better and be more fair to our findings if you instead phrase these findings as in support of the continuous precipitation hypothesis rather than phrasing them as against B&O 2016. At the very least these events show that continuous precipitation in a narrow region can persist for several seconds which means that hypothesis is plausible everywhere, especially when considering the other evidence in this study.
+
+
+
+-No comments on reviewer 2 responses
+
+Paper change comments:
+
+line 64-65: I don't think this is the appropriate place for this. You're describing B&O 2016, not 'our estimate', so you should be reporting what B&O found instead of qualifying your own results that you haven't gotten to yet.
+
+line 129 'independent of bounce phase': if this process isn't impulsive, what's bouncing even (on average I mean)? This alternative explanation is a more continuous scattering on time scales longer than a bounce period so I don't see how a bounce phase would be involved.
+
+line 204: I don't think simply stating these were gone through by hand 'prior to the analysis' will address the reviewers concerns on the visual inspection. I read their comment as wanting more detail into the criteria used when going through these. If you had a detection that lined up in both space and time how did you determine which to classify it as? You list some conditions that could trigger a false positive, can you elaborate a bit more on how you determined if these were the case? Since it was a minor comment it shouldn't require too much additional detail.
+
+lines 210-212: This would be a good place to mention that the in-track lag you calculated is a lower bound on the duration of a curtain, as suggested by reviewer 1.
+
+lines 286-288: You point out a higher occurance rate in the north due to the BLC. Line 290-291 you explain the lack of events with a high background obscuring them, could the low background in the BLC explain the relatively higher occurance there? Not suggesting a change necessarily, just something to ponder.
+
+lines 318-320: I don't like ending the section with "They were not drifting." I took a stab at it myself: "Recall from section 3.2 that in this region all particles that can access AC6, regardless of their pitch angle, were in the bounce loss cone. Therefore, these events must scatter and precipitate locally and cannot be explained by particle drift." The reviewer also points out that this does not really give any insight. I disagree with that, while this finding can easily be overstated it at least demonstrates that continuous precipitation happens. This is the only place we can definitively distinguish between the two hypotheses, even if it only applies to a few events and not generally. Since it favors the local source explanation it also establishes that as a viable alternative to B&O 2016. I considered putting some of that here somehow, but it might fit better in discussion.
+
+lines 345-346: I think this could be explained better. Here's my attempt, take what you like: "If curtains were drifting they would precipitate into the SAA, so very few would be observed just to the east of the SAA. Further to the east, the number of curtains would increase to a maximum at the western edge of the SAA."
+
+section 5.3: I've mentioned a couple times this might be better worded in support of continuous precipitation rather than a point agains B&O 2016, but I see now you haven't actually talked much about the continuous precipitation yet. I still agree with the reviewer it's too general to state that B&O 2016 is called into question. A better stance would be that for the curtains observed in the BLC, B&O 2016 cannot possibly be the explanation and therefore it is at least not the only mechanism behind the curtain (I couldn't help myself). When you combine this point with your others later in the paper you can make statements that are more general.
+
+line 423: I assume the limit you're referring to is that AC6 can only determine a lower bound, this should be more explicit.

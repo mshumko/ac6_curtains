@@ -1,22 +1,21 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.4.9)  15 SEP 2020 17:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.21)  28 SEP 2020 13:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **shumko_ac6_curtain_stats.tex
 (./shumko_ac6_curtain_stats.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(./agujournal2019.cls
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14> (./agujournal2019.cls
 Document Class: agujournal2019 01/14/2019
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -24,13 +23,13 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen102
-\Gin@req@width=\dimen103
+\Gin@req@height=\dimen134
+\Gin@req@width=\dimen135
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -50,7 +49,7 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip10
+\Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (./trackchanges.sty
 Package: trackchanges 2009/04/22 v0.7.0 TrackChanges file 
@@ -59,17 +58,17 @@ Package: trackchanges 2009/04/22 v0.7.0 TrackChanges file
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count79
-\calc@Bcount=\count80
-\calc@Adimen=\dimen104
-\calc@Bdimen=\dimen105
-\calc@Askip=\skip41
-\calc@Bskip=\skip42
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count167
+\calc@Bcount=\count168
+\calc@Adimen=\dimen136
+\calc@Bdimen=\dimen137
+\calc@Askip=\skip47
+\calc@Bskip=\skip48
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count81
-\calc@Cskip=\skip43
+\calc@Ccount=\count169
+\calc@Cskip=\skip49
 )
 (/usr/share/texlive/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
@@ -78,143 +77,135 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@cmds=\toks17
 \SOUL@buffer=\toks18
 \SOUL@token=\toks19
-\SOUL@spaceskip=\skip44
-\SOUL@ttwidth=\dimen106
-\SOUL@uldp=\dimen107
-\SOUL@ulht=\dimen108
+\SOUL@spaceskip=\skip50
+\SOUL@ttwidth=\dimen138
+\SOUL@uldp=\dimen139
+\SOUL@ulht=\dimen140
 )
 (/usr/share/texlive/texmf-dist/tex/latex/morefloats/morefloats.sty
 Package: morefloats 2015/07/22 v1.0h Raise limit of unprocessed floats (HMM)
 
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
 Package morefloats Info: Maximum number of possible floats asked for: 36
 (morefloats)             (i.e. 18 more floats).
 (morefloats)             LaTeX might run out of memory before this
 (morefloats)             (in which case it will notify you).
 )
-\c@userid=\count82
-\c@changenumber=\count83
-\c@storefootnote=\count84
-\c@numeditors=\count85
-\c@maxeditors=\count86
+\c@userid=\count170
+\c@changenumber=\count171
+\c@storefootnote=\count172
+\c@numeditors=\count173
+\c@maxeditors=\count174
 )
 (/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count87
+\linenopenalty=\count175
 \output=\toks20
-\linenoprevgraf=\count88
-\linenumbersep=\dimen109
-\linenumberwidth=\dimen110
-\c@linenumber=\count89
-\c@pagewiselinenumber=\count90
-\c@LN@truepage=\count91
-\c@internallinenumber=\count92
-\c@internallinenumbers=\count93
-\quotelinenumbersep=\dimen111
-\bframerule=\dimen112
-\bframesep=\dimen113
-\bframebox=\box26
+\linenoprevgraf=\count176
+\linenumbersep=\dimen141
+\linenumberwidth=\dimen142
+\c@linenumber=\count177
+\c@pagewiselinenumber=\count178
+\c@LN@truepage=\count179
+\c@internallinenumber=\count180
+\c@internallinenumbers=\count181
+\quotelinenumbersep=\dimen143
+\bframerule=\dimen144
+\bframesep=\dimen145
+\bframebox=\box45
 LaTeX Info: Redefining \\ on input line 3056.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
-Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
+(/usr/share/texlive/texmf-dist/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2019/07/28 v2.2 ragged2e Package (MS)
 
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
-\CenteringLeftskip=\skip45
-\RaggedLeftLeftskip=\skip46
-\RaggedRightLeftskip=\skip47
-\CenteringRightskip=\skip48
-\RaggedLeftRightskip=\skip49
-\RaggedRightRightskip=\skip50
-\CenteringParfillskip=\skip51
-\RaggedLeftParfillskip=\skip52
-\RaggedRightParfillskip=\skip53
-\JustifyingParfillskip=\skip54
-\CenteringParindent=\skip55
-\RaggedLeftParindent=\skip56
-\RaggedRightParindent=\skip57
-\JustifyingParindent=\skip58
+\CenteringLeftskip=\skip51
+\RaggedLeftLeftskip=\skip52
+\RaggedRightLeftskip=\skip53
+\CenteringRightskip=\skip54
+\RaggedLeftRightskip=\skip55
+\RaggedRightRightskip=\skip56
+\CenteringParfillskip=\skip57
+\RaggedLeftParfillskip=\skip58
+\RaggedRightParfillskip=\skip59
+\JustifyingParfillskip=\skip60
+\CenteringParindent=\skip61
+\RaggedLeftParindent=\skip62
+\RaggedRightParindent=\skip63
+\JustifyingParindent=\skip64
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
-\c@r@tfl@t=\count94
-\rotFPtop=\skip59
-\rotFPbot=\skip60
-\rot@float@box=\box27
+\c@r@tfl@t=\count182
+\rotFPtop=\skip65
+\rotFPbot=\skip66
+\rot@float@box=\box46
 \rot@mess@toks=\toks21
 )
 (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box28
-\UL@hyphenbox=\box29
-\UL@skip=\skip61
+\UL@box=\box47
+\UL@hyphenbox=\box48
+\UL@skip=\skip67
 \UL@hook=\toks22
-\UL@height=\dimen114
-\UL@pe=\count95
-\UL@pixel=\dimen115
-\ULC@box=\box30
-Package: ulem 2012/05/18
-\ULdepth=\dimen116
+\UL@height=\dimen146
+\UL@pe=\count183
+\UL@pixel=\dimen147
+\ULC@box=\box49
+Package: ulem 2019/11/18
+\ULdepth=\dimen148
 )
-\draftskip=\count96
-\c@section=\count97
-\c@subsection=\count98
-\c@subsubsection=\count99
-\c@paragraph=\count100
-\c@subparagraph=\count101
-\c@figure=\count102
-\c@table=\count103
-\abovecaptionskip=\skip62
-\belowcaptionskip=\skip63
-\c@appendnum=\count104
-\bibindent=\dimen117
+\draftskip=\count184
+\c@section=\count185
+\c@subsection=\count186
+\c@subsubsection=\count187
+\c@paragraph=\count188
+\c@subparagraph=\count189
+\c@figure=\count190
+\c@table=\count191
+\abovecaptionskip=\skip68
+\belowcaptionskip=\skip69
+\c@appendnum=\count192
+\bibindent=\dimen149
 
 (/usr/share/texlive/texmf-dist/tex/latex/apacite/apacite.sty
 Package: apacite 2013/07/21 v6.03 APA citation
-\c@BibCnt=\count105
-\bibleftmargin=\skip64
-\bibindent=\skip65
-\bibparsep=\skip66
-\bibitemsep=\skip67
-\biblabelsep=\skip68
+\c@BibCnt=\count193
+\bibleftmargin=\skip70
+\bibindent=\skip71
+\bibparsep=\skip72
+\bibitemsep=\skip73
+\biblabelsep=\skip74
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count194
+\l__pdf_internal_box=\box50
+)
 (./shumko_ac6_curtain_stats.aux)
 \openout1 = `shumko_ac6_curtain_stats.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
 LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
 LaTeX Font Info:    ... okay on input line 45.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
 LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
 LaTeX Font Info:    ... okay on input line 45.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
 LaTeX Font Info:    ... okay on input line 45.
@@ -223,44 +214,21 @@ LaTeX Font Info:    ... okay on input line 45.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count106
-\scratchdimen=\dimen118
-\scratchbox=\box31
-\nofMPsegments=\count107
-\nofMParguments=\count108
+\scratchcounter=\count195
+\scratchdimen=\dimen150
+\scratchbox=\box51
+\nofMPsegments=\count196
+\nofMParguments=\count197
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count109
-\MPscratchDim=\dimen119
-\MPnumerator=\count110
-\makeMPintoPDFobject=\count111
+\MPscratchCnt=\count198
+\MPscratchDim=\dimen151
+\MPnumerator=\count199
+\makeMPintoPDFobject=\count266
 \everyMPtoPDFconversion=\toks24
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+85.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
@@ -273,7 +241,7 @@ Package trackchanges Warning: TrackChanges is not compatable with the
 
 ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 45.
-\c@maskedRefs=\count112
+\c@maskedRefs=\count267
 
 (/usr/share/texlive/texmf-dist/tex/latex/apacite/english.apc
 File: english.apc 2013/07/21 v6.03 apacite language file
@@ -1776,8 +1744,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [9]
 [10 <./figures/fig3_v3.pdf> <./figures/curtain_lat_lon.pdf
 
-pdfTeX warning: pdflatex (file ./figures/curtain_lat_lon.pdf): PDF inclusion: m
-ultiple pdfs with page group included in a single page
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/curtain_lat_lon.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
 >]
 Overfull \hbox (10.8767pt too wide) in paragraph at lines 170--171
 []\OT1/cmr/m/n/10 Of the 1,634 cur-tains, we found 36 cur-tains that were ob-se
@@ -1967,51 +1935,47 @@ he num-ber of mi-croburst
  []
 
 
-Overfull \hbox (15.15456pt too wide) in paragraph at lines 192--193
+Overfull \hbox (27.94621pt too wide) in paragraph at lines 192--193
 []\OT1/cmr/m/n/10 The hand-ful of cur-tains ob-served in the bounce loss cone, 
-and shown in Fig. 6[], put 
+and shown in Fig. 6[], [][][]were[] 
  []
 
 
-Overfull \hbox (16.93239pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 the []Blake and O'Brien (2016) cur-tain drift hy-poth-e-sis int
-o ques-tion. These cur-tains were 
+Overfull \hbox (14.488pt too wide) in paragraph at lines 192--193
+[][][]\OT1/cmr/m/n/10 drift[]-[]ing[] [][][]mi[]-[]croburst[] [][][]hy[]-[]poth
+[]-[]e[]-[]sis.[] One pos-si-ble ex-pla-na-tion is that the drift-ing cur-tain 
+elec- 
  []
 
 
-Overfull \hbox (4.18233pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 ob-served near the sea level mir-ror al-ti-tude curve. One pos-
-si-ble ex-pla-na-tion is that the 
+Overfull \hbox (19.51555pt too wide) in paragraph at lines 192--193
+\OT1/cmr/m/n/10 trons were ob-served at the end of their drift or-bit. How-ever
+, be-cause these ex-am-ples were 
  []
 
 
-Overfull \hbox (8.32117pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 drift-ing cur-tain elec-trons were ob-served at the end of thei
-r drift or-bit, how-ever be-cause 
+Overfull \hbox (6.87672pt too wide) in paragraph at lines 192--193
+\OT1/cmr/m/n/10 seen far from the west-ern edge of the BLC, any drift-ing elec-
+trons would have been lost 
  []
 
 
-Overfull \hbox (3.90445pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 these ex-am-ples were seen far from the west-ern edge of the BL
-C, any drift-ing elec-trons 
+Overfull \hbox (8.2379pt too wide) in paragraph at lines 192--193
+\OT1/cmr/m/n/10 be-fore AC6 ob-served them. The cur-tain pre-cip-i-ta-tion per-
+sisted for mul-ti-ple bounce pe- 
  []
 
 
-Overfull \hbox (11.26561pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 would have been lost be-fore AC6 ob-served them. Thus, they wer
-e not drift-ing and were 
+Overfull \hbox (16.76561pt too wide) in paragraph at lines 192--193
+\OT1/cmr/m/n/10 ri-ods ($\OMS/cmsy/m/n/10 ^^Y \OT1/cmr/m/n/10 1\OML/cmm/m/it/10
+ :\OT1/cmr/m/n/10 5$ sec-onds for 35 keV elec-trons in this re-gion), sug-gest-
+ing that the cur-tain gen- 
  []
 
 
-Overfull \hbox (18.2379pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 pre-cip-i-tat-ing for as long as 6 sec-onds, as shown in Fig. 6
-[]e. The cur-tain pre-cip-i-ta-tion per- 
- []
-
-
-Overfull \hbox (8.93236pt too wide) in paragraph at lines 192--193
-\OT1/cmr/m/n/10 sug-gest-ing that the cur-tain gen-er-a-tion mech-a-nism must b
-e ca-pa-ble of per-sis-tently scat- 
+Overfull \hbox (10.41844pt too wide) in paragraph at lines 192--193
+\OT1/cmr/m/n/10 er-a-tion mech-a-nism must be ca-pa-ble of per-sis-tently scat-
+ter-ing elec-trons. [][][]This[] [][][]rules[] [][][]out[] 
  []
 
 
@@ -2039,6 +2003,9 @@ Overfull \hbox (13.4325pt too wide) in paragraph at lines 195--196
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
 Overfull \hbox (6.56064pt too wide) in paragraph at lines 197--198
 []\OT1/cmr/m/n/10 To find the par-al-lel po-ten-tial, $\OML/cmm/m/it/10 q\OT1/c
 mr/m/n/10 ^^H$, we use the ki-netic en-ergy, $\OML/cmm/m/it/10 W$\OT1/cmr/m/n/1
@@ -2072,9 +2039,6 @@ OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^VB[]$\OT1/cmr/m/n/10 .
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13]
 Overfull \hbox (16.64178pt too wide) in paragraph at lines 201--202
 \OT1/cmr/m/n/10 Then we solve for $\OML/cmm/m/it/10 q\OT1/cmr/m/n/10 ^^H$ and s
 ub-sti-tute $\OML/cmm/m/it/10 ^^V$ \OT1/cmr/m/n/10 to ex-press the above equa-t
@@ -2418,6 +2382,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 245--245
  []
 
 
+Underfull \vbox (badness 3078) has occurred while \output is active []
+
+ [15]
+[16 <./figures/a_10hz_dist.pdf> <./figures/a_topographic_prominence.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./figures/a_topographic_prominence.pdf)
+: PDF inclusion: multiple pdfs with page group included in a single page
+>]
 Overfull \hbox (1.48782pt too wide) in paragraph at lines 249--250
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
@@ -2436,46 +2408,42 @@ ci-ence Fel-low-ship Pro-
  []
 
 
-Overfull \hbox (5.23799pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/10 gram - Grant 80NSSC18K1204 and NASA Post-doc-toral Pro-gram at 
-the NASA's God- 
+Overfull \hbox (15.26584pt too wide) in paragraph at lines 249--250
+\OT1/cmr/m/n/10 gram Grant 80NSSC18K1204 and NASA Post-doc-toral Pro-gram at th
+e NASA's God-dard 
  []
 
 
-Overfull \hbox (9.21007pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/10 dard Space Flight Cen-ter, ad-min-is-tered by Uni-ver-si-ties S
-pace Re-search As-so-ci-a-tion un- 
+Overfull \hbox (18.09895pt too wide) in paragraph at lines 249--250
+\OT1/cmr/m/n/10 Space Flight Cen-ter, ad-min-is-tered by Uni-ver-si-ties Space 
+Re-search As-so-ci-a-tion un-der con- 
  []
 
 
-Overfull \hbox (16.23799pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/10 der con-tract with NASA. D.L. Turner is thank-ful for fund-ing 
-from a NASA grant (prime 
+Overfull \hbox (13.73799pt too wide) in paragraph at lines 249--250
+\OT1/cmr/m/n/10 tract with NASA. D.L. Turner is thank-ful for fund-ing from a N
+ASA grant (prime award 
  []
 
 
-Overfull \hbox (0.46011pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/10 award num-ber: 80NSSC19K0280). The work at The Aerospace Cor-po
--ra-tion was sup- 
+Overfull \hbox (31.7102pt too wide) in paragraph at lines 249--250
+[][][]\OT1/cmr/m/n/10 80NSSC19K0702.[] The work at The Aerospace Cor-po-ra-tion
+ was sup-ported in part by RBSP- 
  []
 
 
-Overfull \hbox (36.5714pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/10 ported in part by RBSP-ECT fund-ing pro-vided by JHU/APL con-tr
-act 967399 un-der NASA's 
+Overfull \hbox (52.68254pt too wide) in paragraph at lines 249--250
+\OT1/cmr/m/n/10 ECT fund-ing pro-vided by JHU/APL con-tract 967399 un-der NASA'
+s Prime con-tract NAS501072. 
  []
 
 
-Overfull \hbox (109.62714pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/10 Prime con-tract NAS501072. The AC6 data and doc-u-men-ta-tion i
-s avail-able at http://rbspgway.jhuapl.edu/ac6 
+Overfull \hbox (2.48804pt too wide) in paragraph at lines 249--250
+\OT1/cmr/m/n/10 The AC6 data and doc-u-men-ta-tion is avail-able at http://rbsp
+gway.jhuapl.edu/ac6 and 
  []
 
-[15] [16 <./figures/a_10hz_dist.pdf> <./figures/a_topographic_prominence.pdf
-
-pdfTeX warning: pdflatex (file ./figures/a_topographic_prominence.pdf): PDF inc
-lusion: multiple pdfs with page group included in a single page
->] (./shumko_ac6_curtain_stats.bbl
+(./shumko_ac6_curtain_stats.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 14--32
 []\OT1/cmr/m/n/10 Anderson, B., Shekhar, S., Mil-lan, R., Crew, A., Spence, H.,
  Klumpar, D., ... 
@@ -2587,6 +2555,9 @@ OT1/cmr/m/it/10 Geo-phys-i-cal
  []
 
 
+Underfull \vbox (badness 1859) has occurred while \output is active []
+
+ [17]
 Underfull \hbox (badness 3029) in paragraph at lines 334--357
 []\OT1/cmr/m/n/10 Comess, M., Smith, D., Se-lesnick, R., Mil-lan, R., & Sam-ple
 , J.  (2013).  Dusk-side 
@@ -2612,9 +2583,6 @@ ibrary [] .wiley [] .com / doi / abs /
  []
 
 
-Underfull \vbox (badness 1275) has occurred while \output is active []
-
- [17]
 Underfull \hbox (badness 10000) in paragraph at lines 369--396
 []\OT1/cmr/m/n/10 Crew, A. B., Spence, H. E., Blake, J. B., Klumpar, D. M., Lar
 sen, B. A., O'Brien, 
@@ -2779,6 +2747,9 @@ t [] .com / science / article / pii /
  []
 
 
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [18]
 Underfull \hbox (badness 3568) in paragraph at lines 859--873
 []\OT1/cmr/m/n/10 O'Brien, T. P., Looper, M. D., & Blake, J. B.  (2019, July). 
  \OT1/cmr/m/it/10 AeroCube-6 dosime- 
@@ -2791,9 +2762,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 859--873
  []
 
 
-Underfull \vbox (badness 1264) has occurred while \output is active []
-
- [18]
 Underfull \hbox (badness 10000) in paragraph at lines 885--911
 []\OT1/cmr/m/n/10 O'Brien, T. P., Lorentzen, K. R., Mann, I. R., Mered-ith, N. 
 P., Blake, J. B., Fen- 
@@ -2904,13 +2872,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 3541 strings out of 492982
- 48948 string characters out of 6134897
- 172342 words of memory out of 5000000
- 7035 multiletter control sequences out of 15000+600000
- 10301 words of font info for 37 fonts, out of 8000000 for 9000
+ 3556 strings out of 481239
+ 50044 string characters out of 5920377
+ 352765 words of memory out of 5000000
+ 18767 multiletter control sequences out of 15000+600000
+ 538999 words of font info for 47 fonts, out of 8000000 for 9000
  1147 hyphenation exceptions out of 8191
- 50i,8n,37p,1704b,640s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,8n,41p,1704b,640s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
@@ -2932,7 +2900,7 @@ ublic/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (19 pages, 730294 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (19 pages, 732691 bytes).
 PDF statistics:
  580 PDF objects out of 1000 (max. 8388607)
  171 compressed objects within 2 object streams
