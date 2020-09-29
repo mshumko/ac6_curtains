@@ -141,9 +141,9 @@ for i, (time, bx_i) in enumerate(zip(curtain_times, bx)):
     print(f'Panel {string.ascii_letters[i+1]} Lag_In_Track: '
             f'{df_b_flt.loc[df_b_flt.index[0], "Lag_In_Track"]}')
 
-    annotate_string=(f'dt = {abs(int(round(df_b_flt.loc[df_b_flt.index[0], "Lag_In_Track"])))} s\n'
-                    f'MLT = {int(round(df_b_flt.loc[df_b_flt.index[0], "MLT_OPQ"]))%24}\n'
-                    f'L = {int(round(df_b_flt.loc[df_b_flt.index[0], "Lm_OPQ"]))}\n')
+    annotate_string=(f'|dt|={abs(int(round(df_b_flt.loc[df_b_flt.index[0], "Lag_In_Track"])))} s\n'
+                    f'MLT={int(round(df_b_flt.loc[df_b_flt.index[0], "MLT_OPQ"]))%24}\n'
+                    f'L={int(round(df_b_flt.loc[df_b_flt.index[0], "Lm_OPQ"]))}\n')
     
     bx_i.text(1, 0.99, annotate_string,
          ha='right', va='top', fontsize=12, color='k',
