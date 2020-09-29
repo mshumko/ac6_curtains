@@ -69,11 +69,11 @@ ax.contour(lons, lats,
             levels=[0, 100], colors=['b', 'b'], linestyles=['dashed', 'solid'])
 
 # Overlay L shell contours
-L_lons = np.load('/home/mike/research/mission_tools'
+L_lons = np.load('/home/mike/research/mission_tools/mission_tools'
                 '/misc/irbem_l_lons.npy')
-L_lats = np.load('/home/mike/research/mission_tools'
+L_lats = np.load('/home/mike/research/mission_tools/mission_tools'
                 '/misc/irbem_l_lats.npy')
-L = np.load('/home/mike/research/mission_tools'
+L = np.load('/home/mike/research/mission_tools/mission_tools'
                 '/misc/irbem_l_l.npy')
 levels = [4,8]
 CS = ax.contour(L_lons, L_lats, L, levels=levels, colors='k', linestyles='dotted')

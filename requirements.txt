@@ -2,19 +2,22 @@
 # python3.8 -m venv env
 # pip3.8 install -r requirements.txt
 
+numpy>=1.18.1
 astropy==4.0.1.post1
-Cartopy==0.17.0
+# Install the cartopy C dependencies with these two commands:
+#sudo apt-get install libgeos++-dev
+#sudo apt-get install libproj-dev
+Cartopy>=0.17.0
 cdflib==0.3.18
 # Editable install with no version control (IRBEM==0.1.0)
 -e /home/mike/research/irbem-code/python
 matplotlib==3.1.2
-numpy==1.18.1
 pandas==1.0.3
 progressbar2==3.47.0
 scipy==1.4.1
 skyfield==1.20
 spacepy==0.2.1
--e git+https://github.com/space-physics/themisasi@bdd0c0841bbcd864d988d549173f09415bf9b336#egg=themisasi
+#-e git+https://github.com/space-physics/themisasi@bdd0c0841bbcd864d988d549173f09415bf9b336#egg=themisasi
 uncertainties==3.1.2
 imageio==2.9.0
 pygifsicle==1.0.1 # May need to also run "sudo apt-get install gifsicle"
