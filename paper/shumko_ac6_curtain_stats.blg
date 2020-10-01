@@ -1,9 +1,9 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: shumko_ac6_curtain_stats.aux
 The style file: apacite.bst
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
-Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
@@ -15,45 +15,45 @@ Database file #1: /home/mike/Dropbox/0_firebird_research/A_presentations/refs.bi
 apacite.bst [2013/07/21 v6.03 APA bibliography style]
 Warning--No address in O'Brien2016
 Warning--No address in O'Brien2019
-You've used 38 entries,
+You've used 39 entries,
             6951 wiz_defined-function locations,
-            1563 strings with 19772 characters,
-and the built_in function-call counts, 89757 in all, are:
-= -- 10726
-> -- 865
-< -- 4631
-+ -- 5184
-- -- 82
-* -- 6167
-:= -- 16752
-add.period$ -- 149
-call.type$ -- 38
-change.case$ -- 653
+            1573 strings with 20044 characters,
+and the built_in function-call counts, 91384 in all, are:
+= -- 10927
+> -- 879
+< -- 4691
++ -- 5247
+- -- 84
+* -- 6272
+:= -- 17015
+add.period$ -- 153
+call.type$ -- 39
+change.case$ -- 670
 chr.to.int$ -- 0
-cite$ -- 78
-duplicate$ -- 2781
-empty$ -- 3211
-format.name$ -- 1583
-if$ -- 16299
+cite$ -- 80
+duplicate$ -- 2832
+empty$ -- 3289
+format.name$ -- 1607
+if$ -- 16628
 int.to.chr$ -- 0
-int.to.str$ -- 114
+int.to.str$ -- 117
 missing$ -- 0
-newline$ -- 1103
-num.names$ -- 304
-pop$ -- 1268
+newline$ -- 1132
+num.names$ -- 312
+pop$ -- 1292
 preamble$ -- 1
-purify$ -- 158
+purify$ -- 162
 quote$ -- 0
-skip$ -- 5168
+skip$ -- 5285
 stack$ -- 0
-substring$ -- 5689
-swap$ -- 1521
-text.length$ -- 125
+substring$ -- 5761
+swap$ -- 1553
+text.length$ -- 127
 text.prefix$ -- 0
 top$ -- 1
-type$ -- 3104
+type$ -- 3184
 warning$ -- 2
-while$ -- 543
+while$ -- 550
 width$ -- 0
-write$ -- 1457
+write$ -- 1492
 (There were 2 warnings)
