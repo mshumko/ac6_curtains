@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.21)  1 OCT 2020 11:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.9.21)  9 OCT 2020 11:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2753,76 +2753,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 244--244
  []
 
 
-Overfull \hbox (1.48782pt too wide) in paragraph at lines 248--249
+Overfull \hbox (1.48782pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 This work was made pos-si-ble with the help from the many en-gi
 -neers and sci-en-tists at 
  []
 
 
-Overfull \hbox (20.73793pt too wide) in paragraph at lines 248--249
+Overfull \hbox (20.73793pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 The Aerospace Cor-po-ra-tion who de-signed, built, and op-er-at
 ed AC6. M. Shumko was sup- 
  []
 
 
-Overfull \hbox (21.65457pt too wide) in paragraph at lines 248--249
+Overfull \hbox (21.65457pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 ported by NASA Head-quar-ters un-der the NASA Earth and Space S
 ci-ence Fel-low-ship Pro- 
  []
 
 
-Overfull \hbox (15.26584pt too wide) in paragraph at lines 248--249
+Overfull \hbox (15.26584pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 gram Grant 80NSSC18K1204 and NASA Post-doc-toral Pro-gram at th
 e NASA's God-dard 
  []
 
 
-Overfull \hbox (18.09895pt too wide) in paragraph at lines 248--249
+Overfull \hbox (18.09895pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 Space Flight Cen-ter, ad-min-is-tered by Uni-ver-si-ties Space 
 Re-search As-so-ci-a-tion un-der con- 
  []
 
 
-Overfull \hbox (13.73799pt too wide) in paragraph at lines 248--249
+Overfull \hbox (13.73799pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 tract with NASA. D.L. Turner is thank-ful for fund-ing from a N
 ASA grant (prime award 
  []
 
 
-Overfull \hbox (68.00217pt too wide) in paragraph at lines 248--249
+Overfull \hbox (68.00217pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 num-ber: 80NSSC19K0280). J.G. Sam-ple is thank-ful for fund-ing
  from NASA grant 80NSSC19K0702. 
  []
 
 
-Overfull \hbox (9.6268pt too wide) in paragraph at lines 248--249
+Overfull \hbox (9.6268pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 The work at The Aerospace Cor-po-ra-tion was sup-ported in part
  by RBSP-ECT fund-ing 
  []
 
 
-Overfull \hbox (13.37688pt too wide) in paragraph at lines 248--249
+Overfull \hbox (13.37688pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 pro-vided by JHU/APL con-tract 967399 un-der NASA's Prime con-t
 ract NAS501072. The 
  []
 
 
-Overfull \hbox (39.84921pt too wide) in paragraph at lines 248--249
+Overfull \hbox (39.84921pt too wide) in paragraph at lines 248--250
 \OT1/cmr/m/n/10 AC6 data and doc-u-men-ta-tion is avail-able at http://rbspgway
 .jhuapl.edu/ac6 and the IRBEM- 
+ []
+
+
+Overfull \hbox (10.7103pt too wide) in paragraph at lines 248--250
+\OT1/cmr/m/n/10 Lib ver-sion used for this anal-y-sis is archived at http://doi
+.org/10.5281/zenodo.4075396. 
+ []
+
+
+Overfull \hbox (42.09918pt too wide) in paragraph at lines 248--250
+\OT1/cmr/m/n/10 The 1-minute ca-dence pro-vi-sional AE in-dex data was down-loa
+ded from http://wdc.kugi.kyoto- 
  []
 
 [14] [15 <./figures/a_10hz_dist.pdf> <./figures/a_topographic_prominence.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./figures/a_topographic_prominence.pdf)
 : PDF inclusion: multiple pdfs with page group included in a single page
->]
-Overfull \hbox (11.40466pt too wide) in paragraph at lines 249--250
-\OT1/cmr/m/n/10 https://sourceforge.net/p/irbem/code/616/tree/. The 1-minute ca
--dence pro-vi-sional AE 
- []
-
-(./shumko_ac6_curtain_stats.bbl
+>] (./shumko_ac6_curtain_stats.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 14--32
 []\OT1/cmr/m/n/10 Anderson, B., Shekhar, S., Mil-lan, R., Crew, A., Spence, H.,
  Klumpar, D., ... 
@@ -3274,7 +3280,7 @@ fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb>
-Output written on shumko_ac6_curtain_stats.pdf (18 pages, 676448 bytes).
+Output written on shumko_ac6_curtain_stats.pdf (18 pages, 676433 bytes).
 PDF statistics:
  569 PDF objects out of 1000 (max. 8388607)
  162 compressed objects within 2 object streams
