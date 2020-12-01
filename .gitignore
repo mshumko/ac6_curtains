@@ -15,3 +15,4 @@ Leap_Second.dat
 env/
 movies/*
 *.gif
+.DS_Store
