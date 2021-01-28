@@ -10,7 +10,7 @@ import cartopy
 import cartopy.crs as ccrs
 
 # Paths that are used everywhere in the class
-from ac6_curtains import dirs
+import dirs
 
 class PlotCurtains:
     def __init__(self, catalog_version, plot_width=5, catalog_name=None,
@@ -226,7 +226,7 @@ class PlotCurtains:
         if set(['peak_width_A', 'peak_width_B']).issubset(row.index) and self.plot_width_flag:
             s = (f'peak_width_A = {round(row["peak_width_A"], 2)} s\n'
                 f'peak_width_B = {round(row["peak_width_B"], 2)} s\n'
-                f'AE = {row["AE"]}, L = {round(row["Lm_OPQ"], 1)}, L = {round(row["MLT_OPQ"], 1)}')
+                f'L = {round(row["Lm_OPQ"], 1)}, L = {round(row["MLT_OPQ"], 1)}')
             ax[0].text(0.02, 1, s, transform=ax[0].transAxes, va='top')
 
         if row.Lag_In_Track > 0:
@@ -239,8 +239,7 @@ class PlotCurtains:
                         f'lat = {round(row.lat, 1)} [deg]\n'
                         f'lon = {round(row.lon, 1)} [deg]\n'
                         f'alt = {round(row.alt, 1)} [km]\n'
-                        f'dt = {round(row.Lag_In_Track, 1)} [s] (AC6-{leading_unit} ahead)\n'
-                        f'AE = {row.AE} [nT]'
+                        f'dt = {round(row.Lag_In_Track, 1)} [s] (AC6-{leading_unit} ahead)'
                         )
         ax[1].text(0.02, 0.98, annotate_str, 
                         transform=ax[1].transAxes, va='top')
@@ -264,8 +263,6 @@ class PlotCurtains:
         formatted_start_time = datetime.strftime(row.dateTime-self.plot_width/2, "%Y/%m/%d %H:%M:00")
         xlabel = (f'AC6A seconds after\n{formatted_start_time}')
         ax[1].set_xlabel(xlabel)
-
-        self.gs.tight_layout(self.fig)
 
         if savefig:
             save_name = '{0:%Y%m%d_%H%M%S}_ac6_curtain_validation.png'.format(

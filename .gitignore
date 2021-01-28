@@ -16,3 +16,4 @@ env/
 movies/*
 *.gif
 .DS_Store
+stats/dirs.py

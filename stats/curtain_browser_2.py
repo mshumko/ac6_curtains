@@ -11,6 +11,8 @@ import dateutil.parser
 import plot_curtains
 import dirs
 
+matplotlib.use('tkagg')
+
 catalog_save_dir = dirs.CATALOG_DIR
 
 plot_save_dir = '/home/mike/research/ac6_curtains/plots/'
